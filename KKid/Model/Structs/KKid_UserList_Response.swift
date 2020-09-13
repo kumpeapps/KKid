@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct KKid_UserList_Response: Codable{
+    var status: Int
+    var user: [KKid_User]
+}
+

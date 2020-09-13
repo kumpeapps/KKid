@@ -6,4 +6,13 @@
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class SelectModuleViewController: UIViewController{
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        performSegue(withIdentifier: "segueChores", sender: self)
+    }
+}

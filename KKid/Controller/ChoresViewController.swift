@@ -6,4 +6,17 @@
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class ChoresViewController: UIViewController{
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("testing 123")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewwillappear")
+    }
+}

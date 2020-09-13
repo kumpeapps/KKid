@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  KKid_User.swift
 //  KKid
 //
 //  Created by Justin Kumpe on 8/28/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Codable{
+struct KKid_User: Codable{
     
     let userID: Int
     var masterID: Int
@@ -17,7 +17,7 @@ struct User: Codable{
     var firstName: String
     var lastName: String
     var email: String
-    var isAdctive: Bool
+    var isActive: Bool
     var isAdmin: Bool
     var enableAllowance: Bool
     var isBanned: Bool
@@ -28,5 +28,6 @@ struct User: Codable{
     var isMaster: Bool
     var enableBehaviorChart: Bool
     var weeklyAllowance: Int
+    var emoji: String
     
 }

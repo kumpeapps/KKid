@@ -6,4 +6,8 @@
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension Notification.Name{
+    static let isAuthenticated = Notification.Name("isAuthenticated")
+}

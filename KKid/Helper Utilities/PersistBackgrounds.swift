@@ -1,5 +1,5 @@
 //
-//  SaveBackgrounds.swift
+//  PersistBackgrounds.swift
 //  KKid
 //
 //  Created by Justin Kumpe on 9/7/20.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SaveBackgrounds {
+class PersistBackgrounds {
     
     class func saveImage(_ image: UIImage, isBackground: Bool){
         
@@ -28,10 +28,34 @@ class SaveBackgrounds {
             do {
                 // Write to Disk
                 try data.write(to: url)
+                Logger.log(.action, "\(imageName) saved to \(url)")
 
             } catch {
             print("Unable to Write Data to Disk (\(error))")
             }
         }
+    }
+    
+    class func loadImage(isBackground: Bool) -> UIImage? {
+
+        var imageName = "background.png"
+        
+        if !isBackground{
+            imageName = "logo.png"
+        }
+        
+      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+
+        if let dirPath = paths.first {
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(imageName)
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            return image
+
+        }
+
+        return nil
     }
 }
