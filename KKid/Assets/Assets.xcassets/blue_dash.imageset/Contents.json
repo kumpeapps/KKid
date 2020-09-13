@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "blue_dash.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
