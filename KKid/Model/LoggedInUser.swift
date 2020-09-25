@@ -24,5 +24,10 @@ class LoggedInUser {
         if let encoded = try? encoder.encode(user){
             UserDefaults.standard.set(encoded, forKey: "loggedInUser")
         }
+        if UserDefaults.standard.integer(forKey: "masterID") != user!.masterID{
+            UserDefaults.standard.removeObject(forKey: "UserLastUpdated")
+            UserDefaults.standard.removeObject(forKey: "ChoreLastUpdated")
+        }
+        UserDefaults.standard.set(user!.masterID, forKey: "masterID")
     }
 }

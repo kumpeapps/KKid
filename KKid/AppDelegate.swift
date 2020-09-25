@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var kkidLogo = Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!)
     var kkidBackground = UIImage(named: "photo2")!
     
-    var loggedInUser:KKid_User?
+    var loggedInUser: KKid_User?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -35,6 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        Initiate DataController Autosave
         DataController.shared.autoSaveViewContext()
+        
+//        Get App Version and set it's value in KKid Client
+        if let nsObject: AnyObject = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject?{
+            KKidClient.appVersion = "\(KKidClient.appVersion) \(nsObject as! String)"
+        }
+        
+        
         return true
     }
     

@@ -22,16 +22,33 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var buttonForgotPassword: UIButton!
     @IBOutlet weak var buttonNewParentAccount: UIButton!
+        
+    //    MARK: Reachability
+        var reachable: ReachabilitySetup!
     
     
 //    MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         enableUI(true)
-      
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
 //        TODO: Remove Hardcoded Creds
-        fieldUsername.text = "justinkumpe"
-        fieldPassword.text = "$a1ntFlor1an2017"
+        #if targetEnvironment(simulator)
+        fieldUsername.text = "dev_KKid_Master"
+        fieldPassword.text = "LetmeN2it"
+        #endif
+    }
+    
+//    MARK: viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reachable = ReachabilitySetup()
+    }
+    
+//    MARK: viewWillDisappear
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachable = nil
     }
     
     @IBAction func pressedLogin(){
@@ -83,6 +100,22 @@ class LoginViewController: UIViewController{
         fieldPassword.becomeFirstResponder()
     }
     
+    @IBAction func pressedForgotPassword(){
+        enableUI(false)
+        guard let username = fieldUsername.text, username != "" else{
+            ShowAlert.banner(title: "Username Required", message: "Please enter the username you wish to reset the password for!")
+            return
+        }
+        KKidClient.forgotPassword(username: username) { (success, msg) in
+            if success{
+                ShowAlert.banner(theme: .success, title: "Success", message: msg)
+            }else{
+                ShowAlert.banner(title: "Error", message: msg)
+            }
+            self.enableUI(true)
+        }
+    }
+    
     //    MARK: enableUI
     func enableUI(_ enable: Bool){
         if enable{
@@ -95,5 +128,13 @@ class LoginViewController: UIViewController{
         self.buttonLogin.isEnabled = enable
         self.buttonForgotPassword.isEnabled = enable
         self.buttonNewParentAccount.isEnabled = enable
+    }
+    
+    override var shouldAutorotate: Bool{
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return .portrait
     }
 }

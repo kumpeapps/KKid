@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SelectUserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SelectUserViewController: UIViewController {
 
 //    MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
@@ -22,18 +22,23 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
 //    MARK: Table View
     @IBOutlet weak var tableView: UITableView!
     
-//    MARK: fetchedResultsController
-    var fetchedResultsController:NSFetchedResultsController<User>!
+//    MARK: Reachability
+    var reachable: ReachabilitySetup!
     
 /*    MARK: Refresh Control
     Adds functionality to swipe down to refresh table
 */
     private let refreshControl = UIRefreshControl()
     
+//    MARK: fetchedResultsController
+    var fetchedResultsController:NSFetchedResultsController<User>!
+    
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<User> = User.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "isMaster", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        let sortByMaster = NSSortDescriptor(key: "isMaster", ascending: false)
+        let sortByAdmin = NSSortDescriptor(key: "isAdmin", ascending: false)
+        let sortByFirstName = NSSortDescriptor(key: "firstName", ascending: true)
+        fetchRequest.sortDescriptors = [sortByMaster,sortByAdmin,sortByFirstName]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: "users")
         fetchedResultsController.delegate = self
@@ -46,17 +51,17 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    //    MARK: viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
 //    MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        reachable = ReachabilitySetup()
         setupFetchedResultsController()
         tableView.delegate = self
         tableView.dataSource = self
+        
+/*        Pull logo and background from AppDelegate.
+         Setup this way so users can choose their own background and logo style in future releases
+ */
         imageLogo.image = AppDelegate().kkidLogo
         imageBackground.image = AppDelegate().kkidBackground
         
@@ -72,15 +77,16 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
 //    MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         guard UserDefaults.standard.bool(forKey: "isAuthenticated") else{
             Logger.log(.warning, "Not Authenticated")
             return
         }
         
-        KKidClient.getUsers( completion: { (success, error) in
-            Logger.log(.success, "getUsers Completed")
-            self.tableView.reloadData()
-        })
+        if UserDefaults.standard.value(forKey: "UserLastUpdated") == nil || !Calendar.current.isDateInToday(UserDefaults.standard.value(forKey: "UserLastUpdated") as! Date){
+            refreshUsers()
+        }
+        
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshUsers), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing Users")
@@ -92,6 +98,7 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
         fetchedResultsController = nil
+        reachable = nil
     }
 
 //    MARK: verifyAuthenticated
@@ -100,6 +107,7 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
             performSegue(withIdentifier: "segueLogin", sender: self)
             return
         }
+    
         enableUI(true)
     }
     
@@ -108,6 +116,12 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
         enableUI(false)
         KKidClient.logout(userInitiated: true)
     }
+    
+//    MARK: pressedAdd
+    @IBAction func pressedAdd(){
+        performSegue(withIdentifier: "segueAddUser", sender: self)
+    }
+    
     
     
 //    MARK: enableUI
@@ -125,7 +139,20 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    // MARK: - Table view data source
+//    MARK: prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueSelectModule"{
+            let viewController = segue.destination as! SelectModuleViewController
+            if let indexPath = tableView.indexPathForSelectedRow{
+                viewController.selectedUser = fetchedResultsController.object(at: indexPath)
+            }
+        }
+    }
+}
+
+    // MARK: - Table View
+
+extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate{
 
 //    MARK: numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -195,32 +222,48 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
             ShowAlert.banner(title: "User Banned", message: "This user has been banned. Please contact support at helpdesk@kumpeapps.com!")
         }else if selectedUser.isLocked{
             ShowAlert.banner(theme: .warning, title: "User Account Locked", message: "This user's account has been locked. You can still edit this account but the user can not login until their account is unlocked.")
-//            TODO: perform segue to select module
+            performSegue(withIdentifier: "segueSelectModule", sender: self)
         }else if !selectedUser.isActive{
-            ShowAlert.banner(title: "Account Inactive", message: "This account is inactive. Please delete user or contact support at helpdesk@kumpeapps.com")
+            ShowAlert.banner(title: "Account Inactive", message: "This account is inactive. Please delete user or Add Permissions in Profile.")
+            performSegue(withIdentifier: "segueSelectModule", sender: self)
         }else if selectedUser.isMaster && !loggedInUser.isMaster{
             ShowAlert.banner(title: "Action Not Allowed", message: "Only the master account can select this user!")
         }else if selectedUser.userID != loggedInUser.userID && !loggedInUser.isAdmin{
             ShowAlert.banner(title: "Action Not Allowed", message: "Only Admin users may select other users. Please select your name only!")
         }else{
-//            TODO: perform segue to select module
-            ShowAlert.banner(theme: .warning, title: "Not Implemented", message: "Can not select user \(selectedUser.firstName ?? "Unknown User") yet!")
+            performSegue(withIdentifier: "segueSelectModule", sender: self)
         }
     }
 
 //    MARK: tableView: swipe to delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
-        case .delete: deleteUser(at: indexPath)
+        case .delete: deleteUser(indexPath: indexPath)
         default: () // Unsupported
         }
     }
     
 //    MARK: deleteUser
-    func deleteUser(at: IndexPath){
+    func deleteUser(indexPath: IndexPath){
         if LoggedInUser.user!.isAdmin{
-            let deleteUser = fetchedResultsController.object(at: at)
-            ShowAlert.banner(theme: .warning, title: "Not Implemented", message: "Can not delete \(deleteUser.firstName ?? "No Name") yet.")
+            let deleteUser = fetchedResultsController.object(at: indexPath)
+            
+            if let sections = fetchedResultsController.sections?.count, let section0Rows = fetchedResultsController.sections?[0].numberOfObjects, (sections == 1 && section0Rows == 1) || !deleteUser.isMaster{
+            
+                ShowAlert.choiceMessage(theme: .error, title: "Delete User???", message: "Tap outside of this message to cancel.") { _ in
+                    KKidClient.deleteUser(deleteUser) { (success, error) in
+                        if success{
+                            DataController.shared.viewContext.delete(deleteUser)
+                            try? DataController.shared.viewContext.save()
+                            ShowAlert.statusLine(theme: .success, title: "User Deleted", message: "User Deleted", seconds: 5, dim: false)
+                        }else{
+                            ShowAlert.banner(title: "Delete Error", message: error ?? "An unknown error occurred.")
+                        }
+                    }
+                }
+            }else{
+                ShowAlert.banner(theme: .error, title: "Error", message: "Other users exist. The master user can only be deleted if no other users exist under this account. Please delete all other users first!", seconds: 20)
+            }
         }else{
             ShowAlert.banner(title: "Not Admin", message: "Only Admins can delete users. Sorry!")
         }
@@ -230,6 +273,7 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
     @objc func refreshUsers(){
         KKidClient.getUsers { (success, error) in
             self.refreshControl.endRefreshing()
+            self.tableView.reloadData()
         }
     }
 }
@@ -256,6 +300,7 @@ extension SelectUserViewController:NSFetchedResultsControllerDelegate {
             break
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)
+            tableView.setNeedsLayout()
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
         @unknown default:

@@ -38,6 +38,7 @@ class ShowAlert {
 //    Display Top Banner
     static func banner(theme: Theme = .error, title: String, message: String, seconds: Double = 10){
         dispatchOnMain{
+            SwiftMessages.hideAll()
             let view = MessageView.viewFromNib(layout: .cardView)
             view.button?.isHidden = true
             view.configureTheme(theme)
@@ -53,7 +54,7 @@ class ShowAlert {
     }
     
 //    Display Status Bar Banner
-    static func statusLine(theme: Theme = .error, title: String, message: String, seconds: Double = 10){
+    static func statusLine(theme: Theme = .error, title: String, message: String, seconds: Double = 10, dim: Bool = true){
         dispatchOnMain{
             let view = MessageView.viewFromNib(layout: .statusLine)
             view.button?.isHidden = true
@@ -64,13 +65,15 @@ class ShowAlert {
             config.presentationContext = .window(windowLevel: .statusBar)
             config.presentationStyle = .top
             config.duration = .seconds(seconds: seconds)
-            config.dimMode = .gray(interactive: true)
+            if dim{
+                config.dimMode = .gray(interactive: true)
+            }
             SwiftMessages.show(config: config, view: view)
         }
     }
     
 //    Display Static Status Bar Banner
-    static func statusLineStatic(id: String, theme: Theme = .error, title: String, message: String){
+    static func statusLineStatic(id: String, theme: Theme = .error, title: String, message: String, blockInterface: Bool = false){
         dispatchOnMain{
             let view = MessageView.viewFromNib(layout: .statusLine)
             view.button?.isHidden = true
@@ -81,10 +84,15 @@ class ShowAlert {
             config.presentationContext = .window(windowLevel: .statusBar)
             config.presentationStyle = .top
             config.duration = .forever
+            if blockInterface{
+                config.dimMode = .gray(interactive: false)
+            }
             view.id = id
             SwiftMessages.show(config: config, view: view)
         }
     }
+    
+    
     
 //    Dismisses Static Alert/Banner
     static func dismissStatic(id: String){
@@ -113,6 +121,7 @@ class ShowAlert {
 //    Display Message View Alert
     static func messageView(theme: Theme = .error, title: String, message: String, seconds: Double = 10){
         dispatchOnMain{
+            SwiftMessages.hideAll()
             let view = MessageView.viewFromNib(layout: .messageView)
             view.button?.isHidden = true
             view.configureTheme(theme)
@@ -124,6 +133,23 @@ class ShowAlert {
             config.duration = .seconds(seconds: seconds)
             config.dimMode = .gray(interactive: true)
             SwiftMessages.show(config: config, view: view)
+        }
+    }
+    
+    static func choiceMessage(theme: Theme = .error, title: String, message: String, buttonTitle: String = "Confirm", completion: @escaping (Bool) -> Void){
+        dispatchOnMain {
+            SwiftMessages.hideAll()
+            let view = MessageView.viewFromNib(layout: .messageView)
+            var config = SwiftMessages.Config()
+            view.configureTheme(theme)
+            view.configureContent(title: title, body: message)
+            view.button?.setTitle(buttonTitle, for: .normal)
+            config.presentationStyle = .center
+            config.duration = .forever
+            config.dimMode = .blur(style: .dark, alpha: 1, interactive: true)
+            view.buttonTapHandler = { _ in SwiftMessages.hide(); completion(true)}
+            SwiftMessages.show(config: config, view: view)
+            
         }
     }
     

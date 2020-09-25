@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Chore" representedClassName="Chore" syncable="YES" codeGenerationType="class">
+        <attribute name="altitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="blockDash" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="choreDescription" optional="YES" attributeType="String"/>
+        <attribute name="choreName" optional="YES" attributeType="String"/>
+        <attribute name="choreNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dateUpdated" optional="YES" attributeType="String"/>
+        <attribute name="day" optional="YES" attributeType="String"/>
+        <attribute name="dayAsNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="extraAllowance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="sync.isPrimaryKey" value="true"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isCalendar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="kid" optional="YES" attributeType="String"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="nfcTag" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="oneTime" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="optional" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="reassignable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="reassigned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="stolen" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="stolenBy" optional="YES" attributeType="String"/>
+        <userInfo>
+            <entry key="sync.remoteKey" value="updated"/>
+        </userInfo>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="emoji" optional="YES" attributeType="String"/>
@@ -26,6 +59,7 @@
         <attribute name="weeklyAllowance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="328"/>
+        <element name="Chore" positionX="-304.6484375" positionY="-4.40234375" width="128" height="403"/>
+        <element name="User" positionX="-603.27734375" positionY="2.0703125" width="128" height="328"/>
     </elements>
 </model>
