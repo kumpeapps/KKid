@@ -6,7 +6,7 @@ target 'KKid' do
         pod 'Alamofire-SwiftyJSON'
         pod 'Toast-Swift'
 	pod 'SwiftyFORM'
-	pod 'Kingfisher'
+#	pod 'Kingfisher'
 	pod 'ReachabilitySwift'
 	pod 'SwiftMessages'
 #	pod 'OneTimePassword'

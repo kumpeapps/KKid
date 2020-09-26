@@ -3,9 +3,6 @@ PODS:
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
     - SwiftyJSON (~> 4.0.0)
-  - Kingfisher (5.15.0):
-    - Kingfisher/Core (= 5.15.0)
-  - Kingfisher/Core (5.15.0)
   - ReachabilitySwift (5.0.0)
   - SwiftMessages (8.0.2):
     - SwiftMessages/App (= 8.0.2)
@@ -17,7 +14,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire-SwiftyJSON
-  - Kingfisher
   - ReachabilitySwift
   - SwiftMessages
   - SwiftyFORM
@@ -28,7 +24,6 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Alamofire-SwiftyJSON
-    - Kingfisher
     - ReachabilitySwift
     - SwiftMessages
     - SwiftyFORM
@@ -39,7 +34,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
-  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   SwiftyFORM: ce2dc9afb5b4488715112108a114c6d26e0b2836
@@ -47,6 +41,6 @@ SPEC CHECKSUMS:
   Sync: 40735880f9c7dfb222fa48078bea320a90276d62
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 0dee793bca44643e533aae380d6a192be447fdff
+PODFILE CHECKSUM: c1fafa0eaabeafe299e7ef3bac51320198dcb744
 
 COCOAPODS: 1.9.3
