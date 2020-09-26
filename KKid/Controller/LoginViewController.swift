@@ -167,7 +167,6 @@ class LoginViewController: UIViewController{
     //    MARK: Keyboard Will Show
     //    Gets called when keyboard is coming onto the screen
         @objc func keyboardWillShow(_ notification:Notification) {
-            DebugHelpers.dumpErrorToLog(dump: UIDevice.current.orientation.isLandscape)
     //        Move Screen Up only if editing bottom text field
             if (fieldUsername.isEditing || fieldPassword.isEditing) && UIDevice.current.orientation.isLandscape{
                 view.frame.origin.y = 0
