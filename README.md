@@ -3,8 +3,8 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 
 ## Screenshots
-| Home Screen | Login | Allowance | Chores | Mark Chore|
-| ----------------- |  ----------------- |  ----------------- |  ----------------- |  ----------------- | 
+| Home Screen| Image Picker | Create Meme | Share Meme |
+| ----------------- |  ----------------- | ----------------- | ----------------- |
 | ![home.png](images/home.png) |  ![login.png](images/login.png) |  ![allowance.png](images/allowance.png) |  ![chores.png](images/chores.png) |  ![markchore.png](images/markchore.png) | 
 
 ## Frameworks Used
@@ -26,7 +26,7 @@ Sync
 ### Login Screen:
 On the login screen you can enter your username/email and password then click login to access the application.
 
-If you need to create a new Master Parent (household) account you may click on "New Parent Account"
+#### If you need to create a new Master Parent (household) account you may click on "New Parent Account"
 
 If you have forgotten your password you may enter your username in the username field and click "Forgot Password" and a reset link will be emailed to you.
 
