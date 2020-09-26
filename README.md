@@ -15,11 +15,11 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 ## Third Party Frameworks Used
 - [Alamofire-SwiftyJSON](https://github.com/SwiftyJSON/Alamofire-SwiftyJSON)
-- Toast-Swift
-- SwiftyForm
-- ReachabilitySwift
-- SwiftMessages
-- Sync
+- [Toast-Swift](https://github.com/scalessec/Toast-Swift)
+- [SwiftyForm](https://github.com/neoneye/SwiftyFORM)
+- [ReachabilitySwift](https://github.com/ashleymills/Reachability.swift)
+- [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
+- [Sync](https://github.com/3lvis/Sync)
 
 ## Instructions
 
@@ -35,8 +35,8 @@ KKid is an app for parents and their children to keep up with chores and allowan
 #### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user.
 
 - DEMO Account
-	 username: dev_kkid_master
-	 password: LetmeN2it
+	- username: dev_kkid_master
+	- password: LetmeN2it
 
 ### Home Screen (after login):
 - On the home screen you will see a list of users under your master (household) account.
