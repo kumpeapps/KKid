@@ -32,11 +32,11 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 - After login you will be taken to the "Home" Screen
 
-- NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user.
+#### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user.
 
 - DEMO Account
-	\n username: dev_kkid_master
-	\n password: LetmeN2it
+	 username: dev_kkid_master
+	 password: LetmeN2it
 
 ### Home Screen (after login):
 - On the home screen you will see a list of users under your master (household) account.
@@ -47,4 +47,6 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 - Clicking on a user will take you to the "Select Module" screen for that user (NOTE: if you are not the master or an admin then you will only be able to select your own account from this list)
 
-- 
+- If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
+
+###
