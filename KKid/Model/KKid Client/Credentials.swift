@@ -13,8 +13,8 @@ struct APICredentials{
     
 //    MARK: KKid Credentials
     struct KKid{
-        static let username = "API_KKid_Udacity"
-        static let apiPassword = "ryejrQsjy"
+        static let username = "API_Apps_KKid"
+        static let apiPassword = "snOm1bneg"
     }
     
 }
