@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F31117A251FD715004BB1E4 /* APICredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311179251FD715004BB1E4 /* APICredentials.swift */; };
 		0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */; };
+		0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311184251FE3F8004BB1E4 /* API_Credentials.swift */; };
 		0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27D250D9E660002D0AD /* Notifications.swift */; };
 		0F37E280250DA5800002D0AD /* String+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27F250DA5800002D0AD /* String+Image.swift */; };
 		0F37E282250DAF4C0002D0AD /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E281250DAF4C0002D0AD /* LoggedInUser.swift */; };
@@ -62,8 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F311179251FD715004BB1E4 /* APICredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICredentials.swift; sourceTree = "<group>"; };
 		0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigLib.swift; sourceTree = "<group>"; };
+		0F311184251FE3F8004BB1E4 /* API_Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Credentials.swift; sourceTree = "<group>"; };
 		0F37E27D250D9E660002D0AD /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0F37E27F250DA5800002D0AD /* String+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Image.swift"; sourceTree = "<group>"; };
 		0F37E281250DAF4C0002D0AD /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 				0F72B13E251593E90099D2D9 /* KKidClient+POST.swift */,
 				0F72B140251594390099D2D9 /* KKidClient+PUT.swift */,
 				0F72B142251594740099D2D9 /* KKidClient+DELETE.swift */,
-				0F311179251FD715004BB1E4 /* APICredentials.swift */,
+				0F311184251FE3F8004BB1E4 /* API_Credentials.swift */,
 			);
 			path = "KKid Client";
 			sourceTree = "<group>";
@@ -463,7 +463,6 @@
 				0F66BE382507107B00014A94 /* Logger.swift in Sources */,
 				0FB98CF524FF153200143A6A /* Pathifier.swift in Sources */,
 				0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */,
-				0F31117A251FD715004BB1E4 /* APICredentials.swift in Sources */,
 				0FDC462C251AC19000A4E3D2 /* UserEditProfileViewController.swift in Sources */,
 				0F66BE4125085EB900014A94 /* ShowAlert.swift in Sources */,
 				0F72B1452517B13F0099D2D9 /* AllowanceLedgerViewController.swift in Sources */,
@@ -477,6 +476,7 @@
 				0FB98D0225007AE800143A6A /* AddChoreViewController.swift in Sources */,
 				0F5EC89A24F98D0000873868 /* SceneDelegate.swift in Sources */,
 				0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */,
+				0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */,
 				0F66BE3F25085E9000014A94 /* GCDBlackBox.swift in Sources */,
 				0F72B13B251592A00099D2D9 /* KKidClient+GET.swift in Sources */,
 				0F72B13F251593E90099D2D9 /* KKidClient+POST.swift in Sources */,
