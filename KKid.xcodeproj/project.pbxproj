@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F31117A251FD715004BB1E4 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311179251FD715004BB1E4 /* Credentials.swift */; };
+		0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */; };
 		0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27D250D9E660002D0AD /* Notifications.swift */; };
 		0F37E280250DA5800002D0AD /* String+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27F250DA5800002D0AD /* String+Image.swift */; };
 		0F37E282250DAF4C0002D0AD /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E281250DAF4C0002D0AD /* LoggedInUser.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		0F311179251FD715004BB1E4 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigLib.swift; sourceTree = "<group>"; };
 		0F37E27D250D9E660002D0AD /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0F37E27F250DA5800002D0AD /* String+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Image.swift"; sourceTree = "<group>"; };
 		0F37E281250DAF4C0002D0AD /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				0F48331125118F2A00B92ADB /* DebugHelpers.swift */,
 				0FDB64BA251C2FA900427543 /* LaunchURL.swift */,
 				0FD9254B251D7B2800A541A6 /* ReachabilitySetup.swift */,
+				0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */,
 			);
 			path = "Helper Utilities";
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				0F48330D25105ED700B92ADB /* ChoreStatus.swift in Sources */,
 				0F66BE4325085F6200014A94 /* KKidClient.swift in Sources */,
 				0F5CE64E250AFA33002149DC /* LoginViewController.swift in Sources */,
+				0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */,
 				0F66BE3D25085D5600014A94 /* DataController.swift in Sources */,
 				0FDB64BB251C2FA900427543 /* LaunchURL.swift in Sources */,
 				0F5EC89824F98D0000873868 /* AppDelegate.swift in Sources */,
@@ -625,7 +629,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.0.5;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -647,7 +651,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.0.5;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

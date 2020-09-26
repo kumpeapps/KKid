@@ -55,6 +55,7 @@ class LoginViewController: UIViewController{
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
         subscribeToKeyboardNotifications()
+        managedConfig()
     }
     
 //    MARK: viewWillDisappear
@@ -196,4 +197,29 @@ class LoginViewController: UIViewController{
         view.addGestureRecognizer(tap)
     }
     
+//    MARK: managedConfig
+    func managedConfig(){
+        if let disableNewParent = ManagedAppConfig.shared.getConfigValue(forKey: "disableNewParent") as? Bool{
+            buttonNewParentAccount.isEnabled = !disableNewParent
+            buttonNewParentAccount.alpha = 0.5
+        }
+        
+        if let disableResetPassword = ManagedAppConfig.shared.getConfigValue(forKey: "disableResetPassword") as? Bool{
+            buttonForgotPassword.isEnabled = !disableResetPassword
+            buttonNewParentAccount.alpha = 0.5
+        }
+        
+        if let username = ManagedAppConfig.shared.getConfigValue(forKey: "username") as? String{
+            fieldUsername.text = username
+        }
+        
+        if let lockUsername = ManagedAppConfig.shared.getConfigValue(forKey: "lockUsername") as? Bool{
+            fieldUsername.isEnabled = !lockUsername
+            buttonNewParentAccount.alpha = 0.5
+        }
+        
+        if let password = ManagedAppConfig.shared.getConfigValue(forKey: "password") as? String{
+            fieldPassword.text = password
+        }
+    }
 }
