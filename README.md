@@ -58,6 +58,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - You will always have Edit Profile which you can click on to edit that user's profile/permissions
 - Below Edit Profile there will be options for each module that the selected user has access to
 - Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
+- Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), and [Allowance](https://github.com/justinkumpe/KKid#allowance-module)
 
 #### Edit Profile Module:
 - To edit a the user's profile just change the information on the screen and click update in the upper right.
