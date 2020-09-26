@@ -15,8 +15,8 @@ import CoreData
 class KKidClient {
        
 //    MARK: API Creds
-    static let username = "API_KKid_Udacity"
-    static let apiPassword = "ryejrQsjy"
+    static let username = APICredentials.KKid.username
+    static let apiPassword = APICredentials.KKid.apiPassword
     static let baseURL = "https://api.kumpeapps.com/kkids"
     
     static var appVersion = "KKid"
