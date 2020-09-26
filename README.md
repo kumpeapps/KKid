@@ -23,7 +23,7 @@ Sync
 
 ## Instructions
 
-- Login Screen:
+### Login Screen:
 On the login screen you can enter your username/email and password then click login to access the application.
 
 If you need to create a new Master Parent (household) account you may click on "New Parent Account"
