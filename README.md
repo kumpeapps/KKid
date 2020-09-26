@@ -97,3 +97,11 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - On this screen you can add transactions (add/subtract) for the selected user's allowance. Just fill out the form and click submit
 - Master and Admin users may add or subtract allowance
 - Users that are not a master or admin may only subtract from their allowance account
+
+# Future Feature List:
+
+- [ ] Add ability for users to choose a custom background image
+- [ ] Add ability for users to choose a custom logo image
+- [ ] Add managed app config parameters
+- [ ] What's New Page
+- [ ] Gift wish list for the kids
