@@ -98,7 +98,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - Master and Admin users may add or subtract allowance
 - Users that are not a master or admin may only subtract from their allowance account
 
-# Future Feature List:
+## Future Feature List:
 
 - [ ] Add ability for users to choose a custom background image
 - [ ] Add ability for users to choose a custom logo image
