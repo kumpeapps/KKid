@@ -82,8 +82,9 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - If optional is turned on then this chore will be notated as optional on the chore list
 - If Any Kid is turned on then this chore will show up on all users under your master/household account that have the chore module turned on
 - Start Date is the date you wish this chore to start (Example: if today is Friday and you want to add a chore for next week then you may want to change the start date to next week)
-- NOTE: the weeks start on Sunday (Central Standard Time Zone)
 - If One Time Chore is selected then this chore will be on this week's chore list only and will be deleted at the end of the week. By default chores are carried over to the following week.
+
+#### NOTE: the weeks start on Sunday (Central Standard Time Zone)
 
 ### Allowance Module:
 - This screen will display the user's current allowance balance
