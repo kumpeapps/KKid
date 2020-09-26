@@ -30,7 +30,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 - If you have forgotten your password you may enter your username in the username field and click "Forgot Password" and a reset link will be emailed to you.
 
-- After login you will be taken to the "Home" Screen
+- After login you will be taken to the [Home](https://github.com/justinkumpe/KKid#home-screen-after-login) Screen
 
 ###### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user.
 
@@ -45,7 +45,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 - Clicking the back button in the upper left will sign you out of the application.
 
-- Clicking on a user will take you to the "Select Module" screen for that user (NOTE: if you are not the master or an admin then you will only be able to select your own account from this list)
+- Clicking on a user will take you to the [Select Module](https://github.com/justinkumpe/KKid#select-module-screen) screen for that user (NOTE: if you are not the master or an admin then you will only be able to select your own account from this list)
 
 - If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
 
@@ -66,8 +66,8 @@ KKid is an app for parents and their children to keep up with chores and allowan
 #### Chores Module:
 - In this module you will see a table listing the selected user's chores for the week.
 - To the left of the chore will be an icon indicating the status of that chore
-- To mark off (change status of) a chore just select the chore and the "Mark Chore" screen will appear.
-- If you are the master or an admin user then you may add a chore to the selected user by clicking the add button in the upper right corner of the screen to goto the "Add Chore" screen.
+- To mark off (change status of) a chore just select the chore and the [Mark Chore](https://github.com/justinkumpe/KKid#mark-chore-screen) screen will appear.
+- If you are the master or an admin user then you may add a chore to the selected user by clicking the add button in the upper right corner of the screen to goto the [Add Chore](https://github.com/justinkumpe/KKid#add-chore-screen) screen.
 - If you are the master or an admin user then you may delete a chore by swiping the chore to the left
 
 ##### Mark Chore Screen:
@@ -89,7 +89,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 #### Allowance Module:
 - This screen will display the user's current allowance balance
 - Clicking the ledger icon (open book) in the upper right will launch the Ledger screen which will show all of the allowance transactions for this user
-- Clicking the + icon in the upper right will launch the "Add Transaction" Screen
+- Clicking the + icon in the upper right will launch the [Add Transaction](https://github.com/justinkumpe/KKid#add-transaction-screen) Screen
 
 ###### NOTE: The Allowance Module is for parents/kids to keep up with how much allowance they have so parents can give them a virtual allowance account instead of the kid keeping up with cash. The parent is the "Bank". No money is exchanged directly thru this app. It is only to keep track of how much allowance the parent "owes" the kid.
 
