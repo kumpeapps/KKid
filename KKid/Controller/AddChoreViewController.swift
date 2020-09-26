@@ -48,7 +48,6 @@ class AddChoreViewController: FormViewController{
                 if let x = context.returnedObject as? SwiftyFORM.OptionRowFormItem {
                     context.cell.detailTextLabel?.text = x.title
                     self.day = x.title
-                    print(x.title)
                 } else {
                     context.cell.detailTextLabel?.text = nil
                 }

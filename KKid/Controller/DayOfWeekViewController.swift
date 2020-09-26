@@ -65,7 +65,7 @@ class DayOfWeekViewController: FormViewController, SelectOptionDelegate {
             OptionRow("Thursday", "Thursday"),
             OptionRow("Friday", "Friday"),
             OptionRow("Saturday", "Saturday"),
-            OptionRow("Weekly (Any Day During The Week)", "Weekly")
+            OptionRow("Weekly", "Weekly")
         ]
 
         let myform = MyOptionForm(optionRows: optionRows)
@@ -75,7 +75,6 @@ class DayOfWeekViewController: FormViewController, SelectOptionDelegate {
     }
 
     func form_willSelectOption(option: OptionRowFormItem) {
-        print("select option \(option)")
         dismissCommand.execute(viewController: self, returnObject: option)
     }
 

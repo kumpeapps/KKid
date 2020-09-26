@@ -19,7 +19,7 @@ class KKidClient {
     static let apiPassword = "ryejrQsjy"
     static let baseURL = "https://api.kumpeapps.com/kkids"
     
-    static var appVersion = "KKid Alpha"
+    static var appVersion = "KKid"
     
 
     
