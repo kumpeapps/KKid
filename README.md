@@ -14,7 +14,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - CoreText
 
 ## Third Party Frameworks Used
-- Alamofire-SwiftyJSON
+- [Alamofire-SwiftyJSON](https://github.com/SwiftyJSON/Alamofire-SwiftyJSON)
 - Toast-Swift
 - SwiftyForm
 - ReachabilitySwift
