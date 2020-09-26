@@ -103,6 +103,6 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 - [ ] Add ability for users to choose a custom background image
 - [ ] Add ability for users to choose a custom logo image
-- [ ] Add managed app config parameters
+- [X] Add managed app config parameters
 - [ ] What's New Page
 - [ ] Gift wish list for the kids
