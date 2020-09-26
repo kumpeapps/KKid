@@ -9,5 +9,6 @@
 import UIKit
 
 extension Notification.Name{
+//    Set notification name for isAuthenticated
     static let isAuthenticated = Notification.Name("isAuthenticated")
 }

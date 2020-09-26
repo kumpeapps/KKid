@@ -42,9 +42,6 @@ class KKidClient {
                 return
             }
             
-            
-
-
                 
     //            GUARD: Status code 2xx
             guard statusCode >= 200 && statusCode <= 299 else{

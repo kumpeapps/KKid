@@ -15,11 +15,13 @@ class AddChoreViewController: FormViewController{
     var selectedUser:User?
     var day = "Weekly"
     
+//    MARK: loadView
     override func loadView() {
         super.loadView()
         installSubmitButton()
     }
     
+//    MARK: populate
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Add Chore"
         builder.toolbarMode = .simple
@@ -34,6 +36,7 @@ class AddChoreViewController: FormViewController{
         builder += startDate
     }
     
+//    MARK: dayOfWeek Selector
     lazy var dayOfWeek: ViewControllerFormItem = {
        let instance = ViewControllerFormItem()
             instance.title("Day Of Week").placeholder("required")
@@ -53,6 +56,7 @@ class AddChoreViewController: FormViewController{
             return instance
         }()
     
+//    MARK: choreName Field
     lazy var choreName: TextFieldFormItem = {
         let instance = TextFieldFormItem()
         instance.title("Chore Name").placeholder("required")
@@ -62,6 +66,7 @@ class AddChoreViewController: FormViewController{
         return instance
     }()
     
+//    MARK: choreDescription Field
     lazy var choreDescription: TextFieldFormItem = {
         let instance = TextFieldFormItem()
         instance.title("Chore Description").placeholder("optional")
@@ -70,6 +75,7 @@ class AddChoreViewController: FormViewController{
         return instance
     }()
     
+//    MARK: blockDash Switch
     lazy var blockDash: SwitchFormItem = {
        let instance = SwitchFormItem()
         instance.title = "Block Dash Button"
@@ -77,6 +83,7 @@ class AddChoreViewController: FormViewController{
         return instance
     }()
     
+//    MARK: oneTime Switch
     lazy var oneTime: SwitchFormItem = {
        let instance = SwitchFormItem()
         instance.title = "One Time Chore"
@@ -84,6 +91,7 @@ class AddChoreViewController: FormViewController{
         return instance
     }()
     
+//    MARK: optional Switch
     lazy var optional: SwitchFormItem = {
        let instance = SwitchFormItem()
         instance.title = "Chore Is Optional"
@@ -91,6 +99,7 @@ class AddChoreViewController: FormViewController{
         return instance
     }()
     
+//    MARK: anyKid Switch
     lazy var anyKid: SwitchFormItem = {
         let instance = SwitchFormItem()
         instance.title = "Chore Is for Any Kid"
@@ -98,6 +107,7 @@ class AddChoreViewController: FormViewController{
         return instance
     }()
     
+//    MARK: startDate Date Picker
     lazy var startDate: DatePickerFormItem = {
         let instance = DatePickerFormItem()
         let today = Date()
@@ -107,6 +117,7 @@ class AddChoreViewController: FormViewController{
         return instance
     }()
     
+//    MARK: submitForm
     func submitForm(){
         var username = "\(selectedUser!.username!)"
         if anyKid.value{
@@ -129,19 +140,22 @@ class AddChoreViewController: FormViewController{
 }
 
 
-
+//MARK: - Submit Button Setup
 extension AddChoreViewController{
     
+//    MARK: installSubmitButton
     public func installSubmitButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(submitAction(_:)))
     }
     
+//    MARK: submitAction
     @objc public func submitAction(_ sender: AnyObject?) {
         formBuilder.validateAndUpdateUI()
         let result = formBuilder.validate()
         showSubmitResult(result)
     }
     
+//    MARK: showSubmitResult
     public func showSubmitResult(_ result: FormBuilder.FormValidateResult) {
         switch result {
         case .valid:

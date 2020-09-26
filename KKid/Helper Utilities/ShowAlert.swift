@@ -62,7 +62,7 @@ class ShowAlert {
             view.configureDropShadow()
             view.configureContent(title: title, body: message)
             var config = SwiftMessages.Config()
-            config.presentationContext = .window(windowLevel: .statusBar)
+            config.presentationContext = .window(windowLevel: .normal)
             config.presentationStyle = .top
             config.duration = .seconds(seconds: seconds)
             if dim{
@@ -81,7 +81,7 @@ class ShowAlert {
             view.configureDropShadow()
             view.configureContent(title: title, body: message)
             var config = SwiftMessages.Config()
-            config.presentationContext = .window(windowLevel: .statusBar)
+            config.presentationContext = .window(windowLevel: .normal)
             config.presentationStyle = .top
             config.duration = .forever
             if blockInterface{
@@ -110,7 +110,7 @@ class ShowAlert {
             view.configureDropShadow()
             view.configureContent(title: title, body: message)
             var config = SwiftMessages.Config()
-            config.presentationContext = .window(windowLevel: .statusBar)
+            config.presentationContext = .window(windowLevel: .normal)
             config.presentationStyle = .top
             config.duration = .seconds(seconds: seconds)
             config.dimMode = .gray(interactive: true)
@@ -128,7 +128,7 @@ class ShowAlert {
             view.configureDropShadow()
             view.configureContent(title: title, body: message)
             var config = SwiftMessages.Config()
-            config.presentationContext = .window(windowLevel: .statusBar)
+            config.presentationContext = .window(windowLevel: .normal)
             config.presentationStyle = .top
             config.duration = .seconds(seconds: seconds)
             config.dimMode = .gray(interactive: true)
@@ -136,6 +136,7 @@ class ShowAlert {
         }
     }
     
+//    Display banner with confirm button and completion closure
     static func choiceMessage(theme: Theme = .error, title: String, message: String, buttonTitle: String = "Confirm", completion: @escaping (Bool) -> Void){
         dispatchOnMain {
             SwiftMessages.hideAll()

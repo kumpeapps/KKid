@@ -36,6 +36,7 @@ class ChoresViewController: UIViewController{
 //    MARK: fetchedResultsController
     var fetchedResultsController:NSFetchedResultsController<Chore>!
 
+//    MARK: setupFetchedResultsController
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Chore> = Chore.fetchRequest()
         let predicate = NSPredicate(format: "kid IN %@", [selectedUser!.username!,"any"])
@@ -198,6 +199,8 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate{
     
 //    MARK: tableView: editingStyle
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+//        If user is an admin then delete else show error
         if LoggedInUser.user!.isAdmin && editingStyle == .delete{
             let chore = fetchedResultsController.object(at: indexPath)
             KKidClient.deleteChore(chore.id) { (success, error) in
@@ -216,6 +219,8 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate{
 //    MARK: tableView: didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let aChore = fetchedResultsController.object(at: indexPath)
+        
+//        Block stolen chores unless user is an Admin. Else segue to mark chore unless chore is actually a calendar notation
         if !LoggedInUser.user!.isAdmin && aChore.stolenBy != nil && aChore.stolenBy! != ""{
             ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can edit an optional or stolen chore after it has already been marked off!")
         }else if !aChore.isCalendar{

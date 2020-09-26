@@ -11,12 +11,13 @@ import SwiftyFORM
 
 class AddUserViewController: FormViewController{
     
-    
+//    MARK: loadView
     override func loadView() {
         super.loadView()
         installSubmitButton()
     }
     
+//    MARK: populate
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Add User"
         builder.toolbarMode = .simple
@@ -29,7 +30,7 @@ class AddUserViewController: FormViewController{
         builder += footer
     }
 
-    
+//    MARK: username Field
     lazy var username: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Username")
         instance.keyboardType(.asciiCapable)
@@ -38,6 +39,7 @@ class AddUserViewController: FormViewController{
         return instance
     }()
     
+//    MARK: email Field
     lazy var email: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Email")
         instance.keyboardType(.emailAddress)
@@ -46,6 +48,7 @@ class AddUserViewController: FormViewController{
         return instance
     }()
     
+//    MARK: password Field
     lazy var password: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Password")
         instance.submitValidate(CountSpecification.between(7, 32), message: "Password must be between 7 and 32 characters")
@@ -56,6 +59,7 @@ class AddUserViewController: FormViewController{
         return instance
     }()
     
+//    MARK: firstName Field
     lazy var firstName: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("First Name")
         instance.keyboardType(.asciiCapable)
@@ -63,6 +67,7 @@ class AddUserViewController: FormViewController{
         return instance
     }()
     
+//    MARK: lastName Field
     lazy var lastName: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Last Name")
         instance.keyboardType(.asciiCapable)
@@ -70,6 +75,7 @@ class AddUserViewController: FormViewController{
         return instance
     }()
     
+//    MARK: submitForm Field
     func submitForm(){
         KKidClient.addUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, password: password.value) { (success, error) in
             if success{
@@ -84,6 +90,7 @@ class AddUserViewController: FormViewController{
         }
     }
     
+//    MARK: footer
     lazy var footer: SectionFooterViewFormItem = {
         let footerView = SectionFooterViewFormItem()
         footerView.viewBlock = {
@@ -93,18 +100,22 @@ class AddUserViewController: FormViewController{
     }()
 }
 
+//MARK: - Initiate Submit Button
 extension AddUserViewController{
     
+//    MARK: installSubmitButton
     public func installSubmitButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(submitAction(_:)))
     }
     
+//    MARK: submitAction
     @objc public func submitAction(_ sender: AnyObject?) {
         formBuilder.validateAndUpdateUI()
         let result = formBuilder.validate()
         showSubmitResult(result)
     }
     
+//    MARK: showSubmitResult
     public func showSubmitResult(_ result: FormBuilder.FormValidateResult) {
         switch result {
         case .valid:

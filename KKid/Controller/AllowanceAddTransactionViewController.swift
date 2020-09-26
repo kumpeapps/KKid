@@ -15,11 +15,13 @@ class AllowanceAddTransactionViewController: FormViewController{
     var selectedUser:User?
     var transactionType = "Subtract"
     
+//    MARK: loadView
     override func loadView() {
         super.loadView()
         installSubmitButton()
     }
     
+//    MARK: populate
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Add Transaction"
         builder.toolbarMode = .simple
@@ -29,6 +31,7 @@ class AllowanceAddTransactionViewController: FormViewController{
         builder += reason
     }
     
+//    MARK: transactionTypePicker
     lazy var transactionTypePicker: PickerViewFormItem = {
         let instance = PickerViewFormItem().title("Transaction Type").behavior(.collapsed)
         if LoggedInUser.user!.isAdmin{
@@ -42,6 +45,7 @@ class AllowanceAddTransactionViewController: FormViewController{
         return instance
     }()
     
+//    MARK: amountField
     lazy var amountField: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Amount  $").keyboardType(.decimalPad)
         instance.validate(CharacterSetSpecification.charactersInString("0123456789."), message: "Amount must be in decimal format!")
@@ -49,6 +53,7 @@ class AllowanceAddTransactionViewController: FormViewController{
         return instance
     }()
     
+//    MARK: reason Field
     lazy var reason: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Reason")
         instance.submitValidate(CountSpecification.between(1, 100), message: "Reason must be between 1 and 100 characters!")
@@ -87,16 +92,19 @@ class AllowanceAddTransactionViewController: FormViewController{
 //MARK: - Initiate Submit Button
 extension AllowanceAddTransactionViewController{
     
+//    MARK: installSubmitButton
     public func installSubmitButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(submitAction(_:)))
     }
     
+//    MARK: submitAction
     @objc public func submitAction(_ sender: AnyObject?) {
         formBuilder.validateAndUpdateUI()
         let result = formBuilder.validate()
         showSubmitResult(result)
     }
     
+//    MARK: showSubmitResult
     public func showSubmitResult(_ result: FormBuilder.FormValidateResult) {
         switch result {
         case .valid:

@@ -33,6 +33,7 @@ class SelectUserViewController: UIViewController {
 //    MARK: fetchedResultsController
     var fetchedResultsController:NSFetchedResultsController<User>!
     
+//    MARK: setupFetchedResultsController
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<User> = User.fetchRequest()
         let sortByMaster = NSSortDescriptor(key: "isMaster", ascending: false)
@@ -148,6 +149,8 @@ class SelectUserViewController: UIViewController {
             }
         }
     }
+    
+    
 }
 
     // MARK: - Table View

@@ -14,9 +14,8 @@ class UserEditProfileViewController: FormViewController{
 //    MARK: Parameters
     var selectedUser: User!
     
-    override func loadView() {
-        super.loadView()
-        installSubmitButton()
+//    MARK: populateCurrentUserInfo
+    func populateCurrentUserInfo() {
         username.value = selectedUser.username!
         email.value = selectedUser.email!
         firstName.value = selectedUser.firstName ?? ""
@@ -27,6 +26,15 @@ class UserEditProfileViewController: FormViewController{
         enableAdmin.value = selectedUser.isAdmin
     }
     
+    
+//    MARK: loadView
+    override func loadView() {
+        super.loadView()
+        installSubmitButton()
+        populateCurrentUserInfo()
+    }
+    
+//    MARK: populate
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Edit Profile"
         builder.toolbarMode = .simple
@@ -43,6 +51,7 @@ class UserEditProfileViewController: FormViewController{
         }
     }
     
+//    MARK: username Field
     lazy var username: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Username:")
         instance.keyboardType(.asciiCapable)
@@ -51,6 +60,7 @@ class UserEditProfileViewController: FormViewController{
         return instance
     }()
     
+//    MARK: email Field
     lazy var email: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Email:")
         instance.keyboardType(.emailAddress)
@@ -59,6 +69,7 @@ class UserEditProfileViewController: FormViewController{
         return instance
     }()
     
+//    MARK: firstName Field
     lazy var firstName: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("First Name:")
         instance.keyboardType(.asciiCapable)
@@ -66,6 +77,7 @@ class UserEditProfileViewController: FormViewController{
         return instance
     }()
     
+//    MARK: lastName Field
     lazy var lastName: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Last Name:")
         instance.keyboardType(.asciiCapable)
@@ -73,6 +85,7 @@ class UserEditProfileViewController: FormViewController{
         return instance
     }()
     
+//    MARK: emoji Field
     lazy var emoji: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Emoji Icon:")
         
@@ -80,21 +93,25 @@ class UserEditProfileViewController: FormViewController{
         return instance
     }()
     
+//    MARK: enableChores Field
     lazy var enableChores: SwitchFormItem = {
         let instance = SwitchFormItem().title("Enable Chores")
         return instance
     }()
     
+//    MARK: enableAllowance Field
     lazy var enableAllowance: SwitchFormItem = {
         let instance = SwitchFormItem().title("Enable Allowance")
         return instance
     }()
     
+//    MARK: enableAdmin Field
     lazy var enableAdmin: SwitchFormItem = {
         let instance = SwitchFormItem().title("Enable Admin")
         return instance
     }()
     
+//    MARK: submitForm
     func submitForm(){
         
         KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value) { (success, error) in
@@ -112,18 +129,22 @@ class UserEditProfileViewController: FormViewController{
     }
 }
 
+//MARK: - Initiate Submit Button
 extension UserEditProfileViewController{
     
+//    MARK: installSubmitButton
     public func installSubmitButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(submitAction(_:)))
     }
     
+//    MARK: submitAction
     @objc public func submitAction(_ sender: AnyObject?) {
         formBuilder.validateAndUpdateUI()
         let result = formBuilder.validate()
         showSubmitResult(result)
     }
     
+//    MARK: showSubmitResult
     public func showSubmitResult(_ result: FormBuilder.FormValidateResult) {
         switch result {
         case .valid:

@@ -22,21 +22,31 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var buttonForgotPassword: UIButton!
     @IBOutlet weak var buttonNewParentAccount: UIButton!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var stackView: UIStackView!
+    
         
-    //    MARK: Reachability
-        var reachable: ReachabilitySetup!
+//    MARK: Reachability
+    var reachable: ReachabilitySetup!
     
     
 //    MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         enableUI(true)
-        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-//        TODO: Remove Hardcoded Creds
-        #if targetEnvironment(simulator)
-        fieldUsername.text = "dev_KKid_Master"
-        fieldPassword.text = "LetmeN2it"
-        #endif
+        setupStackView()
+    }
+    
+//    MARK: setupStackView
+    fileprivate func setupStackView() {
+        scrollView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 30).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 30).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -60).isActive = true
     }
     
 //    MARK: viewWillAppear
@@ -51,12 +61,14 @@ class LoginViewController: UIViewController{
         reachable = nil
     }
     
+//    MARK: pressedLogin
     @IBAction func pressedLogin(){
         enableUI(false)
         
 //        GUARD: Username and Password not blank
         guard fieldUsername.text != "" && fieldPassword.text != "" else{
             ShowAlert.banner(title: "Login Error", message: "Please enter both username and password before pressing login")
+            enableUI(true)
             return
         }
         
@@ -96,14 +108,17 @@ class LoginViewController: UIViewController{
         }
     }
     
+//    MARK: submitUsername
     @IBAction func submitUsername(){
         fieldPassword.becomeFirstResponder()
     }
     
+//    MARK: pressedForgotPassword
     @IBAction func pressedForgotPassword(){
         enableUI(false)
         guard let username = fieldUsername.text, username != "" else{
             ShowAlert.banner(title: "Username Required", message: "Please enter the username you wish to reset the password for!")
+            enableUI(true)
             return
         }
         KKidClient.forgotPassword(username: username) { (success, msg) in
@@ -130,11 +145,5 @@ class LoginViewController: UIViewController{
         self.buttonNewParentAccount.isEnabled = enable
     }
     
-    override var shouldAutorotate: Bool{
-        return true
-    }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
-        return .portrait
-    }
 }

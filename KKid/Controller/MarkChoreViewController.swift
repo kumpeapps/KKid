@@ -23,12 +23,7 @@ class MarkChoreViewController: UIViewController{
 //    MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-    }
-    
+//    MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         imageLogo.image = AppDelegate().kkidLogo

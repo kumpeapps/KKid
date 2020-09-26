@@ -25,8 +25,8 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
     @IBOutlet weak var buttonLedger: UIBarButtonItem!
     @IBOutlet weak var buttonAdd: UIBarButtonItem!
         
-    //    MARK: Reachability
-        var reachable: ReachabilitySetup!
+//    MARK: Reachability
+    var reachable: ReachabilitySetup!
     
     
 //    MARK: viewWillAppear
@@ -54,6 +54,7 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
         NotificationCenter.default.removeObserver(self)
     }
     
+//    MARK: getAllowance
     func getAllowance(){
         KKidClient.getAllowance(selectedUser: selectedUser) { (response, error) in
             if let response = response{

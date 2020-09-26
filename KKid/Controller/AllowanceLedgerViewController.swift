@@ -28,6 +28,7 @@ class AllowanceLedgerViewController: UITableViewController{
         KKidClient.verifyIsAuthenticated(self)
     }
     
+//    MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
