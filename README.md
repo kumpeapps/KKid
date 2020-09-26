@@ -99,6 +99,16 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - Master and Admin users may add or subtract allowance
 - Users that are not a master or admin may only subtract from their allowance account
 
+### Managed App Config:
+#### This app is compatible with managed app config settings pushed from an MDM Server. The following is a list of managed app keys for KKid.
+
+|	Key	|	Type	|	Description	|
+|	disableNewParentAccount	|	Bool	|	Disables the New Parent Account button	|
+|	disableResetPassword	|	Bool	|	Disables the Forgot Password button	|
+|	username	|	String	|	Pre-Populates the username field	|
+|	lockUsername	|	Bool	|	Disables editing the username field	|
+|	password	|	String	| Pre-Populates the username field	|
+
 ## Future Feature List:
 
 - [ ] Add ability for users to choose a custom background image
