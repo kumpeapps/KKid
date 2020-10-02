@@ -20,6 +20,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - [ReachabilitySwift](https://github.com/ashleymills/Reachability.swift)
 - [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
 - [Sync](https://github.com/3lvis/Sync)
+- [Smile](https://github.com/onmyway133/Smile)
 
 ## Instructions
 

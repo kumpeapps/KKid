@@ -89,6 +89,11 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueAllowanceLedger"{
             let viewController = segue.destination as! AllowanceLedgerViewController
+            guard self.allowanceData != nil else{
+                ShowAlert.banner(title: "Error", message: "There was an error pulling allowance transactions. This could be because this user no longer exists. We recommend refreshing the user's page.")
+                UserDefaults.standard.removeObject(forKey: "UserLastUpdated")
+                return
+            }
             viewController.allowanceTransactions = self.allowanceData!.allowanceTransaction!
         }else if segue.identifier == "segueAddTransaction"{
             let viewController = segue.destination as! AllowanceAddTransactionViewController

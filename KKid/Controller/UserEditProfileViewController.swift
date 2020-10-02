@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyFORM
+import Smile
 
 class UserEditProfileViewController: FormViewController{
     
@@ -88,7 +89,6 @@ class UserEditProfileViewController: FormViewController{
 //    MARK: emoji Field
     lazy var emoji: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Emoji Icon:")
-        
         instance.required("Emoji is required")
         return instance
     }()
@@ -113,7 +113,10 @@ class UserEditProfileViewController: FormViewController{
     
 //    MARK: submitForm
     func submitForm(){
-        
+        guard Smile.isEmoji(character: emoji.value) else {
+            ShowAlert.banner(title: "Validation Error", message: "Emoji field must be a single emoji")
+            return
+        }
         KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value) { (success, error) in
             if success{
                 dispatchOnMain {

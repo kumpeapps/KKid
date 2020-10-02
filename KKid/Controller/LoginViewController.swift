@@ -56,6 +56,17 @@ class LoginViewController: UIViewController{
         reachable = ReachabilitySetup()
         subscribeToKeyboardNotifications()
         managedConfig()
+        ShowAlert.choiceMessage(theme: .info, title: "Terms Of Service", message: "By using this app you agree to the terms and conditions listed at http://tos.kumpeapps.com.", buttonTitle: "View Terms") { (success) in
+            if success{
+                launchURL("http://tos.kumpeapps.com")
+            }
+        }
+    }
+    
+//    MARK: viewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
 //    MARK: viewWillDisappear
@@ -206,7 +217,7 @@ class LoginViewController: UIViewController{
         
         if let disableResetPassword = ManagedAppConfig.shared.getConfigValue(forKey: "disableResetPassword") as? Bool{
             buttonForgotPassword.isEnabled = !disableResetPassword
-            buttonNewParentAccount.alpha = 0.5
+            buttonForgotPassword.alpha = 0.5
         }
         
         if let username = ManagedAppConfig.shared.getConfigValue(forKey: "username") as? String{
@@ -215,7 +226,9 @@ class LoginViewController: UIViewController{
         
         if let lockUsername = ManagedAppConfig.shared.getConfigValue(forKey: "lockUsername") as? Bool{
             fieldUsername.isEnabled = !lockUsername
-            buttonNewParentAccount.alpha = 0.5
+            if lockUsername{
+                fieldUsername.alpha = 0.5
+            }
         }
         
         if let password = ManagedAppConfig.shared.getConfigValue(forKey: "password") as? String{

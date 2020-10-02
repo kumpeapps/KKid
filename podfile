@@ -12,4 +12,5 @@ target 'KKid' do
 #	pod 'OneTimePassword'
 	pod 'Sync'
 #	pod 'SwipeCellKit'
+	pod 'Smile'
 end
