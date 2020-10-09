@@ -32,7 +32,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 - If you have forgotten your password you may enter your username in the username field and click "Forgot Password" and a reset link will be emailed to you.
 
-- After login you will be taken to the [Home](https://github.com/justinkumpe/KKid#home-screen-after-login) Screen
+- After login you will be taken to the [Home](https://github.com/kumpeapps/KKid#select-module-screen-home-screen) Screen
 
 ###### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user.
 
