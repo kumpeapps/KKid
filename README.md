@@ -39,27 +39,28 @@ KKid is an app for parents and their children to keep up with chores and allowan
 	- username: dev_kkid_master
 	- password: LetmeN2it
 
-### Home Screen (after login):
-- On the home screen you will see a list of users under your master (household) account.
+### Select User Screen:
+- On the Select User screen you will see a list of users under your master (household) account.
 
 - If you are the master user (background on name will be purple) or an admin user (background on name will be gold/yellow) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
-
+~~
 - Clicking the back button in the upper left will sign you out of the application.
 
 - Clicking on a user will take you to the [Select Module](https://github.com/justinkumpe/KKid#select-module-screen) screen for that user (NOTE: if you are not the master or an admin then you will only be able to select your own account from this list)
-
+~~
 - If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
 
 #### Add User Screen:
 - Enter the new user's username, email, password, first name, and last name. Then click submit
 - NOTE: each user must have their own email address. We understand that some kids do not have their own email account. In this case you can use an email alias that is automatically build into all email accounts. To do this you just add + then the alias directly before the @ symbol of your email address. Example: if your email address is jane@doe.com and you need an email alias for jack then you can use jane+jack@doe.com. Any email sent to jane+jack@doe.com will be automatically forwarded to jane@doe.com.
 
-### Select Module Screen:
+~~### Select Module Screen:
 - The "Select Module" Screen will be diffrent for each user. 
 - You will always have Edit Profile which you can click on to edit that user's profile/permissions
 - Below Edit Profile there will be options for each module that the selected user has access to
 - Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
 - Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), and [Allowance](https://github.com/justinkumpe/KKid#allowance-module)
+~~
 
 #### Edit Profile Module:
 - To edit a the user's profile just change the information on the screen and click update in the upper right.
