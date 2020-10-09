@@ -1,8 +1,9 @@
 # KKid <img src="https://img.shields.io/badge/platform-iOS-lightgrey"/> <img src="https://img.shields.io/badge/swift-5-green"/> <img src="https://img.shields.io/uptimerobot/status/m778927661-24953be87bd254731f918d97?label=server%20status"/> <img src="https://img.shields.io/uptimerobot/ratio/m778927661-24953be87bd254731f918d97?label=server%20uptime"/> <img src="https://img.shields.io/github/last-commit/kumpeapps/kkid"/>
 KKid is an app for parents and their children to keep up with chores and allowance. With this app parents can create child accounts and add chores to their profile. Kids can then login and see their chores and mark them off each day. By turning on the allowance feature parents can add/subtract money from the kid's allowance account (this is a virtual "account" to show the kids how much allowance they have, no money is actually exchanged within the KKid app, think of it as a notebook) and the kids can view this when they login as well.
 
+##### KKid 2.0 is currently in beta and will be released as soon as I identify and correct a few bugs. I am also in the process of updating this README for KKid 2.0 leaving strike outs for changes until 2.0 is released.
 
-## Screenshots
+## Screenshots (1.0)
 | Home| Login | Allowance | Chores | Mark Chore |
 | ----------------- |  ----------------- | ----------------- | ----------------- | ----------------- |
 |  ![home.png](images/home.png) |  ![login.png](images/login.png) |  ![allowance.png](images/allowance.png) |  ![chores.png](images/chores.png) |  ![markchore.png](images/markchore.png) | 
@@ -39,6 +40,13 @@ KKid is an app for parents and their children to keep up with chores and allowan
 	- username: dev_kkid_master
 	- password: LetmeN2it
 
+### Select Module Screen (Home Screen):
+- The "Select Module" Screen will be diffrent for each user. 
+- You will always have Edit Profile which you can click on to edit that user's profile/permissions
+- <del>Below Edit Profile</del> Additionally there will be options for each module that the selected user has access to
+- Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
+- Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), and [Allowance](https://github.com/justinkumpe/KKid#allowance-module)
+
 ### Select User Screen:
 - On the Select User screen you will see a list of users under your master (household) account.
 
@@ -54,13 +62,6 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - Enter the new user's username, email, password, first name, and last name. Then click submit
 - NOTE: each user must have their own email address. We understand that some kids do not have their own email account. In this case you can use an email alias that is automatically build into all email accounts. To do this you just add + then the alias directly before the @ symbol of your email address. Example: if your email address is jane@doe.com and you need an email alias for jack then you can use jane+jack@doe.com. Any email sent to jane+jack@doe.com will be automatically forwarded to jane@doe.com.
 
-~~### Select Module Screen:
-- The "Select Module" Screen will be diffrent for each user. 
-- You will always have Edit Profile which you can click on to edit that user's profile/permissions
-- Below Edit Profile there will be options for each module that the selected user has access to
-- Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
-- Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), and [Allowance](https://github.com/justinkumpe/KKid#allowance-module)
-~~
 
 #### Edit Profile Module:
 - To edit a the user's profile just change the information on the screen and click update in the upper right.
