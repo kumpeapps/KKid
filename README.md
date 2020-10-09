@@ -43,11 +43,11 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - On the Select User screen you will see a list of users under your master (household) account.
 
 - If you are the master user (background on name will be purple) or an admin user (background on name will be gold/yellow) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
-~~
+<del>
 - Clicking the back button in the upper left will sign you out of the application.
 
 - Clicking on a user will take you to the [Select Module](https://github.com/justinkumpe/KKid#select-module-screen) screen for that user (NOTE: if you are not the master or an admin then you will only be able to select your own account from this list)
-~~
+</del>
 - If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
 
 #### Add User Screen:
