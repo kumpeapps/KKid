@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             KKidClient.appVersion = "\(KKidClient.appVersion) \(nsObject as! String)"
         }
         
-        if LoggedInUser.user == nil{
+        if UserDefaults.standard.string(forKey: "loggedInUserID") == nil{
             UserDefaults.standard.removeObject(forKey: "isAuthenticated")
         }
         
