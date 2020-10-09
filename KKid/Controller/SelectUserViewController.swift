@@ -16,7 +16,6 @@ class SelectUserViewController: UIViewController {
     @IBOutlet weak var imageBackground: UIImageView!
     
 //    MARK: Buttons
-    @IBOutlet weak var buttonLogout: UIBarButtonItem!
     @IBOutlet weak var buttonAdd: UIBarButtonItem!
     
 //    MARK: Table View
@@ -104,11 +103,7 @@ class SelectUserViewController: UIViewController {
 
 //    MARK: verifyAuthenticated
     @objc func verifyAuthenticated(){
-        guard UserDefaults.standard.bool(forKey: "isAuthenticated") else{
-            performSegue(withIdentifier: "segueLogin", sender: self)
-            return
-        }
-    
+        KKidClient.verifyIsAuthenticated(self)
         enableUI(true)
     }
     
@@ -132,24 +127,13 @@ class SelectUserViewController: UIViewController {
         }else{
             self.view.makeToastActivity(.center)
         }
-        buttonLogout.isEnabled = enable
+        
         if UserDefaults.standard.bool(forKey: "isAdmin"){
             buttonAdd.isEnabled = enable
         }else{
             buttonAdd.isEnabled = false
         }
     }
-    
-//    MARK: prepare for segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueSelectModule"{
-            let viewController = segue.destination as! SelectModuleViewController
-            if let indexPath = tableView.indexPathForSelectedRow{
-                viewController.selectedUser = fetchedResultsController.object(at: indexPath)
-            }
-        }
-    }
-    
     
 }
 
@@ -225,17 +209,23 @@ extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate{
             ShowAlert.banner(title: "User Banned", message: "This user has been banned. Please contact support at helpdesk@kumpeapps.com!")
         }else if selectedUser.isLocked{
             ShowAlert.banner(theme: .warning, title: "User Account Locked", message: "This user's account has been locked. You can still edit this account but the user can not login until their account is unlocked.")
-            performSegue(withIdentifier: "segueSelectModule", sender: self)
+            userSelected(selectedUser: selectedUser)
         }else if !selectedUser.isActive{
             ShowAlert.banner(title: "Account Inactive", message: "This account is inactive. Please delete user or Add Permissions in Profile.")
-            performSegue(withIdentifier: "segueSelectModule", sender: self)
+            userSelected(selectedUser: selectedUser)
         }else if selectedUser.isMaster && !loggedInUser.isMaster{
             ShowAlert.banner(title: "Action Not Allowed", message: "Only the master account can select this user!")
         }else if selectedUser.userID != loggedInUser.userID && !loggedInUser.isAdmin{
             ShowAlert.banner(title: "Action Not Allowed", message: "Only Admin users may select other users. Please select your name only!")
         }else{
-            performSegue(withIdentifier: "segueSelectModule", sender: self)
+            userSelected(selectedUser: selectedUser)
         }
+    }
+    
+//    MARK: userSelected
+    func userSelected(selectedUser:User){
+        LoggedInUser.selectedUser = selectedUser
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
 //    MARK: tableView: swipe to delete

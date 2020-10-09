@@ -7,27 +7,43 @@
 //
 
 import UIKit
+import CoreData
+
 
 class LoggedInUser {
     
     //    MARK: Static Params
-    static var user:KKid_User? {
+    static var user:User? {
         didSet{
             loggedIn()
         }
     }
     
+    static var selectedUser:User?
+    
     class func loggedIn(){
-        UserDefaults.standard.set(user!.userID, forKey: "userID")
-        UserDefaults.standard.set(user!.isAdmin, forKey: "isAdmin")
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(user){
-            UserDefaults.standard.set(encoded, forKey: "loggedInUser")
+        UserDefaults.standard.set(user?.userID ?? 0, forKey: "userID")
+        UserDefaults.standard.set(user?.isAdmin ?? false, forKey: "isAdmin")
+        UserDefaults.standard.set(user?.masterID ?? 0, forKey: "masterID")
+        setSelectedToLoggedIn()
+    }
+    
+    class func setSelectedToLoggedIn(){
+        selectedUser = user
+    }
+    
+    class func setLoggedInUser(){
+        let loggedInUserID = UserDefaults.standard.integer(forKey: "loggedInUserID")
+        let fetchRequest:NSFetchRequest<User> = User.fetchRequest()
+        let predicate = NSPredicate(format: "userID = %@", NSNumber(value: loggedInUserID))
+        fetchRequest.predicate = predicate
+        do {
+            let users = try? DataController.shared.viewContext.fetch(fetchRequest)
+            assert(users!.count < 2)
+            if let user = users?.first{
+                LoggedInUser.user = user
+            }
         }
-        if UserDefaults.standard.integer(forKey: "masterID") != user!.masterID{
-            UserDefaults.standard.removeObject(forKey: "UserLastUpdated")
-            UserDefaults.standard.removeObject(forKey: "ChoreLastUpdated")
-        }
-        UserDefaults.standard.set(user!.masterID, forKey: "masterID")
+        
     }
 }

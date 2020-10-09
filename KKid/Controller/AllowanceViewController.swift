@@ -13,7 +13,7 @@ import CoreData
 class AllowanceViewController: UIViewController, NSFetchedResultsControllerDelegate{
     
 //    MARK: Parameters
-    var selectedUser: User!
+    var selectedUser = LoggedInUser.selectedUser!
     var allowanceData: KKid_AllowanceResponse?
     
 //    MARK: Images

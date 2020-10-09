@@ -12,7 +12,7 @@ import CoreData
 class ChoresViewController: UIViewController{
     
 //    MARK: Parameters
-    var selectedUser:User?
+    let selectedUser = LoggedInUser.selectedUser
     
 //    MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!

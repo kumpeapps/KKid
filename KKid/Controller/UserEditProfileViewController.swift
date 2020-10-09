@@ -13,7 +13,7 @@ import Smile
 class UserEditProfileViewController: FormViewController{
     
 //    MARK: Parameters
-    var selectedUser: User!
+    var selectedUser = LoggedInUser.selectedUser!
     
 //    MARK: populateCurrentUserInfo
     func populateCurrentUserInfo() {

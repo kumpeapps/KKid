@@ -116,9 +116,18 @@ class LoginViewController: UIViewController{
             
             UserDefaults.standard.set(true, forKey: "isAuthenticated")
             UserDefaults.standard.set(apiKey, forKey: "apiKey")
-            LoggedInUser.user = user
-            Logger.log(.authentication, "Login Successful for user \(user.username)")
-             self.navigationController?.popViewController(animated: true)
+            UserDefaults.standard.set(user.userID, forKey: "loggedInUserID")
+            KKidClient.getUsers(silent: true) { (success, error) in
+                if success{
+                    Logger.log(.authentication, "Login Successful for user \(user.username)")
+                    LoggedInUser.setLoggedInUser()
+                    self.navigationController?.popViewController(animated: true)
+                }else{
+                    self.enableUI(true)
+                    ShowAlert.banner(title: "Sync Error", message: error ?? "An Unknown Error Occurred")
+                }
+            }
+
             
         }
     }

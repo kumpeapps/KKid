@@ -18,6 +18,9 @@
 		0F48331225118F2A00B92ADB /* DebugHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48331125118F2A00B92ADB /* DebugHelpers.swift */; };
 		0F4833162512D47400B92ADB /* DayOfWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4833152512D47400B92ADB /* DayOfWeekViewController.swift */; };
 		0F49CBA72513EFC600D98E35 /* AllowanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F49CBA62513EFC600D98E35 /* AllowanceViewController.swift */; };
+		0F534318252BF35F00A5275D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F534317252BF35F00A5275D /* HomeViewController.swift */; };
+		0F53431F252BFDAB00A5275D /* KKid_Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53431E252BFDAB00A5275D /* KKid_Module.swift */; };
+		0F534322252BFF4C00A5275D /* ModuleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F534321252BFF4C00A5275D /* ModuleCollectionViewCell.swift */; };
 		0F5CE64E250AFA33002149DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5CE64D250AFA33002149DC /* LoginViewController.swift */; };
 		0F5EC89824F98D0000873868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EC89724F98D0000873868 /* AppDelegate.swift */; };
 		0F5EC89A24F98D0000873868 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EC89924F98D0000873868 /* SceneDelegate.swift */; };
@@ -50,7 +53,6 @@
 		0FB98CF324FF132C00143A6A /* ComicSansBoldAlt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB98CEF24FF132C00143A6A /* ComicSansBoldAlt.ttf */; };
 		0FB98CF524FF153200143A6A /* Pathifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CF424FF153200143A6A /* Pathifier.swift */; };
 		0FB98CF724FFB52000143A6A /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CF624FFB52000143A6A /* UIImage+Color.swift */; };
-		0FB98CFC25007A6000143A6A /* SelectModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CFB25007A6000143A6A /* SelectModuleViewController.swift */; };
 		0FB98CFE25007AA500143A6A /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CFD25007AA500143A6A /* ChoresViewController.swift */; };
 		0FB98D0025007AC400143A6A /* MarkChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CFF25007AC400143A6A /* MarkChoreViewController.swift */; };
 		0FB98D0225007AE800143A6A /* AddChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98D0125007AE800143A6A /* AddChoreViewController.swift */; };
@@ -73,6 +75,9 @@
 		0F48331125118F2A00B92ADB /* DebugHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugHelpers.swift; sourceTree = "<group>"; };
 		0F4833152512D47400B92ADB /* DayOfWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekViewController.swift; sourceTree = "<group>"; };
 		0F49CBA62513EFC600D98E35 /* AllowanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowanceViewController.swift; sourceTree = "<group>"; };
+		0F534317252BF35F00A5275D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0F53431E252BFDAB00A5275D /* KKid_Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKid_Module.swift; sourceTree = "<group>"; };
+		0F534321252BFF4C00A5275D /* ModuleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCollectionViewCell.swift; sourceTree = "<group>"; };
 		0F5CE64D250AFA33002149DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0F5EC89424F98D0000873868 /* KKid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F5EC89724F98D0000873868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,7 +112,6 @@
 		0FB98CEF24FF132C00143A6A /* ComicSansBoldAlt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ComicSansBoldAlt.ttf; sourceTree = "<group>"; };
 		0FB98CF424FF153200143A6A /* Pathifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pathifier.swift; sourceTree = "<group>"; };
 		0FB98CF624FFB52000143A6A /* UIImage+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
-		0FB98CFB25007A6000143A6A /* SelectModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModuleViewController.swift; sourceTree = "<group>"; };
 		0FB98CFD25007AA500143A6A /* ChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresViewController.swift; sourceTree = "<group>"; };
 		0FB98CFF25007AC400143A6A /* MarkChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkChoreViewController.swift; sourceTree = "<group>"; };
 		0FB98D0125007AE800143A6A /* AddChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				0FB98CF624FFB52000143A6A /* UIImage+Color.swift */,
+				0F534321252BFF4C00A5275D /* ModuleCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				0F5EC89B24F98D0000873868 /* SelectUserViewController.swift */,
-				0FB98CFB25007A6000143A6A /* SelectModuleViewController.swift */,
 				0FB98CFD25007AA500143A6A /* ChoresViewController.swift */,
 				0FB98CFF25007AC400143A6A /* MarkChoreViewController.swift */,
 				0FB98D0125007AE800143A6A /* AddChoreViewController.swift */,
@@ -216,6 +220,7 @@
 				0F72B149251974610099D2D9 /* AddUserViewController.swift */,
 				0FDC462B251AC19000A4E3D2 /* UserEditProfileViewController.swift */,
 				0FDB64B8251C24DA00427543 /* AddParentAccountViewController.swift */,
+				0F534317252BF35F00A5275D /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				0F5EC8B724F9907800873868 /* KKid_User.swift */,
 				0F5EC8B924F9936F00873868 /* KKid_Auth_Response.swift */,
 				0F72B1372515902C0099D2D9 /* KKid_Allowance_Respopnse.swift */,
+				0F53431E252BFDAB00A5275D /* KKid_Module.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -438,13 +444,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FB98CFC25007A6000143A6A /* SelectModuleViewController.swift in Sources */,
 				0F37E282250DAF4C0002D0AD /* LoggedInUser.swift in Sources */,
 				0F72B13D251593280099D2D9 /* KKidClient+Sync.swift in Sources */,
 				0F48331225118F2A00B92ADB /* DebugHelpers.swift in Sources */,
 				0F4833162512D47400B92ADB /* DayOfWeekViewController.swift in Sources */,
 				0F5EC89C24F98D0000873868 /* SelectUserViewController.swift in Sources */,
+				0F53431F252BFDAB00A5275D /* KKid_Module.swift in Sources */,
 				0F66BE3625070D8700014A94 /* PersistBackgrounds.swift in Sources */,
+				0F534318252BF35F00A5275D /* HomeViewController.swift in Sources */,
 				0F5EC8BA24F9936F00873868 /* KKid_Auth_Response.swift in Sources */,
 				0F72B1382515902C0099D2D9 /* KKid_Allowance_Respopnse.swift in Sources */,
 				0FB98CFE25007AA500143A6A /* ChoresViewController.swift in Sources */,
@@ -480,6 +487,7 @@
 				0F66BE3F25085E9000014A94 /* GCDBlackBox.swift in Sources */,
 				0F72B13B251592A00099D2D9 /* KKidClient+GET.swift in Sources */,
 				0F72B13F251593E90099D2D9 /* KKidClient+POST.swift in Sources */,
+				0F534322252BFF4C00A5275D /* ModuleCollectionViewCell.swift in Sources */,
 				0FB98D0025007AC400143A6A /* MarkChoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,14 +637,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0.8;
+				CURRENT_PROJECT_VERSION = 2.0.0.1;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -651,14 +659,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0.8;
+				CURRENT_PROJECT_VERSION = 2.0.0.1;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
