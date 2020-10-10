@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CollectionViewCenteredFlowLayout
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
@@ -28,9 +29,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        let layout = CollectionViewCenteredFlowLayout()
+        collectionView.collectionViewLayout = layout
         collectionView.reloadData()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +89,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //    MARK: buildModules
     func buildModules(){
         if let selectedUser = LoggedInUser.selectedUser{
+            modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
             if LoggedInUser.selectedUser == LoggedInUser.user{
                 self.title = "\(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
             }else{
@@ -107,6 +109,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 modules.append(KKid_Module.init(title: "Select User", segue: "segueSelectUser", icon: #imageLiteral(resourceName: "select_user")))
             }
         }
+        
         collectionView.reloadData()
     }
     
@@ -114,6 +117,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func pressedLogout(){
         
         KKidClient.logout(userInitiated: true)
+    }
+    
+//    MARK: centerItemsInCollectionView
+    func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
+        let totalWidth = cellWidth * numberOfItems
+        let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
+        let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
     }
     
 }
@@ -147,4 +159,13 @@ extension HomeViewController{
                 performSegue(withIdentifier: module.segue!, sender: self)
             }
         }
+}
+
+//MARK: - Collection View Flow Layout Delegate
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+//    MARK: set cell size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenWidth = 100
+        return CGSize(width: screenWidth, height: screenWidth)
+    }
 }

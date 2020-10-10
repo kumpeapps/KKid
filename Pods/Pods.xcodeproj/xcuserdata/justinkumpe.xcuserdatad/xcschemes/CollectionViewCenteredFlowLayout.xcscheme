@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "201FAE3F4A3ACF39E02D5015799926E5"
-               BuildableName = "SwiftyFORM.framework"
-               BlueprintName = "SwiftyFORM"
+               BlueprintIdentifier = "5D72C16C28F2E5E37016E6F123B2B004"
+               BuildableName = "CollectionViewCenteredFlowLayout.framework"
+               BlueprintName = "CollectionViewCenteredFlowLayout"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

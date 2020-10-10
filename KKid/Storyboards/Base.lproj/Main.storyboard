@@ -606,9 +606,8 @@
                                     <constraint firstAttribute="height" constant="128" id="yUy-M1-loF"/>
                                 </constraints>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vhh-iE-cLb">
-                                <rect key="frame" x="20" y="224" width="374" height="638"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vhh-iE-cLb">
+                                <rect key="frame" x="20" y="216" width="374" height="646"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IWo-dH-QiU">
@@ -655,12 +654,16 @@
                         <viewLayoutGuide key="safeArea" id="npD-yU-Ymk"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="npD-yU-Ymk" firstAttribute="trailing" secondItem="vhh-iE-cLb" secondAttribute="trailing" constant="20" id="QD0-FA-lEp"/>
                             <constraint firstItem="klb-er-6Mq" firstAttribute="top" secondItem="npD-yU-Ymk" secondAttribute="top" id="TfO-Fq-yle"/>
                             <constraint firstItem="LyU-3K-yU3" firstAttribute="top" secondItem="npD-yU-Ymk" secondAttribute="top" id="V2O-EK-wFi"/>
+                            <constraint firstItem="vhh-iE-cLb" firstAttribute="leading" secondItem="npD-yU-Ymk" secondAttribute="leading" constant="20" id="YR4-Of-X43"/>
                             <constraint firstItem="klb-er-6Mq" firstAttribute="centerX" secondItem="npD-yU-Ymk" secondAttribute="centerX" id="Yw2-4V-fYn"/>
+                            <constraint firstItem="vhh-iE-cLb" firstAttribute="top" secondItem="klb-er-6Mq" secondAttribute="bottom" id="c8T-de-eHC"/>
                             <constraint firstItem="npD-yU-Ymk" firstAttribute="trailing" secondItem="LyU-3K-yU3" secondAttribute="trailing" id="h98-7t-99Z"/>
                             <constraint firstItem="LyU-3K-yU3" firstAttribute="bottom" secondItem="npD-yU-Ymk" secondAttribute="bottom" constant="79" id="i9u-1q-WbQ"/>
                             <constraint firstItem="LyU-3K-yU3" firstAttribute="leading" secondItem="npD-yU-Ymk" secondAttribute="leading" id="lKs-Xl-lmx"/>
+                            <constraint firstItem="npD-yU-Ymk" firstAttribute="bottom" secondItem="vhh-iE-cLb" secondAttribute="bottom" id="rVE-yy-Tn7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="No User Selected" id="kPu-MX-hr5">

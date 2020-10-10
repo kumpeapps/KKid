@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-KKid/Pods-KKid-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/CollectionViewCenteredFlowLayout/CollectionViewCenteredFlowLayout.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/Smile/Smile.framework
 ${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework

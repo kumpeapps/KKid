@@ -13,4 +13,5 @@ target 'KKid' do
 	pod 'Sync'
 #	pod 'SwipeCellKit'
 	pod 'Smile'
+	pod 'CollectionViewCenteredFlowLayout'
 end
