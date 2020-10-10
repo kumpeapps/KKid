@@ -22,6 +22,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 - [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
 - [Sync](https://github.com/3lvis/Sync)
 - [Smile](https://github.com/onmyway133/Smile)
+- [CollectionViewCenteredFlowLayout](https://github.com/Coeur/CollectionViewCenteredFlowLayout)
 
 ## Instructions
 
@@ -111,7 +112,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 | disableResetPassword | Bool | Disables the Forgot Password button |
 | username | String	| Pre-Populates the username field |
 | lockUsername | Bool | Disables editing the username field |
-| password | String | Pre-Populates the username field |
+| password | String | Pre-Populates the password field |
 
 ## Future Feature List:
 
