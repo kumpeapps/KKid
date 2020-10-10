@@ -5,7 +5,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 ## Screenshots (2.0)
 | Home | Select User | Login | Allowance | Chores | Mark Chore |
-| ----------------- |  ----------------- | ----------------- | ----------------- | ----------------- |
+| ----------------- |  ----------------- | ----------------- | ----------------- | ----------------- | ----------------- |
 |  ![home.png](images/home.png) |  ![selectUser.png](images/selectUser.png) |  ![login.png](images/login.png) |  ![allowance.png](images/allowance.png) |  ![chores.png](images/chores.png) |  ![markchore.png](images/markchore.png) | 
 
 ## Frameworks Used
