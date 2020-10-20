@@ -43,6 +43,7 @@ class DataController {
             completion?()
         }
     }
+
 //  Shared Data Controller
     static let shared = DataController(modelName: "KKid")
 }

@@ -75,7 +75,7 @@ class AllowanceAddTransactionViewController: FormViewController {
 // MARK: submitForm
     func submitForm() {
         var amount = amountField.value
-        if transactionType == "Subtract"{
+        if transactionType == "Subtract" {
             amount = "-\(amountField.value)"
         }
         KKidClient.addAllowanceTransaction(userID: Int(selectedUser!.userID), amount: amount, description: reason.value, transactionType: transactionType) { (success, _) in

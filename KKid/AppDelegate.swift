@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // MARK: saveViewContext
-func saveViewContext () {
+func saveViewContext() {
     let context = DataController.shared.viewContext
     if context.hasChanges {
         do {

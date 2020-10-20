@@ -28,7 +28,7 @@ extension KKidClient {
                     "stolenBy": ""
                 ]
 
-                if chore.optional && choreStatus == "check"{
+                if chore.optional && choreStatus == "check" {
                     parameters.updateValue("oCheck", forKey: "status")
                     parameters.updateValue("\(user.username!)", forKey: "stolenBy")
                 }

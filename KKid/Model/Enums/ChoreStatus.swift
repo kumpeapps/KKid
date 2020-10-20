@@ -27,7 +27,7 @@ enum ChoreStatus: String {
         case .x: return UIImage(named: "red_x")!
         case .dash: return UIImage(named: "blue_dash")!
         case .calendar, .Calendar: return "🗓".image()!
-        default :return "📝".image()!
+        default : return "📝".image()!
         }
     }
 

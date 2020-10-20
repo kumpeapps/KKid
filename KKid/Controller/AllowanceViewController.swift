@@ -99,4 +99,5 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
             viewController.selectedUser = selectedUser
         }
     }
+
 }
