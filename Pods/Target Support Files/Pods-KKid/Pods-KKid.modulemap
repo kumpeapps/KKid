@@ -1,6 +1,0 @@
-framework module Pods_KKid {
-  umbrella header "Pods-KKid-umbrella.h"
-
-  export *
-  module * { export * }
-}
