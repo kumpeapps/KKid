@@ -86,8 +86,7 @@ class LoginViewController: UIViewController {
             return
         }
 
-        KKidClient.authenticate(username: fieldUsername.text!, password: fieldPassword.text!) {
-            (response, error) in
+        KKidClient.authenticate(username: fieldUsername.text!, password: fieldPassword.text!) { (response, error) in
 
 //            GUARD: Login is Successful
             guard let loginStatus = response?.status, loginStatus == 1 else {

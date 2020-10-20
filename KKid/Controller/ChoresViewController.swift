@@ -243,10 +243,8 @@ extension ChoresViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
-            break
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
-            break
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)
             tableView.setNeedsLayout()

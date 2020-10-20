@@ -51,7 +51,6 @@ class ReachabilitySetup {
 
     deinit {
         reachability.stopNotifier()
-        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
     }
 
 }

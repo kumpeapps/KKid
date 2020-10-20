@@ -5,6 +5,11 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - control_statement
   - line_length
   - notification_center_detachment
+  - function_parameter_count
+  - force_cast
+  - force_try
+  - nesting
+  - unused_optional_binding
 opt_in_rules: # some rules are turned off by default, so you need to opt-in
   - empty_count # Find all the available rules by running: `swiftlint rules`
 
@@ -50,7 +55,8 @@ type_name:
   excluded: iPhone, AppConfig, Feedback # excluded via string
   allowed_symbols: ["_"] # these are allowed in type names
 identifier_name:
-  min_length: 1 # only min_length
+  min_length:  # only min_length
+    warning: 1
     error:  1 # only error
   excluded: # excluded via string array
     - id
@@ -59,4 +65,13 @@ identifier_name:
     - url
     - AppConfig
     - Feedback
+    - Weekly
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    - Calendar
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown, github-actions-logging)

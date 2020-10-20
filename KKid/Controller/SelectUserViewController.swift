@@ -160,11 +160,11 @@ extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = "\(aUser.firstName ?? "") \(aUser.lastName ?? "")"
 
         if aUser.isBanned {
-            cell.imageView?.image = altImage.banned.image
+            cell.imageView?.image = AltImage.banned.image
         } else if aUser.isLocked {
-            cell.imageView?.image = altImage.locked.image
+            cell.imageView?.image = AltImage.locked.image
         } else if !aUser.isActive {
-            cell.imageView?.image = altImage.inactive.image
+            cell.imageView?.image = AltImage.inactive.image
         } else {
             cell.imageView?.image = aUser.emoji!.image()
         }
@@ -183,7 +183,7 @@ extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.textColor = UIColor.black
         }
 
-        enum altImage {
+        enum AltImage {
             case locked
             case banned
             case inactive
@@ -291,10 +291,8 @@ extension SelectUserViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
-            break
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
-            break
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)
             tableView.setNeedsLayout()
