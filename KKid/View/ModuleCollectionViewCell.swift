@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ModuleCollectionViewCell: UICollectionViewCell{
-    
+class ModuleCollectionViewCell: UICollectionViewCell {
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var title: UILabel!
 }

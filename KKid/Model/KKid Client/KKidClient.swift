@@ -14,74 +14,70 @@ import CoreData
 import KumpeHelpers
 
 class KKidClient {
-       
-//    MARK: API Creds
+
+// MARK: API Creds
     static let username = APICredentials.KKid.username
     static let apiPassword = APICredentials.KKid.apiPassword
     static let baseURL = "https://api.kumpeapps.com/kkids"
-    
-    static var appVersion = "KKid"
-    
 
-    
-//    MARK: - apiMethod
-    class func apiMethod(silent: Bool = false, method: HTTPMethod, module: String, parameters: [String:Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void){
+    static var appVersion = "KKid"
+
+// MARK: - apiMethod
+    class func apiMethod(silent: Bool = false, method: HTTPMethod, module: String, parameters: [String: Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void) {
             let url = URL(string: "\(KKidClient.baseURL)/\(module)")!
             let alertId = "post_\(module)_\(Int.random(in: 0..<10))"
-            if !silent{
+            if !silent {
                 ShowAlert.statusLineStatic(id: alertId, theme: .warning, title: "Sending Data To \(module)", message: "Sending Data To \(module), Please Wait ....", blockInterface: blockInterface)
             }
             let queue = DispatchQueue(label: "com.kumpeapps.api", qos: .background, attributes: .concurrent)
         Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding(destination: .queryString)).responseSwiftyJSON(queue: queue) { dataResponse in
 
 //            GUARD: API Key Valid (returns 412 when not valid)
-            guard let statusCode = dataResponse.response?.statusCode, statusCode != 412 else{
+            guard let statusCode = dataResponse.response?.statusCode, statusCode != 412 else {
                 Logger.log(.error, "API Key Not Valid")
                 ShowAlert.dismissStatic(id: alertId)
-                completion(false,"API Key Not Valid")
+                completion(false, "API Key Not Valid")
                 self.logout()
                 return
             }
-            
-                
+
     //            GUARD: Status code 2xx
-            guard statusCode >= 200 && statusCode <= 299 else{
+            guard statusCode >= 200 && statusCode <= 299 else {
                     Logger.log(.error, "Your request returned a status code other than 2xx! (\(String(describing: dataResponse.response?.statusCode)))")
                     ShowAlert.dismissStatic(id: alertId)
                     var errorMessage = "Unknown Error Occurred"
-                    switch statusCode{
+                    switch statusCode {
                     case 412: errorMessage = "API Key Not Valid"
                     case 409: errorMessage = "The username/email already exists or does not meet the requirements."
                     case 410: errorMessage = "Delete unsuccessful. User/Chore may not exist."
                     case 451: errorMessage = "App has been blocked for legal reasons. Please email helpdesk@kumpeapps.com for more information!"
                     default: errorMessage = "Unknown Error Occurred"
                     }
-                    completion(false,errorMessage)
+                    completion(false, errorMessage)
                     return
                 }
-            
+
 //            GUARD: isSuccess
             guard case dataResponse.result.isSuccess = true else {
-                completion(false,dataResponse.error?.localizedDescription)
+                completion(false, dataResponse.error?.localizedDescription)
                 ShowAlert.dismissStatic(id: alertId)
                 return
             }
-            
-            
+
                 ShowAlert.dismissStatic(id: alertId)
-                completion(true,nil)
+                completion(true, nil)
             }
         }
-    
-//    MARK: - Authentication
-    
-//    MARK: logout
-    class func logout(userInitiated: Bool = false){
+
+// MARK: - Authentication
+
+// MARK: logout
+    class func logout(userInitiated: Bool = false) {
         dispatchOnMain {
-            if !userInitiated{
+            if !userInitiated {
                 ShowAlert.statusLine(theme: .error, title: "Session Expired", message: "Your session has expired. Please login again.", seconds: 10)
                 Logger.log(.authentication, "User Session Expired")
-            }else{
+            } else {
                 ShowAlert.statusLine(theme: .success, title: "Logout Successful", message: "Logout Successful", seconds: 10)
                 Logger.log(.authentication, "User Logged Out")
                 apiLogout(UserDefaults.standard.string(forKey: "apiKey") ?? "none")
@@ -92,46 +88,46 @@ class KKidClient {
             NotificationCenter.default.post(name: .isAuthenticated, object: nil)
         }
     }
-    
-//    MARK: apiLogout
-    class func apiLogout(_ apiKey: String){
+
+// MARK: apiLogout
+    class func apiLogout(_ apiKey: String) {
         let method = "authentication"
         let parameters = [
-            "apiUsername":KKidClient.username,
-            "apiPassword":KKidClient.apiPassword,
-            "apiKey":"\(apiKey)"
+            "apiUsername": KKidClient.username,
+            "apiPassword": KKidClient.apiPassword,
+            "apiKey": "\(apiKey)"
         ]
-        KKidClient.apiPut(module: method, parameters: parameters) { (success,error) in }
+        KKidClient.apiPut(module: method, parameters: parameters) { (_, _) in }
     }
-    
-//    MARK: verifyIsAuthenticated
-    class func verifyIsAuthenticated(_ viewController: UIViewController){
-        if !UserDefaults.standard.bool(forKey: "isAuthenticated"){
-            if let navigation = viewController.navigationController{
+
+// MARK: verifyIsAuthenticated
+    class func verifyIsAuthenticated(_ viewController: UIViewController) {
+        if !UserDefaults.standard.bool(forKey: "isAuthenticated") {
+            if let navigation = viewController.navigationController {
                 navigation.popToRootViewController(animated: true)
-            }else{
+            } else {
                 viewController.dismiss(animated: true, completion: nil)
             }
         }
     }
-    
-//    MARK: forgotPassword
-    class func forgotPassword(username: String, completion: @escaping (Bool,String) -> Void){
+
+// MARK: forgotPassword
+    class func forgotPassword(username: String, completion: @escaping (Bool, String) -> Void) {
         let url = "https://www.kumpeapps.com/api/check-access/send-pass"
         let parameters = [
-            "_key":"APIResetPasswordLink",
-            "login":"\(username)"
+            "_key": "APIResetPasswordLink",
+            "login": "\(username)"
         ]
-        
+
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default) .responseSwiftyJSON { dataResponse in
-            
-            guard let data = dataResponse.value,  data["ok"].boolValue else{
-                completion(false,"An Error Occurred. Your username/email may not exist.")
+
+            guard let data = dataResponse.value, data["ok"].boolValue else {
+                completion(false, "An Error Occurred. Your username/email may not exist.")
                 return
             }
-            
-            completion(true,data["msg"].stringValue)
+
+            completion(true, data["msg"].stringValue)
         }
     }
-    
+
 }

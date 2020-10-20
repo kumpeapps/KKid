@@ -11,52 +11,52 @@ import CoreData
 import KumpeHelpers
 import Haptico
 
-class MarkChoreViewController: UIViewController{
-    
-//    MARK: Parameters
+class MarkChoreViewController: UIViewController {
+
+// MARK: Parameters
     var chore: Chore!
     var selectedUser: User!
-    
-//    MARK: Buttons
+
+// MARK: Buttons
     @IBOutlet weak var buttonCheck: UIButton!
     @IBOutlet weak var buttonDash: UIButton!
     @IBOutlet weak var buttonX: UIButton!
-    
-//    MARK: Images
+
+// MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
-    
-//    MARK: viewWillAppear
+
+// MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         imageLogo.image = AppDelegate().kkidLogo
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         verifyAuthenticated()
 //        Disable Dash Button if blockDash is set to true and user is not an Admin
-        if chore.blockDash && !LoggedInUser.user!.isAdmin{
+        if chore.blockDash && !LoggedInUser.user!.isAdmin {
             buttonDash.isHidden = true
         }
 //        Disable Dash and Check if chore is already marked as an X and user is not an Admin
-        if chore.status == "x" && !LoggedInUser.user!.isAdmin{
+        if chore.status == "x" && !LoggedInUser.user!.isAdmin {
             buttonDash.isHidden = true
             buttonCheck.isHidden = true
         }
     }
-    
-//    MARK: viewDidDisappear
+
+// MARK: viewDidDisappear
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
-//    MARK: verifyAuthenticated
-    @objc func verifyAuthenticated(){
+
+// MARK: verifyAuthenticated
+    @objc func verifyAuthenticated() {
         KKidClient.verifyIsAuthenticated(self)
     }
-    
-//    MARK: markChore
-    @IBAction func markChore(sender: UIButton){
+
+// MARK: markChore
+    @IBAction func markChore(sender: UIButton) {
         var status = ""
-        
+
         switch sender.tag {
         case 1:
             status = "check"
@@ -69,7 +69,7 @@ class MarkChoreViewController: UIViewController{
         }
         self.dismiss(animated: true, completion: nil)
         KKidClient.markChore(chore: chore!, choreStatus: status, user: selectedUser) { (success) in
-            if success{
+            if success {
                 let choreID = self.chore.objectID
                 DataController.shared.backgroundContext.perform {
                     let backgroundChore = DataController.shared.backgroundContext.object(with: choreID) as! Chore
@@ -77,10 +77,10 @@ class MarkChoreViewController: UIViewController{
                     try? DataController.shared.backgroundContext.save()
                 }
                 Haptico.shared().generate(.success)
-            }else{
+            } else {
                 ShowAlert.banner(title: "Error", message: "An unknown error occurred while trying to mark your chore status.")
             }
-            
+
         }
     }
 

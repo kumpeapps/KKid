@@ -14,7 +14,6 @@ func dispatchOnMain(_ updates: @escaping () -> Void) {
     DispatchQueue.main.async {
         updates()
     }
-    
 
 }
 

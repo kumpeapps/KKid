@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct KKid_Auth_Response: Codable{
+struct KKid_Auth_Response: Codable {
     var user: KKid_User?
     var apiKey: String?
     var status: Int

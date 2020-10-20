@@ -11,12 +11,12 @@ import SwiftyFORM
 import Smile
 import KumpeHelpers
 
-class UserEditProfileViewController: FormViewController{
-    
-//    MARK: Parameters
+class UserEditProfileViewController: FormViewController {
+
+// MARK: Parameters
     var selectedUser = LoggedInUser.selectedUser!
-    
-//    MARK: populateCurrentUserInfo
+
+// MARK: populateCurrentUserInfo
     func populateCurrentUserInfo() {
         username.value = selectedUser.username!
         email.value = selectedUser.email!
@@ -27,16 +27,15 @@ class UserEditProfileViewController: FormViewController{
         enableAllowance.value = selectedUser.enableAllowance
         enableAdmin.value = selectedUser.isAdmin
     }
-    
-    
-//    MARK: loadView
+
+// MARK: loadView
     override func loadView() {
         super.loadView()
         installSubmitButton()
         populateCurrentUserInfo()
     }
-    
-//    MARK: populate
+
+// MARK: populate
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Edit Profile"
         builder.toolbarMode = .simple
@@ -46,14 +45,14 @@ class UserEditProfileViewController: FormViewController{
         builder += firstName
         builder += lastName
         builder += emoji
-        if LoggedInUser.user!.isAdmin{
+        if LoggedInUser.user!.isAdmin {
             builder += enableChores
             builder += enableAllowance
             builder += enableAdmin
         }
     }
-    
-//    MARK: username Field
+
+// MARK: username Field
     lazy var username: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Username:")
         instance.keyboardType(.asciiCapable)
@@ -61,8 +60,8 @@ class UserEditProfileViewController: FormViewController{
         instance.required("Username is required")
         return instance
     }()
-    
-//    MARK: email Field
+
+// MARK: email Field
     lazy var email: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Email:")
         instance.keyboardType(.emailAddress)
@@ -70,85 +69,85 @@ class UserEditProfileViewController: FormViewController{
         instance.required("Email field is required")
         return instance
     }()
-    
-//    MARK: firstName Field
+
+// MARK: firstName Field
     lazy var firstName: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("First Name:")
         instance.keyboardType(.asciiCapable)
         instance.required("First Name is Required")
         return instance
     }()
-    
-//    MARK: lastName Field
+
+// MARK: lastName Field
     lazy var lastName: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Last Name:")
         instance.keyboardType(.asciiCapable)
         instance.required("Last Name is Required")
         return instance
     }()
-    
-//    MARK: emoji Field
+
+// MARK: emoji Field
     lazy var emoji: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Emoji Icon:")
         instance.required("Emoji is required")
         return instance
     }()
-    
-//    MARK: enableChores Field
+
+// MARK: enableChores Field
     lazy var enableChores: SwitchFormItem = {
         let instance = SwitchFormItem().title("Enable Chores")
         return instance
     }()
-    
-//    MARK: enableAllowance Field
+
+// MARK: enableAllowance Field
     lazy var enableAllowance: SwitchFormItem = {
         let instance = SwitchFormItem().title("Enable Allowance")
         return instance
     }()
-    
-//    MARK: enableAdmin Field
+
+// MARK: enableAdmin Field
     lazy var enableAdmin: SwitchFormItem = {
         let instance = SwitchFormItem().title("Enable Admin")
         return instance
     }()
-    
-//    MARK: submitForm
-    func submitForm(){
+
+// MARK: submitForm
+    func submitForm() {
         guard Smile.isEmoji(character: emoji.value) else {
             ShowAlert.banner(title: "Validation Error", message: "Emoji field must be a single emoji")
             return
         }
         KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value) { (success, error) in
-            if success{
+            if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)
-                    KKidClient.getUsers { (success, error) in
+                    KKidClient.getUsers { (success, _) in
                         ShowAlert.statusLine(theme: .success, title: "User Updated", message: "User Updated", seconds: 3, dim: false)
                     }
                 }
-            }else{
+            } else {
                 ShowAlert.banner(title: "Update User Error", message: error ?? "An Unknown Error Occured")
             }
         }
     }
 }
 
-//MARK: - Initiate Submit Button
-extension UserEditProfileViewController{
-    
-//    MARK: installSubmitButton
+// MARK: - Initiate Submit Button
+extension UserEditProfileViewController {
+
+// MARK: installSubmitButton
     public func installSubmitButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(submitAction(_:)))
     }
-    
-//    MARK: submitAction
+
+// MARK: submitAction
     @objc public func submitAction(_ sender: AnyObject?) {
         formBuilder.validateAndUpdateUI()
         let result = formBuilder.validate()
         showSubmitResult(result)
     }
-    
-//    MARK: showSubmitResult
+
+// MARK: showSubmitResult
     public func showSubmitResult(_ result: FormBuilder.FormValidateResult) {
         switch result {
         case .valid:

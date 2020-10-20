@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum ChoreStatus: String {
-    
+
     case check
     case oCheck
     case todo
@@ -20,9 +20,9 @@ enum ChoreStatus: String {
     case stolen
     case Calendar
     case calendar
-    
-    var image: UIImage{
-        switch self{
+
+    var image: UIImage {
+        switch self {
         case .check, .oCheck, .stolen: return UIImage(named: "green_check")!
         case .x: return UIImage(named: "red_x")!
         case .dash: return UIImage(named: "blue_dash")!
@@ -30,5 +30,5 @@ enum ChoreStatus: String {
         default :return "📝".image()!
         }
     }
-    
+
 }

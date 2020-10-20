@@ -9,7 +9,7 @@
 import Foundation
 
 enum Days: String {
-    
+
     case Weekly
     case Sunday
     case Monday
@@ -18,9 +18,9 @@ enum Days: String {
     case Thursday
     case Friday
     case Saturday
-    
-    var code: Int16{
-        switch self{
+
+    var code: Int16 {
+        switch self {
         case .Weekly: return 8
         case .Sunday: return 1
         case .Monday: return 2

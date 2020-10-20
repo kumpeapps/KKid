@@ -10,28 +10,28 @@ import Foundation
 import KumpeHelpers
 
 @available(*, deprecated, message: "This function is for debugging and development notes only. Please remove for final build.")
-class DebugHelpers{
-    
-//    MARK: logDocumentsURL
+class DebugHelpers {
+
+// MARK: logDocumentsURL
 //    Outputs documents URL to log
-    static func logDocumentsUrl(){
+    static func logDocumentsUrl() {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         Logger.log(.codeWarning, "App Document Directory is: \(urls[urls.count-1] as URL)")
     }
-    
-//    MARK: dumpToLog
-    static func dumpToLog(dump: Any){
+
+// MARK: dumpToLog
+    static func dumpToLog(dump: Any) {
         Logger.log(.codeWarning, dump)
     }
-    
-//    MARK: dumpErrorToLog
-    static func dumpErrorToLog(dump: Any){
+
+// MARK: dumpErrorToLog
+    static func dumpErrorToLog(dump: Any) {
         Logger.log(.codeError, dump)
     }
-    
-//    MARK: notImplementedBanner
+
+// MARK: notImplementedBanner
     @available(*, deprecated, message: "Warning: This is a TODO Item")
-    static func notImplementedBanner(){
+    static func notImplementedBanner() {
         ShowAlert.banner(theme: .warning, title: "Not Implemented", message: "This feature is not yet implemented.")
     }
 }

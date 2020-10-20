@@ -3,15 +3,12 @@ platform :ios, '13.6'
 use_frameworks!
 
 target 'KKid' do
-        pod 'Alamofire-SwiftyJSON'
-        pod 'Toast-Swift'
+	pod 'Alamofire-SwiftyJSON'
+	pod 'Toast-Swift'
 	pod 'SwiftyFORM'
-#	pod 'Kingfisher'
 	pod 'ReachabilitySwift'
 	pod 'SwiftMessages'
-#	pod 'OneTimePassword'
 	pod 'Sync'
-#	pod 'SwipeCellKit'
 	pod 'Smile'
 	pod 'CollectionViewCenteredFlowLayout'
 	pod 'Google-Mobile-Ads-SDK'

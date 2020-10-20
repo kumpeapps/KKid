@@ -10,19 +10,19 @@ import UIKit
 import SwiftyFORM
 import KumpeHelpers
 
-class AddChoreViewController: FormViewController{
-    
-//    MARK: Parameters
-    var selectedUser:User?
+class AddChoreViewController: FormViewController {
+
+// MARK: Parameters
+    var selectedUser: User?
     var day = "Weekly"
-    
-//    MARK: loadView
+
+// MARK: loadView
     override func loadView() {
         super.loadView()
         installSubmitButton()
     }
-    
-//    MARK: populate
+
+// MARK: populate
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Add Chore"
         builder.toolbarMode = .simple
@@ -36,8 +36,8 @@ class AddChoreViewController: FormViewController{
         builder += anyKid
         builder += startDate
     }
-    
-//    MARK: dayOfWeek Selector
+
+// MARK: dayOfWeek Selector
     lazy var dayOfWeek: ViewControllerFormItem = {
        let instance = ViewControllerFormItem()
             instance.title("Day Of Week").placeholder("required")
@@ -55,8 +55,8 @@ class AddChoreViewController: FormViewController{
             }
             return instance
         }()
-    
-//    MARK: choreName Field
+
+// MARK: choreName Field
     lazy var choreName: TextFieldFormItem = {
         let instance = TextFieldFormItem()
         instance.title("Chore Name").placeholder("required")
@@ -65,8 +65,8 @@ class AddChoreViewController: FormViewController{
         instance.submitValidate(CountSpecification.min(1), message: "Chore Name is required")
         return instance
     }()
-    
-//    MARK: choreDescription Field
+
+// MARK: choreDescription Field
     lazy var choreDescription: TextFieldFormItem = {
         let instance = TextFieldFormItem()
         instance.title("Chore Description").placeholder("optional")
@@ -74,40 +74,40 @@ class AddChoreViewController: FormViewController{
         instance.validate(CountSpecification.max(200), message: "Limit 200 characters")
         return instance
     }()
-    
-//    MARK: blockDash Switch
+
+// MARK: blockDash Switch
     lazy var blockDash: SwitchFormItem = {
        let instance = SwitchFormItem()
         instance.title = "Block Dash Button"
         instance.value = false
         return instance
     }()
-    
-//    MARK: oneTime Switch
+
+// MARK: oneTime Switch
     lazy var oneTime: SwitchFormItem = {
        let instance = SwitchFormItem()
         instance.title = "One Time Chore"
         instance.value = false
         return instance
     }()
-    
-//    MARK: optional Switch
+
+// MARK: optional Switch
     lazy var optional: SwitchFormItem = {
        let instance = SwitchFormItem()
         instance.title = "Chore Is Optional"
         instance.value = false
         return instance
     }()
-    
-//    MARK: anyKid Switch
+
+// MARK: anyKid Switch
     lazy var anyKid: SwitchFormItem = {
         let instance = SwitchFormItem()
         instance.title = "Chore Is for Any Kid"
         instance.value = false
         return instance
     }()
-    
-//    MARK: startDate Date Picker
+
+// MARK: startDate Date Picker
     lazy var startDate: DatePickerFormItem = {
         let instance = DatePickerFormItem()
         let today = Date()
@@ -116,46 +116,45 @@ class AddChoreViewController: FormViewController{
         instance.value = today
         return instance
     }()
-    
-//    MARK: submitForm
-    func submitForm(){
+
+// MARK: submitForm
+    func submitForm() {
         var username = "\(selectedUser!.username!)"
-        if anyKid.value{
+        if anyKid.value {
             username = "any"
         }
         KKidClient.addChore(username: username, choreName: choreName.value, choreDescription: choreDescription.value, blockDash: blockDash.value, oneTime: oneTime.value, optional: optional.value, startDate: startDate.value, day: day) { (success, error) in
-            if success{
+            if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)
                 }
-                KKidClient.getChores(silent: true) { (success, error) in
+                KKidClient.getChores(silent: true) { (_, _) in
                     return
                 }
-            }else{
+            } else {
                 ShowAlert.banner(title: "Add Chore Error", message: error ?? "An Unknown Error Occurred")
             }
         }
     }
-    
+
 }
 
+// MARK: - Submit Button Setup
+extension AddChoreViewController {
 
-//MARK: - Submit Button Setup
-extension AddChoreViewController{
-    
-//    MARK: installSubmitButton
+// MARK: installSubmitButton
     public func installSubmitButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(submitAction(_:)))
     }
-    
-//    MARK: submitAction
+
+// MARK: submitAction
     @objc public func submitAction(_ sender: AnyObject?) {
         formBuilder.validateAndUpdateUI()
         let result = formBuilder.validate()
         showSubmitResult(result)
     }
-    
-//    MARK: showSubmitResult
+
+// MARK: showSubmitResult
     public func showSubmitResult(_ result: FormBuilder.FormValidateResult) {
         switch result {
         case .valid:

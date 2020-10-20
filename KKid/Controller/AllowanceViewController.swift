@@ -6,31 +6,29 @@
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
 
-
 import UIKit
 import CoreData
 import KumpeHelpers
 
-class AllowanceViewController: UIViewController, NSFetchedResultsControllerDelegate{
-    
-//    MARK: Parameters
+class AllowanceViewController: UIViewController, NSFetchedResultsControllerDelegate {
+
+// MARK: Parameters
     var selectedUser = LoggedInUser.selectedUser!
     var allowanceData: KKid_AllowanceResponse?
-    
-//    MARK: Images
+
+// MARK: Images
     @IBOutlet weak var imageBalance: UIImageView!
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
-    
-//    MARK: Buttons
+
+// MARK: Buttons
     @IBOutlet weak var buttonLedger: UIBarButtonItem!
     @IBOutlet weak var buttonAdd: UIBarButtonItem!
-        
-//    MARK: Reachability
+
+// MARK: Reachability
     var reachable: ReachabilitySetup!
-    
-    
-//    MARK: viewWillAppear
+
+// MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
@@ -42,29 +40,29 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
         verifyAuthenticated()
             NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
     }
-            
-//    MARK: verifyAuthenticated
-    @objc func verifyAuthenticated(){
+
+// MARK: verifyAuthenticated
+    @objc func verifyAuthenticated() {
         KKidClient.verifyIsAuthenticated(self)
     }
-    
-//    MARK: viewWillDisappear
+
+// MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         reachable = nil
         NotificationCenter.default.removeObserver(self)
     }
-    
-//    MARK: getAllowance
-    func getAllowance(){
-        KKidClient.getAllowance(selectedUser: selectedUser) { (response, error) in
-            if let response = response{
+
+// MARK: getAllowance
+    func getAllowance() {
+        KKidClient.getAllowance(selectedUser: selectedUser) { (response, _) in
+            if let response = response {
                 self.allowanceData = response
                 var balance = "\(response.balance)"
-                if response.balance < 0{
+                if response.balance < 0 {
                     balance.remove(at: balance.startIndex)
                     balance = "-$\(balance)"
-                }else{
+                } else {
                     balance = "$\(balance)"
                 }
                 dispatchOnMain {
@@ -75,32 +73,30 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
             }
         }
     }
-    
-//    MARK: pressedLedger
-    @IBAction func pressedLedger(){
+
+// MARK: pressedLedger
+    @IBAction func pressedLedger() {
         performSegue(withIdentifier: "segueAllowanceLedger", sender: self)
     }
-    
-//    MARK: pressedAdd
-    @IBAction func pressedAdd(){
+
+// MARK: pressedAdd
+    @IBAction func pressedAdd() {
         performSegue(withIdentifier: "segueAddTransaction", sender: self)
     }
-    
-//    MARK: prepare for segue
+
+// MARK: prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueAllowanceLedger"{
             let viewController = segue.destination as! AllowanceLedgerViewController
-            guard self.allowanceData != nil else{
+            guard self.allowanceData != nil else {
                 ShowAlert.banner(title: "Error", message: "There was an error pulling allowance transactions. This could be because this user no longer exists. We recommend refreshing the user's page.")
                 UserDefaults.standard.removeObject(forKey: "UserLastUpdated")
                 return
             }
             viewController.allowanceTransactions = self.allowanceData!.allowanceTransaction!
-        }else if segue.identifier == "segueAddTransaction"{
+        } else if segue.identifier == "segueAddTransaction"{
             let viewController = segue.destination as! AllowanceAddTransactionViewController
             viewController.selectedUser = selectedUser
         }
     }
 }
-
-

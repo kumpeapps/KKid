@@ -30,14 +30,12 @@ class MyOptionForm {
     func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Picker"
 
-
         for optionRow: OptionRow in optionRows {
             let option = OptionRowFormItem()
             option.title = optionRow.title
             builder.append(option)
         }
 
-        
     }
 
 }

@@ -9,53 +9,52 @@
 import Foundation
 import UIKit
 
+class AllowanceLedgerViewController: UITableViewController {
 
-class AllowanceLedgerViewController: UITableViewController{
-    
-//    MARK: Parameters
+// MARK: Parameters
     var allowanceTransactions: [KKid_AllowanceTransaction]!
-    
-//    MARK: viewWillAppear
+
+// MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
         verifyAuthenticated()
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
     }
-            
-//    MARK: verifyAuthenticated
-    @objc func verifyAuthenticated(){
+
+// MARK: verifyAuthenticated
+    @objc func verifyAuthenticated() {
         KKidClient.verifyIsAuthenticated(self)
     }
-    
-//    MARK: viewWillDisappear
+
+// MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
 
-//    MARK: numberOfSections
+// MARK: numberOfSections
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-//    MARK: tableView: numberOfRowsInSection
+// MARK: tableView: numberOfRowsInSection
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allowanceTransactions?.count ?? 0
     }
 
-//    MARK: tableView: cellForRowAt
+// MARK: tableView: cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let aTransaction = allowanceTransactions![indexPath.row]
         var amount = "\(aTransaction.amount)"
         cell.detailTextLabel?.text = aTransaction.transactionDescription
-        if aTransaction.amount < 0{
+        if aTransaction.amount < 0 {
             //cell.backgroundColor = UIColor.systemPink
             amount.remove(at: amount.startIndex)
             cell.textLabel?.text = "\(aTransaction.date): -$\(amount)"
             cell.imageView?.image = UIImage(named: "minus")
-        }else{
+        } else {
             //cell.backgroundColor = UIColor.green
             cell.textLabel?.text = "\(aTransaction.date): $\(amount)"
             cell.imageView?.image = UIImage(named: "plus")

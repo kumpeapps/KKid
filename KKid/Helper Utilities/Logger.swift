@@ -7,7 +7,7 @@
 //
 // Copied Logger code from Lenda at https://stackoverflow.com/questions/40583721/print-to-console-log-with-color/41740104
 
-enum LogType: String{
+enum LogType: String {
     case error
     case warning
     case codeWarning
@@ -18,10 +18,9 @@ enum LogType: String{
     case authentication
 }
 
+class Logger {
 
-class Logger{
-
- static func log(_ logType:LogType,_ message:Any){
+ static func log(_ logType: LogType, _ message: Any) {
         switch logType {
             case LogType.error:
                 print("\n📕 Error: \(message)\n")

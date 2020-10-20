@@ -9,14 +9,11 @@
 import Foundation
 import CoreData
 
-extension Chore{
+extension Chore {
     public override func willSave() {
         super.willSave()
         setPrimitiveValue(Days(rawValue: day!)!.code, forKey: "dayAsNumber")
         //dayAsNumber = Days(rawValue: day!)!.code
     }
-    
+
 }
-
-
-

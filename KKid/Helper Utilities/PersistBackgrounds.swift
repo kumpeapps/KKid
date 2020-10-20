@@ -9,18 +9,17 @@
 
 import UIKit
 
-
 class PersistBackgrounds {
-    
-//    MARK: saveImage
-    class func saveImage(_ image: UIImage, isBackground: Bool){
-        
+
+// MARK: saveImage
+    class func saveImage(_ image: UIImage, isBackground: Bool) {
+
         var imageName = "background.png"
-        
-        if !isBackground{
+
+        if !isBackground {
             imageName = "logo.png"
         }
-        
+
         // Convert to Data
         if let data = image.pngData() {
             // Create URL
@@ -37,16 +36,16 @@ class PersistBackgrounds {
             }
         }
     }
-    
-//    MARK: loadImage
+
+// MARK: loadImage
     class func loadImage(isBackground: Bool) -> UIImage? {
 
         var imageName = "background.png"
-        
-        if !isBackground{
+
+        if !isBackground {
             imageName = "logo.png"
         }
-        
+
       let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
 
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask

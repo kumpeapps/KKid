@@ -10,25 +10,25 @@ import UIKit
 import CollectionViewCenteredFlowLayout
 import GoogleMobileAds
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
-    
-//    MARK: Images
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
+// MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
-    
-//    MARK: Google Add Banner
+
+// MARK: Google Add Banner
     @IBOutlet var bannerView: GADBannerView!
-    
-//    MARK: Collection View
+
+// MARK: Collection View
     @IBOutlet weak var collectionView: UICollectionView!
-    
-//    MARK: Reachability
+
+// MARK: Reachability
     var reachable: ReachabilitySetup!
-    
-//    MARK: Parameters
-    var modules:[KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
-    
-//    MARK: viewDidLoad
+
+// MARK: Parameters
+    var modules: [KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
+
+// MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -37,55 +37,53 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.collectionViewLayout = layout
         collectionView.reloadData()
     }
-    
-//    MARK: viewWillAppear
+
+// MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         reachable = ReachabilitySetup()
         imageLogo.image = AppDelegate().kkidLogo
         imageBackground.image = AppDelegate().kkidBackground
-        if LoggedInUser.user == nil{
+        if LoggedInUser.user == nil {
             LoggedInUser.setLoggedInUser()
         }
-        
-        if LoggedInUser.selectedUser == nil{
+
+        if LoggedInUser.selectedUser == nil {
             LoggedInUser.setSelectedToLoggedIn()
         }
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         verifyAuthenticated()
         modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
         buildModules()
-        
+
     }
-    
-//    MARK: viewDidAppear
+
+// MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserDefaults.standard.value(forKey: "UserLastUpdated") == nil || !Calendar.current.isDateInToday(UserDefaults.standard.value(forKey: "UserLastUpdated") as! Date){
-            KKidClient.getUsers { [self] (success, error) in
+        if UserDefaults.standard.value(forKey: "UserLastUpdated") == nil || !Calendar.current.isDateInToday(UserDefaults.standard.value(forKey: "UserLastUpdated") as! Date) {
+            KKidClient.getUsers { [self] (_, _) in
                 LoggedInUser.setLoggedInUser()
                 buildModules()
             }
         }
-        
-        if !LoggedInUser.user!.enableNoAds{
+
+        if !LoggedInUser.user!.enableNoAds {
             loadGoogleAdMob()
         }
     }
-    
-    
-//    MARK: viewWillDisappear
+
+// MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
         reachable = nil
     }
-    
-    
-//    MARK: verifyAuthenticated
-    @objc func verifyAuthenticated(){
-        guard UserDefaults.standard.bool(forKey: "isAuthenticated") else{
+
+// MARK: verifyAuthenticated
+    @objc func verifyAuthenticated() {
+        guard UserDefaults.standard.bool(forKey: "isAuthenticated") else {
             modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
             collectionView.reloadData()
             performSegue(withIdentifier: "segueLogin", sender: self)
@@ -94,41 +92,41 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return
         }
     }
-    
-//    MARK: buildModules
-    func buildModules(){
-        if let selectedUser = LoggedInUser.selectedUser{
+
+// MARK: buildModules
+    func buildModules() {
+        if let selectedUser = LoggedInUser.selectedUser {
             modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
-            if LoggedInUser.selectedUser == LoggedInUser.user{
+            if LoggedInUser.selectedUser == LoggedInUser.user {
                 self.title = "\(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
-            }else{
+            } else {
                 self.title = "Selected: \(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
             }
-            if selectedUser.enableChores{
+            if selectedUser.enableChores {
                 modules.append(KKid_Module.init(title: "Chores", segue: "segueChores", icon: #imageLiteral(resourceName: "chores")))
             }
-            
-            if selectedUser.enableAllowance{
+
+            if selectedUser.enableAllowance {
                 modules.append(KKid_Module.init(title: "Allowance", segue: "segueAllowance", icon: #imageLiteral(resourceName: "allowance")))
             }
-            
+
             modules.append(KKid_Module.init(title: "Edit Profile", segue: "segueEditProfile", icon: #imageLiteral(resourceName: "profile")))
-            
-            if LoggedInUser.user!.isAdmin{
+
+            if LoggedInUser.user!.isAdmin {
                 modules.append(KKid_Module.init(title: "Select User", segue: "segueSelectUser", icon: #imageLiteral(resourceName: "select_user")))
             }
         }
-        
+
         collectionView.reloadData()
     }
-    
-//    MARK: pressedLogout
-    func pressedLogout(){
-        
+
+// MARK: pressedLogout
+    func pressedLogout() {
+
         KKidClient.logout(userInitiated: true)
     }
-    
-//    MARK: centerItemsInCollectionView
+
+// MARK: centerItemsInCollectionView
     func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
         let totalWidth = cellWidth * numberOfItems
         let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
@@ -136,29 +134,28 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let rightInset = leftInset
         return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
     }
-    
+
 }
 
+// MARK: - Collection View Functions
+extension HomeViewController {
 
-//MARK: - Collection View Functions
-extension HomeViewController{
-    
-    //  MARK: Set Number of Items
+    // MARK: Set Number of Items
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return modules.count
         }
-        
-    //    MARK: Build Items
+
+    // MARK: Build Items
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let module = modules[(indexPath as NSIndexPath).row]
-            
+
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ModuleCollectionViewCell
             cell.imageView.image = module.icon
             cell.title.text = module.title
             return cell
         }
-        
-    //    MARK: Did Select Item
+
+    // MARK: Did Select Item
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let module = modules[indexPath.row]
             switch module.title {
@@ -170,29 +167,26 @@ extension HomeViewController{
         }
 }
 
-//MARK: - Collection View Flow Layout Delegate
+// MARK: - Collection View Flow Layout Delegate
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-//    MARK: set cell size
+// MARK: set cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = 100
         return CGSize(width: screenWidth, height: screenWidth)
     }
 }
 
-
-//MARK: - Google AdBanner
-extension HomeViewController: GADBannerViewDelegate{
-    func loadGoogleAdMob(){
+// MARK: - Google AdBanner
+extension HomeViewController: GADBannerViewDelegate {
+    func loadGoogleAdMob() {
         bannerView.adUnitID = "ca-app-pub-8070283866991781/9653639950"
-        
+
         #if DEBUG
             bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         #endif
-        
+
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
           }
-
-          
 
 }

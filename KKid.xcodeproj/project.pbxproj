@@ -318,7 +318,7 @@
 				0F5EC89124F98D0000873868 /* Frameworks */,
 				0F5EC89224F98D0000873868 /* Resources */,
 				0F5EC8AB24F98D2400873868 /* ShellScript */,
-				A5971EAD38BC0CEB0DD5697E /* [CP] Embed Pods Frameworks */,
+				3CBECCC5BC4677EA217506CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -398,7 +398,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"TagERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"| perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
 		};
-		A5971EAD38BC0CEB0DD5697E /* [CP] Embed Pods Frameworks */ = {
+		3CBECCC5BC4677EA217506CE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

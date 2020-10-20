@@ -10,53 +10,52 @@ import UIKit
 import CoreData
 import KumpeHelpers
 
-class ChoresViewController: UIViewController{
-    
-//    MARK: Parameters
+class ChoresViewController: UIViewController {
+
+// MARK: Parameters
     let selectedUser = LoggedInUser.selectedUser
-    
-//    MARK: Images
+
+// MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
-    
-//    MARK: Table View
-    @IBOutlet weak var tableView: UITableView!
-        
-    //    MARK: Reachability
-        var reachable: ReachabilitySetup!
-    
-//    MARK: Buttons
-    @IBOutlet weak var buttonAdd: UIBarButtonItem!
-    
-    
-/*    MARK: Refresh Control
-        Adds functionality to swipe down to refresh table
-*/
-    private let refreshControl = UIRefreshControl()
-    
-//    MARK: fetchedResultsController
-    var fetchedResultsController:NSFetchedResultsController<Chore>!
 
-//    MARK: setupFetchedResultsController
+// MARK: Table View
+    @IBOutlet weak var tableView: UITableView!
+
+    // MARK: Reachability
+        var reachable: ReachabilitySetup!
+
+// MARK: Buttons
+    @IBOutlet weak var buttonAdd: UIBarButtonItem!
+
+// MARK: Refresh Control
+//        Adds functionality to swipe down to refresh table
+
+    private let refreshControl = UIRefreshControl()
+
+// MARK: fetchedResultsController
+    var fetchedResultsController: NSFetchedResultsController<Chore>!
+
+// MARK: setupFetchedResultsController
     fileprivate func setupFetchedResultsController() {
-        let fetchRequest:NSFetchRequest<Chore> = Chore.fetchRequest()
-        let predicate = NSPredicate(format: "kid IN %@", [selectedUser!.username!,"any"])
+        let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
+        let predicate = NSPredicate(format: "kid IN %@", [selectedUser!.username!, "any"])
         fetchRequest.predicate = predicate
         let sortByDayNumber = NSSortDescriptor(key: "dayAsNumber", ascending: true)
         let sortByChoreNumber = NSSortDescriptor(key: "choreNumber", ascending: true)
         fetchRequest.sortDescriptors = [sortByDayNumber, sortByChoreNumber]
-            
+
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: "dayAsNumber", cacheName: nil)
         fetchedResultsController.delegate = self
-            
+
         do {
             try fetchedResultsController.performFetch()
-        }catch{
+        } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
     }
-    
-//    MARK: viewWillAppear
+
+// MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
@@ -66,7 +65,7 @@ class ChoresViewController: UIViewController{
         imageLogo.image = AppDelegate().kkidLogo
         imageBackground.image = AppDelegate().kkidBackground
         buttonAdd.isEnabled = LoggedInUser.user!.isAdmin
-        
+
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
             tableView.reloadRows(at: [indexPath], with: .fade)
@@ -74,55 +73,54 @@ class ChoresViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         verifyAuthenticated()
     }
-    
-//    MARK: viewDidAppear
+
+// MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getChores()
-        
+
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.getChores), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing Chore List")
         refreshControl.endRefreshing()
     }
 
-    
-//    MARK: viewDidDisappear
+// MARK: viewDidDisappear
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         reachable = nil
         NotificationCenter.default.removeObserver(self)
         fetchedResultsController = nil
     }
-    
-//    MARK: verifyAuthenticated
-    @objc func verifyAuthenticated(){
+
+// MARK: verifyAuthenticated
+    @objc func verifyAuthenticated() {
         KKidClient.verifyIsAuthenticated(self)
     }
-    
-//    MARK: getChores
+
+// MARK: getChores
     @objc func getChores() {
-        KKidClient.getChores { (success, error) in
+        KKidClient.getChores { (success, _) in
             Logger.log(.success, "getChores completed")
             self.refreshControl.endRefreshing()
             self.tableView.reloadData()
         }
     }
-    
-//    MARK: addChore
-    @IBAction func addChore(){
+
+// MARK: addChore
+    @IBAction func addChore() {
         performSegue(withIdentifier: "segueAddChore", sender: self)
     }
-    
-//    MARK: prepare for segue
+
+// MARK: prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueMarkChore"{
+        if segue.identifier == "segueMarkChore" {
             let viewController = segue.destination as! MarkChoreViewController
-            if let indexPath = tableView.indexPathForSelectedRow{
+            if let indexPath = tableView.indexPathForSelectedRow {
                 viewController.chore = fetchedResultsController.object(at: indexPath)
                 viewController.selectedUser = selectedUser!
             }
-        }else if segue.identifier == "segueAddChore"{
+        } else if segue.identifier == "segueAddChore" {
             let viewController = segue.destination as! AddChoreViewController
             viewController.selectedUser = selectedUser
         }
@@ -131,17 +129,17 @@ class ChoresViewController: UIViewController{
 
    // MARK: - Table View Delegates
 
-extension ChoresViewController: UITableViewDataSource, UITableViewDelegate{
+extension ChoresViewController: UITableViewDataSource, UITableViewDelegate {
 
-//    MARK: numberOfSections
+// MARK: numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-    
-//    MARK: tableView- section headers
+
+// MARK: tableView- section headers
     func tableView(_ tableView: UITableView, titleForHeaderInSection
                                 section: Int) -> String? {
-        if let sectionName = fetchedResultsController.sections?[section].name{
+        if let sectionName = fetchedResultsController.sections?[section].name {
             switch sectionName {
             case "1":
                 return "Sunday"
@@ -160,88 +158,87 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate{
             default:
                 return "Weekly"
             }
-        }else{
+        } else {
             return "Weekly"
         }
     }
 
-//    MARK: tableView: numberOfRowsInSection
+// MARK: tableView: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
 
-//    MARK: tableView: cellForRowAt
+// MARK: tableView: cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let aChore = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        if aChore.optional{
+
+        if aChore.optional {
             cell.textLabel?.text = "\(aChore.choreName ?? "") (\(aChore.day ?? "") Optional)"
-        }else{
+        } else {
             cell.textLabel?.text = "\(aChore.choreName ?? "") (\(aChore.day ?? ""))"
         }
-        
-        if aChore.extraAllowance > 0.00{
+
+        if aChore.extraAllowance > 0.00 {
             cell.detailTextLabel?.text = "[+$\(aChore.extraAllowance)] \(aChore.choreDescription ?? "")"
-        }else{
+        } else {
             cell.detailTextLabel?.text = aChore.choreDescription ?? ""
         }
         cell.imageView?.image = ChoreStatus.init(rawValue: aChore.status!)?.image
         let itemSize = CGSize.init(width: 35, height: 25)
-        UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
+        UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale)
         let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
         cell.imageView?.image!.draw(in: imageRect)
-        cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext()!;
-        UIGraphicsEndImageContext();
+        cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
         return cell
     }
-    
-//    MARK: tableView: editingStyle
+
+// MARK: tableView: editingStyle
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+
 //        If user is an admin then delete else show error
-        if LoggedInUser.user!.isAdmin && editingStyle == .delete{
+        if LoggedInUser.user!.isAdmin && editingStyle == .delete {
             let chore = fetchedResultsController.object(at: indexPath)
-            KKidClient.deleteChore(chore.id) { (success, error) in
-                if success{
+            KKidClient.deleteChore(chore.id) { (success, _) in
+                if success {
                     DataController.shared.viewContext.delete(chore)
                     try? DataController.shared.viewContext.save()
-                }else{
+                } else {
                     ShowAlert.banner(title: "Delete Error", message: "Unable to delete chore. Please try again.")
                 }
             }
-        }else{
+        } else {
             ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can delete chores!")
         }
     }
-    
-//    MARK: tableView: didSelectRowAt
+
+// MARK: tableView: didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let aChore = fetchedResultsController.object(at: indexPath)
-        
+
 //        Block stolen chores unless user is an Admin. Else segue to mark chore unless chore is actually a calendar notation
-        if !LoggedInUser.user!.isAdmin && aChore.stolenBy != nil && aChore.stolenBy! != ""{
+        if !LoggedInUser.user!.isAdmin && aChore.stolenBy != nil && aChore.stolenBy! != "" {
             ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can edit an optional or stolen chore after it has already been marked off!")
-        }else if !aChore.isCalendar{
+        } else if !aChore.isCalendar {
             performSegue(withIdentifier: "segueMarkChore", sender: self)
         }
     }
 
 }
 
-
 // MARK: - NSFetchedResultsControllerDelegate
 
-extension ChoresViewController:NSFetchedResultsControllerDelegate {
-    
+extension ChoresViewController: NSFetchedResultsControllerDelegate {
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -259,7 +256,7 @@ extension ChoresViewController:NSFetchedResultsControllerDelegate {
             break
         }
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         let indexSet = IndexSet(integer: sectionIndex)
         switch type {
@@ -271,5 +268,5 @@ extension ChoresViewController:NSFetchedResultsControllerDelegate {
             break
         }
     }
-    
+
 }

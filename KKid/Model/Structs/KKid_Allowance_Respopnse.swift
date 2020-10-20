@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-struct KKid_AllowanceResponse: Codable{
+struct KKid_AllowanceResponse: Codable {
     var status: Int
     let id: Int
     var balance: Float
@@ -17,7 +16,7 @@ struct KKid_AllowanceResponse: Codable{
     var allowanceTransaction: [KKid_AllowanceTransaction]?
 }
 
-struct KKid_AllowanceTransaction: Codable{
+struct KKid_AllowanceTransaction: Codable {
     let transactionId: Int
     let userId: Int
     let transactionType: String

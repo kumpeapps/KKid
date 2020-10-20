@@ -11,15 +11,15 @@ import CoreData
 
 class DataController {
 
-    let persistentContainer:NSPersistentContainer
+    let persistentContainer: NSPersistentContainer
 
-    var viewContext:NSManagedObjectContext {
+    var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
 
-    let backgroundContext:NSManagedObjectContext!
+    let backgroundContext: NSManagedObjectContext!
 
-    init(modelName:String) {
+    init(modelName: String) {
         persistentContainer = NSPersistentContainer(name: modelName)
 
         backgroundContext = persistentContainer.newBackgroundContext()
@@ -34,7 +34,7 @@ class DataController {
     }
 
     func load(completion: (() -> Void)? = nil) {
-        persistentContainer.loadPersistentStores { storeDescription, error in
+        persistentContainer.loadPersistentStores { _, error in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
             }
@@ -47,21 +47,21 @@ class DataController {
     static let shared = DataController(modelName: "KKid")
 }
 
-extension DataController{
-    
-//    MARK: Auto Save View Context
-    func autoSaveViewContext(interval:TimeInterval = 30){
+extension DataController {
+
+// MARK: Auto Save View Context
+    func autoSaveViewContext(interval: TimeInterval = 30) {
         Logger.log(.action, "autosaving")
         guard interval > 0 else {
             Logger.log(.error, "cannot set negative autosave inteval")
             return
         }
-        if viewContext.hasChanges{
+        if viewContext.hasChanges {
             try? viewContext.save()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
             self.autoSaveViewContext(interval: interval)
             }
     }
-    
+
 }

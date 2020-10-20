@@ -13,41 +13,41 @@ import Alamofire_SwiftyJSON
 
 extension KKidClient {
 
-//        MARK: - DELETE Methods
-        
-//        MARK: deleteChore
-        class func deleteChore(_ idChoreList: Int16, completion: @escaping (Bool, String?) -> Void){
+// MARK: - DELETE Methods
+
+// MARK: deleteChore
+        class func deleteChore(_ idChoreList: Int16, completion: @escaping (Bool, String?) -> Void) {
             let parameters = [
-                "apiUsername":KKidClient.username,
-                "apiPassword":KKidClient.apiPassword,
-                "apiKey":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
-                "idChoreList":"\(idChoreList)"
+                "apiUsername": KKidClient.username,
+                "apiPassword": KKidClient.apiPassword,
+                "apiKey": "\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
+                "idChoreList": "\(idChoreList)"
             ]
             let module = "chorelist"
             apiDelete(silent: true, module: module, parameters: parameters, blockInterface: false) { (success, error) in
-                completion(success,error)
+                completion(success, error)
             }
         }
-    
-//        MARK: deleteUser
-    class func deleteUser(_ user: User, completion: @escaping (Bool, String?) -> Void){
+
+// MARK: deleteUser
+    class func deleteUser(_ user: User, completion: @escaping (Bool, String?) -> Void) {
         let parameters = [
-            "apiUsername":KKidClient.username,
-            "apiPassword":KKidClient.apiPassword,
-            "apiKey":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
-            "userID":"\(user.userID)"
+            "apiUsername": KKidClient.username,
+            "apiPassword": KKidClient.apiPassword,
+            "apiKey": "\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
+            "userID": "\(user.userID)"
         ]
         let module = "userlist"
         apiDelete(silent: false, module: module, parameters: parameters, blockInterface: false) { (success, error) in
-            completion(success,error)
+            completion(success, error)
         }
     }
-        
-//        MARK: apiDelete
-        class func apiDelete(silent: Bool = false, module: String, parameters: [String:Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void){
+
+// MARK: apiDelete
+        class func apiDelete(silent: Bool = false, module: String, parameters: [String: Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void) {
             apiMethod(silent: silent, method: .delete, module: module, parameters: parameters, blockInterface: blockInterface) { (success, error) in
-                completion(success,error)
+                completion(success, error)
             }
         }
-    
+
 }

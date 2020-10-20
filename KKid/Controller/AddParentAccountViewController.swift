@@ -10,15 +10,15 @@ import UIKit
 import SwiftyFORM
 import KumpeHelpers
 
-class AddParentAccountViewController: FormViewController{
-    
-//    MARK: loadView
+class AddParentAccountViewController: FormViewController {
+
+// MARK: loadView
     override func loadView() {
         super.loadView()
         installSubmitButton()
     }
-    
-//    MARK: populate
+
+// MARK: populate
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Add User"
         builder.toolbarMode = .simple
@@ -31,7 +31,7 @@ class AddParentAccountViewController: FormViewController{
         builder += footer
     }
 
-//    MARK: username Field
+// MARK: username Field
     lazy var username: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Username")
         instance.keyboardType(.asciiCapable)
@@ -39,8 +39,8 @@ class AddParentAccountViewController: FormViewController{
         instance.required("Username is required")
         return instance
     }()
-    
-//    MARK: email Field
+
+// MARK: email Field
     lazy var email: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Email")
         instance.keyboardType(.emailAddress)
@@ -48,8 +48,8 @@ class AddParentAccountViewController: FormViewController{
         instance.required("Email field is required")
         return instance
     }()
-    
-//    MARK: password Field
+
+// MARK: password Field
     lazy var password: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Password")
         instance.submitValidate(CountSpecification.between(7, 32), message: "Password must be between 7 and 32 characters")
@@ -59,24 +59,24 @@ class AddParentAccountViewController: FormViewController{
         instance.required("Password is required")
         return instance
     }()
-    
-//    MARK: firstName Field
+
+// MARK: firstName Field
     lazy var firstName: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("First Name")
         instance.keyboardType(.asciiCapable)
         instance.required("First Name is Required")
         return instance
     }()
-    
-//    MARK: lastName Field
+
+// MARK: lastName Field
     lazy var lastName: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Last Name")
         instance.keyboardType(.asciiCapable)
         instance.required("Last Name is Required")
         return instance
     }()
-    
-//    MARK: footer
+
+// MARK: footer
     lazy var footer: SectionFooterViewFormItem = {
         let footerView = SectionFooterViewFormItem()
         footerView.viewBlock = {
@@ -84,39 +84,39 @@ class AddParentAccountViewController: FormViewController{
         }
         return footerView
     }()
-    
-//    MARK: submitForm
-    func submitForm(){
+
+// MARK: submitForm
+    func submitForm() {
         KKidClient.addMaster(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, password: password.value) { (success, error) in
-            if success{
+            if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)
                     ShowAlert.statusLine(theme: .success, title: "Home Account Added", message: "Master/Home Account Added, You may now login.", seconds: 10, dim: false)
                 }
-            }else{
+            } else {
                 ShowAlert.banner(title: "Error", message: error ?? "An Unknown Error Occurred")
             }
         }
     }
-    
+
 }
 
-//MARK: - Initiate Submit Button
-extension AddParentAccountViewController{
-    
-//    MARK: installSubmitButton
+// MARK: - Initiate Submit Button
+extension AddParentAccountViewController {
+
+// MARK: installSubmitButton
     public func installSubmitButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(submitAction(_:)))
     }
-    
-//    MARK: submitAction
+
+// MARK: submitAction
     @objc public func submitAction(_ sender: AnyObject?) {
         formBuilder.validateAndUpdateUI()
         let result = formBuilder.validate()
         showSubmitResult(result)
     }
-    
-//    MARK: showSubmitResult
+
+// MARK: showSubmitResult
     public func showSubmitResult(_ result: FormBuilder.FormValidateResult) {
         switch result {
         case .valid:

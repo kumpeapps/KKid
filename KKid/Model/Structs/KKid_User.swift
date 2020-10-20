@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct KKid_User: Codable{
-    
+struct KKid_User: Codable {
+
     let userID: Int
     var masterID: Int
     var homeID: Int
@@ -29,5 +29,5 @@ struct KKid_User: Codable{
     var enableBehaviorChart: Bool
     var weeklyAllowance: Int
     var emoji: String
-    
+
 }
