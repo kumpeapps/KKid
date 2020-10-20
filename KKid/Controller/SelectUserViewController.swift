@@ -6,8 +6,11 @@
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import CoreData
+import KumpeHelpers
+import Haptico
 
 class SelectUserViewController: UIViewController {
 
@@ -240,6 +243,11 @@ extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate{
     func deleteUser(indexPath: IndexPath){
         if LoggedInUser.user!.isAdmin{
             let deleteUser = fetchedResultsController.object(at: indexPath)
+            
+            guard deleteUser != LoggedInUser.selectedUser else{
+                ShowAlert.banner(title: "Delete Error", message: "You can not delete the selected user. Please select yourself or another user before deleting this user.")
+                return
+            }
             
             if let sections = fetchedResultsController.sections?.count, let section0Rows = fetchedResultsController.sections?[0].numberOfObjects, (sections == 1 && section0Rows == 1) || !deleteUser.isMaster{
             

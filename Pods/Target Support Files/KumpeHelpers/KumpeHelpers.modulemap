@@ -1,0 +1,6 @@
+framework module KumpeHelpers {
+  umbrella header "KumpeHelpers-umbrella.h"
+
+  export *
+  module * { export * }
+}

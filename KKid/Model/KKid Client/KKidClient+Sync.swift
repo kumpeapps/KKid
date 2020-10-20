@@ -12,6 +12,7 @@ import Alamofire
 import Alamofire_SwiftyJSON
 import Sync
 import CoreData
+import KumpeHelpers
 
 extension KKidClient{
     

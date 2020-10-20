@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import KumpeHelpers
+import Haptico
 
 class MarkChoreViewController: UIViewController{
     
@@ -74,6 +76,9 @@ class MarkChoreViewController: UIViewController{
                     backgroundChore.status = status
                     try? DataController.shared.backgroundContext.save()
                 }
+                Haptico.shared().generate(.success)
+            }else{
+                ShowAlert.banner(title: "Error", message: "An unknown error occurred while trying to mark your chore status.")
             }
             
         }

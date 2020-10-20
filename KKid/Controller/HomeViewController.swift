@@ -8,12 +8,16 @@
 
 import UIKit
 import CollectionViewCenteredFlowLayout
+import GoogleMobileAds
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
 //    MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
+    
+//    MARK: Google Add Banner
+    @IBOutlet var bannerView: GADBannerView!
     
 //    MARK: Collection View
     @IBOutlet weak var collectionView: UICollectionView!
@@ -24,7 +28,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //    MARK: Parameters
     var modules:[KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
     
-    
+//    MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -34,6 +38,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.reloadData()
     }
     
+//    MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -62,6 +67,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 LoggedInUser.setLoggedInUser()
                 buildModules()
             }
+        }
+        
+        if !LoggedInUser.user!.enableNoAds{
+            loadGoogleAdMob()
         }
     }
     
@@ -168,4 +177,22 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let screenWidth = 100
         return CGSize(width: screenWidth, height: screenWidth)
     }
+}
+
+
+//MARK: - Google AdBanner
+extension HomeViewController: GADBannerViewDelegate{
+    func loadGoogleAdMob(){
+        bannerView.adUnitID = "ca-app-pub-8070283866991781/9653639950"
+        
+        #if DEBUG
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        #endif
+        
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+          }
+
+          
+
 }

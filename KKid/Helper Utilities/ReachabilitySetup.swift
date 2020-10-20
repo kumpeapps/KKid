@@ -8,6 +8,7 @@
 
 import UIKit
 import Reachability
+import KumpeHelpers
 
 class ReachabilitySetup{
     

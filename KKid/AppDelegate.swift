@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,12 +23,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         checkIfFirstLaunch()
         
+//        Configure Google AdMob
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers =
+            [ "a29d3456cf840382ad3824c1e1115b74","\(kGADSimulatorID)" ]
+        GADMobileAds.sharedInstance().requestConfiguration.tag(forChildDirectedTreatment: true)
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
 //        Load Data Controller
         DataController.shared.load()
         
 //        Initiate DataController Autosave
         DataController.shared.autoSaveViewContext()
-        
 //        Get App Version and set it's value in KKid Client
         if let nsObject: AnyObject = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject?{
             KKidClient.appVersion = "\(KKidClient.appVersion) \(nsObject as! String)"

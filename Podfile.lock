@@ -4,6 +4,47 @@ PODS:
     - Alamofire (~> 4.5)
     - SwiftyJSON (~> 4.0.0)
   - CollectionViewCenteredFlowLayout (1.0.1)
+  - Google-Mobile-Ads-SDK (7.66.0):
+    - GoogleAppMeasurement (~> 6.0)
+    - GoogleUserMessagingPlatform (~> 1.1)
+  - GoogleAppMeasurement (6.9.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
+    - nanopb (~> 1.30906.0)
+  - GoogleUserMessagingPlatform (1.2.0)
+  - GoogleUtilities/AppDelegateSwizzler (6.7.2):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.7.2):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (6.7.2):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.7.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.7.2):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.7.2)"
+  - GoogleUtilities/Reachability (6.7.2):
+    - GoogleUtilities/Logger
+  - Haptico (1.1.0)
+  - KumpeHelpers (1.0.9):
+    - Alamofire-SwiftyJSON
+    - CollectionViewCenteredFlowLayout
+    - Haptico
+    - ReachabilitySwift
+    - SwiftMessages
+    - Sync
+  - nanopb (1.30906.0):
+    - nanopb/decode (= 1.30906.0)
+    - nanopb/encode (= 1.30906.0)
+  - nanopb/decode (1.30906.0)
+  - nanopb/encode (1.30906.0)
+  - PromisesObjC (1.2.11)
   - ReachabilitySwift (5.0.0)
   - Smile (2.0.0)
   - SwiftMessages (8.0.2):
@@ -11,12 +52,15 @@ PODS:
   - SwiftMessages/App (8.0.2)
   - SwiftyFORM (1.8.4)
   - SwiftyJSON (4.0.0)
-  - Sync (6.0.3)
+  - Sync (6.5.0)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire-SwiftyJSON
   - CollectionViewCenteredFlowLayout
+  - Google-Mobile-Ads-SDK
+  - Haptico (from `https://github.com/iSapozhnik/Haptico.git`, branch `master`)
+  - KumpeHelpers
   - ReachabilitySwift
   - Smile
   - SwiftMessages
@@ -29,6 +73,13 @@ SPEC REPOS:
     - Alamofire
     - Alamofire-SwiftyJSON
     - CollectionViewCenteredFlowLayout
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleUserMessagingPlatform
+    - GoogleUtilities
+    - KumpeHelpers
+    - nanopb
+    - PromisesObjC
     - ReachabilitySwift
     - Smile
     - SwiftMessages
@@ -37,18 +88,36 @@ SPEC REPOS:
     - Sync
     - Toast-Swift
 
+EXTERNAL SOURCES:
+  Haptico:
+    :branch: master
+    :git: https://github.com/iSapozhnik/Haptico.git
+
+CHECKOUT OPTIONS:
+  Haptico:
+    :commit: b6c52d24f5f7a78434bd04aca57f9383114b9523
+    :git: https://github.com/iSapozhnik/Haptico.git
+
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
+  Google-Mobile-Ads-SDK: 7d7074359c040f5add4e0963bf860e14690060d0
+  GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
+  GoogleUserMessagingPlatform: c85530d930ba509583aa5a6d50a10aca22cf8502
+  GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
+  Haptico: f3b9e36957e7ec5a34721c65a0375454a0df7c7b
+  KumpeHelpers: 1aee39f99e1719a60600a38c8654461c804d6d6e
+  nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Smile: 21ff6c48e06ecfcee605cca32aedd74d5810e34a
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   SwiftyFORM: ce2dc9afb5b4488715112108a114c6d26e0b2836
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
-  Sync: 40735880f9c7dfb222fa48078bea320a90276d62
+  Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: a2fbeb114570beb6a7f71df897c8dd6964f62404
+PODFILE CHECKSUM: f4ad41b230c0971c6e9dcec42a6824f2aab084d9
 
 COCOAPODS: 1.9.3

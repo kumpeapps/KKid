@@ -8,6 +8,7 @@
 
 import UIKit
 import Toast_Swift
+import KumpeHelpers
 
 class LoginViewController: UIViewController{
     

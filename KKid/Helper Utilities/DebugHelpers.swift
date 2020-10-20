@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KumpeHelpers
 
 @available(*, deprecated, message: "This function is for debugging and development notes only. Please remove for final build.")
 class DebugHelpers{

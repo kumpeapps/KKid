@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import KumpeHelpers
 
 class ChoresViewController: UIViewController{
     
@@ -77,9 +78,7 @@ class ChoresViewController: UIViewController{
 //    MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserDefaults.standard.value(forKey: "ChoreLastUpdated") == nil || !Calendar.current.isDateInToday(UserDefaults.standard.value(forKey: "ChoreLastUpdated") as! Date){
-            getChores()
-        }
+        getChores()
         
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.getChores), for: .valueChanged)

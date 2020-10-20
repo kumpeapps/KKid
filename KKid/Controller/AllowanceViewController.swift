@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreData
+import KumpeHelpers
 
 class AllowanceViewController: UIViewController, NSFetchedResultsControllerDelegate{
     

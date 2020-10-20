@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyFORM
+import KumpeHelpers
 
 class AddUserViewController: FormViewController{
     

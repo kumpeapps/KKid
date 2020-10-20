@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import Alamofire_SwiftyJSON
+import KumpeHelpers
 
 extension KKidClient{
     

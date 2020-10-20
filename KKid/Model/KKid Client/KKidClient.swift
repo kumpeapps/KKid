@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import Alamofire_SwiftyJSON
 import CoreData
+import KumpeHelpers
 
 class KKidClient {
        

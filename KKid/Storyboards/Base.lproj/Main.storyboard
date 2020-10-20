@@ -599,6 +599,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo2" translatesAutoresizingMaskIntoConstraints="NO" id="LyU-3K-yU3" userLabel="background">
                                 <rect key="frame" x="0.0" y="88" width="414" height="853"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRQ-bg-9hr" customClass="GADBannerView">
+                                <rect key="frame" x="47" y="812" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RHU-r3-1EK"/>
+                                    <constraint firstAttribute="width" constant="320" id="cA5-iU-6NC"/>
+                                </constraints>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KKid_Toolbar" translatesAutoresizingMaskIntoConstraints="NO" id="klb-er-6Mq">
                                 <rect key="frame" x="87" y="88" width="240" height="128"/>
                                 <constraints>
@@ -607,7 +615,7 @@
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vhh-iE-cLb">
-                                <rect key="frame" x="20" y="216" width="374" height="646"/>
+                                <rect key="frame" x="20" y="216" width="374" height="586"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IWo-dH-QiU">
@@ -654,6 +662,7 @@
                         <viewLayoutGuide key="safeArea" id="npD-yU-Ymk"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WRQ-bg-9hr" firstAttribute="centerX" secondItem="npD-yU-Ymk" secondAttribute="centerX" id="JtM-7V-Iu7"/>
                             <constraint firstItem="npD-yU-Ymk" firstAttribute="trailing" secondItem="vhh-iE-cLb" secondAttribute="trailing" constant="20" id="QD0-FA-lEp"/>
                             <constraint firstItem="klb-er-6Mq" firstAttribute="top" secondItem="npD-yU-Ymk" secondAttribute="top" id="TfO-Fq-yle"/>
                             <constraint firstItem="LyU-3K-yU3" firstAttribute="top" secondItem="npD-yU-Ymk" secondAttribute="top" id="V2O-EK-wFi"/>
@@ -663,13 +672,15 @@
                             <constraint firstItem="npD-yU-Ymk" firstAttribute="trailing" secondItem="LyU-3K-yU3" secondAttribute="trailing" id="h98-7t-99Z"/>
                             <constraint firstItem="LyU-3K-yU3" firstAttribute="bottom" secondItem="npD-yU-Ymk" secondAttribute="bottom" constant="79" id="i9u-1q-WbQ"/>
                             <constraint firstItem="LyU-3K-yU3" firstAttribute="leading" secondItem="npD-yU-Ymk" secondAttribute="leading" id="lKs-Xl-lmx"/>
-                            <constraint firstItem="npD-yU-Ymk" firstAttribute="bottom" secondItem="vhh-iE-cLb" secondAttribute="bottom" id="rVE-yy-Tn7"/>
+                            <constraint firstItem="npD-yU-Ymk" firstAttribute="bottom" secondItem="WRQ-bg-9hr" secondAttribute="bottom" id="qQI-RJ-Zr4"/>
+                            <constraint firstItem="npD-yU-Ymk" firstAttribute="bottom" secondItem="vhh-iE-cLb" secondAttribute="bottom" constant="60" id="rVE-yy-Tn7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="No User Selected" id="kPu-MX-hr5">
                         <barButtonItem key="backBarButtonItem" title="Home" id="yrr-Zy-qne"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="bannerView" destination="WRQ-bg-9hr" id="2Mu-rn-2VT"/>
                         <outlet property="collectionView" destination="vhh-iE-cLb" id="ocX-YW-GPo"/>
                         <outlet property="imageBackground" destination="LyU-3K-yU3" id="hFN-vs-CC8"/>
                         <outlet property="imageLogo" destination="klb-er-6Mq" id="LyQ-d8-PdJ"/>
@@ -746,6 +757,9 @@
         <image name="photo2" width="259" height="194"/>
         <image name="red_x" width="85" height="115"/>
         <image name="select_user" width="80" height="80"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

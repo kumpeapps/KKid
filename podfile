@@ -14,4 +14,7 @@ target 'KKid' do
 #	pod 'SwipeCellKit'
 	pod 'Smile'
 	pod 'CollectionViewCenteredFlowLayout'
+	pod 'Google-Mobile-Ads-SDK'
+	pod 'KumpeHelpers'
+	pod 'Haptico', :git => 'https://github.com/iSapozhnik/Haptico.git', :branch => 'master'
 end
