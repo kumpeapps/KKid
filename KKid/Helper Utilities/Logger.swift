@@ -22,22 +22,22 @@ class Logger {
 
  static func log(_ logType: LogType, _ message: Any) {
         switch logType {
-            case LogType.error:
-                print("\n📕 Error: \(message)\n")
-            case LogType.warning:
-                print("\n📙 Warning: \(message)\n")
-            case LogType.codeWarning:
-                print("\n⚠️ Code Warning: \(message)\n")
-            case LogType.success:
-                print("\n📗 Success: \(message)\n")
-            case LogType.action:
-                print("\n📘 Action: \(message)\n")
-            case LogType.canceled:
-                print("\n📓 Cancelled: \(message)\n")
-            case LogType.codeError:
-                print("\n🛑 Code Error: \(message)\n")
-            case LogType.authentication:
-                print("\n🔐 Authentication: \(message)\n")
+        case LogType.error:
+            print("\n📕 Error: \(message)\n")
+        case LogType.warning:
+            print("\n📙 Warning: \(message)\n")
+        case LogType.codeWarning:
+            print("\n⚠️ Code Warning: \(message)\n")
+        case LogType.success:
+            print("\n📗 Success: \(message)\n")
+        case LogType.action:
+            print("\n📘 Action: \(message)\n")
+        case LogType.canceled:
+            print("\n📓 Cancelled: \(message)\n")
+        case LogType.codeError:
+            print("\n🛑 Code Error: \(message)\n")
+        case LogType.authentication:
+            print("\n🔐 Authentication: \(message)\n")
         }
     }
 

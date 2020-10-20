@@ -63,9 +63,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if UserDefaults.standard.value(forKey: "UserLastUpdated") == nil || !Calendar.current.isDateInToday(UserDefaults.standard.value(forKey: "UserLastUpdated") as! Date) {
-            KKidClient.getUsers { [self] (_, _) in
+            KKidClient.getUsers { (_, _) in
                 LoggedInUser.setLoggedInUser()
-                buildModules()
+                self.buildModules()
             }
         }
 

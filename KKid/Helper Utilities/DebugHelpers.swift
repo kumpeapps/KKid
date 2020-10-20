@@ -32,6 +32,8 @@ class DebugHelpers {
 // MARK: notImplementedBanner
     @available(*, deprecated, message: "Warning: This is a TODO Item")
     static func notImplementedBanner() {
-        ShowAlert.banner(theme: .warning, title: "Not Implemented", message: "This feature is not yet implemented.")
+        let title = "Not Implemented"
+        let message = "This feature is not yet implemented."
+        ShowAlert.banner(theme: .warning, title: title, message: message)
     }
 }

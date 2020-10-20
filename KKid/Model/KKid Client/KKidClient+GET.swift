@@ -25,8 +25,7 @@ extension KKidClient {
             ]
             let module = "authentication"
 
-            taskForGet(module: module, responseType: KKid_Auth_Response.self, parameters: parameters) {
-                (response, error) in
+            taskForGet(module: module, responseType: KKid_Auth_Response.self, parameters: parameters) { (response, error) in
                 completion(response, error)
             }
         }
