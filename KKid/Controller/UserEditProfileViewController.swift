@@ -113,12 +113,11 @@ class UserEditProfileViewController: FormViewController {
 
 // MARK: submitForm
     func submitForm() {
-        
-        guard Smile.isEmoji(character: emoji.value) else {
+        guard Smile.isEmoji(emojiRule: .isSingleEmoji, string: emoji.value) else {
             ShowAlert.banner(title: "Validation Error", message: "Emoji field must be a single emoji")
             return
         }
-        
+
         KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value) { (success, error) in
             if success {
                 dispatchOnMain {
