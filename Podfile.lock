@@ -32,7 +32,7 @@ PODS:
   - GoogleUtilities/Reachability (6.7.2):
     - GoogleUtilities/Logger
   - Haptico (1.1.0)
-  - KumpeHelpers (1.0.9):
+  - KumpeHelpers (1.0.11):
     - Alamofire-SwiftyJSON
     - CollectionViewCenteredFlowLayout
     - Haptico
@@ -46,7 +46,7 @@ PODS:
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.11)
   - ReachabilitySwift (5.0.0)
-  - Smile (2.0.0)
+  - Smile (2.0.2)
   - SwiftMessages (8.0.2):
     - SwiftMessages/App (= 8.0.2)
   - SwiftMessages/App (8.0.2)
@@ -62,7 +62,7 @@ DEPENDENCIES:
   - Haptico (from `https://github.com/iSapozhnik/Haptico.git`, branch `master`)
   - KumpeHelpers
   - ReachabilitySwift
-  - Smile
+  - Smile (from `https://github.com/justinkumpe/Smile.git`, branch `master`)
   - SwiftMessages
   - SwiftyFORM
   - Sync
@@ -81,7 +81,6 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - ReachabilitySwift
-    - Smile
     - SwiftMessages
     - SwiftyFORM
     - SwiftyJSON
@@ -92,11 +91,17 @@ EXTERNAL SOURCES:
   Haptico:
     :branch: master
     :git: https://github.com/iSapozhnik/Haptico.git
+  Smile:
+    :branch: master
+    :git: https://github.com/justinkumpe/Smile.git
 
 CHECKOUT OPTIONS:
   Haptico:
     :commit: b6c52d24f5f7a78434bd04aca57f9383114b9523
     :git: https://github.com/iSapozhnik/Haptico.git
+  Smile:
+    :commit: 890fe589853129241d2a0195ed21c28765212365
+    :git: https://github.com/justinkumpe/Smile.git
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -107,17 +112,17 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: c85530d930ba509583aa5a6d50a10aca22cf8502
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   Haptico: f3b9e36957e7ec5a34721c65a0375454a0df7c7b
-  KumpeHelpers: 1aee39f99e1719a60600a38c8654461c804d6d6e
+  KumpeHelpers: 8d9466aee8e0f153c91081a8f7cf34d3ebc4fa4e
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  Smile: 21ff6c48e06ecfcee605cca32aedd74d5810e34a
+  Smile: 32ad1505519317b112db15741163a660827aea5c
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   SwiftyFORM: ce2dc9afb5b4488715112108a114c6d26e0b2836
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 5219d335f0ff856b993bb2877e3a6381acc40a0e
+PODFILE CHECKSUM: d90ff38f949247b45094c40c4d8d437a69cc4345
 
 COCOAPODS: 1.9.3

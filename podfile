@@ -9,7 +9,7 @@ target 'KKid' do
 	pod 'ReachabilitySwift'
 	pod 'SwiftMessages'
 	pod 'Sync'
-	pod 'Smile'
+	pod 'Smile', :git => 'https://github.com/justinkumpe/Smile.git', :branch => 'master'
 	pod 'CollectionViewCenteredFlowLayout'
 	pod 'Google-Mobile-Ads-SDK'
 	pod 'KumpeHelpers'
