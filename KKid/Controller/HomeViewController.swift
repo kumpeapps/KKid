@@ -6,11 +6,15 @@
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
 
+// @todo: Enhancement- Add What's New Page
+// @body: Add what's new page to modules and have it launch on app update
+
 import UIKit
 import CollectionViewCenteredFlowLayout
 import GoogleMobileAds
+import PrivacyKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
 
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
@@ -72,6 +76,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if !LoggedInUser.user!.enableNoAds {
             loadGoogleAdMob()
         }
+        self.requirePrivacy()
     }
 
 // MARK: viewWillDisappear

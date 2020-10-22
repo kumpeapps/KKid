@@ -113,7 +113,7 @@ class UserEditProfileViewController: FormViewController {
 
 // MARK: submitForm
     func submitForm() {
-        guard Smile.isEmoji(emojiRule: .isSingleEmoji, string: emoji.value) else {
+        guard Smile.isSingleEmoji(emoji.value) else {
             ShowAlert.banner(title: "Validation Error", message: "Emoji field must be a single emoji")
             return
         }

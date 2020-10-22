@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */; };
 		0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */; };
 		0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311184251FE3F8004BB1E4 /* API_Credentials.swift */; };
 		0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27D250D9E660002D0AD /* Notifications.swift */; };
 		0F37E280250DA5800002D0AD /* String+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27F250DA5800002D0AD /* String+Image.swift */; };
 		0F37E282250DAF4C0002D0AD /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E281250DAF4C0002D0AD /* LoggedInUser.swift */; };
-		0F48330B25104C9A00B92ADB /* Chore+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48330A25104C9A00B92ADB /* Chore+Extensions.swift */; };
 		0F48330D25105ED700B92ADB /* ChoreStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48330C25105ED700B92ADB /* ChoreStatus.swift */; };
 		0F48331025117C5200B92ADB /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48330F25117C5200B92ADB /* Days.swift */; };
 		0F48331225118F2A00B92ADB /* DebugHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48331125118F2A00B92ADB /* DebugHelpers.swift */; };
@@ -64,12 +64,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrivacyKitStyle.swift; sourceTree = "<group>"; };
 		0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigLib.swift; sourceTree = "<group>"; };
 		0F311184251FE3F8004BB1E4 /* API_Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Credentials.swift; sourceTree = "<group>"; };
 		0F37E27D250D9E660002D0AD /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0F37E27F250DA5800002D0AD /* String+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Image.swift"; sourceTree = "<group>"; };
 		0F37E281250DAF4C0002D0AD /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
-		0F48330A25104C9A00B92ADB /* Chore+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chore+Extensions.swift"; sourceTree = "<group>"; };
 		0F48330C25105ED700B92ADB /* ChoreStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreStatus.swift; sourceTree = "<group>"; };
 		0F48330F25117C5200B92ADB /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
 		0F48331125118F2A00B92ADB /* DebugHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugHelpers.swift; sourceTree = "<group>"; };
@@ -186,6 +186,7 @@
 			children = (
 				0FB98CF624FFB52000143A6A /* UIImage+Color.swift */,
 				0F534321252BFF4C00A5275D /* ModuleCollectionViewCell.swift */,
+				0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,7 +200,6 @@
 				0F66BE39250859FA00014A94 /* KKid.xcdatamodeld */,
 				0F66BE3C25085D5600014A94 /* DataController.swift */,
 				0F37E281250DAF4C0002D0AD /* LoggedInUser.swift */,
-				0F48330A25104C9A00B92ADB /* Chore+Extensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -466,12 +466,12 @@
 				0F5EC89824F98D0000873868 /* AppDelegate.swift in Sources */,
 				0F5EC8B824F9907800873868 /* KKid_User.swift in Sources */,
 				0F37E280250DA5800002D0AD /* String+Image.swift in Sources */,
-				0F48330B25104C9A00B92ADB /* Chore+Extensions.swift in Sources */,
 				0F66BE382507107B00014A94 /* Logger.swift in Sources */,
 				0FB98CF524FF153200143A6A /* Pathifier.swift in Sources */,
 				0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */,
 				0FDC462C251AC19000A4E3D2 /* UserEditProfileViewController.swift in Sources */,
 				0F66BE4125085EB900014A94 /* ShowAlert.swift in Sources */,
+				0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */,
 				0F72B1452517B13F0099D2D9 /* AllowanceLedgerViewController.swift in Sources */,
 				0F49CBA72513EFC600D98E35 /* AllowanceViewController.swift in Sources */,
 				0FDB64B9251C24DA00427543 /* AddParentAccountViewController.swift in Sources */,
@@ -637,7 +637,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.2.0;
+				CURRENT_PROJECT_VERSION = 2.0.2.3;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,7 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.2.0;
+				CURRENT_PROJECT_VERSION = 2.0.2.3;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

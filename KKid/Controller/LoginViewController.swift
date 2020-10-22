@@ -9,8 +9,9 @@
 import UIKit
 import Toast_Swift
 import KumpeHelpers
+import PrivacyKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, PrivacyKitDelegate {
 
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
@@ -55,17 +56,12 @@ class LoginViewController: UIViewController {
         reachable = ReachabilitySetup()
         subscribeToKeyboardNotifications()
         managedConfig()
-        ShowAlert.choiceMessage(theme: .info, title: "Terms Of Service", message: "By using this app you agree to the terms and conditions listed at http://tos.kumpeapps.com.", buttonTitle: "View Terms") { (success) in
-            if success {
-                launchURL("http://tos.kumpeapps.com")
-            }
-        }
     }
 
 // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        self.requirePrivacy()
     }
 
 // MARK: viewWillDisappear

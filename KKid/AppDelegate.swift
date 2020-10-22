@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import GoogleMobileAds
+import PrivacyKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         checkIfFirstLaunch()
+        
+//        Setup PrivacyKit
+        PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
+        PrivacyKit.shared.setBlurView(isEnabled: true)
+        PrivacyKit.shared.config("https://tos.kumpeapps.com")
+        PrivacyKit.shared.disableDeny()
+        PrivacyKit.shared.setTitle("Terms of Service & Privacy Policy")
+        PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
 
 //        Configure Google AdMob
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers =
