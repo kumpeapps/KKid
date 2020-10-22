@@ -11,6 +11,7 @@ import UIKit
 import PrivacyKit
 
 public struct CustomPrivacyKitStyle: PrivacyKitStyle {
+
     public var backgroundColor: UIColor = UIColor(red: 252/255, green: 202/255, blue: 70/255, alpha: 1)
     public var textColor: UIColor = UIColor(red: 35/255, green: 61/255, blue: 77/255, alpha: 1)
     public var buttonHighlightColor: UIColor = UIColor(red: 97/255, green: 155/255, blue: 138/255, alpha: 1)
@@ -20,6 +21,5 @@ public struct CustomPrivacyKitStyle: PrivacyKitStyle {
 
     public var paragraphFont: UIFont = UIFont.systemFont(ofSize: 14)
     public var highlightFont: UIFont = UIFont.boldSystemFont(ofSize: 14)
-    
 
 }
