@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */; };
 		0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */; };
 		0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311184251FE3F8004BB1E4 /* API_Credentials.swift */; };
 		0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27D250D9E660002D0AD /* Notifications.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrivacyKitStyle.swift; sourceTree = "<group>"; };
 		0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigLib.swift; sourceTree = "<group>"; };
 		0F311184251FE3F8004BB1E4 /* API_Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Credentials.swift; sourceTree = "<group>"; };
 		0F37E27D250D9E660002D0AD /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				0FB98CF624FFB52000143A6A /* UIImage+Color.swift */,
 				0F534321252BFF4C00A5275D /* ModuleCollectionViewCell.swift */,
+				0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */,
 				0FDC462C251AC19000A4E3D2 /* UserEditProfileViewController.swift in Sources */,
 				0F66BE4125085EB900014A94 /* ShowAlert.swift in Sources */,
+				0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */,
 				0F72B1452517B13F0099D2D9 /* AllowanceLedgerViewController.swift in Sources */,
 				0F49CBA72513EFC600D98E35 /* AllowanceViewController.swift in Sources */,
 				0FDB64B9251C24DA00427543 /* AddParentAccountViewController.swift in Sources */,

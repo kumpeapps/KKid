@@ -44,6 +44,7 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - PrivacyKit (1.0.1)
   - PromisesObjC (1.2.11)
   - ReachabilitySwift (5.0.0)
   - Smile (2.1.1)
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - Haptico (from `https://github.com/iSapozhnik/Haptico.git`, branch `master`)
   - KumpeHelpers
+  - PrivacyKit
   - ReachabilitySwift
   - Smile (from `https://github.com/onmyway133/Smile.git`, branch `master`)
   - SwiftMessages
@@ -79,6 +81,7 @@ SPEC REPOS:
     - GoogleUtilities
     - KumpeHelpers
     - nanopb
+    - PrivacyKit
     - PromisesObjC
     - ReachabilitySwift
     - SwiftMessages
@@ -114,6 +117,7 @@ SPEC CHECKSUMS:
   Haptico: f3b9e36957e7ec5a34721c65a0375454a0df7c7b
   KumpeHelpers: 8d9466aee8e0f153c91081a8f7cf34d3ebc4fa4e
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Smile: 50023dc068fb11984df713916970b89e6b705d68
@@ -123,6 +127,6 @@ SPEC CHECKSUMS:
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 804bd9cfe074ac21984d0744c5c7e59c01437656
+PODFILE CHECKSUM: 752926ffbbc24d49d9d8a1c0e52003a05421d3f4
 
 COCOAPODS: 1.9.3

@@ -9,8 +9,9 @@
 import UIKit
 import CollectionViewCenteredFlowLayout
 import GoogleMobileAds
+import PrivacyKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
 
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
