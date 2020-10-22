@@ -46,7 +46,7 @@ PODS:
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.11)
   - ReachabilitySwift (5.0.0)
-  - Smile (2.0.2)
+  - Smile (2.1.1)
   - SwiftMessages (8.0.2):
     - SwiftMessages/App (= 8.0.2)
   - SwiftMessages/App (8.0.2)
@@ -62,7 +62,7 @@ DEPENDENCIES:
   - Haptico (from `https://github.com/iSapozhnik/Haptico.git`, branch `master`)
   - KumpeHelpers
   - ReachabilitySwift
-  - Smile (from `https://github.com/justinkumpe/Smile.git`, branch `master`)
+  - Smile (from `https://github.com/onmyway133/Smile.git`, branch `master`)
   - SwiftMessages
   - SwiftyFORM
   - Sync
@@ -93,15 +93,15 @@ EXTERNAL SOURCES:
     :git: https://github.com/iSapozhnik/Haptico.git
   Smile:
     :branch: master
-    :git: https://github.com/justinkumpe/Smile.git
+    :git: https://github.com/onmyway133/Smile.git
 
 CHECKOUT OPTIONS:
   Haptico:
     :commit: b6c52d24f5f7a78434bd04aca57f9383114b9523
     :git: https://github.com/iSapozhnik/Haptico.git
   Smile:
-    :commit: 890fe589853129241d2a0195ed21c28765212365
-    :git: https://github.com/justinkumpe/Smile.git
+    :commit: eddab5f3928d25deb973ddd39686273e5c5df642
+    :git: https://github.com/onmyway133/Smile.git
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -116,13 +116,13 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  Smile: 32ad1505519317b112db15741163a660827aea5c
+  Smile: 50023dc068fb11984df713916970b89e6b705d68
   SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   SwiftyFORM: ce2dc9afb5b4488715112108a114c6d26e0b2836
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: d90ff38f949247b45094c40c4d8d437a69cc4345
+PODFILE CHECKSUM: 804bd9cfe074ac21984d0744c5c7e59c01437656
 
 COCOAPODS: 1.9.3
