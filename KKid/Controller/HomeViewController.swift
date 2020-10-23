@@ -184,7 +184,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Google AdBanner
 extension HomeViewController: GADBannerViewDelegate {
     func loadGoogleAdMob() {
-        bannerView.adUnitID = "ca-app-pub-8070283866991781/9653639950"
+        bannerView.adUnitID = APICredentials.GoogleAdMob.homeScreenBannerID
 
         #if DEBUG
             bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
