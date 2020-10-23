@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         checkIfFirstLaunch()
-        
+
 //        Setup PrivacyKit
         PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
         PrivacyKit.shared.setBlurView(isEnabled: true)

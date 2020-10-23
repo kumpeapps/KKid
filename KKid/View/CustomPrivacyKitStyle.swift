@@ -20,6 +20,5 @@ public struct CustomPrivacyKitStyle: PrivacyKitStyle {
 
     public var paragraphFont: UIFont = UIFont.systemFont(ofSize: 14)
     public var highlightFont: UIFont = UIFont.boldSystemFont(ofSize: 14)
-    
 
 }
