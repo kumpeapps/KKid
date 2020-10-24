@@ -111,11 +111,11 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 |         Key             |         Type       |             Description                |
 |   -----------------     |  ----------------- |          -----------------             |
-| disableNewParentAccount |	        Bool       | Disables the New Parent Account button |
-|  disableResetPassword   |         Bool       |   Disables the Forgot Password button  |
-|       username          |        String	   |     Pre-Populates the username field   |
-|     lockUsername        |         Bool       |   Disables editing the username field  |
-|       password          |        String      |     Pre-Populates the password field   |
+| disableNewParentAccount | Bool               | Disables the New Parent Account button |
+| disableResetPassword    | Bool               | Disables the Forgot Password button    |
+| username                | String	           | Pre-Populates the username field       |
+| lockUsername            | Bool               | Disables editing the username field    |
+| password                | String             | Pre-Populates the password field       |
 
 ## Future Feature List
 
