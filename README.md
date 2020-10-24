@@ -9,9 +9,9 @@
 KKid is an app for parents and their children to keep up with chores and allowance. With this app parents can create child accounts and add chores to their profile. Kids can then login and see their chores and mark them off each day. By turning on the allowance feature parents can add/subtract money from the kid's allowance account (this is a virtual "account" to show the kids how much allowance they have, no money is actually exchanged within the KKid app, think of it as a notebook) and the kids can view this when they login as well.
 
 ## Screenshots (2.0.x)
-|              Home             |               Select User                 |            Login                |              Allowance                  |              Chores               |               Mark Chore                |
-|       -----------------       |            -----------------              |       -----------------         |           -----------------             |         -----------------         |            -----------------            |
-|  ![home.png](images/home.png) |  ![selectUser.png](images/selectUser.png) |  ![login.png](images/login.png) |  ![allowance.png](images/allowance.png) |  ![chores.png](images/chores.png) |  ![markchore.png](images/markchore.png) | 
+| Home | Select User | Login | Allowance | Chores | Mark Chore |
+| :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
+| ![home.png](images/home.png)  | ![selectUser.png](images/selectUser.png)  | ![login.png](images/login.png)    | ![allowance.png](images/allowance.png)	| ![chores.png](images/chores.png)	| ![markchore.png](images/markchore.png)	|
 
 ## Frameworks Used
 -   Foundation
@@ -36,11 +36,8 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 ### Login Screen
 -   On the login screen you can enter your username/email and password then click login to access the application.
-
 -   If you need to create a new Master Parent (household) account you may click on "New Parent Account"
-
 -   If you have forgotten your password you may enter your username in the username field and click "Forgot Password" and a reset link will be emailed to you.
-
 -   After login you will be taken to the [Home](https://github.com/kumpeapps/KKid#select-module-screen-home-screen) Screen
 
 ###### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user
@@ -58,9 +55,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 ### Select User Screen
 -   On the Select User screen you will see a list of users under your master (household) account.
-
 -   If you are the master user (background on name will be purple) or an admin user (background on name will be gold/yellow) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
-
 -   If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
 
 #### Add User Screen
@@ -109,13 +104,13 @@ KKid is an app for parents and their children to keep up with chores and allowan
 ### Managed App Config
 #### This app is compatible with managed app config settings pushed from an MDM Server. The following is a list of managed app keys for KKid
 
-|         Key             |         Type       |             Description                |
-|   -----------------     |  ----------------- |          -----------------             |
-| disableNewParentAccount |	        Bool       | Disables the New Parent Account button |
-|  disableResetPassword   |         Bool       |   Disables the Forgot Password button  |
-|       username          |        String	   |     Pre-Populates the username field   |
-|     lockUsername        |         Bool       |   Disables editing the username field  |
-|       password          |        String      |     Pre-Populates the password field   |
+|         Key             |         Type        |             Description                |
+|   :-----------------:   | :-----------------: |          :-----------------:           |
+| disableNewParentAccount | Bool                | Disables the New Parent Account button |
+| disableResetPassword    | Bool                | Disables the Forgot Password button    |
+| username                | String	            | Pre-Populates the username field       |
+| lockUsername            | Bool                | Disables editing the username field    |
+| password                | String              | Pre-Populates the password field       |
 
 ## Future Feature List
 
