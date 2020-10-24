@@ -32,7 +32,7 @@ PODS:
   - GoogleUtilities/Reachability (6.7.2):
     - GoogleUtilities/Logger
   - Haptico (1.1.0)
-  - KumpeHelpers (1.0.11):
+  - KumpeHelpers (1.1.2):
     - Alamofire-SwiftyJSON
     - CollectionViewCenteredFlowLayout
     - Haptico
@@ -115,7 +115,7 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   Haptico: f3b9e36957e7ec5a34721c65a0375454a0df7c7b
-  KumpeHelpers: 8d9466aee8e0f153c91081a8f7cf34d3ebc4fa4e
+  KumpeHelpers: 8bcfb8f4349c5b2214197d11e9aa8bfab874dfc2
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
