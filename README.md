@@ -9,8 +9,8 @@
 KKid is an app for parents and their children to keep up with chores and allowance. With this app parents can create child accounts and add chores to their profile. Kids can then login and see their chores and mark them off each day. By turning on the allowance feature parents can add/subtract money from the kid's allowance account (this is a virtual "account" to show the kids how much allowance they have, no money is actually exchanged within the KKid app, think of it as a notebook) and the kids can view this when they login as well.
 
 ## Screenshots (2.0.x)
-| Home | Select User | Login | Allowance | Chores | Mark Chore |
-| ----------------- |  ----------------- | ----------------- | ----------------- | ----------------- | ----------------- |
+|              Home             |               Select User                 |            Login                |              Allowance                  |              Chores               |               Mark Chore                |
+|       -----------------       |            -----------------              |       -----------------         |           -----------------             |         -----------------         |            -----------------            |
 |  ![home.png](images/home.png) |  ![selectUser.png](images/selectUser.png) |  ![login.png](images/login.png) |  ![allowance.png](images/allowance.png) |  ![chores.png](images/chores.png) |  ![markchore.png](images/markchore.png) | 
 
 ## Frameworks Used
@@ -43,7 +43,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 -   After login you will be taken to the [Home](https://github.com/kumpeapps/KKid#select-module-screen-home-screen) Screen
 
-###### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user.
+###### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user
 
 -   DEMO Account
 	-   username: dev_kkid_master
@@ -66,7 +66,6 @@ KKid is an app for parents and their children to keep up with chores and allowan
 #### Add User Screen
 -   Enter the new user's username, email, password, first name, and last name. Then click submit
 -   NOTE: each user must have their own email address. We understand that some kids do not have their own email account. In this case you can use an email alias that is automatically build into all email accounts. To do this you just add + then the alias directly before the @ symbol of your email address. Example: if your email address is jane@doe.com and you need an email alias for jack then you can use jane+jack@doe.com. Any email sent to jane+jack@doe.com will be automatically forwarded to jane@doe.com.
-
 
 #### Edit Profile Module
 -   To edit a the user's profile just change the information on the screen and click update in the upper right.
@@ -100,7 +99,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   Clicking the ledger icon (open book) in the upper right will launch the Ledger screen which will show all of the allowance transactions for this user
 -   Clicking the + icon in the upper right will launch the [Add Transaction](https://github.com/justinkumpe/KKid#add-transaction-screen) Screen
 
-###### NOTE: The Allowance Module is for parents/kids to keep up with how much allowance they have so parents can give them a virtual allowance account instead of the kid keeping up with cash. The parent is the "Bank". No money is exchanged directly thru this app. It is only to keep track of how much allowance the parent "owes" the kid.
+###### NOTE: The Allowance Module is for parents/kids to keep up with how much allowance they have so parents can give them a virtual allowance account instead of the kid keeping up with cash. The parent is the "Bank". No money is exchanged directly thru this app. It is only to keep track of how much allowance the parent "owes" the kid
 
 ##### Add Transaction Screen
 -   On this screen you can add transactions (add/subtract) for the selected user's allowance. Just fill out the form and click submit
@@ -108,7 +107,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   Users that are not a master or admin may only subtract from their allowance account
 
 ### Managed App Config
-#### This app is compatible with managed app config settings pushed from an MDM Server. The following is a list of managed app keys for KKid.
+#### This app is compatible with managed app config settings pushed from an MDM Server. The following is a list of managed app keys for KKid
 
 |         Key             |         Type       |             Description                |
 |   -----------------     |  ----------------- |          -----------------             |
@@ -118,7 +117,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 |     lockUsername        |         Bool       |   Disables editing the username field  |
 |       password          |        String      |     Pre-Populates the password field   |
 
-## Future Feature List:
+## Future Feature List
 
 -   [ ] Add ability for users to choose a custom background image
 -   [ ] Add ability for users to choose a custom logo image
