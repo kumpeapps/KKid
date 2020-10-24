@@ -36,11 +36,8 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 ### Login Screen
 -   On the login screen you can enter your username/email and password then click login to access the application.
-
 -   If you need to create a new Master Parent (household) account you may click on "New Parent Account"
-
 -   If you have forgotten your password you may enter your username in the username field and click "Forgot Password" and a reset link will be emailed to you.
-
 -   After login you will be taken to the [Home](https://github.com/kumpeapps/KKid#select-module-screen-home-screen) Screen
 
 ###### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user
@@ -58,9 +55,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 ### Select User Screen
 -   On the Select User screen you will see a list of users under your master (household) account.
-
 -   If you are the master user (background on name will be purple) or an admin user (background on name will be gold/yellow) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
-
 -   If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
 
 #### Add User Screen
