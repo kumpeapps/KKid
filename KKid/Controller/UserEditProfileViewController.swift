@@ -4,8 +4,8 @@
 //
 //  Created by Justin Kumpe on 9/22/20.
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
-//TODO: 
-//@todo add apns subscriptions to userProfile
+//TODO:
+//@todo: add apns subscriptions to userProfile
 //@body: need to add apns subscription toggles to the edit user profile screen.
 
 import UIKit
