@@ -14,6 +14,11 @@ import KumpeHelpers
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.badge,.sound])
+    }
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         didRegisterForRemoteNotificationsWithDeviceToken(deviceToken: deviceToken)
     }
