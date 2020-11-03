@@ -53,7 +53,12 @@ extension KKidClient {
 
     // MARK: Task For Get
     class func taskForGet<ResponseType: Decodable>(module: String, responseType: ResponseType.Type, parameters: [String: String], completion: @escaping (ResponseType?, String?) -> Void) {
-            let url = URL(string: "\(KKidClient.baseURL)/\(module)")!
+        var baseURL = self.baseURL
+        #if DEBUG
+            baseURL = preprodURL
+        #endif
+
+        let url = URL(string: "\(baseURL)/\(module)")!
             Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default) .responseSwiftyJSON { dataResponse in
 
     //            GUARD: isSuccess

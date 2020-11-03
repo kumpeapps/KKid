@@ -61,11 +61,14 @@ extension KKidClient {
     // MARK: apiSync
     //    Get function to sync data from KKids API to CoreData
         class func apiSync(silent: Bool = false, parameters: [String: Any], module: String, jsonArrayName: String, coreDataEntityName: String, completion: @escaping (Bool, String?) -> Void) {
-
+            var baseURL = self.baseURL
+            #if DEBUG
+                baseURL = preprodURL
+            #endif
             if !silent {
                 ShowAlert.statusLineStatic(id: "get\(coreDataEntityName)", theme: .warning, title: "Syncing", message: "Syncing \(coreDataEntityName) Information....")
             }
-            let url = URL(string: "\(KKidClient.baseURL)/\(module)")!
+            let url = URL(string: "\(baseURL)/\(module)")!
 
             let queue = DispatchQueue(label: "com.kumpeapps.api", qos: .background, attributes: .concurrent)
             Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default).responseSwiftyJSON(queue: queue) { dataResponse in
