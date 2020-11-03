@@ -10,9 +10,20 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 import PrivacyKit
+import KumpeHelpers
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        didRegisterForRemoteNotificationsWithDeviceToken(deviceToken: deviceToken)
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        didFailToRegisterForRemoteNotificationsWithError(error: error)
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    }
 
     var window: UIWindow?
 
@@ -50,6 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.string(forKey: "loggedInUserID") == nil {
             UserDefaults.standard.removeObject(forKey: "isAuthenticated")
         }
+
+        registerForPushNotifications()
 
         return true
     }

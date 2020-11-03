@@ -60,7 +60,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         verifyAuthenticated()
         modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
         buildModules()
-
+        registerAPNS()
     }
 
 // MARK: viewDidAppear
@@ -73,9 +73,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
 
-        if !LoggedInUser.user!.enableNoAds {
+        if LoggedInUser.user != nil && !LoggedInUser.user!.enableNoAds {
             loadGoogleAdMob()
         }
+
         self.requirePrivacy()
     }
 
@@ -96,6 +97,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             LoggedInUser.selectedUser = nil
             return
         }
+    }
+
+// MARK: registerAPNS
+    func registerAPNS() {
+
+        guard let token = UserDefaults.standard.string(forKey: "apnsToken") else {
+            return
+        }
+
+        guard token != "" else {
+            return
+        }
+
+        KKidClient.registerAPNS(token)
     }
 
 // MARK: buildModules

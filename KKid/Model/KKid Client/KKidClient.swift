@@ -18,7 +18,7 @@ class KKidClient {
 // MARK: API Creds
     static let username = APICredentials.KKid.username
     static let apiPassword = APICredentials.KKid.apiPassword
-    static let baseURL = "https://api.kumpeapps.com/kkids"
+    static let baseURL = "https://preprod.kumpeapps.com/api/kkids"
 
     static var appVersion = "KKid"
 
