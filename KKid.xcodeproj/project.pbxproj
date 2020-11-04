@@ -46,6 +46,8 @@
 		0F72B1452517B13F0099D2D9 /* AllowanceLedgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B1442517B13F0099D2D9 /* AllowanceLedgerViewController.swift */; };
 		0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B1462517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift */; };
 		0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B149251974610099D2D9 /* AddUserViewController.swift */; };
+		0F9F38AF2553300400829133 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F9F38AE2553300400829133 /* Settings.bundle */; };
+		0F9F38B3255338DD00829133 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */; };
 		0FB98CEB24FC70DC00143A6A /* Rayando-xj18.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB98CEA24FC70DC00143A6A /* Rayando-xj18.ttf */; };
 		0FB98CF024FF132C00143A6A /* ComicSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB98CEC24FF132C00143A6A /* ComicSans.ttf */; };
 		0FB98CF124FF132C00143A6A /* ComicSansAlt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB98CED24FF132C00143A6A /* ComicSansAlt.ttf */; };
@@ -105,6 +107,8 @@
 		0F72B1442517B13F0099D2D9 /* AllowanceLedgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowanceLedgerViewController.swift; sourceTree = "<group>"; };
 		0F72B1462517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowanceAddTransactionViewController.swift; sourceTree = "<group>"; };
 		0F72B149251974610099D2D9 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
+		0F9F38AE2553300400829133 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		0FB98CEA24FC70DC00143A6A /* Rayando-xj18.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rayando-xj18.ttf"; sourceTree = "<group>"; };
 		0FB98CEC24FF132C00143A6A /* ComicSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ComicSans.ttf; sourceTree = "<group>"; };
 		0FB98CED24FF132C00143A6A /* ComicSansAlt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ComicSansAlt.ttf; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 		0F5EC88B24F98D0000873868 = {
 			isa = PBXGroup;
 			children = (
+				0F9F38AE2553300400829133 /* Settings.bundle */,
 				0F5EC89624F98D0000873868 /* KKid */,
 				0F5EC89524F98D0000873868 /* Products */,
 				E59C333465C970E133EDF702 /* Pods */,
@@ -238,6 +243,7 @@
 				0FDB64BA251C2FA900427543 /* LaunchURL.swift */,
 				0FD9254B251D7B2800A541A6 /* ReachabilitySetup.swift */,
 				0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */,
+				0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */,
 			);
 			path = "Helper Utilities";
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 				0FB98CEB24FC70DC00143A6A /* Rayando-xj18.ttf in Resources */,
 				0F5EC89F24F98D0000873868 /* Main.storyboard in Resources */,
 				0FB98CF124FF132C00143A6A /* ComicSansAlt.ttf in Resources */,
+				0F9F38AF2553300400829133 /* Settings.bundle in Resources */,
 				0FB98CF224FF132C00143A6A /* ComicSansBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +501,7 @@
 				0F49CBA72513EFC600D98E35 /* AllowanceViewController.swift in Sources */,
 				0FDB64B9251C24DA00427543 /* AddParentAccountViewController.swift in Sources */,
 				0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */,
+				0F9F38B3255338DD00829133 /* SettingsBundleHelper.swift in Sources */,
 				0F66BE3B250859FA00014A94 /* KKid.xcdatamodeld in Sources */,
 				0F72B141251594390099D2D9 /* KKidClient+PUT.swift in Sources */,
 				0FD9254C251D7B2800A541A6 /* ReachabilitySetup.swift in Sources */,
@@ -655,7 +663,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.4.1;
+				CURRENT_PROJECT_VERSION = 2.0.4.3;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -677,7 +685,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.4.1;
+				CURRENT_PROJECT_VERSION = 2.0.4.3;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
