@@ -36,6 +36,10 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
         imageBackground.image = AppDelegate().kkidBackground
         let image = Pathifier.makeImage(for: NSAttributedString(string: "$"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!)
         imageBalance.image = image
+        KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Allowance")
+        if ((LoggedInUser.user?.isChild) != nil && LoggedInUser.user!.isChild) {
+            KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Allowance-New")
+        }
         getAllowance()
         verifyAuthenticated()
             NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
