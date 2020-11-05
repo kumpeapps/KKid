@@ -22,6 +22,7 @@ extension KKidClient {
                     "apiUsername": KKidClient.username,
                     "apiPassword": KKidClient.apiPassword,
                     "apiKey": "\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
+                    "kidUsername":"\(user.username!)",
                     "idChoreList": "\(chore.id)",
                     "notes": "\(appVersion)",
                     "status": choreStatus,
