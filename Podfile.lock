@@ -32,6 +32,7 @@ PODS:
   - GoogleUtilities/Reachability (7.0.0):
     - GoogleUtilities/Logger
   - Haptico (1.1.1)
+  - Keys (1.0.1)
   - KumpeHelpers (1.1.5):
     - Alamofire-SwiftyJSON
     - CollectionViewCenteredFlowLayout
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - CollectionViewCenteredFlowLayout
   - Google-Mobile-Ads-SDK
   - Haptico
+  - Keys (from `Pods/CocoaPodsKeys`)
   - KumpeHelpers
   - PrivacyKit
   - ReachabilitySwift
@@ -92,6 +94,8 @@ SPEC REPOS:
     - Toast-Swift
 
 EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
   Smile:
     :branch: master
     :git: https://github.com/onmyway133/Smile.git
@@ -110,6 +114,7 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
   GoogleUtilities: ffb2f4159f2c897c6e8992bd7fbcdef8a300589c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   KumpeHelpers: a0d1b1b52e4b28894d76ea0119b0508805b71b44
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
@@ -122,6 +127,6 @@ SPEC CHECKSUMS:
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: c00dea3011c64ede21b1b6fa2ee3f3ecf236106b
+PODFILE CHECKSUM: e698fc2e67f137c760c559fd441c95821f8a795c
 
 COCOAPODS: 1.9.3

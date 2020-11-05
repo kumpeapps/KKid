@@ -102,7 +102,7 @@ class KKidClient {
             "apiPassword": KKidClient.apiPassword,
             "apiKey": "\(apiKey)"
         ]
-        KKidClient.apiPut(module: method, parameters: parameters) { (_, _) in }
+        KKidClient.apiPut(silent: true, module: method, parameters: parameters) { (_, _) in }
     }
 
 // MARK: verifyIsAuthenticated

@@ -56,6 +56,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
         reachable = ReachabilitySetup()
         subscribeToKeyboardNotifications()
         managedConfig()
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
 
 // MARK: viewDidAppear

@@ -7,6 +7,7 @@ import Foundation
 import CoreData
 import UIKit
 import KumpeHelpers
+import PrivacyKit
 
 class SettingsBundleHelper {
     struct SettingsBundleKeys {
@@ -22,7 +23,8 @@ class SettingsBundleHelper {
             UIApplication.shared.applicationIconBadgeNumber = 0
             self.clearAllCoreData()
             UserDefaults.standard.reset()
-            fatalError("Data Reset")
+            PrivacyKit.shared.resetState()
+            NotificationCenter.default.post(name: .isAuthenticated, object: nil)
         }
     }
 

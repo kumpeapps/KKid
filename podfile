@@ -2,6 +2,15 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '13.6'
 use_frameworks!
 
+plugin 'cocoapods-keys', {
+	:project => "KKid",
+	:keys => [
+		"kKid_username",
+		"kKid_apiPassword",
+		"googleAdMob_homeScreenBannerID"
+	]
+}
+
 target 'KKid' do
 	pod 'Alamofire-SwiftyJSON'
 	pod 'Toast-Swift'

@@ -106,7 +106,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
     func applicationDidBecomeActive(_ application: UIApplication) {
         SettingsBundleHelper.checkAndExecuteSettings()
         SettingsBundleHelper.setVersionAndBuildNumber()
-        Logger.log(.action, "active")
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        Logger.log(.action, "applicationWillEnterForeground")
     }
 
     // MARK: checkIfFirstLaunch
