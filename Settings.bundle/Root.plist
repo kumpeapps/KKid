@@ -168,6 +168,16 @@
             <key>DefaultValue</key>
             <string>https://github.com/ithazfire/PrivacyKit</string>
         </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSTitleValueSpecifier</string>
+            <key>Title</key>
+            <string>BadgeSwift</string>
+            <key>Key</key>
+            <string>badgeswift</string>
+            <key>DefaultValue</key>
+            <string>https://github.com/evgenyneu/swift-badge</string>
+        </dict>
 	</array>
 </dict>
 </plist>

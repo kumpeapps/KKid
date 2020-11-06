@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -551,6 +551,11 @@
                             <constraint firstItem="gJ5-Ds-i74" firstAttribute="bottom" secondItem="90e-Wq-rRv" secondAttribute="bottom" id="cYm-Vy-6Rq"/>
                             <constraint firstItem="90e-Wq-rRv" firstAttribute="top" secondItem="gJ5-Ds-i74" secondAttribute="top" id="eCc-qp-IRW"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="kTB-2g-uib">
                         <barButtonItem key="backBarButtonItem" title="Login" id="NyV-M7-4KE"/>
@@ -641,17 +646,32 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myx-O7-kWp" customClass="BadgeSwift" customModule="BadgeSwift">
+                                                    <rect key="frame" x="75.5" y="0.0" width="24.5" height="24.5"/>
+                                                    <accessibility key="accessibilityConfiguration" label="0"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="BDO-Ij-O96"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="a0x-vi-MnY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="sFl-X6-M4f" firstAttribute="centerX" secondItem="oX2-kB-LHW" secondAttribute="centerX" id="DBW-fP-hoK"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="top" secondItem="oX2-kB-LHW" secondAttribute="top" id="M7f-mt-IyT"/>
                                                 <constraint firstItem="sFl-X6-M4f" firstAttribute="top" secondItem="KQk-G5-Zeb" secondAttribute="bottom" id="VNe-8T-t6x"/>
+                                                <constraint firstItem="myx-O7-kWp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oX2-kB-LHW" secondAttribute="leading" constant="20" symbolic="YES" id="YTO-aj-sbC"/>
+                                                <constraint firstAttribute="trailing" secondItem="myx-O7-kWp" secondAttribute="trailing" id="jaB-5e-F0D"/>
+                                                <constraint firstItem="myx-O7-kWp" firstAttribute="top" secondItem="oX2-kB-LHW" secondAttribute="top" id="n6h-0J-cxt"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="centerX" secondItem="oX2-kB-LHW" secondAttribute="centerX" id="s7W-Oj-HtP"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="width" secondItem="oX2-kB-LHW" secondAttribute="width" multiplier="0.8" id="u6F-N1-Ja0"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="height" secondItem="oX2-kB-LHW" secondAttribute="height" multiplier="0.8" id="uR5-lV-ZOF"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="badge" destination="myx-O7-kWp" id="bLU-T2-NoT"/>
                                             <outlet property="imageView" destination="KQk-G5-Zeb" id="5hL-Qn-Ajw"/>
                                             <outlet property="title" destination="sFl-X6-M4f" id="ZvP-mr-5RM"/>
                                         </connections>
@@ -685,7 +705,7 @@
                         <outlet property="imageBackground" destination="LyU-3K-yU3" id="hFN-vs-CC8"/>
                         <outlet property="imageLogo" destination="klb-er-6Mq" id="LyQ-d8-PdJ"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueSelectUser" id="ffy-ex-iid"/>
-                        <segue destination="gmx-L3-9ty" kind="show" identifier="segueLogin" id="U8f-Z0-Fl3"/>
+                        <segue destination="gmx-L3-9ty" kind="show" identifier="segueLogin" customClass="FadeSegue" customModule="KumpeHelpers" id="U8f-Z0-Fl3"/>
                         <segue destination="k8E-Wc-vOU" kind="show" identifier="segueChores" id="GFM-sg-Ldk"/>
                         <segue destination="ggd-tN-XOX" kind="show" identifier="segueAllowance" id="bTs-vW-UhY"/>
                         <segue destination="IWr-Js-2wc" kind="show" identifier="segueEditProfile" id="szZ-u6-lfd"/>
@@ -693,7 +713,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwI-IN-Fwv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="116"/>
+            <point key="canvasLocation" x="1086.9565217391305" y="115.84821428571428"/>
         </scene>
         <!--New User-->
         <scene sceneID="vKO-9a-keg">
@@ -750,6 +770,11 @@
             <point key="canvasLocation" x="2954" y="1586"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="myx-O7-kWp">
+            <size key="intrinsicContentSize" width="24.5" height="24.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="KKid_Toolbar" width="471" height="180"/>
         <image name="blue_dash" width="151" height="45"/>

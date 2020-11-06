@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '13.6'
+platform :ios, '14.0'
 use_frameworks!
 
 plugin 'cocoapods-keys', {
@@ -24,4 +24,5 @@ target 'KKid' do
 	pod 'KumpeHelpers'
 	pod 'Haptico'
 	pod 'PrivacyKit'
+	pod 'BadgeSwift'
 end

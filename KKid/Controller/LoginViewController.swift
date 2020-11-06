@@ -116,7 +116,8 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
                 if success {
                     Logger.log(.authentication, "Login Successful for user \(user.username)")
                     LoggedInUser.setLoggedInUser()
-                    self.navigationController?.popViewController(animated: true)
+                    //self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 } else {
                     self.enableUI(true)
                     ShowAlert.banner(title: "Sync Error", message: error ?? "An Unknown Error Occurred")
