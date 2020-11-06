@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Toast_Swift
 import KumpeHelpers
 import PrivacyKit
+import TransitionButton
 
 class LoginViewController: UIViewController, PrivacyKitDelegate {
 
@@ -21,9 +21,9 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
     @IBOutlet weak var fieldPassword: UITextField!
 
 // MARK: Buttons
-    @IBOutlet weak var buttonLogin: UIButton!
-    @IBOutlet weak var buttonForgotPassword: UIButton!
-    @IBOutlet weak var buttonNewParentAccount: UIButton!
+    @IBOutlet weak var buttonLogin: TransitionButton!
+    @IBOutlet weak var buttonForgotPassword: TransitionButton!
+    @IBOutlet weak var buttonNewParentAccount: TransitionButton!
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
@@ -75,11 +75,12 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 // MARK: pressedLogin
     @IBAction func pressedLogin() {
         enableUI(false)
-
+        buttonLogin.startAnimation()
 //        GUARD: Username and Password not blank
         guard fieldUsername.text != "" && fieldPassword.text != "" else {
             ShowAlert.banner(title: "Login Error", message: "Please enter both username and password before pressing login")
             enableUI(true)
+            buttonLogin.stopAnimation()
             return
         }
 
@@ -89,6 +90,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             guard let loginStatus = response?.status, loginStatus == 1 else {
                 if let errorMessage = response?.error {
                     Logger.log(.error, errorMessage)
+                    self.buttonLogin.stopAnimation()
                     self.enableUI(true)
                     ShowAlert.banner(title: "Login Error", message: errorMessage)
                 }
@@ -97,6 +99,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 
 //            GUARD: API Key exists
             guard let apiKey = response?.apiKey else {
+                self.buttonLogin.stopAnimation()
                 self.enableUI(true)
                 Logger.log(.error, "API Key not returned")
                 return
@@ -104,6 +107,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 
 //            GUARD: User Data Returned
             guard let user = response?.user else {
+                self.buttonLogin.stopAnimation()
                 self.enableUI(true)
                 Logger.log(.error, "User Info not returned")
                 return
@@ -119,6 +123,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
                     //self.navigationController?.popViewController(animated: true)
                     self.dismiss(animated: true, completion: nil)
                 } else {
+                    self.buttonLogin.stopAnimation()
                     self.enableUI(true)
                     ShowAlert.banner(title: "Sync Error", message: error ?? "An Unknown Error Occurred")
                 }
@@ -152,11 +157,6 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 
     // MARK: enableUI
     func enableUI(_ enable: Bool) {
-        if enable {
-            self.view.hideAllToasts(includeActivity: true, clearQueue: true)
-        } else {
-            self.view.makeToastActivity(.center)
-        }
         self.fieldUsername.isEnabled = enable
         self.fieldPassword.isEnabled = enable
         self.buttonLogin.isEnabled = enable

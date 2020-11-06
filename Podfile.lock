@@ -57,6 +57,7 @@ PODS:
   - SwiftyJSON (4.0.0)
   - Sync (6.5.0)
   - Toast-Swift (5.0.1)
+  - TransitionButton (0.5.3)
 
 DEPENDENCIES:
   - Alamofire-SwiftyJSON
@@ -73,6 +74,7 @@ DEPENDENCIES:
   - SwiftyFORM
   - Sync
   - Toast-Swift
+  - TransitionButton
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -95,6 +97,7 @@ SPEC REPOS:
     - SwiftyJSON
     - Sync
     - Toast-Swift
+    - TransitionButton
 
 EXTERNAL SOURCES:
   Keys:
@@ -130,7 +133,8 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: d5039e0bcfb28afffea68262133b58ac1f5e7bf0
+PODFILE CHECKSUM: 447df278fb53b93abc49b9627b1d240ca93b9e59
 
 COCOAPODS: 1.9.3

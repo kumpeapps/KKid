@@ -11,6 +11,7 @@ import UIKit
 import CoreData
 import KumpeHelpers
 import Haptico
+import Toast_Swift
 
 class SelectUserViewController: UIViewController {
 

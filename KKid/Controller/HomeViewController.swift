@@ -13,7 +13,6 @@ import UIKit
 import CollectionViewCenteredFlowLayout
 import GoogleMobileAds
 import PrivacyKit
-import CoreData
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
 
