@@ -1,8 +1,18 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '13.6'
+platform :ios, '14.0'
 use_frameworks!
 
+plugin 'cocoapods-keys', {
+	:project => "KKid",
+	:keys => [
+		"kKid_username",
+		"kKid_apiPassword",
+		"googleAdMob_homeScreenBannerID"
+	]
+}
+
 target 'KKid' do
+	pod 'TransitionButton'
 	pod 'Alamofire-SwiftyJSON'
 	pod 'Toast-Swift'
 	pod 'SwiftyFORM'
@@ -15,4 +25,5 @@ target 'KKid' do
 	pod 'KumpeHelpers'
 	pod 'Haptico'
 	pod 'PrivacyKit'
+	pod 'BadgeSwift'
 end

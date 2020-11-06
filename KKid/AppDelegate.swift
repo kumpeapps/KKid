@@ -10,9 +10,25 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 import PrivacyKit
+import KumpeHelpers
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner,.badge,.sound])
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        didRegisterForRemoteNotificationsWithDeviceToken(deviceToken: deviceToken)
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        didFailToRegisterForRemoteNotificationsWithError(error: error)
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    }
 
     var window: UIWindow?
 
@@ -51,6 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.removeObject(forKey: "isAuthenticated")
         }
 
+        registerForPushNotifications()
+
+        SettingsBundleHelper.checkAndExecuteSettings()
+        SettingsBundleHelper.setVersionAndBuildNumber()
+
         return true
     }
 
@@ -80,6 +101,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        SettingsBundleHelper.checkAndExecuteSettings()
+        SettingsBundleHelper.setVersionAndBuildNumber()
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        Logger.log(.action, "applicationWillEnterForeground")
     }
 
     // MARK: checkIfFirstLaunch

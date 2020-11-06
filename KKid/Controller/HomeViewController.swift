@@ -31,6 +31,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: Parameters
     var modules: [KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
+    let dayOfWeek: Int = getDayOfWeek() ?? 0
+    var choreCount: Int = 0
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -45,7 +47,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         reachable = ReachabilitySetup()
         imageLogo.image = AppDelegate().kkidLogo
         imageBackground.image = AppDelegate().kkidBackground
@@ -56,11 +57,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if LoggedInUser.selectedUser == nil {
             LoggedInUser.setSelectedToLoggedIn()
         }
+
+        choreCount = UIApplication.shared.applicationIconBadgeNumber
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         verifyAuthenticated()
         modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
         buildModules()
-
+        registerAPNS()
     }
 
 // MARK: viewDidAppear
@@ -73,9 +76,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
 
-        if !LoggedInUser.user!.enableNoAds {
+        if LoggedInUser.user != nil && !LoggedInUser.user!.enableNoAds {
             loadGoogleAdMob()
         }
+
         self.requirePrivacy()
     }
 
@@ -96,6 +100,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             LoggedInUser.selectedUser = nil
             return
         }
+    }
+
+// MARK: registerAPNS
+    func registerAPNS() {
+
+        guard let token = UserDefaults.standard.string(forKey: "apnsToken") else {
+            return
+        }
+
+        guard token != "" else {
+            return
+        }
+
+        KKidClient.registerAPNS(token)
     }
 
 // MARK: buildModules
@@ -157,6 +175,13 @@ extension HomeViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ModuleCollectionViewCell
             cell.imageView.image = module.icon
             cell.title.text = module.title
+            cell.badge.text = "0"
+            cell.badge.isHidden = true
+
+            if module.title == "Chores" && choreCount > 0 {
+                cell.badge.isHidden = false
+                cell.badge.text = "\(choreCount)"
+            }
             return cell
         }
 

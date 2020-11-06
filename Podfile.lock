@@ -3,8 +3,9 @@ PODS:
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
     - SwiftyJSON (~> 4.0.0)
+  - BadgeSwift (8.0.0)
   - CollectionViewCenteredFlowLayout (1.0.1)
-  - Google-Mobile-Ads-SDK (7.67.1):
+  - Google-Mobile-Ads-SDK (7.68.0):
     - GoogleAppMeasurement (~> 7.0)
     - GoogleUserMessagingPlatform (~> 1.1)
   - GoogleAppMeasurement (7.0.0):
@@ -32,7 +33,8 @@ PODS:
   - GoogleUtilities/Reachability (7.0.0):
     - GoogleUtilities/Logger
   - Haptico (1.1.1)
-  - KumpeHelpers (1.1.3):
+  - Keys (1.0.1)
+  - KumpeHelpers (1.1.6):
     - Alamofire-SwiftyJSON
     - CollectionViewCenteredFlowLayout
     - Haptico
@@ -55,12 +57,15 @@ PODS:
   - SwiftyJSON (4.0.0)
   - Sync (6.5.0)
   - Toast-Swift (5.0.1)
+  - TransitionButton (0.5.3)
 
 DEPENDENCIES:
   - Alamofire-SwiftyJSON
+  - BadgeSwift
   - CollectionViewCenteredFlowLayout
   - Google-Mobile-Ads-SDK
   - Haptico
+  - Keys (from `Pods/CocoaPodsKeys`)
   - KumpeHelpers
   - PrivacyKit
   - ReachabilitySwift
@@ -69,11 +74,13 @@ DEPENDENCIES:
   - SwiftyFORM
   - Sync
   - Toast-Swift
+  - TransitionButton
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Alamofire-SwiftyJSON
+    - BadgeSwift
     - CollectionViewCenteredFlowLayout
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
@@ -90,8 +97,11 @@ SPEC REPOS:
     - SwiftyJSON
     - Sync
     - Toast-Swift
+    - TransitionButton
 
 EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
   Smile:
     :branch: master
     :git: https://github.com/onmyway133/Smile.git
@@ -104,13 +114,15 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
+  BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
   CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
-  Google-Mobile-Ads-SDK: 4c11bba9a823ed16c42f14d42feebc7678fbfd6a
+  Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
   GoogleAppMeasurement: 7790ef975d1d463c8614cd949a847e612edf087a
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
   GoogleUtilities: ffb2f4159f2c897c6e8992bd7fbcdef8a300589c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
-  KumpeHelpers: c618731e761e4c277dc67595da5f8843e5c85be6
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  KumpeHelpers: f72565ac88832b0ea1afd087e25b886870366141
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
@@ -121,7 +133,8 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: c00dea3011c64ede21b1b6fa2ee3f3ecf236106b
+PODFILE CHECKSUM: 447df278fb53b93abc49b9627b1d240ca93b9e59
 
 COCOAPODS: 1.9.3

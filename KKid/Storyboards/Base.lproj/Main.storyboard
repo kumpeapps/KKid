@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -492,10 +492,10 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hha-GE-xDY" userLabel="Login Button Stack">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hha-GE-xDY" userLabel="Login Button Stack">
                                         <rect key="frame" x="0.0" y="323" width="300" height="35"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hZ-fb-iPE">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hZ-fb-iPE" customClass="TransitionButton" customModule="TransitionButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                                 <constraints>
@@ -505,11 +505,19 @@
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="pressedLogin" destination="gmx-L3-9ty" eventType="touchUpInside" id="Wvb-fL-Uor"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzr-ZU-VNE">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzr-ZU-VNE" customClass="TransitionButton" customModule="TransitionButton">
                                                 <rect key="frame" x="151" y="0.0" width="149" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <constraints>
@@ -519,19 +527,35 @@
                                                 <state key="normal" title="Forgot Password">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="pressedForgotPassword" destination="gmx-L3-9ty" eventType="touchUpInside" id="JQT-AW-Edv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDf-gb-9bg">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDf-gb-9bg" customClass="TransitionButton" customModule="TransitionButton">
                                         <rect key="frame" x="0.0" y="370" width="300" height="35"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                         <state key="normal" title="New Parent Account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="nJD-qz-Hgu" kind="show" identifier="segueNewMasterAccount" id="KhO-JE-ojt"/>
                                         </connections>
@@ -641,17 +665,32 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myx-O7-kWp" customClass="BadgeSwift" customModule="BadgeSwift">
+                                                    <rect key="frame" x="75.5" y="0.0" width="24.5" height="24.5"/>
+                                                    <accessibility key="accessibilityConfiguration" label="0"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="BDO-Ij-O96"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="a0x-vi-MnY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="sFl-X6-M4f" firstAttribute="centerX" secondItem="oX2-kB-LHW" secondAttribute="centerX" id="DBW-fP-hoK"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="top" secondItem="oX2-kB-LHW" secondAttribute="top" id="M7f-mt-IyT"/>
                                                 <constraint firstItem="sFl-X6-M4f" firstAttribute="top" secondItem="KQk-G5-Zeb" secondAttribute="bottom" id="VNe-8T-t6x"/>
+                                                <constraint firstItem="myx-O7-kWp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oX2-kB-LHW" secondAttribute="leading" constant="20" symbolic="YES" id="YTO-aj-sbC"/>
+                                                <constraint firstAttribute="trailing" secondItem="myx-O7-kWp" secondAttribute="trailing" id="jaB-5e-F0D"/>
+                                                <constraint firstItem="myx-O7-kWp" firstAttribute="top" secondItem="oX2-kB-LHW" secondAttribute="top" id="n6h-0J-cxt"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="centerX" secondItem="oX2-kB-LHW" secondAttribute="centerX" id="s7W-Oj-HtP"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="width" secondItem="oX2-kB-LHW" secondAttribute="width" multiplier="0.8" id="u6F-N1-Ja0"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="height" secondItem="oX2-kB-LHW" secondAttribute="height" multiplier="0.8" id="uR5-lV-ZOF"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="badge" destination="myx-O7-kWp" id="bLU-T2-NoT"/>
                                             <outlet property="imageView" destination="KQk-G5-Zeb" id="5hL-Qn-Ajw"/>
                                             <outlet property="title" destination="sFl-X6-M4f" id="ZvP-mr-5RM"/>
                                         </connections>
@@ -685,7 +724,7 @@
                         <outlet property="imageBackground" destination="LyU-3K-yU3" id="hFN-vs-CC8"/>
                         <outlet property="imageLogo" destination="klb-er-6Mq" id="LyQ-d8-PdJ"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueSelectUser" id="ffy-ex-iid"/>
-                        <segue destination="gmx-L3-9ty" kind="show" identifier="segueLogin" id="U8f-Z0-Fl3"/>
+                        <segue destination="gmx-L3-9ty" kind="show" identifier="segueLogin" customClass="FadeSegue" customModule="KumpeHelpers" id="U8f-Z0-Fl3"/>
                         <segue destination="k8E-Wc-vOU" kind="show" identifier="segueChores" id="GFM-sg-Ldk"/>
                         <segue destination="ggd-tN-XOX" kind="show" identifier="segueAllowance" id="bTs-vW-UhY"/>
                         <segue destination="IWr-Js-2wc" kind="show" identifier="segueEditProfile" id="szZ-u6-lfd"/>
@@ -693,7 +732,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwI-IN-Fwv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="116"/>
+            <point key="canvasLocation" x="1086.9565217391305" y="115.84821428571428"/>
         </scene>
         <!--New User-->
         <scene sceneID="vKO-9a-keg">
@@ -750,6 +789,20 @@
             <point key="canvasLocation" x="2954" y="1586"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="7hZ-fb-iPE">
+            <size key="intrinsicContentSize" width="49" height="35"/>
+        </designable>
+        <designable name="Nzr-ZU-VNE">
+            <size key="intrinsicContentSize" width="149" height="35"/>
+        </designable>
+        <designable name="SDf-gb-9bg">
+            <size key="intrinsicContentSize" width="180" height="35"/>
+        </designable>
+        <designable name="myx-O7-kWp">
+            <size key="intrinsicContentSize" width="24.5" height="24.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="KKid_Toolbar" width="471" height="180"/>
         <image name="blue_dash" width="151" height="45"/>

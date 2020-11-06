@@ -19,12 +19,17 @@ class KKidClient {
     static let username = APICredentials.KKid.username
     static let apiPassword = APICredentials.KKid.apiPassword
     static let baseURL = "https://api.kumpeapps.com/kkids"
+    static let preprodURL = "https://preprod.kumpeapps.com/api/kkids"
 
     static var appVersion = "KKid"
 
 // MARK: - apiMethod
     class func apiMethod(silent: Bool = false, method: HTTPMethod, module: String, parameters: [String: Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void) {
-            let url = URL(string: "\(KKidClient.baseURL)/\(module)")!
+        var baseURL = self.baseURL
+        #if DEBUG
+            baseURL = preprodURL
+        #endif
+            let url = URL(string: "\(baseURL)/\(module)")!
             let alertId = "post_\(module)_\(Int.random(in: 0..<10))"
             if !silent {
                 ShowAlert.statusLineStatic(id: alertId, theme: .warning, title: "Sending Data To \(module)", message: "Sending Data To \(module), Please Wait ....", blockInterface: blockInterface)
@@ -97,7 +102,7 @@ class KKidClient {
             "apiPassword": KKidClient.apiPassword,
             "apiKey": "\(apiKey)"
         ]
-        KKidClient.apiPut(module: method, parameters: parameters) { (_, _) in }
+        KKidClient.apiPut(silent: true, module: method, parameters: parameters) { (_, _) in }
     }
 
 // MARK: verifyIsAuthenticated

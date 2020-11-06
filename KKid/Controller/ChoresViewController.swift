@@ -30,7 +30,6 @@ class ChoresViewController: UIViewController {
 
 // MARK: Refresh Control
 //        Adds functionality to swipe down to refresh table
-
     private let refreshControl = UIRefreshControl()
 
 // MARK: fetchedResultsController
@@ -65,7 +64,11 @@ class ChoresViewController: UIViewController {
         imageLogo.image = AppDelegate().kkidLogo
         imageBackground.image = AppDelegate().kkidBackground
         buttonAdd.isEnabled = LoggedInUser.user!.isAdmin
-
+        KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Chores")
+        if ((LoggedInUser.user?.isChild) != nil && LoggedInUser.user!.isChild) {
+            KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Chores-Reminders")
+            KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Chores-New")
+        }
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
             tableView.reloadRows(at: [indexPath], with: .fade)

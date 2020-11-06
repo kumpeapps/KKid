@@ -87,11 +87,56 @@ extension KKidClient {
         }
     }
 
-    // MARK: apiPost
-        class func apiPost(silent: Bool = false, module: String, parameters: [String: Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void) {
-            apiMethod(silent: silent, method: .post, module: module, parameters: parameters, blockInterface: blockInterface) { (success, error) in
-                completion(success, error)
+// MARK: registerAPNS
+    class func registerAPNS(_ token: String) {
+        guard let userID = LoggedInUser.user?.userID else {
+            return
+        }
+        guard let masterID = LoggedInUser.user?.masterID else {
+            return
+        }
+        let parameters = [
+            "apiUsername": KKidClient.username,
+            "apiPassword": KKidClient.apiPassword,
+            "apiKey":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
+            "kidUserId":"\(userID)",
+            "token":"\(token)",
+            "tool":"register",
+            "deviceName":"\(UIDevice.current.name)",
+            "appName":"com.kumpeapps.ios.kkid",
+            "masterID":"\(masterID)"
+        ]
+        apiPost(silent: true, module: "apns", parameters: parameters) { (success, _) in
+            if success {
+                guard let user = LoggedInUser.user else {
+                    return
+                }
+                subscribeAPNS(user: user, section: "Main")
             }
         }
+    }
+
+// MARK: subscribeAPNS
+    class func subscribeAPNS(user: User, section: String) {
+        let parameters = [
+            "apiUsername": KKidClient.username,
+            "apiPassword": KKidClient.apiPassword,
+            "apiKey":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
+            "kidUserId":"\(user.userID)",
+            "appName":"com.kumpeapps.ios.kkid",
+            "masterID":"\(user.masterID)",
+            "section":"\(section)",
+            "tool":"subscribe"
+        ]
+        apiPost(silent: true, module: "apns", parameters: parameters) { (_, _) in
+        }
+    }
+
+// MARK: apiPost
+    class func apiPost(silent: Bool = false, module: String, parameters: [String: Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void) {
+        apiMethod(silent: silent, method: .post, module: module, parameters: parameters, blockInterface: blockInterface) { (success, error) in
+            completion(success, error)
+        }
+    }
 
 }
