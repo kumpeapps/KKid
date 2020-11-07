@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import KumpeHelpers
-import AnimatableReload
+import TableViewReloadAnimation
 
 class ChoresViewController: UIViewController {
 
@@ -87,13 +87,15 @@ class ChoresViewController: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         verifyAuthenticated()
+        tableView.reloadData(
+            with: .simple(duration: 0.75, direction: .rotation3D(type: .spiderMan),
+            constantDelay: 0))
     }
 
 // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getChores()
-
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.getChores), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing Chore List")
@@ -143,7 +145,9 @@ class ChoresViewController: UIViewController {
 
     @IBAction func listFilterDidChange(_ sender: Any) {
         setupFetchedResultsController()
-        AnimatableReload.reload(tableView: tableView, animationDirection: "up")
+        tableView.reloadData(
+            with: .simple(duration: 0.75, direction: .rotation3D(type: .spiderMan),
+            constantDelay: 0))
     }
 
 }

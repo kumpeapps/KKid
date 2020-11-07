@@ -3,7 +3,6 @@ PODS:
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
     - SwiftyJSON (~> 4.0.0)
-  - AnimatableReload (0.2.0)
   - BadgeSwift (8.0.0)
   - CollectionViewCenteredFlowLayout (1.0.1)
   - Google-Mobile-Ads-SDK (7.68.0):
@@ -57,12 +56,12 @@ PODS:
   - SwiftyFORM (1.8.4)
   - SwiftyJSON (4.0.0)
   - Sync (6.5.0)
+  - TableViewReloadAnimation (0.0.5)
   - Toast-Swift (5.0.1)
   - TransitionButton (0.5.3)
 
 DEPENDENCIES:
   - Alamofire-SwiftyJSON
-  - AnimatableReload
   - BadgeSwift
   - CollectionViewCenteredFlowLayout
   - Google-Mobile-Ads-SDK
@@ -75,6 +74,7 @@ DEPENDENCIES:
   - SwiftMessages
   - SwiftyFORM
   - Sync
+  - TableViewReloadAnimation
   - Toast-Swift
   - TransitionButton
 
@@ -82,7 +82,6 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Alamofire-SwiftyJSON
-    - AnimatableReload
     - BadgeSwift
     - CollectionViewCenteredFlowLayout
     - Google-Mobile-Ads-SDK
@@ -99,6 +98,7 @@ SPEC REPOS:
     - SwiftyFORM
     - SwiftyJSON
     - Sync
+    - TableViewReloadAnimation
     - Toast-Swift
     - TransitionButton
 
@@ -117,7 +117,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
-  AnimatableReload: 9576d3019bfb103f76b5f37fa6f8915bd8307527
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
   CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
   Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
@@ -136,9 +135,10 @@ SPEC CHECKSUMS:
   SwiftyFORM: ce2dc9afb5b4488715112108a114c6d26e0b2836
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
+  TableViewReloadAnimation: f3a4c4048efbc56331be98075f26a2e533a14c16
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 7c6fe2769aaceb0dd144fe324eae6145e6c9b1a4
+PODFILE CHECKSUM: 6ed21f3c8ff3fccba4bee07af45a6d544649d82b
 
 COCOAPODS: 1.9.3
