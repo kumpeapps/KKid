@@ -178,6 +178,16 @@
             <key>DefaultValue</key>
             <string>https://github.com/evgenyneu/swift-badge</string>
         </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSTitleValueSpecifier</string>
+            <key>Title</key>
+            <string>AnimatableReload</string>
+            <key>Key</key>
+            <string>animatablereload</string>
+            <key>DefaultValue</key>
+            <string>https://github.com/harshalrj25/AnimatableReload</string>
+        </dict>
 	</array>
 </dict>
 </plist>

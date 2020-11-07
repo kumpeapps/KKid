@@ -12,6 +12,7 @@ plugin 'cocoapods-keys', {
 }
 
 target 'KKid' do
+	pod 'AnimatableReload'
 	pod 'TransitionButton'
 	pod 'Alamofire-SwiftyJSON'
 	pod 'Toast-Swift'

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import KumpeHelpers
+import AnimatableReload
 
 class ChoresViewController: UIViewController {
 
@@ -22,11 +23,14 @@ class ChoresViewController: UIViewController {
 // MARK: Table View
     @IBOutlet weak var tableView: UITableView!
 
-    // MARK: Reachability
-        var reachable: ReachabilitySetup!
+// MARK: Reachability
+    var reachable: ReachabilitySetup!
 
 // MARK: Buttons
     @IBOutlet weak var buttonAdd: UIBarButtonItem!
+
+// MARK: Selectors
+    @IBOutlet weak var selectorListFilter: UISegmentedControl!
 
 // MARK: Refresh Control
 //        Adds functionality to swipe down to refresh table
@@ -38,7 +42,15 @@ class ChoresViewController: UIViewController {
 // MARK: setupFetchedResultsController
     fileprivate func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
-        let predicate = NSPredicate(format: "kid IN %@", [selectedUser!.username!, "any"])
+        let userPredicate = NSPredicate(format: "kid IN %@", [selectedUser!.username!, "any"])
+        var dayPredicate = NSPredicate(format: "dayAsNumber IN %@", ["\(getDayOfWeek()!)"])
+        if selectorListFilter.selectedSegmentIndex == 2 {
+            dayPredicate = NSPredicate(format: "dayAsNumber IN %@", ["8"])
+        }
+        var predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [userPredicate, dayPredicate])
+        if selectorListFilter.selectedSegmentIndex == 1 {
+            predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [userPredicate])
+        }
         fetchRequest.predicate = predicate
         let sortByDayNumber = NSSortDescriptor(key: "dayAsNumber", ascending: true)
         let sortByChoreNumber = NSSortDescriptor(key: "choreNumber", ascending: true)
@@ -128,6 +140,12 @@ class ChoresViewController: UIViewController {
             viewController.selectedUser = selectedUser
         }
     }
+
+    @IBAction func listFilterDidChange(_ sender: Any) {
+        setupFetchedResultsController()
+        AnimatableReload.reload(tableView: tableView, animationDirection: "up")
+    }
+
 }
 
    // MARK: - Table View Delegates
