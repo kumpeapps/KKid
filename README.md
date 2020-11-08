@@ -33,7 +33,6 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [PrivacyKit](https://github.com/ithazfire/PrivacyKit)
 -   [BadgeSwift](https://github.com/evgenyneu/swift-badge)
 -   [TransitionButton](https://github.com/AladinWay/TransitionButton)
--   [TableViewReloadAnimation](https://github.com/ioramashvili/TableViewReloadAnimation)
 
 ## Instructions
 

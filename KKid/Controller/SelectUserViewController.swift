@@ -30,6 +30,7 @@ class SelectUserViewController: UIViewController {
 
 // MARK: Refresh Control
 //    Adds functionality to swipe down to refresh table
+
     private let refreshControl = UIRefreshControl()
 
 // MARK: fetchedResultsController
