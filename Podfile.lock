@@ -33,6 +33,7 @@ PODS:
   - GoogleUtilities/Reachability (7.0.0):
     - GoogleUtilities/Logger
   - Haptico (1.1.1)
+  - HGPlaceholders (0.5.0)
   - Keys (1.0.1)
   - KumpeHelpers (1.1.6):
     - Alamofire-SwiftyJSON
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - CollectionViewCenteredFlowLayout
   - Google-Mobile-Ads-SDK
   - Haptico
+  - HGPlaceholders
   - Keys (from `Pods/CocoaPodsKeys`)
   - KumpeHelpers
   - PrivacyKit
@@ -89,6 +91,7 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - Haptico
+    - HGPlaceholders
     - KumpeHelpers
     - nanopb
     - PrivacyKit
@@ -124,6 +127,7 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
   GoogleUtilities: ffb2f4159f2c897c6e8992bd7fbcdef8a300589c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
+  HGPlaceholders: cbf8caed8360fc2ab5e8a4610cce61f76fbd2c37
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   KumpeHelpers: f72565ac88832b0ea1afd087e25b886870366141
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
@@ -139,6 +143,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 6ed21f3c8ff3fccba4bee07af45a6d544649d82b
+PODFILE CHECKSUM: 41d984c781ede9ab0208e078d45f1132e5595de3
 
 COCOAPODS: 1.9.3
