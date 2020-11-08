@@ -33,6 +33,7 @@ PODS:
   - GoogleUtilities/Reachability (7.0.0):
     - GoogleUtilities/Logger
   - Haptico (1.1.1)
+  - HGPlaceholders (0.5.0)
   - Keys (1.0.1)
   - KumpeHelpers (1.1.6):
     - Alamofire-SwiftyJSON
@@ -56,6 +57,7 @@ PODS:
   - SwiftyFORM (1.8.4)
   - SwiftyJSON (4.0.0)
   - Sync (6.5.0)
+  - TableViewReloadAnimation (0.0.5)
   - Toast-Swift (5.0.1)
   - TransitionButton (0.5.3)
 
@@ -65,6 +67,7 @@ DEPENDENCIES:
   - CollectionViewCenteredFlowLayout
   - Google-Mobile-Ads-SDK
   - Haptico
+  - HGPlaceholders
   - Keys (from `Pods/CocoaPodsKeys`)
   - KumpeHelpers
   - PrivacyKit
@@ -73,6 +76,7 @@ DEPENDENCIES:
   - SwiftMessages
   - SwiftyFORM
   - Sync
+  - TableViewReloadAnimation
   - Toast-Swift
   - TransitionButton
 
@@ -87,6 +91,7 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - Haptico
+    - HGPlaceholders
     - KumpeHelpers
     - nanopb
     - PrivacyKit
@@ -96,6 +101,7 @@ SPEC REPOS:
     - SwiftyFORM
     - SwiftyJSON
     - Sync
+    - TableViewReloadAnimation
     - Toast-Swift
     - TransitionButton
 
@@ -121,6 +127,7 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
   GoogleUtilities: ffb2f4159f2c897c6e8992bd7fbcdef8a300589c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
+  HGPlaceholders: cbf8caed8360fc2ab5e8a4610cce61f76fbd2c37
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   KumpeHelpers: f72565ac88832b0ea1afd087e25b886870366141
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
@@ -132,9 +139,10 @@ SPEC CHECKSUMS:
   SwiftyFORM: ce2dc9afb5b4488715112108a114c6d26e0b2836
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
+  TableViewReloadAnimation: f3a4c4048efbc56331be98075f26a2e533a14c16
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 447df278fb53b93abc49b9627b1d240ca93b9e59
+PODFILE CHECKSUM: 41d984c781ede9ab0208e078d45f1132e5595de3
 
 COCOAPODS: 1.9.3
