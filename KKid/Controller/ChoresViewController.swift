@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 import KumpeHelpers
-import TableViewReloadAnimation
+import EmptyKit
 
-class ChoresViewController: UIViewController {
+class ChoresViewController: UIViewController, EmptyDelegate {
 
 // MARK: Parameters
     let selectedUser = LoggedInUser.selectedUser
@@ -66,6 +66,13 @@ class ChoresViewController: UIViewController {
         }
     }
 
+// MARK: viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.ept.dataSource = self
+        tableView.ept.delegate = self
+    }
+
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -87,9 +94,7 @@ class ChoresViewController: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         verifyAuthenticated()
-        tableView.reloadData(
-            with: .simple(duration: 0.75, direction: .rotation3D(type: .spiderMan),
-            constantDelay: 0))
+        tableView.reloadData()
     }
 
 // MARK: viewDidAppear
@@ -145,9 +150,7 @@ class ChoresViewController: UIViewController {
 
     @IBAction func listFilterDidChange(_ sender: Any) {
         setupFetchedResultsController()
-        tableView.reloadData(
-            with: .simple(duration: 0.75, direction: .rotation3D(type: .spiderMan),
-            constantDelay: 0))
+        tableView.reloadData()
     }
 
 }
@@ -273,6 +276,7 @@ extension ChoresViewController: NSFetchedResultsControllerDelegate {
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)
             tableView.setNeedsLayout()
+            tableView.reloadData()
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
         @unknown default:
@@ -290,6 +294,21 @@ extension ChoresViewController: NSFetchedResultsControllerDelegate {
         @unknown default:
             break
         }
+    }
+
+}
+
+extension ChoresViewController: EmptyDataSource {
+
+    func imageForEmpty(in view: UIView) -> UIImage? {
+        return UIImage(named: "wish_list")
+    }
+
+    func titleForEmpty(in view: UIView) -> NSAttributedString? {
+        let title = "no data"
+        let font = UIFont.systemFont(ofSize: 14)
+        let attributes: [NSAttributedString.Key : Any] = [.foregroundColor: UIColor.black, .font: font]
+        return NSAttributedString(string: title, attributes: attributes)
     }
 
 }

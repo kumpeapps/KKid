@@ -1,0 +1,2 @@
+- Added Push Notifications
+- We now push an app badge so that KKid icon shows number of chores todo for today which updates every time a chore is added/marked and at least once per hour.

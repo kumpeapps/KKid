@@ -49,6 +49,8 @@
 		0F9F38AF2553300400829133 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F9F38AE2553300400829133 /* Settings.bundle */; };
 		0F9F38B3255338DD00829133 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */; };
 		0F9F397325548BA700829133 /* getDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F397225548BA700829133 /* getDayOfWeek.swift */; };
+		0FAC9F6F2558E42000A5ED29 /* KKidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAC9F6E2558E42000A5ED29 /* KKidUITests.swift */; };
+		0FAC9F792558F0FE00A5ED29 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAC9F782558F0FE00A5ED29 /* SnapshotHelper.swift */; };
 		0FB98CEB24FC70DC00143A6A /* Rayando-xj18.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB98CEA24FC70DC00143A6A /* Rayando-xj18.ttf */; };
 		0FB98CF024FF132C00143A6A /* ComicSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB98CEC24FF132C00143A6A /* ComicSans.ttf */; };
 		0FB98CF124FF132C00143A6A /* ComicSansAlt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB98CED24FF132C00143A6A /* ComicSansAlt.ttf */; };
@@ -65,6 +67,16 @@
 		0FDC462C251AC19000A4E3D2 /* UserEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDC462B251AC19000A4E3D2 /* UserEditProfileViewController.swift */; };
 		A3421BF978588D5B625E0BEA /* Pods_KKid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73BE95B966B40C855EFC2DA2 /* Pods_KKid.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0FAC9F712558E42000A5ED29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F5EC88C24F98D0000873868 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F5EC89324F98D0000873868;
+			remoteInfo = KKid;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrivacyKitStyle.swift; sourceTree = "<group>"; };
@@ -111,6 +123,10 @@
 		0F9F38AE2553300400829133 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		0F9F397225548BA700829133 /* getDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDayOfWeek.swift; sourceTree = "<group>"; };
+		0FAC9F6C2558E42000A5ED29 /* KKidUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KKidUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FAC9F6E2558E42000A5ED29 /* KKidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKidUITests.swift; sourceTree = "<group>"; };
+		0FAC9F702558E42000A5ED29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FAC9F782558F0FE00A5ED29 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		0FB98CEA24FC70DC00143A6A /* Rayando-xj18.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rayando-xj18.ttf"; sourceTree = "<group>"; };
 		0FB98CEC24FF132C00143A6A /* ComicSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ComicSans.ttf; sourceTree = "<group>"; };
 		0FB98CED24FF132C00143A6A /* ComicSansAlt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ComicSansAlt.ttf; sourceTree = "<group>"; };
@@ -140,6 +156,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FAC9F692558E42000A5ED29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -157,6 +180,7 @@
 			children = (
 				0F9F38AE2553300400829133 /* Settings.bundle */,
 				0F5EC89624F98D0000873868 /* KKid */,
+				0FAC9F6D2558E42000A5ED29 /* KKidUITests */,
 				0F5EC89524F98D0000873868 /* Products */,
 				E59C333465C970E133EDF702 /* Pods */,
 				181EC3F58AD05BAB37041387 /* Frameworks */,
@@ -167,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				0F5EC89424F98D0000873868 /* KKid.app */,
+				0FAC9F6C2558E42000A5ED29 /* KKidUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,6 +323,16 @@
 			path = "KKid Client";
 			sourceTree = "<group>";
 		};
+		0FAC9F6D2558E42000A5ED29 /* KKidUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0FAC9F782558F0FE00A5ED29 /* SnapshotHelper.swift */,
+				0FAC9F6E2558E42000A5ED29 /* KKidUITests.swift */,
+				0FAC9F702558E42000A5ED29 /* Info.plist */,
+			);
+			path = KKidUITests;
+			sourceTree = "<group>";
+		};
 		181EC3F58AD05BAB37041387 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,18 +374,40 @@
 			productReference = 0F5EC89424F98D0000873868 /* KKid.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0FAC9F6B2558E42000A5ED29 /* KKidUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FAC9F752558E42000A5ED29 /* Build configuration list for PBXNativeTarget "KKidUITests" */;
+			buildPhases = (
+				0FAC9F682558E42000A5ED29 /* Sources */,
+				0FAC9F692558E42000A5ED29 /* Frameworks */,
+				0FAC9F6A2558E42000A5ED29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FAC9F722558E42000A5ED29 /* PBXTargetDependency */,
+			);
+			name = KKidUITests;
+			productName = KKidUITests;
+			productReference = 0FAC9F6C2558E42000A5ED29 /* KKidUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0F5EC88C24F98D0000873868 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Justin Kumpe";
 				TargetAttributes = {
 					0F5EC89324F98D0000873868 = {
 						CreatedOnToolsVersion = 11.6;
+					};
+					0FAC9F6B2558E42000A5ED29 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 0F5EC89324F98D0000873868;
 					};
 				};
 			};
@@ -368,6 +425,7 @@
 			projectRoot = "";
 			targets = (
 				0F5EC89324F98D0000873868 /* KKid */,
+				0FAC9F6B2558E42000A5ED29 /* KKidUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -386,6 +444,13 @@
 				0FB98CF124FF132C00143A6A /* ComicSansAlt.ttf in Resources */,
 				0F9F38AF2553300400829133 /* Settings.bundle in Resources */,
 				0FB98CF224FF132C00143A6A /* ComicSansBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FAC9F6A2558E42000A5ED29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +587,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FAC9F682558E42000A5ED29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FAC9F6F2558E42000A5ED29 /* KKidUITests.swift in Sources */,
+				0FAC9F792558F0FE00A5ED29 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0FAC9F722558E42000A5ED29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F5EC89324F98D0000873868 /* KKid */;
+			targetProxy = 0FAC9F712558E42000A5ED29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0F5EC89D24F98D0000873868 /* Main.storyboard */ = {
@@ -595,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -650,7 +732,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -670,7 +752,7 @@
 				CURRENT_PROJECT_VERSION = 2.0.5.1;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -693,7 +775,7 @@
 				CURRENT_PROJECT_VERSION = 2.0.5.1;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -703,6 +785,46 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0FAC9F732558E42000A5ED29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2T42Z3DM34;
+				INFOPLIST_FILE = KKidUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKidUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KKid;
+			};
+			name = Debug;
+		};
+		0FAC9F742558E42000A5ED29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2T42Z3DM34;
+				INFOPLIST_FILE = KKidUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKidUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KKid;
 			};
 			name = Release;
 		};
@@ -723,6 +845,15 @@
 			buildConfigurations = (
 				0F5EC8A924F98D0200873868 /* Debug */,
 				0F5EC8AA24F98D0200873868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FAC9F752558E42000A5ED29 /* Build configuration list for PBXNativeTarget "KKidUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FAC9F732558E42000A5ED29 /* Debug */,
+				0FAC9F742558E42000A5ED29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

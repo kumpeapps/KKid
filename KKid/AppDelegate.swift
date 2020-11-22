@@ -67,7 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
             UserDefaults.standard.removeObject(forKey: "isAuthenticated")
         }
 
-        registerForPushNotifications()
+        #if !targetEnvironment(simulator)
+            registerForPushNotifications()
+        #endif
 
         SettingsBundleHelper.checkAndExecuteSettings()
         SettingsBundleHelper.setVersionAndBuildNumber()

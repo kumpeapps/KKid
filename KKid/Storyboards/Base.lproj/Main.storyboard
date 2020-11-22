@@ -121,6 +121,11 @@
                                 <rect key="frame" x="0.0" y="247" width="414" height="615"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="3Zo-08-fil">
+                                    <rect key="frame" x="0.0" y="111.5" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="qNZ-Ry-fYj" detailTextLabel="fPL-Dc-0gK" style="IBUITableViewCellStyleSubtitle" id="hEd-Mq-bMd">
                                         <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
@@ -815,7 +820,7 @@
             <size key="intrinsicContentSize" width="180" height="35"/>
         </designable>
         <designable name="myx-O7-kWp">
-            <size key="intrinsicContentSize" width="24.5" height="24.5"/>
+            <size key="intrinsicContentSize" width="10.5" height="20.5"/>
         </designable>
     </designables>
     <resources>
