@@ -9,9 +9,8 @@
 import UIKit
 import CoreData
 import KumpeHelpers
-import EmptyKit
 
-class ChoresViewController: UIViewController, EmptyDelegate {
+class ChoresViewController: UIViewController{
 
 // MARK: Parameters
     let selectedUser = LoggedInUser.selectedUser
@@ -64,13 +63,6 @@ class ChoresViewController: UIViewController, EmptyDelegate {
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
-    }
-
-// MARK: viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.ept.dataSource = self
-        tableView.ept.delegate = self
     }
 
 // MARK: viewWillAppear
@@ -294,21 +286,6 @@ extension ChoresViewController: NSFetchedResultsControllerDelegate {
         @unknown default:
             break
         }
-    }
-
-}
-
-extension ChoresViewController: EmptyDataSource {
-
-    func imageForEmpty(in view: UIView) -> UIImage? {
-        return UIImage(named: "wish_list")
-    }
-
-    func titleForEmpty(in view: UIView) -> NSAttributedString? {
-        let title = "no data"
-        let font = UIFont.systemFont(ofSize: 14)
-        let attributes: [NSAttributedString.Key : Any] = [.foregroundColor: UIColor.black, .font: font]
-        return NSAttributedString(string: title, attributes: attributes)
     }
 
 }

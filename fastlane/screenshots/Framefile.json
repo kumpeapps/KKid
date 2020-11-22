@@ -1,0 +1,35 @@
+{
+    "default": {
+        "title": {
+      		"font": "../../KKid/Assets/ComicSansBold.ttf",
+      		"font_size": 128,
+      		"color": "#545454"
+        },
+        "background": "./background.jpg",
+        "padding": 60
+    },
+    "data": [
+    {
+      "filter": "LoginScreen",
+      "keyword": {
+        "color": "#d21559"
+      },
+      "filter": "HomeScreen",
+      "keyword": {
+        "color": "#d21559"
+      },
+      "filter": "SelectUserScreen",
+      "keyword": {
+        "color": "#d21559"
+      },
+      "filter": "ChoresScreen",
+      "keyword": {
+        "color": "#d21559"
+      },
+      "filter": "AllowanceScreen",
+      "keyword": {
+        "color": "#d21559"
+      }
+    }
+  ]
+}
