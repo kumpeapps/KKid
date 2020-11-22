@@ -11,7 +11,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 ## Screenshots (2.0.x)
 | Home | Select User | Login | Allowance | Chores |
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
-| ![home.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-HomeScreen_framed.png)  | ![selectUser.png](fastlane/screenshots/en-US/iPhone 11 Pro Max-SelectUserScreen_framed.png)  | ![login.png](fastlane/screenshots/en-US/iPhone 11 Pro Max-LoginScreen_framed.png)    | ![allowance.png](fastlane/screenshots/en-US/iPhone 11 Pro Max-AllowanceScreen_framed.png)	| ![chores.png](fastlane/screenshots/en-US/iPhone 11 Pro Max-ChoresScreen_framed.png)	|
+| ![home.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-HomeScreen_framed.png)  | ![selectUser.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-SelectUserScreen_framed.png)  | ![login.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-LoginScreen_framed.png)    | ![allowance.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-AllowanceScreen_framed.png)	| ![chores.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-ChoresScreen_framed.png)	|
 
 ## Frameworks Used
 -   Foundation
