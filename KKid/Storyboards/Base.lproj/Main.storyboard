@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dC1-XM-KuR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dC1-XM-KuR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -110,6 +110,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo2" translatesAutoresizingMaskIntoConstraints="NO" id="BuK-tg-zd1" userLabel="background">
                                 <rect key="frame" x="0.0" y="88" width="414" height="853"/>
                             </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="empty_box" id="nvS-W1-5KA">
+                                <rect key="frame" x="0.0" y="442" width="414" height="293"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KKid_Toolbar" translatesAutoresizingMaskIntoConstraints="NO" id="oVw-cG-Af2" userLabel="logo">
                                 <rect key="frame" x="87" y="88" width="240" height="128"/>
                                 <constraints>
@@ -121,11 +125,6 @@
                                 <rect key="frame" x="0.0" y="247" width="414" height="615"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="3Zo-08-fil">
-                                    <rect key="frame" x="0.0" y="111.5" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="qNZ-Ry-fYj" detailTextLabel="fPL-Dc-0gK" style="IBUITableViewCellStyleSubtitle" id="hEd-Mq-bMd">
                                         <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
@@ -178,15 +177,18 @@
                             <constraint firstItem="vOJ-O0-ZiY" firstAttribute="centerX" secondItem="Mbs-20-EX0" secondAttribute="centerX" id="5fl-IF-xdJ"/>
                             <constraint firstItem="oVw-cG-Af2" firstAttribute="leading" secondItem="Mbs-20-EX0" secondAttribute="leading" constant="87" id="7bQ-qQ-WiN"/>
                             <constraint firstItem="BuK-tg-zd1" firstAttribute="leading" secondItem="Mbs-20-EX0" secondAttribute="leading" id="CYa-IC-AHA"/>
+                            <constraint firstItem="nvS-W1-5KA" firstAttribute="centerX" secondItem="BuK-tg-zd1" secondAttribute="centerX" id="FCf-Fy-imI"/>
                             <constraint firstItem="oVw-cG-Af2" firstAttribute="top" secondItem="Mbs-20-EX0" secondAttribute="top" id="dHL-Lb-7Cb"/>
                             <constraint firstItem="Mbs-20-EX0" firstAttribute="trailing" secondItem="BuK-tg-zd1" secondAttribute="trailing" id="fbV-KQ-puY"/>
                             <constraint firstItem="Mbs-20-EX0" firstAttribute="trailing" secondItem="oVw-cG-Af2" secondAttribute="trailing" constant="87" id="jcc-Xc-lbe"/>
+                            <constraint firstItem="nvS-W1-5KA" firstAttribute="width" secondItem="BuK-tg-zd1" secondAttribute="width" id="mP3-Xc-dXD"/>
                             <constraint firstItem="BuK-tg-zd1" firstAttribute="top" secondItem="Mbs-20-EX0" secondAttribute="top" id="oCy-hf-BpE"/>
                             <constraint firstItem="BuK-tg-zd1" firstAttribute="bottom" secondItem="Mbs-20-EX0" secondAttribute="bottom" constant="79" id="rLW-Wa-Bkf"/>
                             <constraint firstItem="vOJ-O0-ZiY" firstAttribute="top" secondItem="oVw-cG-Af2" secondAttribute="bottom" id="tW4-mh-0Nu"/>
                             <constraint firstItem="vOJ-O0-ZiY" firstAttribute="width" secondItem="Mbs-20-EX0" secondAttribute="width" id="u1F-9z-yLf"/>
                             <constraint firstItem="07W-8B-ROM" firstAttribute="leading" secondItem="Mbs-20-EX0" secondAttribute="leading" id="wTH-k6-QxE"/>
                             <constraint firstItem="07W-8B-ROM" firstAttribute="bottom" secondItem="Mbs-20-EX0" secondAttribute="bottom" id="yV8-FP-qbj"/>
+                            <constraint firstItem="nvS-W1-5KA" firstAttribute="centerX" secondItem="07W-8B-ROM" secondAttribute="centerX" multiplier="0.1" id="yhP-lJ-R8F"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chores" id="zEo-0M-cBO">
@@ -199,6 +201,7 @@
                     <connections>
                         <outlet property="buttonAdd" destination="xNy-cr-qHE" id="UIV-Gt-YJg"/>
                         <outlet property="imageBackground" destination="BuK-tg-zd1" id="w8s-Em-sYr"/>
+                        <outlet property="imageEmptyBox" destination="nvS-W1-5KA" id="RC5-lV-xt1"/>
                         <outlet property="imageLogo" destination="oVw-cG-Af2" id="LQU-n0-bn3"/>
                         <outlet property="selectorListFilter" destination="vOJ-O0-ZiY" id="GdK-Kk-Sz2"/>
                         <outlet property="tableView" destination="07W-8B-ROM" id="RuR-1a-aBJ"/>
@@ -686,7 +689,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myx-O7-kWp" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                    <rect key="frame" x="77" y="0.0" width="23" height="21"/>
+                                                    <rect key="frame" x="75.5" y="0.0" width="24.5" height="24.5"/>
                                                     <accessibility key="accessibilityConfiguration" label="0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="BDO-Ij-O96"/>
@@ -820,12 +823,13 @@
             <size key="intrinsicContentSize" width="180" height="35"/>
         </designable>
         <designable name="myx-O7-kWp">
-            <size key="intrinsicContentSize" width="10.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="24.5" height="24.5"/>
         </designable>
     </designables>
     <resources>
         <image name="KKid_Toolbar" width="471" height="180"/>
         <image name="blue_dash" width="151" height="45"/>
+        <image name="empty_box" width="96" height="96"/>
         <image name="green_check" width="104" height="95"/>
         <image name="photo2" width="259" height="194"/>
         <image name="red_x" width="85" height="115"/>

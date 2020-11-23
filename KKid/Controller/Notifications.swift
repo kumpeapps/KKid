@@ -11,4 +11,7 @@ import UIKit
 extension Notification.Name {
 //    Set notification name for isAuthenticated
     static let isAuthenticated = Notification.Name("isAuthenticated")
+
+//    Set notification name for update user
+    static let updateUser = Notification.Name("updateUser")
 }

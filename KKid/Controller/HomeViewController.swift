@@ -60,6 +60,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         choreCount = UIApplication.shared.applicationIconBadgeNumber
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(buildModules), name: .updateUser, object: nil)
         verifyAuthenticated()
         modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
         buildModules()
@@ -117,7 +118,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
 // MARK: buildModules
-    func buildModules() {
+    @objc func buildModules() {
         if let selectedUser = LoggedInUser.selectedUser {
             modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
             if LoggedInUser.selectedUser == LoggedInUser.user {

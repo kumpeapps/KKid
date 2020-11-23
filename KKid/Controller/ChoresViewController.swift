@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import KumpeHelpers
 
-class ChoresViewController: UIViewController{
+class ChoresViewController: UIViewController {
 
 // MARK: Parameters
     let selectedUser = LoggedInUser.selectedUser
@@ -18,6 +18,7 @@ class ChoresViewController: UIViewController{
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
+    @IBOutlet weak var imageEmptyBox: UIImageView!
 
 // MARK: Table View
     @IBOutlet weak var tableView: UITableView!
@@ -65,11 +66,17 @@ class ChoresViewController: UIViewController{
         }
     }
 
+// MARK: viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
         setupFetchedResultsController()
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
         imageLogo.image = AppDelegate().kkidLogo
@@ -116,8 +123,9 @@ class ChoresViewController: UIViewController{
     @objc func getChores() {
         KKidClient.getChores { (success, _) in
             Logger.log(.success, "getChores completed")
-            self.refreshControl.endRefreshing()
+            self.setupFetchedResultsController()
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
 
@@ -140,6 +148,7 @@ class ChoresViewController: UIViewController{
         }
     }
 
+// MARK: listFilterDidChange
     @IBAction func listFilterDidChange(_ sender: Any) {
         setupFetchedResultsController()
         tableView.reloadData()
@@ -153,6 +162,12 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
+        let sectionCount = fetchedResultsController.sections?.count ?? 0
+        if sectionCount == 0 {
+            imageEmptyBox.isHidden = false
+        } else {
+            imageEmptyBox.isHidden = true
+        }
         return fetchedResultsController.sections?.count ?? 1
     }
 
@@ -265,10 +280,11 @@ extension ChoresViewController: NSFetchedResultsControllerDelegate {
             tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
+            getChores()
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)
             tableView.setNeedsLayout()
-            tableView.reloadData()
+            getChores()
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
         @unknown default:
