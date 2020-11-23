@@ -18,7 +18,6 @@ class ChoresViewController: UIViewController {
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
-    @IBOutlet weak var imageEmptyBox: UIImageView!
 
 // MARK: Table View
     @IBOutlet weak var tableView: UITableView!
@@ -162,12 +161,6 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
-        let sectionCount = fetchedResultsController.sections?.count ?? 0
-        if sectionCount == 0 {
-            imageEmptyBox.isHidden = false
-        } else {
-            imageEmptyBox.isHidden = true
-        }
         return fetchedResultsController.sections?.count ?? 1
     }
 
