@@ -6,7 +6,6 @@ PODS:
   - BadgeSwift (8.0.0)
   - CollectionViewCenteredFlowLayout (1.0.1)
   - DeviceKit (4.2.1)
-  - EmptyKit (4.2.0)
   - Google-Mobile-Ads-SDK (7.68.0):
     - GoogleAppMeasurement (~> 7.0)
     - GoogleUserMessagingPlatform (~> 1.1)
@@ -59,7 +58,6 @@ PODS:
   - SwiftyFORM (1.8.4)
   - SwiftyJSON (4.0.0)
   - Sync (6.5.0)
-  - TableViewReloadAnimation (0.0.5)
   - Toast-Swift (5.0.1)
   - TransitionButton (0.5.3)
 
@@ -67,7 +65,6 @@ DEPENDENCIES:
   - Alamofire-SwiftyJSON
   - BadgeSwift
   - CollectionViewCenteredFlowLayout
-  - EmptyKit
   - Google-Mobile-Ads-SDK
   - Haptico
   - Keys (from `Pods/CocoaPodsKeys`)
@@ -78,7 +75,6 @@ DEPENDENCIES:
   - SwiftMessages
   - SwiftyFORM
   - Sync
-  - TableViewReloadAnimation
   - Toast-Swift
   - TransitionButton
 
@@ -89,7 +85,6 @@ SPEC REPOS:
     - BadgeSwift
     - CollectionViewCenteredFlowLayout
     - DeviceKit
-    - EmptyKit
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUserMessagingPlatform
@@ -104,7 +99,6 @@ SPEC REPOS:
     - SwiftyFORM
     - SwiftyJSON
     - Sync
-    - TableViewReloadAnimation
     - Toast-Swift
     - TransitionButton
 
@@ -126,7 +120,6 @@ SPEC CHECKSUMS:
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
   CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
   DeviceKit: cadb5ff25d45fe186778bf2d0fd2ea4750542189
-  EmptyKit: 95d75cad79476379124e929488116e409043c1d5
   Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
@@ -143,10 +136,9 @@ SPEC CHECKSUMS:
   SwiftyFORM: ce2dc9afb5b4488715112108a114c6d26e0b2836
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
-  TableViewReloadAnimation: f3a4c4048efbc56331be98075f26a2e533a14c16
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: b993c98c434ef6b6c4dae5fc7dc2fd70a545edb5
+PODFILE CHECKSUM: 447df278fb53b93abc49b9627b1d240ca93b9e59
 
 COCOAPODS: 1.9.3
