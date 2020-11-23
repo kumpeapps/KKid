@@ -255,6 +255,8 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate {
 //        Block stolen chores unless user is an Admin. Else segue to mark chore unless chore is actually a calendar notation
         if !LoggedInUser.user!.isAdmin && aChore.stolenBy != nil && aChore.stolenBy! != "" {
             ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can edit an optional or stolen chore after it has already been marked off!")
+        } else if aChore.dayAsNumber != getDayOfWeek()! && aChore.dayAsNumber != 8 && !LoggedInUser.user!.isAdmin{
+            ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can edit this chore because it is not due today! Please select a chore that is for Today or a Weekly Chore.")
         } else if !aChore.isCalendar {
             performSegue(withIdentifier: "segueMarkChore", sender: self)
         }
