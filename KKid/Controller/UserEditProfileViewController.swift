@@ -124,6 +124,8 @@ class UserEditProfileViewController: FormViewController {
                     self.navigationController?.popViewController(animated: true)
                     KKidClient.getUsers { (success, _) in
                         ShowAlert.statusLine(theme: .success, title: "User Updated", message: "User Updated", seconds: 3, dim: false)
+                        KKidClient.getUsers(silent: true) { (_, _) in
+                        }
                     }
                 }
             } else {

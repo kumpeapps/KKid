@@ -34,6 +34,7 @@ extension KKidClient {
 
             apiSync(silent: silent, parameters: parameters, module: module, jsonArrayName: jsonArrayName, coreDataEntityName: coreDataEntityName) { (success, error) in
                 completion(success, error)
+                NotificationCenter.default.post(name: .isAuthenticated, object: nil)
             }
         }
 

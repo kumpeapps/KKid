@@ -5,39 +5,40 @@ PODS:
     - SwiftyJSON (~> 4.0.0)
   - BadgeSwift (8.0.0)
   - CollectionViewCenteredFlowLayout (1.0.1)
+  - DeviceKit (4.2.1)
   - Google-Mobile-Ads-SDK (7.68.0):
     - GoogleAppMeasurement (~> 7.0)
     - GoogleUserMessagingPlatform (~> 1.1)
-  - GoogleAppMeasurement (7.0.0):
+  - GoogleAppMeasurement (7.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
     - nanopb (~> 2.30906.0)
   - GoogleUserMessagingPlatform (1.3.0)
-  - GoogleUtilities/AppDelegateSwizzler (7.0.0):
+  - GoogleUtilities/AppDelegateSwizzler (7.1.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.0.0):
+  - GoogleUtilities/Environment (7.1.1):
     - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (7.0.0):
+  - GoogleUtilities/Logger (7.1.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.0.0):
+  - GoogleUtilities/MethodSwizzler (7.1.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.0.0):
+  - GoogleUtilities/Network (7.1.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.0.0)"
-  - GoogleUtilities/Reachability (7.0.0):
+  - "GoogleUtilities/NSData+zlib (7.1.1)"
+  - GoogleUtilities/Reachability (7.1.1):
     - GoogleUtilities/Logger
   - Haptico (1.1.1)
-  - HGPlaceholders (0.5.0)
   - Keys (1.0.1)
-  - KumpeHelpers (1.1.6):
+  - KumpeHelpers (1.1.7):
     - Alamofire-SwiftyJSON
     - CollectionViewCenteredFlowLayout
+    - DeviceKit
     - Haptico
     - ReachabilitySwift
     - SwiftMessages
@@ -57,7 +58,6 @@ PODS:
   - SwiftyFORM (1.8.4)
   - SwiftyJSON (4.0.0)
   - Sync (6.5.0)
-  - TableViewReloadAnimation (0.0.5)
   - Toast-Swift (5.0.1)
   - TransitionButton (0.5.3)
 
@@ -67,7 +67,6 @@ DEPENDENCIES:
   - CollectionViewCenteredFlowLayout
   - Google-Mobile-Ads-SDK
   - Haptico
-  - HGPlaceholders
   - Keys (from `Pods/CocoaPodsKeys`)
   - KumpeHelpers
   - PrivacyKit
@@ -76,7 +75,6 @@ DEPENDENCIES:
   - SwiftMessages
   - SwiftyFORM
   - Sync
-  - TableViewReloadAnimation
   - Toast-Swift
   - TransitionButton
 
@@ -86,12 +84,12 @@ SPEC REPOS:
     - Alamofire-SwiftyJSON
     - BadgeSwift
     - CollectionViewCenteredFlowLayout
+    - DeviceKit
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - Haptico
-    - HGPlaceholders
     - KumpeHelpers
     - nanopb
     - PrivacyKit
@@ -101,7 +99,6 @@ SPEC REPOS:
     - SwiftyFORM
     - SwiftyJSON
     - Sync
-    - TableViewReloadAnimation
     - Toast-Swift
     - TransitionButton
 
@@ -122,14 +119,14 @@ SPEC CHECKSUMS:
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
   CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
+  DeviceKit: cadb5ff25d45fe186778bf2d0fd2ea4750542189
   Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
-  GoogleAppMeasurement: 7790ef975d1d463c8614cd949a847e612edf087a
+  GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
-  GoogleUtilities: ffb2f4159f2c897c6e8992bd7fbcdef8a300589c
+  GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
-  HGPlaceholders: cbf8caed8360fc2ab5e8a4610cce61f76fbd2c37
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  KumpeHelpers: f72565ac88832b0ea1afd087e25b886870366141
+  KumpeHelpers: 9c48e7234635ec31337c04b53a0b4b1d1fb429dc
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
@@ -139,10 +136,9 @@ SPEC CHECKSUMS:
   SwiftyFORM: ce2dc9afb5b4488715112108a114c6d26e0b2836
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
-  TableViewReloadAnimation: f3a4c4048efbc56331be98075f26a2e533a14c16
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 41d984c781ede9ab0208e078d45f1132e5595de3
+PODFILE CHECKSUM: 447df278fb53b93abc49b9627b1d240ca93b9e59
 
 COCOAPODS: 1.9.3

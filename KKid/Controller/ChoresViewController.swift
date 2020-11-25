@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import KumpeHelpers
-import TableViewReloadAnimation
 
 class ChoresViewController: UIViewController {
 
@@ -66,11 +65,17 @@ class ChoresViewController: UIViewController {
         }
     }
 
+// MARK: viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
         setupFetchedResultsController()
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
         imageLogo.image = AppDelegate().kkidLogo
@@ -87,9 +92,7 @@ class ChoresViewController: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         verifyAuthenticated()
-        tableView.reloadData(
-            with: .simple(duration: 0.75, direction: .rotation3D(type: .spiderMan),
-            constantDelay: 0))
+        tableView.reloadData()
     }
 
 // MARK: viewDidAppear
@@ -119,8 +122,9 @@ class ChoresViewController: UIViewController {
     @objc func getChores() {
         KKidClient.getChores { (success, _) in
             Logger.log(.success, "getChores completed")
-            self.refreshControl.endRefreshing()
+            self.setupFetchedResultsController()
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
 
@@ -143,11 +147,10 @@ class ChoresViewController: UIViewController {
         }
     }
 
+// MARK: listFilterDidChange
     @IBAction func listFilterDidChange(_ sender: Any) {
         setupFetchedResultsController()
-        tableView.reloadData(
-            with: .simple(duration: 0.75, direction: .rotation3D(type: .spiderMan),
-            constantDelay: 0))
+        tableView.reloadData()
     }
 
 }
@@ -245,6 +248,8 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate {
 //        Block stolen chores unless user is an Admin. Else segue to mark chore unless chore is actually a calendar notation
         if !LoggedInUser.user!.isAdmin && aChore.stolenBy != nil && aChore.stolenBy! != "" {
             ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can edit an optional or stolen chore after it has already been marked off!")
+        } else if aChore.dayAsNumber != getDayOfWeek()! && aChore.dayAsNumber != 8 && !LoggedInUser.user!.isAdmin {
+            ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can edit this chore because it is not due today! Please select a chore that is for Today or a Weekly Chore.")
         } else if !aChore.isCalendar {
             performSegue(withIdentifier: "segueMarkChore", sender: self)
         }
@@ -270,9 +275,11 @@ extension ChoresViewController: NSFetchedResultsControllerDelegate {
             tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
+            getChores()
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)
             tableView.setNeedsLayout()
+            getChores()
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
         @unknown default:

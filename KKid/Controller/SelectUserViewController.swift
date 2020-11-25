@@ -58,6 +58,7 @@ class SelectUserViewController: UIViewController {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
         setupFetchedResultsController()
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
 
