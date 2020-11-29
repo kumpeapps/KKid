@@ -134,11 +134,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 modules.append(KKid_Module.init(title: "Allowance", segue: "segueAllowance", icon: #imageLiteral(resourceName: "allowance")))
             }
 
+            if selectedUser.enableTmdb {
+                modules.append(KKid_Module.init(title: "Search Movies", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!))
+            }
+
             modules.append(KKid_Module.init(title: "Edit Profile", segue: "segueEditProfile", icon: #imageLiteral(resourceName: "profile")))
 
             if LoggedInUser.user!.isAdmin {
                 modules.append(KKid_Module.init(title: "Select User", segue: "segueSelectUser", icon: #imageLiteral(resourceName: "select_user")))
             }
+
         }
 
         collectionView.reloadData()

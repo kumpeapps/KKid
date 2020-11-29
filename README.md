@@ -9,9 +9,9 @@
 KKid is an app for parents and their children to keep up with chores and allowance. With this app parents can create child accounts and add chores to their profile. Kids can then login and see their chores and mark them off each day. By turning on the allowance feature parents can add/subtract money from the kid's allowance account (this is a virtual "account" to show the kids how much allowance they have, no money is actually exchanged within the KKid app, think of it as a notebook) and the kids can view this when they login as well.
 
 ## Screenshots
-| Home | Select User | Login | Allowance | Chores |
-| :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
-| ![home.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-HomeScreen_framed.png)  | ![selectUser.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-SelectUserScreen_framed.png)  | ![login.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-LoginScreen_framed.png)    | ![allowance.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-AllowanceScreen_framed.png)	| ![chores.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-ChoresScreen_framed.png)	|
+| Home | Select User | Login | Allowance | Chores | Search Movies | Movie Details |
+| :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
+| ![home.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-HomeScreen_framed.png)  | ![selectUser.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-SelectUserScreen_framed.png)  | ![login.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-LoginScreen_framed.png)    | ![allowance.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-AllowanceScreen_framed.png)	| ![chores.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-ChoresScreen_framed.png)	| ![searchmovies.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-SearchMovies_framed.png)	| ![chores.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-MovieDetails_framed.png)	|
 
 ## Frameworks Used
 -   Foundation
@@ -33,7 +33,13 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [PrivacyKit](https://github.com/ithazfire/PrivacyKit)
 -   [BadgeSwift](https://github.com/evgenyneu/swift-badge)
 -   [TransitionButton](https://github.com/AladinWay/TransitionButton)
+-   [Kingfisher](https://github.com/onevcat/Kingfisher)
+-   [JKRefresher](https://github.com/kumpeapps/JKRefresher)
+-   [YoutubeKit](https://github.com/rinov/YoutubeKit)
+
+## Other Credits
 -   [Icons from Icons8](https://icons8.com)
+-   [TMDb](https://themoviedb.org)
 
 ## Instructions
 
@@ -103,6 +109,16 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   On this screen you can add transactions (add/subtract) for the selected user's allowance. Just fill out the form and click submit
 -   Master and Admin users may add or subtract allowance
 -   Users that are not a master or admin may only subtract from their allowance account
+
+### Search Movies Module
+-   This module will allow you to search movies. By clicking on the movie you can pull up the [Movie Details Screen](https://github.com/justinkumpe/KKid#movie-details-screen).
+
+###### NOTE: The movie search blocks movies labeled as adult. BUT this database is controlled by TMDb and the developer of KKid has no controll over it's content. For this reason the Movie Search feature is not enabled by default and a parent/admin must enable this feature per user.
+
+#### Movie Details Screen
+-   This screen will show you details for the selected movie including Release date, overview, and rating
+-   If available this screen will also play a trailer of the selected movie.
+-   To replay the trailer you can click on the backdrop image.
 
 ### Managed App Config
 #### This app is compatible with managed app config settings pushed from an MDM Server. The following is a list of managed app keys for KKid

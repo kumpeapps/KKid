@@ -26,6 +26,7 @@ class UserEditProfileViewController: FormViewController {
         enableChores.value = selectedUser.enableChores
         enableAllowance.value = selectedUser.enableAllowance
         enableAdmin.value = selectedUser.isAdmin
+        enableTmdb.value = selectedUser.enableTmdb
     }
 
 // MARK: loadView
@@ -49,6 +50,7 @@ class UserEditProfileViewController: FormViewController {
             builder += enableChores
             builder += enableAllowance
             builder += enableAdmin
+            builder += enableTmdb
         }
     }
 
@@ -105,6 +107,12 @@ class UserEditProfileViewController: FormViewController {
         return instance
     }()
 
+// MARK: enableAllowance Field
+    lazy var enableTmdb: SwitchFormItem = {
+        let instance = SwitchFormItem().title("Enable Search Movies")
+        return instance
+    }()
+
 // MARK: enableAdmin Field
     lazy var enableAdmin: SwitchFormItem = {
         let instance = SwitchFormItem().title("Enable Admin")
@@ -118,7 +126,7 @@ class UserEditProfileViewController: FormViewController {
             return
         }
 
-        KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value) { (success, error) in
+        KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value) { (success, error) in
             if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)

@@ -7,7 +7,8 @@ plugin 'cocoapods-keys', {
 	:keys => [
 		"kKid_username",
 		"kKid_apiPassword",
-		"googleAdMob_homeScreenBannerID"
+		"googleAdMob_homeScreenBannerID",
+		"tmdb_apiKey"
 	]
 }
 
@@ -26,4 +27,7 @@ target 'KKid' do
 	pod 'Haptico'
 	pod 'PrivacyKit'
 	pod 'BadgeSwift'
+	pod 'Kingfisher'
+	pod 'JKRefresher'
+	pod 'YoutubeKit'
 end

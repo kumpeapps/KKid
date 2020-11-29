@@ -29,6 +29,14 @@
       "filter": "AllowanceScreen",
       "keyword": {
         "color": "#d21559"
+      },
+      "filter": "SearchMovies",
+      "keyword": {
+        "color": "#d21559"
+      },
+      "filter": "MovieDetails",
+      "keyword": {
+        "color": "#d21559"
       }
     }
   ]
