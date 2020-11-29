@@ -15,7 +15,7 @@ PODS:
     - GoogleUtilities/Network (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
     - nanopb (~> 2.30906.0)
-  - GoogleUserMessagingPlatform (1.3.0)
+  - GoogleUserMessagingPlatform (1.4.0)
   - GoogleUtilities/AppDelegateSwizzler (7.1.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -39,7 +39,7 @@ PODS:
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
-  - KumpeHelpers (1.1.7):
+  - KumpeHelpers (1.1.8):
     - Alamofire-SwiftyJSON
     - CollectionViewCenteredFlowLayout
     - DeviceKit
@@ -133,13 +133,13 @@ SPEC CHECKSUMS:
   DeviceKit: cadb5ff25d45fe186778bf2d0fd2ea4750542189
   Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
-  GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
+  GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
   JKRefresher: a88df1a1be91a93de78b05d18b357677b1bea62e
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  KumpeHelpers: 9c48e7234635ec31337c04b53a0b4b1d1fb429dc
+  KumpeHelpers: b5bbc9209f545b5f4d5ca7e200af18a9822cf792
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f

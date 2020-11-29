@@ -68,6 +68,9 @@
 		0FB98CFE25007AA500143A6A /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CFD25007AA500143A6A /* ChoresViewController.swift */; };
 		0FB98D0025007AC400143A6A /* MarkChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CFF25007AC400143A6A /* MarkChoreViewController.swift */; };
 		0FB98D0225007AE800143A6A /* AddChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98D0125007AE800143A6A /* AddChoreViewController.swift */; };
+		0FD8FC1B2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8FC1A2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift */; };
+		0FD8FC1F257429D400DE2749 /* TMDb_TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8FC1E257429D400DE2749 /* TMDb_TV.swift */; };
+		0FD8FC3225743ADC00DE2749 /* MovieRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8FC3125743ADC00DE2749 /* MovieRating.swift */; };
 		0FD9254C251D7B2800A541A6 /* ReachabilitySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9254B251D7B2800A541A6 /* ReachabilitySetup.swift */; };
 		0FDB64B9251C24DA00427543 /* AddParentAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB64B8251C24DA00427543 /* AddParentAccountViewController.swift */; };
 		0FDB64BB251C2FA900427543 /* LaunchURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB64BA251C2FA900427543 /* LaunchURL.swift */; };
@@ -152,6 +155,9 @@
 		0FB98CFF25007AC400143A6A /* MarkChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkChoreViewController.swift; sourceTree = "<group>"; };
 		0FB98D0125007AE800143A6A /* AddChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreViewController.swift; sourceTree = "<group>"; };
 		0FCABCDB251BA729007E9061 /* KKid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KKid.entitlements; sourceTree = "<group>"; };
+		0FD8FC1A2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDb_Movie_ReleaseDates.swift; sourceTree = "<group>"; };
+		0FD8FC1E257429D400DE2749 /* TMDb_TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDb_TV.swift; sourceTree = "<group>"; };
+		0FD8FC3125743ADC00DE2749 /* MovieRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRating.swift; sourceTree = "<group>"; };
 		0FD9254B251D7B2800A541A6 /* ReachabilitySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilitySetup.swift; sourceTree = "<group>"; };
 		0FDB64B8251C24DA00427543 /* AddParentAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParentAccountViewController.swift; sourceTree = "<group>"; };
 		0FDB64BA251C2FA900427543 /* LaunchURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchURL.swift; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 		0F99D99F25734617007169B9 /* TMDb Client */ = {
 			isa = PBXGroup;
 			children = (
+				0FD8FC22257437D700DE2749 /* Enums */,
 				0F99D9A025734617007169B9 /* TMDb_Client.swift */,
 				0F99D9A125734617007169B9 /* TMDb_Constants.swift */,
 				0F99D9A225734617007169B9 /* Structs */,
@@ -356,6 +363,8 @@
 			children = (
 				0F99D9A325734617007169B9 /* TMDb_Movie.swift */,
 				0F99D9A425734617007169B9 /* TMDb_Video.swift */,
+				0FD8FC1A2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift */,
+				0FD8FC1E257429D400DE2749 /* TMDb_TV.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -368,6 +377,14 @@
 				0FAC9F702558E42000A5ED29 /* Info.plist */,
 			);
 			path = KKidUITests;
+			sourceTree = "<group>";
+		};
+		0FD8FC22257437D700DE2749 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0FD8FC3125743ADC00DE2749 /* MovieRating.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		181EC3F58AD05BAB37041387 /* Frameworks */ = {
@@ -572,6 +589,7 @@
 				0FB98CF724FFB52000143A6A /* UIImage+Color.swift in Sources */,
 				0F72B143251594740099D2D9 /* KKidClient+DELETE.swift in Sources */,
 				0F48330D25105ED700B92ADB /* ChoreStatus.swift in Sources */,
+				0FD8FC1F257429D400DE2749 /* TMDb_TV.swift in Sources */,
 				0F66BE4325085F6200014A94 /* KKidClient.swift in Sources */,
 				0F5CE64E250AFA33002149DC /* LoginViewController.swift in Sources */,
 				0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */,
@@ -607,8 +625,10 @@
 				0F66BE3F25085E9000014A94 /* GCDBlackBox.swift in Sources */,
 				0F72B13B251592A00099D2D9 /* KKidClient+GET.swift in Sources */,
 				0F72B13F251593E90099D2D9 /* KKidClient+POST.swift in Sources */,
+				0FD8FC1B2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift in Sources */,
 				0F534322252BFF4C00A5275D /* ModuleCollectionViewCell.swift in Sources */,
 				0F9F397325548BA700829133 /* getDayOfWeek.swift in Sources */,
+				0FD8FC3225743ADC00DE2749 /* MovieRating.swift in Sources */,
 				0FB98D0025007AC400143A6A /* MarkChoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,7 +795,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.6.0;
+				CURRENT_PROJECT_VERSION = 2.0.6.1;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -798,7 +818,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.6.0;
+				CURRENT_PROJECT_VERSION = 2.0.6.1;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

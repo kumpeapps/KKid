@@ -55,4 +55,37 @@ class TMDb_Client: KumpeAPIClient {
             completion(true,trailerKey)
         }
     }
+
+    // MARK: getMovieRating
+    class func getMovieRating(movie: TMDb_Movie, completion: @escaping (Bool, String?) -> Void) {
+        let url = "\(TMDb_Constants.baseUrl)/movie/\(movie.id!)/release_dates"
+        let parameters = [
+            "api_key":"\(TMDb_Constants.apiKey)",
+            "language":"en-US"
+        ]
+        TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Movie_ReleaseDates_Response.self, parameters: parameters) { (response, error) in
+            // GUARD: Success
+            guard error == nil else {
+                completion(false,error)
+                return
+            }
+
+            // GUARD: results exist
+            guard let results = response?.results else {
+                completion(false,"unknown")
+                return
+            }
+
+            var rating = "unknown"
+
+            for result in results where result.country == "US" {
+                for release in result.releaseDates where release.certification != "" {
+                    rating = release.certification!.replacingOccurrences(of: "-", with: "")
+                }
+            }
+
+            completion(true,rating.lowercased())
+        }
+    }
+
 }

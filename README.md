@@ -119,6 +119,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   This screen will show you details for the selected movie including Release date, overview, and rating
 -   If available this screen will also play a trailer of the selected movie.
 -   To replay the trailer you can click on the backdrop image.
+-   Playing of movie trailers honors content restrictions on the device. Example: if a device is restricted to PG movies then the movies detail screen will not play movie trailers for movies rated above PG. NOTE: This restriction uses the movie rating as provided by TMDb. If a movie is not rated or there is no rating on file with TMDb then the trailer will not be restricted unless the rating restriction is set to Do Not Allow Movies.
 
 ### Managed App Config
 #### This app is compatible with managed app config settings pushed from an MDM Server. The following is a list of managed app keys for KKid

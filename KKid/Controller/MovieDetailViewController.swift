@@ -29,10 +29,16 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
 
 // MARK: buttons
     @IBOutlet weak var imageBackground: UIButton!
+    @IBOutlet weak var buttonMovieRating: UIButton!
+    @IBOutlet weak var buttonTmdb: UIButton!
+
+// MARK: images
+    @IBOutlet weak var imageMovieRating: UIImageView!
 
 // MARK: properties
     var selectedMovie: TMDb_Movie!
     var trailerKey: String = ""
+    var movieRating: String = "unknown"
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -45,7 +51,7 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
         super.viewWillAppear(animated)
         labelTitle.text = selectedMovie.title ?? "Unknown Title"
         labelReleaseDate.text = "Release Date: \(selectedMovie.release_date ?? "Unknown")"
-        labelRating.text = "Rating: \(selectedMovie.vote_average ?? 0)/10"
+        labelRating.text = "Score: \(selectedMovie.vote_average ?? 0)/10"
         textOverview.text = selectedMovie.overview ?? ""
         if trailerKey == "" {
             playerView.isHidden = true
@@ -60,19 +66,40 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
 // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        TMDb_Client.getMovieTrailer(movie: selectedMovie) { (success, trailerKey) in
-            if success {
-                self.trailerKey = trailerKey!
-                self.buildVideoPlayer()
-
-            }
-        }
+        getMovieRating()
     }
 
 // MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        player.stopVideo()
+        if player != nil {
+            player.stopVideo()
+        }
+    }
+
+// MARK: getMovieRating
+    func getMovieRating() {
+        TMDb_Client.getMovieRating(movie: selectedMovie) { (success, rating) in
+            if success {
+                self.imageMovieRating.kf.setImage(with: MovieRating.init(rawValue: rating!)?.url)
+                self.movieRating = rating!
+                if MovieRating.init(rawValue: rating!)!.iosAllowedCode <= MovieRating.init(rawValue: rating!)?.iosMaxAllowed ?? 1000 {
+                    self.getMovieTrailer()
+                } else {
+                    ShowAlert.banner(title: "Content Restricted", message: "This movie is rated above your allowed content rating. Viewing movie trailers will be prohibited!")
+                }
+            }
+        }
+    }
+
+// MARK: getMovieTrailer
+    func getMovieTrailer() {
+        TMDb_Client.getMovieTrailer(movie: selectedMovie) { (success, trailerKey) in
+            if success {
+                self.trailerKey = trailerKey!
+                self.buildVideoPlayer()
+            }
+        }
     }
 
 // MARK: buildVideoPlayer
@@ -127,7 +154,9 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
 
 // MARK: pressedBackgroundImage
     @IBAction func pressedBackgroundImage(_ sender: Any) {
-        playVideo()
+        if player != nil {
+            playVideo()
+        }
     }
 
 }
