@@ -7,19 +7,48 @@
 
 import Foundation
 import KumpeHelpers
+import RatingsRestrictionKit
 
 class TMDb_Client: KumpeAPIClient {
 
 // MARK: searchMovies
-    class func searchMovies(query: String, page: Int, completion: @escaping (TMDb_Movie_Response?, String?) -> Void) {
+    class func searchMovies(query: String, page: Int, completion: @escaping (Bool, TMDb_Movie_Response?) -> Void) {
         let parameters = [
             "api_key":"\(TMDb_Constants.apiKey)",
             "query":"\(query)",
             "include_adult":"false",
             "page":"\(page)"
         ]
-        TMDb_Client.taskForGet(apiUrl: TMDb_Constants.searchMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, error) in
-            completion(response,error)
+
+        guard query.lowercased() != "porn" && query.lowercased() != "porno" && query.lowercased() != "pornography" else {
+            completion(false,nil)
+            return
+        }
+
+        TMDb_Client.taskForGet(apiUrl: TMDb_Constants.searchMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, _) in
+            let taskGroup = DispatchGroup()
+            var movieResponse = response
+            var removeMovies: [Int] = []
+            var movies: [TMDb_Movie] = movieResponse?.results ?? []
+            for index in movies.indices {
+                taskGroup.enter()
+                self.getMovieRating(movie: movies[index]) { (success, rating) in
+                    if success {
+                        movies[index].movieRating = rating
+                    } else {
+                        movies[index].movieRating = "nr"
+                    }
+                    if !RatingsRestrictionKit.movieRatingIsAllowed(rating: movies[index].movieRating!) {
+                        removeMovies.append(index)
+                    }
+                    taskGroup.leave()
+                }
+            }
+            taskGroup.notify(queue: .main) {
+                movies.remove(at: removeMovies)
+                movieResponse?.results = movies
+                completion(true,movieResponse)
+            }
         }
     }
 
@@ -72,15 +101,15 @@ class TMDb_Client: KumpeAPIClient {
 
             // GUARD: results exist
             guard let results = response?.results else {
-                completion(false,"unknown")
+                completion(true,"unknown")
                 return
             }
 
             var rating = "unknown"
 
             for result in results where result.country == "US" {
-                for release in result.releaseDates where release.certification != "" {
-                    rating = release.certification!.replacingOccurrences(of: "-", with: "")
+                for release in result.releaseDates where release.movieRating != "" {
+                    rating = release.movieRating!.replacingOccurrences(of: "-", with: "")
                 }
             }
 

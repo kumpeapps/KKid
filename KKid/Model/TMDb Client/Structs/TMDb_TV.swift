@@ -11,8 +11,12 @@ import Foundation
 struct TMDb_TV_Response: Codable {
     let page: Int
     let results: [TMDb_TV]
-    let total_results: Int
-    let total_pages: Int
+    let totalResults: Int
+    let totalPages: Int
+    
+    private enum CodingKeys : String, CodingKey {
+        case page, results, totalResults = "total_results", totalPages = "total_pages"
+    }
 }
 
 typealias TMDb_TV = TMDb_Movie

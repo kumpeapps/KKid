@@ -10,14 +10,14 @@ import Foundation
 
 struct TMDb_Movie_ReleaseDate: Codable {
 
-    var certification: String?
-    var language: String?
-    var releaseDate: String?
-    var type: Int?
-    var note: String?
+    let movieRating: String?
+    let language: String?
+    let releaseDate: String?
+    let type: Int?
+    let note: String?
 
     private enum CodingKeys : String, CodingKey {
-        case certification, language = "iso_639_1", releaseDate = "release_date", type, note
+        case movieRating = "certification", language = "iso_639_1", releaseDate = "release_date", type, note
     }
 }
 

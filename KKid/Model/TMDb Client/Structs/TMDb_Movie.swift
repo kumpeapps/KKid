@@ -9,22 +9,32 @@ import Foundation
 
 struct TMDb_Movie_Response: Codable {
     let page: Int
-    let results: [TMDb_Movie]
-    let total_results: Int
-    let total_pages: Int
+    var results: [TMDb_Movie]
+    let totalResults: Int
+    let totalPages: Int
+    
+    private enum CodingKeys : String, CodingKey {
+        case page, results, totalResults = "total_results", totalPages = "total_pages"
+    }
 }
 
 struct TMDb_Movie: Codable {
-    let poster_path: String?
+    let posterPath: String?
     let adult: Bool?
     let overview: String?
-    let release_date: String?
+    let releaseDate: String?
     let id: Int?
-    let original_title: String?
-    let original_language: String?
+    let originalTitle: String?
+    let originalLanguage: String?
     let title: String?
-    let backdrop_path: String?
+    let backdropPath: String?
     let popularity: Float?
-    let vote_count: Int?
-    let vote_average: Float?
+    let voteCount: Int?
+    let voteAverage: Float?
+    var movieRating: String?
+    var trailerKey: String?
+
+    private enum CodingKeys : String, CodingKey {
+        case posterPath = "poster_path", adult, overview, releaseDate = "release_date", id, originalTitle = "original_title", originalLanguage = "original_language", title, backdropPath = "backdrop_path", popularity, voteCount = "vote_count", voteAverage = "vote_average", movieRating = "certification", trailerKey
+    }
 }

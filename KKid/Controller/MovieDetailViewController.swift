@@ -50,14 +50,14 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         labelTitle.text = selectedMovie.title ?? "Unknown Title"
-        labelReleaseDate.text = "Release Date: \(selectedMovie.release_date ?? "Unknown")"
-        labelRating.text = "Score: \(selectedMovie.vote_average ?? 0)/10"
+        labelReleaseDate.text = "Release Date: \(selectedMovie.releaseDate ?? "Unknown")"
+        labelRating.text = "Score: \(selectedMovie.voteAverage ?? 0)/10"
         textOverview.text = selectedMovie.overview ?? ""
         if trailerKey == "" {
             playerView.isHidden = true
             imageBackground.isHidden = false
         }
-        if let backgroundImage = selectedMovie.backdrop_path {
+        if let backgroundImage = selectedMovie.backdropPath {
             let imageUrl = URL(string: "\(TMDb_Constants.BackDropUrl.w780.baseUrl)\(backgroundImage)")
             imageBackground.kf.setBackgroundImage(with: imageUrl, for: .normal)
         }
@@ -79,17 +79,8 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
 
 // MARK: getMovieRating
     func getMovieRating() {
-        TMDb_Client.getMovieRating(movie: selectedMovie) { (success, rating) in
-            if success {
-                self.imageMovieRating.kf.setImage(with: MovieRating.init(rawValue: rating!)?.url)
-                self.movieRating = rating!
-                if MovieRating.init(rawValue: rating!)!.iosAllowedCode <= MovieRating.init(rawValue: rating!)?.iosMaxAllowed ?? 1000 {
-                    self.getMovieTrailer()
-                } else {
-                    ShowAlert.banner(title: "Content Restricted", message: "This movie is rated above your allowed content rating. Viewing movie trailers will be prohibited!")
-                }
-            }
-        }
+        self.movieRating = selectedMovie.movieRating!
+        getMovieTrailer()
     }
 
 // MARK: getMovieTrailer

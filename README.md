@@ -113,7 +113,8 @@ KKid is an app for parents and their children to keep up with chores and allowan
 ### Search Movies Module
 -   This module will allow you to search movies. By clicking on the movie you can pull up the [Movie Details Screen](https://github.com/justinkumpe/KKid#movie-details-screen).
 
-###### NOTE: The movie search blocks movies labeled as adult. BUT this database is controlled by TMDb and the developer of KKid has no controll over it's content. For this reason the Movie Search feature is not enabled by default and a parent/admin must enable this feature per user
+###### NOTE: If movie ratings limits/restrictions are configured on the device then KKid will remove any movies outside the allowed ratings from the search results. This will also remove any unrated movies from the search results
+###### NOTE: It is recommended that you enable movie rating limits on your child's device before enabling this module
 
 #### Movie Details Screen
 -   This screen will show you details for the selected movie including Release date, overview, and rating

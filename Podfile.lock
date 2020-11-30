@@ -54,6 +54,7 @@ PODS:
   - nanopb/encode (2.30906.0)
   - PrivacyKit (1.0.1)
   - PromisesObjC (1.2.11)
+  - RatingsRestrictionKit (1.0.1)
   - ReachabilitySwift (5.0.0)
   - Smile (2.1.1)
   - SwiftMessages (8.0.3):
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - Kingfisher
   - KumpeHelpers
   - PrivacyKit
+  - RatingsRestrictionKit
   - ReachabilitySwift
   - Smile (from `https://github.com/onmyway133/Smile.git`, branch `master`)
   - SwiftMessages
@@ -104,6 +106,7 @@ SPEC REPOS:
     - nanopb
     - PrivacyKit
     - PromisesObjC
+    - RatingsRestrictionKit
     - ReachabilitySwift
     - SwiftMessages
     - SwiftyFORM
@@ -143,6 +146,7 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  RatingsRestrictionKit: d6cc52e58a0f0bbd93a8d5fd8338d1303bb65e1c
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Smile: 50023dc068fb11984df713916970b89e6b705d68
   SwiftMessages: 063ec9ffea3ffa7d17ba595157a9ec78e4fe045f
@@ -153,6 +157,6 @@ SPEC CHECKSUMS:
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   YoutubeKit: 9f66eba839211158f2aac7ad3833593bd56fa8f9
 
-PODFILE CHECKSUM: 15fa0e2266cb203e7069585cd7e561bc9481889f
+PODFILE CHECKSUM: af8e2f09f84456b10dcec53b0856dc072a743443
 
 COCOAPODS: 1.10.0

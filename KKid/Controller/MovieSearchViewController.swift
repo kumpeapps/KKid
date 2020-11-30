@@ -27,6 +27,9 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
 // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if targetEnvironment(simulator)
+        UserDefaults.standard.set(400, forKey: "com.apple.content-rating.MovieRating")
+        #endif
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.keyboardDismissMode = .onDrag
@@ -60,14 +63,14 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
 
 // MARK: searchBar-textDidChange
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        TMDb_Client.searchMovies(query: searchBar.text!, page: 1) { (response, _) in
+        TMDb_Client.searchMovies(query: searchBar.text!, page: 1) { (_, response) in
             self.movies = []
             self.currentPage = 0
             self.totalPages = 0
             if let response = response {
                 self.movies = response.results
                 self.currentPage = response.page
-                self.totalPages = response.total_pages
+                self.totalPages = response.totalPages
                 self.collectionView.reloadData()
             }
         }
@@ -76,7 +79,7 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
 // MARK: performFetchMore
     func performFetchMore(_ completionHandler: (() -> Void)?) {
         let page = self.currentPage + 1
-        TMDb_Client.searchMovies(query: searchBar.text!, page: page) { (response, _) in
+        TMDb_Client.searchMovies(query: searchBar.text!, page: page) { (_, response) in
             if let response = response {
 
                 // create new index paths
@@ -87,7 +90,7 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
                 // update data source
                 self.movies.append(contentsOf: response.results)
                 self.currentPage = response.page
-                self.totalPages = response.total_pages
+                self.totalPages = response.totalPages
 
                 // update collection view
                 self.collectionView?.performBatchUpdates({ () -> Void in
@@ -121,7 +124,7 @@ extension MovieSearchViewController {
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
             let movie = movies[indexPath.row]
-            if let imageSuffix = movie.poster_path {
+            if let imageSuffix = movie.posterPath {
                 let imagePath = URL(string: "\(TMDb_Constants.PosterUrl.w185.baseUrl)\(imageSuffix)")
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 cell.imageView.kf.setImage(
