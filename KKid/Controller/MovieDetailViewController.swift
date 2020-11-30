@@ -80,7 +80,7 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
 // MARK: getMovieRating
     func getMovieRating() {
         self.movieRating = selectedMovie.movieRating!
-        getMovieTrailer()
+        self.imageMovieRating.kf.setImage(with: MovieRating.init(rawValue: selectedMovie.movieRating!)?.url)
     }
 
 // MARK: getMovieTrailer
