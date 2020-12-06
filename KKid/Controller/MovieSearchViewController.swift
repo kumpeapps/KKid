@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 import KumpeHelpers
 import JKRefresher
+import RatingsRestrictionKit
 
 class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
@@ -140,12 +141,19 @@ extension MovieSearchViewController {
             } else {
                 cell.imageView.image = UIImage(named: "placeholder_w185")
             }
+            if !RatingsRestrictionKit.movieRatingIsAllowed(rating: movie.movieRating ?? "nr") {
+                cell.imageView.image = UIImage(named: "placeholder_w185")
+            }
             return cell
         }
 
     // MARK: Did Select Item
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            performSegue(withIdentifier: "segueMovieDetails", sender: self)
+            if !RatingsRestrictionKit.movieRatingIsAllowed(rating: movies[indexPath.row].movieRating ?? "nr") {
+                ShowAlert.banner(title: "Access Restricted", message: "This movie is rated \(movies[indexPath.row].movieRating ?? "nr") which is above the restriction level set on your device.")
+            } else {
+                performSegue(withIdentifier: "segueMovieDetails", sender: self)
+            }
         }
 
 }

@@ -15,6 +15,13 @@ import KumpeHelpers
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
+    /// set orientations you want to be allowed in this property by default
+    var orientationLock = UIInterfaceOrientationMask.all
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+            return self.orientationLock
+    }
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner,.badge,.sound])
     }

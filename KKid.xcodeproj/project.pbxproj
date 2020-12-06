@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */; };
+		0F2005EC257D607200D9E4BE /* AVCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005EB257D607200D9E4BE /* AVCaptureViewController.swift */; };
+		0F2005F0257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005EF257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift */; };
+		0F2005F4257D60C600D9E4BE /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005F3257D60C600D9E4BE /* AppUtility.swift */; };
+		0F2005F8257D619800D9E4BE /* ChoreObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005F7257D619800D9E4BE /* ChoreObjectDetectionViewController.swift */; };
+		0F2005FC257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005FB257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel */; };
 		0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */; };
 		0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311184251FE3F8004BB1E4 /* API_Credentials.swift */; };
 		0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27D250D9E660002D0AD /* Notifications.swift */; };
@@ -91,6 +96,11 @@
 
 /* Begin PBXFileReference section */
 		0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrivacyKitStyle.swift; sourceTree = "<group>"; };
+		0F2005EB257D607200D9E4BE /* AVCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureViewController.swift; sourceTree = "<group>"; };
+		0F2005EF257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionObjectRecognitionViewController.swift; sourceTree = "<group>"; };
+		0F2005F3257D60C600D9E4BE /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		0F2005F7257D619800D9E4BE /* ChoreObjectDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreObjectDetectionViewController.swift; sourceTree = "<group>"; };
+		0F2005FB257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigLib.swift; sourceTree = "<group>"; };
 		0F311184251FE3F8004BB1E4 /* API_Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Credentials.swift; sourceTree = "<group>"; };
 		0F37E27D250D9E660002D0AD /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -188,6 +198,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F2005EA257D605400D9E4BE /* Object Detection */ = {
+			isa = PBXGroup;
+			children = (
+				0F2005EB257D607200D9E4BE /* AVCaptureViewController.swift */,
+				0F2005EF257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift */,
+				0F2005F7257D619800D9E4BE /* ChoreObjectDetectionViewController.swift */,
+			);
+			path = "Object Detection";
+			sourceTree = "<group>";
+		};
 		0F48330E25105EF700B92ADB /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +269,7 @@
 		0F5EC8AD24F98D4E00873868 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0F2005FB257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel */,
 				0F99D99F25734617007169B9 /* TMDb Client */,
 				0F72B139251592850099D2D9 /* KKid Client */,
 				0F48330E25105EF700B92ADB /* Enums */,
@@ -263,6 +284,7 @@
 		0F5EC8AE24F98D6800873868 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0F2005EA257D605400D9E4BE /* Object Detection */,
 				0F99D99925734602007169B9 /* MovieDetailViewController.swift */,
 				0F99D99A25734602007169B9 /* MovieSearchViewController.swift */,
 				0F5EC89B24F98D0000873868 /* SelectUserViewController.swift */,
@@ -299,6 +321,7 @@
 				0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */,
 				0F9F397225548BA700829133 /* getDayOfWeek.swift */,
 				0FD8FD0A25749EE600DE2749 /* Array+RemoveIndexes.swift */,
+				0F2005F3257D60C600D9E4BE /* AppUtility.swift */,
 			);
 			path = "Helper Utilities";
 			sourceTree = "<group>";
@@ -585,6 +608,8 @@
 				0F99D9A525734617007169B9 /* TMDb_Client.swift in Sources */,
 				0F53431F252BFDAB00A5275D /* KKid_Module.swift in Sources */,
 				0F66BE3625070D8700014A94 /* PersistBackgrounds.swift in Sources */,
+				0F2005F4257D60C600D9E4BE /* AppUtility.swift in Sources */,
+				0F2005F0257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift in Sources */,
 				0F534318252BF35F00A5275D /* HomeViewController.swift in Sources */,
 				0F5EC8BA24F9936F00873868 /* KKid_Auth_Response.swift in Sources */,
 				0F72B1382515902C0099D2D9 /* KKid_Allowance_Respopnse.swift in Sources */,
@@ -592,8 +617,11 @@
 				0FB98CF724FFB52000143A6A /* UIImage+Color.swift in Sources */,
 				0FD8FD0B25749EE600DE2749 /* Array+RemoveIndexes.swift in Sources */,
 				0F72B143251594740099D2D9 /* KKidClient+DELETE.swift in Sources */,
+				0F2005FC257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel in Sources */,
 				0F48330D25105ED700B92ADB /* ChoreStatus.swift in Sources */,
+				0F2005EC257D607200D9E4BE /* AVCaptureViewController.swift in Sources */,
 				0FD8FC1F257429D400DE2749 /* TMDb_TV.swift in Sources */,
+				0F2005F8257D619800D9E4BE /* ChoreObjectDetectionViewController.swift in Sources */,
 				0F66BE4325085F6200014A94 /* KKidClient.swift in Sources */,
 				0F5CE64E250AFA33002149DC /* LoginViewController.swift in Sources */,
 				0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */,

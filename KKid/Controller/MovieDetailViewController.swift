@@ -38,7 +38,6 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
 // MARK: properties
     var selectedMovie: TMDb_Movie!
     var trailerKey: String = ""
-    var movieRating: String = "unknown"
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -79,8 +78,8 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
 
 // MARK: getMovieRating
     func getMovieRating() {
-        self.movieRating = selectedMovie.movieRating!
         self.imageMovieRating.kf.setImage(with: MovieRating.init(rawValue: selectedMovie.movieRating!)?.url)
+        getMovieTrailer()
     }
 
 // MARK: getMovieTrailer

@@ -882,7 +882,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search Movies" id="1n8-xh-gc0">
                         <barButtonItem key="backBarButtonItem" title="Search" id="ZLF-0s-OgB"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="8ef-Cc-rSR">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="8ef-Cc-rSR">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dN8-7n-aA1">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1020,7 +1020,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="tmdb"/>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Edt-OQ-zUI">
+                        <barButtonItem key="rightBarButtonItem" id="Edt-OQ-zUI">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pqM-zT-uJB">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

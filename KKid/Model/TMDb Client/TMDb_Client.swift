@@ -45,7 +45,6 @@ class TMDb_Client: KumpeAPIClient {
                 }
             }
             taskGroup.notify(queue: .main) {
-                movies.remove(at: removeMovies)
                 movieResponse?.results = movies
                 completion(true,movieResponse)
             }

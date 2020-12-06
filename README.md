@@ -60,7 +60,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   You will always have Edit Profile which you can click on to edit that user's profile/permissions
 -   Additionally there will be options for each module that the selected user has access to
 -   Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
--   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), and [Allowance](https://github.com/justinkumpe/KKid#allowance-module)
+-   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), [Allowance](https://github.com/justinkumpe/KKid#allowance-module), [Movie Search](https://github.com/justinkumpe/KKid#search-movies-module), and [Object Detection](https://github.com/justinkumpe/KKid#object-detection-module)
 
 ### Select User Screen
 -   On the Select User screen you will see a list of users under your master (household) account.
@@ -122,6 +122,14 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   To replay the trailer you can click on the backdrop image.
 -   Playing of movie trailers honors content restrictions on the device. Example: if a device is restricted to PG movies then the movies detail screen will not play movie trailers for movies rated above PG. NOTE: This restriction uses the movie rating as provided by TMDb. If a movie is not rated or there is no rating on file with TMDb then the trailer will not be restricted unless the rating restriction is set to Do Not Allow Movies.
 
+### Object Detection Module
+-   This screen is used to scan objects and get their tags via machine learning
+-   This module is also used by the Chores Module to require scanning an object to check off chores for any chore that is marked by parent to require object detection. Example: parent may mark chore "Make Bed" to require scanning an object with the "bed" tag.
+
+### REST API
+REST API documentation is available at [https://api.kumpeapps.com/kkids](https://api.kumpeapps.com/kkids)
+API access may be obtained by opening a support ticket
+
 ### Managed App Config
 #### This app is compatible with managed app config settings pushed from an MDM Server. The following is a list of managed app keys for KKid
 
@@ -140,3 +148,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [X] Add managed app config parameters
 -   [ ] What's New Page
 -   [ ] Gift wish list for the kids
+-   [X] Machine Learning AI for Object Detection
+-   [X] Movie Search with movie ratings
+-   [ ] TV Show Search with Ratings
+-   [ ] Linking TMDb account for saving movies/tv shows to favorites and watch list
