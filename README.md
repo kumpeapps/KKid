@@ -126,7 +126,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   To replay the trailer you can click on the backdrop image.
 -   Playing of movie trailers honors content restrictions on the device. Example: if a device is restricted to PG movies then the movies detail screen will not play movie trailers for movies rated above PG. NOTE: This restriction uses the movie rating as provided by TMDb. If a movie is not rated or there is no rating on file with TMDb then the trailer will not be restricted unless the rating restriction is set to Do Not Allow Movies.
 
-### Object Detection Module
+### Object Detection Module *(BETA)*
 -   This screen is used to scan objects and get their tags via machine learning
 -   This module is also used by the Chores Module to require scanning an object to check off chores for any chore that is marked by parent to require object detection. Example: parent may mark chore "Make Bed" to require scanning an object with the "bed" tag.
 -   *HINT:* Turn your device to the side (landscape) and objects will be detected better
