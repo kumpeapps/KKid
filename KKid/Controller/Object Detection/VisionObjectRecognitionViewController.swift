@@ -19,7 +19,7 @@ class VisionObjectRecognitionViewController: AVCaptureViewController {
     private var requests = [VNRequest]()
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+       super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
    }
 

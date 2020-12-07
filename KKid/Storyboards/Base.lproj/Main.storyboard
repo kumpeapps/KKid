@@ -665,23 +665,23 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Yhn-8s-igj" customClass="ModuleCollectionViewCell" customModule="KKid" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="62.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oX2-kB-LHW">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="88.5" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_user" translatesAutoresizingMaskIntoConstraints="NO" id="KQk-G5-Zeb">
-                                                    <rect key="frame" x="10" y="0.0" width="80" height="80"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-swirl" translatesAutoresizingMaskIntoConstraints="NO" id="KQk-G5-Zeb">
+                                                    <rect key="frame" x="9" y="0.0" width="70.5" height="50"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select User" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sFl-X6-M4f">
-                                                    <rect key="frame" x="0.0" y="80" width="100" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="50" width="88.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myx-O7-kWp" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                    <rect key="frame" x="75.5" y="0.0" width="24.5" height="24.5"/>
+                                                    <rect key="frame" x="65.5" y="0.0" width="23" height="21"/>
                                                     <accessibility key="accessibilityConfiguration" label="0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="BDO-Ij-O96"/>
@@ -745,6 +745,7 @@
                         <segue destination="ggd-tN-XOX" kind="show" identifier="segueAllowance" id="bTs-vW-UhY"/>
                         <segue destination="IWr-Js-2wc" kind="show" identifier="segueEditProfile" id="szZ-u6-lfd"/>
                         <segue destination="nGn-w5-XPs" kind="show" identifier="segueSearchMovies" id="ivz-21-8gg"/>
+                        <segue destination="lBK-dv-dc1" kind="show" identifier="segueObjectDetection" id="W09-dk-Gog"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwI-IN-Fwv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -768,6 +769,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNK-ZH-TJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042" y="846"/>
+        </scene>
+        <!--Object Detection-->
+        <scene sceneID="uQ2-wZ-b3x">
+            <objects>
+                <viewController id="lBK-dv-dc1" customClass="VisionObjectRecognitionViewController" customModule="KKid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lMJ-d8-aRi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EH6-l0-CLa">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BS9-Hw-tcb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BS9-Hw-tcb" firstAttribute="trailing" secondItem="EH6-l0-CLa" secondAttribute="trailing" id="HS9-iy-W7n"/>
+                            <constraint firstItem="EH6-l0-CLa" firstAttribute="top" secondItem="BS9-Hw-tcb" secondAttribute="top" id="Mry-Is-KIg"/>
+                            <constraint firstItem="EH6-l0-CLa" firstAttribute="leading" secondItem="BS9-Hw-tcb" secondAttribute="leading" id="dka-sR-LDR"/>
+                            <constraint firstItem="EH6-l0-CLa" firstAttribute="bottom" secondItem="BS9-Hw-tcb" secondAttribute="bottom" constant="34" id="rFe-JE-y2N"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Object Detection" id="HTD-V1-fGJ"/>
+                    <connections>
+                        <outlet property="previewView" destination="EH6-l0-CLa" id="Cfi-Nj-urJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKM-G6-kXU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2953.6231884057975" y="2310.9375"/>
         </scene>
         <!--New Master Account-->
         <scene sceneID="JIz-OW-Vzc">
@@ -1057,16 +1089,16 @@
             <size key="intrinsicContentSize" width="180" height="35"/>
         </designable>
         <designable name="myx-O7-kWp">
-            <size key="intrinsicContentSize" width="24.5" height="24.5"/>
+            <size key="intrinsicContentSize" width="10.5" height="20.5"/>
         </designable>
     </designables>
     <resources>
         <image name="KKid_Toolbar" width="471" height="180"/>
         <image name="blue_dash" width="151" height="45"/>
         <image name="green_check" width="104" height="95"/>
+        <image name="icons8-swirl" width="50" height="50"/>
         <image name="photo2" width="259" height="194"/>
         <image name="red_x" width="85" height="115"/>
-        <image name="select_user" width="80" height="80"/>
         <image name="tmdb" width="190.24000549316406" height="81.519996643066406"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

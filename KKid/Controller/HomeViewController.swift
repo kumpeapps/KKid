@@ -13,6 +13,9 @@ import UIKit
 import CollectionViewCenteredFlowLayout
 import GoogleMobileAds
 import PrivacyKit
+import Kingfisher
+import DeviceKit
+import KumpeHelpers
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
 
@@ -30,9 +33,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var reachable: ReachabilitySetup!
 
 // MARK: Parameters
-    var modules: [KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
+    var modules: [KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
     let dayOfWeek: Int = getDayOfWeek() ?? 0
     var choreCount: Int = 0
+    let iconCache = ImageCache(name: "iconCache")
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -42,6 +46,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let layout = CollectionViewCenteredFlowLayout()
         collectionView.collectionViewLayout = layout
         collectionView.reloadData()
+        iconCache.diskStorage.config.expiration = .days(90)
+        iconCache.memoryStorage.config.expiration = .days(90)
     }
 
 // MARK: viewWillAppear
@@ -62,7 +68,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(buildModules), name: .updateUser, object: nil)
         verifyAuthenticated()
-        modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
+        modules = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
         buildModules()
         registerAPNS()
     }
@@ -89,12 +95,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
         reachable = nil
+        iconCache.cleanExpiredCache()
+        iconCache.cleanExpiredDiskCache()
+    }
+
+// MARK: didRecieveMemoryWarning
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        iconCache.clearMemoryCache()
     }
 
 // MARK: verifyAuthenticated
     @objc func verifyAuthenticated() {
         guard UserDefaults.standard.bool(forKey: "isAuthenticated") else {
-            modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
+            modules = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
             collectionView.reloadData()
             performSegue(withIdentifier: "segueLogin", sender: self)
             LoggedInUser.user = nil
@@ -120,29 +134,37 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: buildModules
     @objc func buildModules() {
         if let selectedUser = LoggedInUser.selectedUser {
-            modules = [KKid_Module.init(title: "Logout", segue: nil, icon: #imageLiteral(resourceName: "logout-1"))]
+            modules = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
             if LoggedInUser.selectedUser == LoggedInUser.user {
                 self.title = "\(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
             } else {
                 self.title = "Selected: \(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
             }
             if selectedUser.enableChores {
-                modules.append(KKid_Module.init(title: "Chores", segue: "segueChores", icon: #imageLiteral(resourceName: "chores")))
+                modules.append(KKid_Module.init(title: "Chores", segue: "segueChores", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-to-do-80.png"))
             }
 
             if selectedUser.enableAllowance {
-                modules.append(KKid_Module.init(title: "Allowance", segue: "segueAllowance", icon: #imageLiteral(resourceName: "allowance")))
+                modules.append(KKid_Module.init(title: "Allowance", segue: "segueAllowance", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-receive-cash-80.png"))
             }
 
             if selectedUser.enableTmdb {
-                modules.append(KKid_Module.init(title: "Search Movies", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!))
+                modules.append(KKid_Module.init(title: "Search Movies", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
             }
 
-            modules.append(KKid_Module.init(title: "Edit Profile", segue: "segueEditProfile", icon: #imageLiteral(resourceName: "profile")))
+            if selectedUser.enableObjectDetection {
+                modules.append(KKid_Module.init(title: "Detect Objects", segue: "segueObjectDetection", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-detective-50.png"))
+            }
+
+            modules.append(KKid_Module.init(title: "Edit Profile", segue: "segueEditProfile", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-profile-80.png"))
 
             if LoggedInUser.user!.isAdmin {
-                modules.append(KKid_Module.init(title: "Select User", segue: "segueSelectUser", icon: #imageLiteral(resourceName: "select_user")))
+                modules.append(KKid_Module.init(title: "Select User", segue: "segueSelectUser", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-select-users-80.png"))
             }
+
+            modules.append(KKid_Module.init(title: "App Settings", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-services-50.png"))
+
+            modules.append(KKid_Module.init(title: "User Manual", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-user_manual-50.png"))
 
         }
 
@@ -179,10 +201,23 @@ extension HomeViewController {
             let module = modules[(indexPath as NSIndexPath).row]
 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ModuleCollectionViewCell
-            cell.imageView.image = module.icon
             cell.title.text = module.title
             cell.badge.text = "0"
             cell.badge.isHidden = true
+
+            if module.getRemoteIcon && module.remoteIconName != nil {
+                cell.imageView.kf.setImage(
+                    with: URL(string: "\(KKidClient.imageURL)/\(module.remoteIconName!)"),
+                    placeholder: module.icon,
+                    options: [
+                        .transition(.fade(1)),
+                        .cacheOriginalImage,
+                        .cacheSerializer(FormatIndicatedCacheSerializer.png),
+                        .targetCache(iconCache)
+                    ])
+            } else {
+                cell.imageView.image = module.icon
+            }
 
             if module.title == "Chores" && choreCount > 0 {
                 cell.badge.isHidden = false
@@ -197,6 +232,17 @@ extension HomeViewController {
             switch module.title {
             case "Logout":
                 pressedLogout()
+            case "Detect Objects":
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    performSegue(withIdentifier: module.segue!, sender: self)
+                } else {
+                    ShowAlert.banner(theme: .warning, title: "Oops", message: "Camera is required for this function. Your device does not have a camera or your camera is disabled.")
+                }
+            case "App Settings":
+                let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+                UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+            case "User Manual":
+                launchURL("https://github.com/kumpeapps/KKid/blob/master/README.md")
             default:
                 performSegue(withIdentifier: module.segue!, sender: self)
             }

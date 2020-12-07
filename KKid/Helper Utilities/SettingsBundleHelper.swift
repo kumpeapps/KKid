@@ -8,6 +8,7 @@ import CoreData
 import UIKit
 import KumpeHelpers
 import PrivacyKit
+import Kingfisher
 
 class SettingsBundleHelper {
     struct SettingsBundleKeys {
@@ -25,6 +26,10 @@ class SettingsBundleHelper {
             UserDefaults.standard.reset()
             PrivacyKit.shared.resetState()
             NotificationCenter.default.post(name: .isAuthenticated, object: nil)
+            let iconCache = ImageCache(name: "iconCache")
+            iconCache.clearCache()
+            let movieCache = ImageCache(name: "movieCache")
+            movieCache.clearCache()
         }
     }
 

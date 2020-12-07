@@ -29,13 +29,40 @@ class AVCaptureViewController: UIViewController, AVCaptureVideoDataOutputSampleB
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAVCapture()
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        switch cameraAuthorizationStatus {
+        case .notDetermined: requestCameraPermission()
+        case .authorized: setupAVCapture()
+        case .restricted, .denied: alertCameraAccessNeeded()
+        @unknown default:
+            fatalError()
+        }
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func requestCameraPermission() {
+        AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
+            guard accessGranted == true else { return }
+            self.setupAVCapture()
+        })
     }
+
+    func alertCameraAccessNeeded() {
+        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+
+        let alert = UIAlertController(
+            title: "Need Camera Access",
+            message: "Camera access is required to use Object Detection.",
+            preferredStyle: UIAlertController.Style.alert
+        )
+
+       alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+       alert.addAction(UIAlertAction(title: "Allow Camera", style: .cancel, handler: { (_) -> Void in
+           UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+       }))
+
+       present(alert, animated: true, completion: nil)
+   }
 
     func setupAVCapture() {
         var deviceInput: AVCaptureDeviceInput!

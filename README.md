@@ -8,6 +8,9 @@
 
 KKid is an app for parents and their children to keep up with chores and allowance. With this app parents can create child accounts and add chores to their profile. Kids can then login and see their chores and mark them off each day. By turning on the allowance feature parents can add/subtract money from the kid's allowance account (this is a virtual "account" to show the kids how much allowance they have, no money is actually exchanged within the KKid app, think of it as a notebook) and the kids can view this when they login as well.
 
+## Support
+- For Support please [create new issue](https://github.com/kumpeapps/KKid/issues)
+
 ## Screenshots
 | Home | Select User | Login | Allowance | Chores | Search Movies | Movie Details |
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
