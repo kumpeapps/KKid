@@ -55,7 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
         imageLogo.image = AppDelegate().kkidLogo
-        imageBackground.image = AppDelegate().kkidBackground
+        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
         if LoggedInUser.user == nil {
             LoggedInUser.setLoggedInUser()
         }
@@ -88,6 +88,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
 
         self.requirePrivacy()
+        self.seasonalBackgroundLoader()
     }
 
 // MARK: viewWillDisappear
@@ -184,6 +185,56 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
         let rightInset = leftInset
         return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+    }
+
+// MARK: seasonalBackgroundLoader
+    func seasonalBackgroundLoader() {
+        if UserDefaults.standard.string(forKey: "seasonalBackgroundImage") == nil {
+            UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
+        }
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: now)
+        let currentBackground = UserDefaults.standard.string(forKey: "seasonalBackgroundImage")
+        switch nameOfMonth {
+        case "December":
+            if currentBackground != "Christmas" {
+                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/christmas.jpg")!, isBackground: true)
+                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/candycane.jpg")!, isBackground: false)
+                UserDefaults.standard.set("Christmas", forKey: "seasonalBackgroundImage")
+            }
+        default:
+            if currentBackground != "default" {
+                setImage(UIImage(named: "photo2")!, isBackground: true)
+                setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!), isBackground: false)
+                UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
+            }
+        }
+    }
+
+// MARK: downloadImage
+    func downloadImage(_ url: URL, isBackground: Bool) {
+        let downloader = ImageDownloader.default
+        downloader.downloadImage(with: url, completionHandler: { result in
+            switch result {
+            case .success(let value):
+                var image = value.image
+                if !isBackground {
+                    image = Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: value.image)
+                }
+                self.setImage(image, isBackground: isBackground)
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
+
+// MARK: setImage
+    func setImage(_ image: UIImage, isBackground: Bool) {
+        PersistBackgrounds.saveImage(image, isBackground: isBackground)
+        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
+        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
     }
 
 }

@@ -33,7 +33,7 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
         imageLogo.image = AppDelegate().kkidLogo
-        imageBackground.image = AppDelegate().kkidBackground
+        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
         let image = Pathifier.makeImage(for: NSAttributedString(string: "$"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!)
         imageBalance.image = image
         KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Allowance")

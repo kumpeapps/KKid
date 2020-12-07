@@ -129,6 +129,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 ### Object Detection Module
 -   This screen is used to scan objects and get their tags via machine learning
 -   This module is also used by the Chores Module to require scanning an object to check off chores for any chore that is marked by parent to require object detection. Example: parent may mark chore "Make Bed" to require scanning an object with the "bed" tag.
+-   *HINT:* Turn your device to the side (landscape) and objects will be detected better
 
 ### REST API
 REST API documentation is available at [https://api.kumpeapps.com/kkids](https://api.kumpeapps.com/kkids)
