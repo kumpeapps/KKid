@@ -54,7 +54,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
-        imageLogo.image = AppDelegate().kkidLogo
+        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
         imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
         if LoggedInUser.user == nil {
             LoggedInUser.setLoggedInUser()

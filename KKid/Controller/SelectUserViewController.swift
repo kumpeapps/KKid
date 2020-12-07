@@ -65,7 +65,7 @@ class SelectUserViewController: UIViewController {
 /*        Pull logo and background from AppDelegate.
          Setup this way so users can choose their own background and logo style in future releases
  */
-        imageLogo.image = AppDelegate().kkidLogo
+        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
         imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
 
         if let indexPath = tableView.indexPathForSelectedRow {

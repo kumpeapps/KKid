@@ -30,6 +30,7 @@ class SettingsBundleHelper {
             iconCache.clearCache()
             let movieCache = ImageCache(name: "movieCache")
             movieCache.clearCache()
+            UserDefaults.standard.set("reset", forKey: "seasonalBackgroundImage")
         }
     }
 

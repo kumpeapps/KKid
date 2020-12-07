@@ -32,7 +32,7 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
-        imageLogo.image = AppDelegate().kkidLogo
+        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
         imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
         let image = Pathifier.makeImage(for: NSAttributedString(string: "$"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!)
         imageBalance.image = image
