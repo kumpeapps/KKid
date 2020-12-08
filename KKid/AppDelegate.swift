@@ -44,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        checkIfFirstLaunch()
 
 //        Setup PrivacyKit
         PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
@@ -119,30 +118,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         Logger.log(.action, "applicationWillEnterForeground")
-    }
-
-    // MARK: checkIfFirstLaunch
-    func checkIfFirstLaunch() {
-        if UserDefaults.standard.bool(forKey: "HasLaunchedBefore") {
-            Logger.log(.action, "Not First Launch")
-
-            if let logo = PersistBackgrounds.loadImage(isBackground: false) {
-                kkidLogo = logo
-                Logger.log(.success, "KKID Logo Set")
-            }
-
-            if let background = PersistBackgrounds.loadImage(isBackground: true) {
-                kkidBackground = background
-                Logger.log(.success, "KKID Background Set")
-            }
-
-        } else {
-            Logger.log(.action, "Is First Launch")
-            PersistBackgrounds.saveImage(kkidLogo, isBackground: false)
-            PersistBackgrounds.saveImage(kkidBackground, isBackground: true)
-            UserDefaults.standard.set(true, forKey: "HasLaunchedBefore")
-
-        }
     }
 
 }

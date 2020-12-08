@@ -54,8 +54,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
-        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
-        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
+        seasonalBackgroundLoader()
         if LoggedInUser.user == nil {
             LoggedInUser.setLoggedInUser()
         }
@@ -88,7 +87,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
 
         self.requirePrivacy()
-        self.seasonalBackgroundLoader()
     }
 
 // MARK: viewWillDisappear
@@ -211,6 +209,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
             }
         }
+        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
+        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
     }
 
 // MARK: downloadImage
