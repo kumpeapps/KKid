@@ -5,11 +5,12 @@ PODS:
     - SwiftyJSON (~> 4.0.0)
   - BadgeSwift (8.0.0)
   - CollectionViewCenteredFlowLayout (1.0.1)
+  - ContentRestrictionsKit (1.1)
   - DeviceKit (4.2.1)
-  - Google-Mobile-Ads-SDK (7.68.0):
+  - Google-Mobile-Ads-SDK (7.69.0):
     - GoogleAppMeasurement (~> 7.0)
     - GoogleUserMessagingPlatform (~> 1.1)
-  - GoogleAppMeasurement (7.1.0):
+  - GoogleAppMeasurement (7.2.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
@@ -54,7 +55,6 @@ PODS:
   - nanopb/encode (2.30906.0)
   - PrivacyKit (1.0.1)
   - PromisesObjC (1.2.11)
-  - RatingsRestrictionKit (1.0.1)
   - ReachabilitySwift (5.0.0)
   - Smile (2.1.1)
   - SwiftMessages (8.0.3):
@@ -71,6 +71,7 @@ DEPENDENCIES:
   - Alamofire-SwiftyJSON
   - BadgeSwift
   - CollectionViewCenteredFlowLayout
+  - ContentRestrictionsKit
   - Google-Mobile-Ads-SDK
   - Haptico
   - JKRefresher
@@ -78,7 +79,6 @@ DEPENDENCIES:
   - Kingfisher
   - KumpeHelpers
   - PrivacyKit
-  - RatingsRestrictionKit
   - ReachabilitySwift
   - Smile (from `https://github.com/onmyway133/Smile.git`, branch `master`)
   - SwiftMessages
@@ -94,6 +94,7 @@ SPEC REPOS:
     - Alamofire-SwiftyJSON
     - BadgeSwift
     - CollectionViewCenteredFlowLayout
+    - ContentRestrictionsKit
     - DeviceKit
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
@@ -106,7 +107,6 @@ SPEC REPOS:
     - nanopb
     - PrivacyKit
     - PromisesObjC
-    - RatingsRestrictionKit
     - ReachabilitySwift
     - SwiftMessages
     - SwiftyFORM
@@ -133,9 +133,10 @@ SPEC CHECKSUMS:
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
   CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
+  ContentRestrictionsKit: fcad73f1fdf1168a8acee8515062f9b8ecb02e50
   DeviceKit: cadb5ff25d45fe186778bf2d0fd2ea4750542189
-  Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
-  GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
+  Google-Mobile-Ads-SDK: 2f288748a42920d1c744946a460896a95b0e9110
+  GoogleAppMeasurement: 57a0df93dc2feb5176b1bac06012dbd725191ba5
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
@@ -146,7 +147,6 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
-  RatingsRestrictionKit: d6cc52e58a0f0bbd93a8d5fd8338d1303bb65e1c
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Smile: 50023dc068fb11984df713916970b89e6b705d68
   SwiftMessages: 063ec9ffea3ffa7d17ba595157a9ec78e4fe045f
@@ -157,6 +157,6 @@ SPEC CHECKSUMS:
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   YoutubeKit: 9f66eba839211158f2aac7ad3833593bd56fa8f9
 
-PODFILE CHECKSUM: af8e2f09f84456b10dcec53b0856dc072a743443
+PODFILE CHECKSUM: 78b3dae7afe0cc2326fe7daa575005df3215c27c
 
 COCOAPODS: 1.10.0

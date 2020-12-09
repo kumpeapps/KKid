@@ -13,7 +13,7 @@ plugin 'cocoapods-keys', {
 }
 
 target 'KKid' do
-	pod 'RatingsRestrictionKit'
+	pod 'ContentRestrictionsKit'
 	pod 'TransitionButton'
 	pod 'Alamofire-SwiftyJSON'
 	pod 'Toast-Swift'
