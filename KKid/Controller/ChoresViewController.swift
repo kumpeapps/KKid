@@ -78,8 +78,8 @@ class ChoresViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        imageLogo.image = AppDelegate().kkidLogo
-        imageBackground.image = AppDelegate().kkidBackground
+        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
+        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
         buttonAdd.isEnabled = LoggedInUser.user!.isAdmin
         KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Chores")
         if ((LoggedInUser.user?.isChild) != nil && LoggedInUser.user!.isChild) {

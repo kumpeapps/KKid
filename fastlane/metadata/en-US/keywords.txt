@@ -1,1 +1,1 @@
-kids,chores,kumpeapps,justinkumpe,kumpe,allowance,kkids,kkid,kumpehome
+kids,chores,kumpeapps,justinkumpe,kumpe,allowance,kkids,kkid,kumpehome,movies,tmdb

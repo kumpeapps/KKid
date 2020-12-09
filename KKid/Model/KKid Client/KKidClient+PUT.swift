@@ -44,7 +44,7 @@ extension KKidClient {
             }
 
 // MARK: updateUser
-    class func updateUser(username: String, email: String, firstName: String, lastName: String, user: User, emoji: String, enableAllowance: Bool, enableChores: Bool, enableAdmin: Bool, completion: @escaping (Bool, String?) -> Void) {
+    class func updateUser(username: String, email: String, firstName: String, lastName: String, user: User, emoji: String, enableAllowance: Bool, enableChores: Bool, enableAdmin: Bool, enableTmdb: Bool, completion: @escaping (Bool, String?) -> Void) {
         var parameters = [
             "apiUsername": KKidClient.username,
             "apiPassword": KKidClient.apiPassword,
@@ -70,6 +70,10 @@ extension KKidClient {
 
         if enableAdmin != user.isAdmin {
             parameters.updateValue("\(enableAdmin)", forKey: "enableAdmin")
+        }
+
+        if enableTmdb != user.enableTmdb {
+            parameters["enableTmdb"] = "\(enableTmdb)"
         }
 
         let module = "userlist"

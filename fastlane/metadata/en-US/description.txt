@@ -1,3 +1,4 @@
-The KKid app allows you to create a home account with multiple parents/admins and multiple kids to post chores for the kids to check off each day and keep up with the kid's allowance.
+The KKid app allows you to create a home account with multiple parents/admins and multiple kids to post chores for the kids to check off each day and keep up with the kid's allowance. You can also search for movies and view descriptions/trailers for any movie in the TMDb database.
 
 Some used are Icons by Icons8.
+Movie Search provided by TMDb.

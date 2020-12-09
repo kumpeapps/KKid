@@ -15,7 +15,7 @@ PODS:
     - GoogleUtilities/Network (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
     - nanopb (~> 2.30906.0)
-  - GoogleUserMessagingPlatform (1.3.0)
+  - GoogleUserMessagingPlatform (1.4.0)
   - GoogleUtilities/AppDelegateSwizzler (7.1.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -34,8 +34,12 @@ PODS:
   - GoogleUtilities/Reachability (7.1.1):
     - GoogleUtilities/Logger
   - Haptico (1.1.1)
+  - JKRefresher (1.3)
   - Keys (1.0.1)
-  - KumpeHelpers (1.1.7):
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - KumpeHelpers (1.1.8):
     - Alamofire-SwiftyJSON
     - CollectionViewCenteredFlowLayout
     - DeviceKit
@@ -50,6 +54,7 @@ PODS:
   - nanopb/encode (2.30906.0)
   - PrivacyKit (1.0.1)
   - PromisesObjC (1.2.11)
+  - RatingsRestrictionKit (1.0.1)
   - ReachabilitySwift (5.0.0)
   - Smile (2.1.1)
   - SwiftMessages (8.0.3):
@@ -60,6 +65,7 @@ PODS:
   - Sync (6.5.0)
   - Toast-Swift (5.0.1)
   - TransitionButton (0.5.3)
+  - YoutubeKit (0.5.0)
 
 DEPENDENCIES:
   - Alamofire-SwiftyJSON
@@ -67,9 +73,12 @@ DEPENDENCIES:
   - CollectionViewCenteredFlowLayout
   - Google-Mobile-Ads-SDK
   - Haptico
+  - JKRefresher
   - Keys (from `Pods/CocoaPodsKeys`)
+  - Kingfisher
   - KumpeHelpers
   - PrivacyKit
+  - RatingsRestrictionKit
   - ReachabilitySwift
   - Smile (from `https://github.com/onmyway133/Smile.git`, branch `master`)
   - SwiftMessages
@@ -77,6 +86,7 @@ DEPENDENCIES:
   - Sync
   - Toast-Swift
   - TransitionButton
+  - YoutubeKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -90,10 +100,13 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - Haptico
+    - JKRefresher
+    - Kingfisher
     - KumpeHelpers
     - nanopb
     - PrivacyKit
     - PromisesObjC
+    - RatingsRestrictionKit
     - ReachabilitySwift
     - SwiftMessages
     - SwiftyFORM
@@ -101,6 +114,7 @@ SPEC REPOS:
     - Sync
     - Toast-Swift
     - TransitionButton
+    - YoutubeKit
 
 EXTERNAL SOURCES:
   Keys:
@@ -122,14 +136,17 @@ SPEC CHECKSUMS:
   DeviceKit: cadb5ff25d45fe186778bf2d0fd2ea4750542189
   Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
-  GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
+  GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
+  JKRefresher: a88df1a1be91a93de78b05d18b357677b1bea62e
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  KumpeHelpers: 9c48e7234635ec31337c04b53a0b4b1d1fb429dc
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  KumpeHelpers: b5bbc9209f545b5f4d5ca7e200af18a9822cf792
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  RatingsRestrictionKit: d6cc52e58a0f0bbd93a8d5fd8338d1303bb65e1c
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Smile: 50023dc068fb11984df713916970b89e6b705d68
   SwiftMessages: 063ec9ffea3ffa7d17ba595157a9ec78e4fe045f
@@ -138,7 +155,8 @@ SPEC CHECKSUMS:
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
+  YoutubeKit: 9f66eba839211158f2aac7ad3833593bd56fa8f9
 
-PODFILE CHECKSUM: 447df278fb53b93abc49b9627b1d240ca93b9e59
+PODFILE CHECKSUM: af8e2f09f84456b10dcec53b0856dc072a743443
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

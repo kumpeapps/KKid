@@ -33,6 +33,8 @@
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera is requried for Object Detection</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access to photo library required to upload screenshots for submitting error/support requests.</string>
 	<key>SKAdNetworkItems</key>

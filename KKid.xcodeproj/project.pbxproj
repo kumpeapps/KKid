@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */; };
+		0F2005EC257D607200D9E4BE /* AVCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005EB257D607200D9E4BE /* AVCaptureViewController.swift */; };
+		0F2005F0257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005EF257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift */; };
+		0F2005F4257D60C600D9E4BE /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005F3257D60C600D9E4BE /* AppUtility.swift */; };
+		0F2005F8257D619800D9E4BE /* ChoreObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005F7257D619800D9E4BE /* ChoreObjectDetectionViewController.swift */; };
+		0F2005FC257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005FB257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel */; };
 		0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */; };
 		0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311184251FE3F8004BB1E4 /* API_Credentials.swift */; };
 		0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37E27D250D9E660002D0AD /* Notifications.swift */; };
@@ -46,6 +51,13 @@
 		0F72B1452517B13F0099D2D9 /* AllowanceLedgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B1442517B13F0099D2D9 /* AllowanceLedgerViewController.swift */; };
 		0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B1462517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift */; };
 		0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B149251974610099D2D9 /* AddUserViewController.swift */; };
+		0F99D99B25734602007169B9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D99925734602007169B9 /* MovieDetailViewController.swift */; };
+		0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D99A25734602007169B9 /* MovieSearchViewController.swift */; };
+		0F99D9A525734617007169B9 /* TMDb_Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A025734617007169B9 /* TMDb_Client.swift */; };
+		0F99D9A625734617007169B9 /* TMDb_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A125734617007169B9 /* TMDb_Constants.swift */; };
+		0F99D9A725734617007169B9 /* TMDb_Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A325734617007169B9 /* TMDb_Movie.swift */; };
+		0F99D9A825734617007169B9 /* TMDb_Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A425734617007169B9 /* TMDb_Video.swift */; };
+		0F99D9AC25734631007169B9 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9AB25734631007169B9 /* CustomCollectionViewCell.swift */; };
 		0F9F38AF2553300400829133 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F9F38AE2553300400829133 /* Settings.bundle */; };
 		0F9F38B3255338DD00829133 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */; };
 		0F9F397325548BA700829133 /* getDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F397225548BA700829133 /* getDayOfWeek.swift */; };
@@ -61,6 +73,10 @@
 		0FB98CFE25007AA500143A6A /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CFD25007AA500143A6A /* ChoresViewController.swift */; };
 		0FB98D0025007AC400143A6A /* MarkChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98CFF25007AC400143A6A /* MarkChoreViewController.swift */; };
 		0FB98D0225007AE800143A6A /* AddChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB98D0125007AE800143A6A /* AddChoreViewController.swift */; };
+		0FD8FC1B2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8FC1A2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift */; };
+		0FD8FC1F257429D400DE2749 /* TMDb_TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8FC1E257429D400DE2749 /* TMDb_TV.swift */; };
+		0FD8FC3225743ADC00DE2749 /* MovieRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8FC3125743ADC00DE2749 /* MovieRating.swift */; };
+		0FD8FD0B25749EE600DE2749 /* Array+RemoveIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8FD0A25749EE600DE2749 /* Array+RemoveIndexes.swift */; };
 		0FD9254C251D7B2800A541A6 /* ReachabilitySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9254B251D7B2800A541A6 /* ReachabilitySetup.swift */; };
 		0FDB64B9251C24DA00427543 /* AddParentAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB64B8251C24DA00427543 /* AddParentAccountViewController.swift */; };
 		0FDB64BB251C2FA900427543 /* LaunchURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB64BA251C2FA900427543 /* LaunchURL.swift */; };
@@ -80,6 +96,11 @@
 
 /* Begin PBXFileReference section */
 		0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrivacyKitStyle.swift; sourceTree = "<group>"; };
+		0F2005EB257D607200D9E4BE /* AVCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureViewController.swift; sourceTree = "<group>"; };
+		0F2005EF257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionObjectRecognitionViewController.swift; sourceTree = "<group>"; };
+		0F2005F3257D60C600D9E4BE /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		0F2005F7257D619800D9E4BE /* ChoreObjectDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreObjectDetectionViewController.swift; sourceTree = "<group>"; };
+		0F2005FB257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigLib.swift; sourceTree = "<group>"; };
 		0F311184251FE3F8004BB1E4 /* API_Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Credentials.swift; sourceTree = "<group>"; };
 		0F37E27D250D9E660002D0AD /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -120,6 +141,13 @@
 		0F72B1442517B13F0099D2D9 /* AllowanceLedgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowanceLedgerViewController.swift; sourceTree = "<group>"; };
 		0F72B1462517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowanceAddTransactionViewController.swift; sourceTree = "<group>"; };
 		0F72B149251974610099D2D9 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
+		0F99D99925734602007169B9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		0F99D99A25734602007169B9 /* MovieSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearchViewController.swift; sourceTree = "<group>"; };
+		0F99D9A025734617007169B9 /* TMDb_Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDb_Client.swift; sourceTree = "<group>"; };
+		0F99D9A125734617007169B9 /* TMDb_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDb_Constants.swift; sourceTree = "<group>"; };
+		0F99D9A325734617007169B9 /* TMDb_Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDb_Movie.swift; sourceTree = "<group>"; };
+		0F99D9A425734617007169B9 /* TMDb_Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDb_Video.swift; sourceTree = "<group>"; };
+		0F99D9AB25734631007169B9 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		0F9F38AE2553300400829133 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		0F9F397225548BA700829133 /* getDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDayOfWeek.swift; sourceTree = "<group>"; };
@@ -138,6 +166,10 @@
 		0FB98CFF25007AC400143A6A /* MarkChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkChoreViewController.swift; sourceTree = "<group>"; };
 		0FB98D0125007AE800143A6A /* AddChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreViewController.swift; sourceTree = "<group>"; };
 		0FCABCDB251BA729007E9061 /* KKid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KKid.entitlements; sourceTree = "<group>"; };
+		0FD8FC1A2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDb_Movie_ReleaseDates.swift; sourceTree = "<group>"; };
+		0FD8FC1E257429D400DE2749 /* TMDb_TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDb_TV.swift; sourceTree = "<group>"; };
+		0FD8FC3125743ADC00DE2749 /* MovieRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRating.swift; sourceTree = "<group>"; };
+		0FD8FD0A25749EE600DE2749 /* Array+RemoveIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RemoveIndexes.swift"; sourceTree = "<group>"; };
 		0FD9254B251D7B2800A541A6 /* ReachabilitySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilitySetup.swift; sourceTree = "<group>"; };
 		0FDB64B8251C24DA00427543 /* AddParentAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParentAccountViewController.swift; sourceTree = "<group>"; };
 		0FDB64BA251C2FA900427543 /* LaunchURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchURL.swift; sourceTree = "<group>"; };
@@ -166,6 +198,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F2005EA257D605400D9E4BE /* Object Detection */ = {
+			isa = PBXGroup;
+			children = (
+				0F2005EB257D607200D9E4BE /* AVCaptureViewController.swift */,
+				0F2005EF257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift */,
+				0F2005F7257D619800D9E4BE /* ChoreObjectDetectionViewController.swift */,
+			);
+			path = "Object Detection";
+			sourceTree = "<group>";
+		};
 		0F48330E25105EF700B92ADB /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +258,7 @@
 		0F5EC8AC24F98D4800873868 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0F99D9AB25734631007169B9 /* CustomCollectionViewCell.swift */,
 				0FB98CF624FFB52000143A6A /* UIImage+Color.swift */,
 				0F534321252BFF4C00A5275D /* ModuleCollectionViewCell.swift */,
 				0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */,
@@ -226,6 +269,8 @@
 		0F5EC8AD24F98D4E00873868 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0F2005FB257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel */,
+				0F99D99F25734617007169B9 /* TMDb Client */,
 				0F72B139251592850099D2D9 /* KKid Client */,
 				0F48330E25105EF700B92ADB /* Enums */,
 				0F5EC8B224F98DB800873868 /* Structs */,
@@ -239,6 +284,9 @@
 		0F5EC8AE24F98D6800873868 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0F2005EA257D605400D9E4BE /* Object Detection */,
+				0F99D99925734602007169B9 /* MovieDetailViewController.swift */,
+				0F99D99A25734602007169B9 /* MovieSearchViewController.swift */,
 				0F5EC89B24F98D0000873868 /* SelectUserViewController.swift */,
 				0FB98CFD25007AA500143A6A /* ChoresViewController.swift */,
 				0FB98CFF25007AC400143A6A /* MarkChoreViewController.swift */,
@@ -272,6 +320,8 @@
 				0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */,
 				0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */,
 				0F9F397225548BA700829133 /* getDayOfWeek.swift */,
+				0FD8FD0A25749EE600DE2749 /* Array+RemoveIndexes.swift */,
+				0F2005F3257D60C600D9E4BE /* AppUtility.swift */,
 			);
 			path = "Helper Utilities";
 			sourceTree = "<group>";
@@ -323,6 +373,28 @@
 			path = "KKid Client";
 			sourceTree = "<group>";
 		};
+		0F99D99F25734617007169B9 /* TMDb Client */ = {
+			isa = PBXGroup;
+			children = (
+				0FD8FC22257437D700DE2749 /* Enums */,
+				0F99D9A025734617007169B9 /* TMDb_Client.swift */,
+				0F99D9A125734617007169B9 /* TMDb_Constants.swift */,
+				0F99D9A225734617007169B9 /* Structs */,
+			);
+			path = "TMDb Client";
+			sourceTree = "<group>";
+		};
+		0F99D9A225734617007169B9 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				0F99D9A325734617007169B9 /* TMDb_Movie.swift */,
+				0F99D9A425734617007169B9 /* TMDb_Video.swift */,
+				0FD8FC1A2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift */,
+				0FD8FC1E257429D400DE2749 /* TMDb_TV.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
 		0FAC9F6D2558E42000A5ED29 /* KKidUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +403,14 @@
 				0FAC9F702558E42000A5ED29 /* Info.plist */,
 			);
 			path = KKidUITests;
+			sourceTree = "<group>";
+		};
+		0FD8FC22257437D700DE2749 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0FD8FC3125743ADC00DE2749 /* MovieRating.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		181EC3F58AD05BAB37041387 /* Frameworks */ = {
@@ -358,7 +438,6 @@
 			buildConfigurationList = 0F5EC8A824F98D0200873868 /* Build configuration list for PBXNativeTarget "KKid" */;
 			buildPhases = (
 				DE6C7BB1B05F269DC899056B /* [CP] Check Pods Manifest.lock */,
-				833B126E57EDF770F5CC1FED /* [CP] Prepare Artifacts */,
 				0F5EC89024F98D0000873868 /* Sources */,
 				0F5EC89124F98D0000873868 /* Frameworks */,
 				0F5EC89224F98D0000873868 /* Resources */,
@@ -491,23 +570,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KKid/Pods-KKid-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		833B126E57EDF770F5CC1FED /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KKid/Pods-KKid-artifacts-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KKid/Pods-KKid-artifacts-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KKid/Pods-KKid-artifacts.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DE6C7BB1B05F269DC899056B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -537,23 +599,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F99D9A825734617007169B9 /* TMDb_Video.swift in Sources */,
 				0F37E282250DAF4C0002D0AD /* LoggedInUser.swift in Sources */,
 				0F72B13D251593280099D2D9 /* KKidClient+Sync.swift in Sources */,
 				0F48331225118F2A00B92ADB /* DebugHelpers.swift in Sources */,
 				0F4833162512D47400B92ADB /* DayOfWeekViewController.swift in Sources */,
 				0F5EC89C24F98D0000873868 /* SelectUserViewController.swift in Sources */,
+				0F99D9A525734617007169B9 /* TMDb_Client.swift in Sources */,
 				0F53431F252BFDAB00A5275D /* KKid_Module.swift in Sources */,
 				0F66BE3625070D8700014A94 /* PersistBackgrounds.swift in Sources */,
+				0F2005F4257D60C600D9E4BE /* AppUtility.swift in Sources */,
+				0F2005F0257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift in Sources */,
 				0F534318252BF35F00A5275D /* HomeViewController.swift in Sources */,
 				0F5EC8BA24F9936F00873868 /* KKid_Auth_Response.swift in Sources */,
 				0F72B1382515902C0099D2D9 /* KKid_Allowance_Respopnse.swift in Sources */,
 				0FB98CFE25007AA500143A6A /* ChoresViewController.swift in Sources */,
 				0FB98CF724FFB52000143A6A /* UIImage+Color.swift in Sources */,
+				0FD8FD0B25749EE600DE2749 /* Array+RemoveIndexes.swift in Sources */,
 				0F72B143251594740099D2D9 /* KKidClient+DELETE.swift in Sources */,
+				0F2005FC257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel in Sources */,
 				0F48330D25105ED700B92ADB /* ChoreStatus.swift in Sources */,
+				0F2005EC257D607200D9E4BE /* AVCaptureViewController.swift in Sources */,
+				0FD8FC1F257429D400DE2749 /* TMDb_TV.swift in Sources */,
+				0F2005F8257D619800D9E4BE /* ChoreObjectDetectionViewController.swift in Sources */,
 				0F66BE4325085F6200014A94 /* KKidClient.swift in Sources */,
 				0F5CE64E250AFA33002149DC /* LoginViewController.swift in Sources */,
 				0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */,
+				0F99D9AC25734631007169B9 /* CustomCollectionViewCell.swift in Sources */,
 				0F66BE3D25085D5600014A94 /* DataController.swift in Sources */,
 				0FDB64BB251C2FA900427543 /* LaunchURL.swift in Sources */,
 				0F5EC89824F98D0000873868 /* AppDelegate.swift in Sources */,
@@ -561,12 +633,15 @@
 				0F37E280250DA5800002D0AD /* String+Image.swift in Sources */,
 				0F66BE382507107B00014A94 /* Logger.swift in Sources */,
 				0FB98CF524FF153200143A6A /* Pathifier.swift in Sources */,
+				0F99D9A625734617007169B9 /* TMDb_Constants.swift in Sources */,
 				0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */,
 				0FDC462C251AC19000A4E3D2 /* UserEditProfileViewController.swift in Sources */,
 				0F66BE4125085EB900014A94 /* ShowAlert.swift in Sources */,
 				0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */,
+				0F99D99B25734602007169B9 /* MovieDetailViewController.swift in Sources */,
 				0F72B1452517B13F0099D2D9 /* AllowanceLedgerViewController.swift in Sources */,
 				0F49CBA72513EFC600D98E35 /* AllowanceViewController.swift in Sources */,
+				0F99D9A725734617007169B9 /* TMDb_Movie.swift in Sources */,
 				0FDB64B9251C24DA00427543 /* AddParentAccountViewController.swift in Sources */,
 				0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */,
 				0F9F38B3255338DD00829133 /* SettingsBundleHelper.swift in Sources */,
@@ -576,13 +651,16 @@
 				0F48331025117C5200B92ADB /* Days.swift in Sources */,
 				0FB98D0225007AE800143A6A /* AddChoreViewController.swift in Sources */,
 				0F5EC89A24F98D0000873868 /* SceneDelegate.swift in Sources */,
+				0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */,
 				0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */,
 				0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */,
 				0F66BE3F25085E9000014A94 /* GCDBlackBox.swift in Sources */,
 				0F72B13B251592A00099D2D9 /* KKidClient+GET.swift in Sources */,
 				0F72B13F251593E90099D2D9 /* KKidClient+POST.swift in Sources */,
+				0FD8FC1B2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift in Sources */,
 				0F534322252BFF4C00A5275D /* ModuleCollectionViewCell.swift in Sources */,
 				0F9F397325548BA700829133 /* getDayOfWeek.swift in Sources */,
+				0FD8FC3225743ADC00DE2749 /* MovieRating.swift in Sources */,
 				0FB98D0025007AC400143A6A /* MarkChoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,7 +827,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.5.7;
+				CURRENT_PROJECT_VERSION = 2.0.6.10;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -757,7 +835,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -772,7 +850,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.5.7;
+				CURRENT_PROJECT_VERSION = 2.0.6.10;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -780,7 +858,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

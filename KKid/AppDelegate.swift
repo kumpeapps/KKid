@@ -15,6 +15,13 @@ import KumpeHelpers
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
+    /// set orientations you want to be allowed in this property by default
+    var orientationLock = UIInterfaceOrientationMask.all
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+            return self.orientationLock
+    }
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner,.badge,.sound])
     }
@@ -37,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        checkIfFirstLaunch()
 
 //        Setup PrivacyKit
         PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
@@ -112,30 +118,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         Logger.log(.action, "applicationWillEnterForeground")
-    }
-
-    // MARK: checkIfFirstLaunch
-    func checkIfFirstLaunch() {
-        if UserDefaults.standard.bool(forKey: "HasLaunchedBefore") {
-            Logger.log(.action, "Not First Launch")
-
-            if let logo = PersistBackgrounds.loadImage(isBackground: false) {
-                kkidLogo = logo
-                Logger.log(.success, "KKID Logo Set")
-            }
-
-            if let background = PersistBackgrounds.loadImage(isBackground: true) {
-                kkidBackground = background
-                Logger.log(.success, "KKID Background Set")
-            }
-
-        } else {
-            Logger.log(.action, "Is First Launch")
-            PersistBackgrounds.saveImage(kkidLogo, isBackground: false)
-            PersistBackgrounds.saveImage(kkidBackground, isBackground: true)
-            UserDefaults.standard.set(true, forKey: "HasLaunchedBefore")
-
-        }
     }
 
 }

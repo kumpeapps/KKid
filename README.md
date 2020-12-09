@@ -8,10 +8,13 @@
 
 KKid is an app for parents and their children to keep up with chores and allowance. With this app parents can create child accounts and add chores to their profile. Kids can then login and see their chores and mark them off each day. By turning on the allowance feature parents can add/subtract money from the kid's allowance account (this is a virtual "account" to show the kids how much allowance they have, no money is actually exchanged within the KKid app, think of it as a notebook) and the kids can view this when they login as well.
 
+## Support
+-   For Support please [create new issue](https://github.com/kumpeapps/KKid/issues)
+
 ## Screenshots
-| Home | Select User | Login | Allowance | Chores |
-| :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
-| ![home.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-HomeScreen_framed.png)  | ![selectUser.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-SelectUserScreen_framed.png)  | ![login.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-LoginScreen_framed.png)    | ![allowance.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-AllowanceScreen_framed.png)	| ![chores.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-ChoresScreen_framed.png)	|
+| Home | Select User | Login | Allowance | Chores | Search Movies | Movie Details |
+| :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
+| ![home.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-HomeScreen_framed.png)  | ![selectUser.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-SelectUserScreen_framed.png)  | ![login.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-LoginScreen_framed.png)    | ![allowance.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-AllowanceScreen_framed.png)	| ![chores.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-ChoresScreen_framed.png)	| ![searchmovies.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-SearchMovies_framed.png)	| ![chores.png](fastlane/screenshots/en-US/iPhone%2011%20Pro%20Max-MovieDetails_framed.png)	|
 
 ## Frameworks Used
 -   Foundation
@@ -33,7 +36,14 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [PrivacyKit](https://github.com/ithazfire/PrivacyKit)
 -   [BadgeSwift](https://github.com/evgenyneu/swift-badge)
 -   [TransitionButton](https://github.com/AladinWay/TransitionButton)
+-   [Kingfisher](https://github.com/onevcat/Kingfisher)
+-   [JKRefresher](https://github.com/kumpeapps/JKRefresher)
+-   [YoutubeKit](https://github.com/rinov/YoutubeKit)
+-   [RatingsRestrictionKit](https://github.com/kumpeapps/RatingsRestrictionKit)
+
+## Other Credits
 -   [Icons from Icons8](https://icons8.com)
+-   [TMDb](https://themoviedb.org)
 
 ## Instructions
 
@@ -54,7 +64,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   You will always have Edit Profile which you can click on to edit that user's profile/permissions
 -   Additionally there will be options for each module that the selected user has access to
 -   Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
--   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), and [Allowance](https://github.com/justinkumpe/KKid#allowance-module)
+-   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), [Allowance](https://github.com/justinkumpe/KKid#allowance-module), [Movie Search](https://github.com/justinkumpe/KKid#search-movies-module), and [Object Detection](https://github.com/justinkumpe/KKid#object-detection-module)
 
 ### Select User Screen
 -   On the Select User screen you will see a list of users under your master (household) account.
@@ -104,6 +114,27 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   Master and Admin users may add or subtract allowance
 -   Users that are not a master or admin may only subtract from their allowance account
 
+### Search Movies Module
+-   This module will allow you to search movies. By clicking on the movie you can pull up the [Movie Details Screen](https://github.com/justinkumpe/KKid#movie-details-screen).
+
+###### NOTE: If movie ratings limits/restrictions are configured on the device then KKid will remove any movies outside the allowed ratings from the search results. This will also remove any unrated movies from the search results
+###### NOTE: It is recommended that you enable movie rating limits on your child's device before enabling this module
+
+#### Movie Details Screen
+-   This screen will show you details for the selected movie including Release date, overview, and rating
+-   If available this screen will also play a trailer of the selected movie.
+-   To replay the trailer you can click on the backdrop image.
+-   Playing of movie trailers honors content restrictions on the device. Example: if a device is restricted to PG movies then the movies detail screen will not play movie trailers for movies rated above PG. NOTE: This restriction uses the movie rating as provided by TMDb. If a movie is not rated or there is no rating on file with TMDb then the trailer will not be restricted unless the rating restriction is set to Do Not Allow Movies.
+
+### Object Detection Module *(BETA)*
+-   This screen is used to scan objects and get their tags via machine learning
+-   This module is also used by the Chores Module to require scanning an object to check off chores for any chore that is marked by parent to require object detection. Example: parent may mark chore "Make Bed" to require scanning an object with the "bed" tag.
+-   *HINT:* Turn your device to the side (landscape) and objects will be detected better
+
+### REST API
+REST API documentation is available at [https://api.kumpeapps.com/kkids](https://api.kumpeapps.com/kkids)
+API access may be obtained by opening a support ticket
+
 ### Managed App Config
 #### This app is compatible with managed app config settings pushed from an MDM Server. The following is a list of managed app keys for KKid
 
@@ -122,3 +153,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [X] Add managed app config parameters
 -   [ ] What's New Page
 -   [ ] Gift wish list for the kids
+-   [X] Machine Learning AI for Object Detection
+-   [X] Movie Search with movie ratings
+-   [ ] TV Show Search with Ratings
+-   [ ] Linking TMDb account for saving movies/tv shows to favorites and watch list

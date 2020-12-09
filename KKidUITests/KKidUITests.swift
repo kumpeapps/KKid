@@ -87,7 +87,24 @@ class KKidUITests: XCTestCase {
 
     }
 
+    func testTmdb() throws {
+
+        let scrollViewsQuery = app.scrollViews
+        let collectionViewsQuery = app.collectionViews
+        let cellsQuery = collectionViewsQuery.cells
+        cellsQuery.otherElements.containing(.staticText, identifier:"Search Movies").element.tap()
+        sleep(1)
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
+        scrollViewsQuery.children(matching: .button).element.tap()
+        sleep(3)
+        app.navigationBars["tmdb"].buttons["Search"].tap()
+        app.navigationBars["Search Movies"].buttons["Home"].tap()
+
+    }
+
     func testBuildScreenshots() throws {
+
+        let collectionViewsQuery = app.collectionViews
         let cellsQuery = app.collectionViews.cells
         cellsQuery.otherElements.containing(.staticText, identifier:"Logout").element.tap()
         setupSnapshot(app)
@@ -116,7 +133,14 @@ class KKidUITests: XCTestCase {
         sleep(5)
         snapshot("SelectUserScreen")
         app.navigationBars["Select User"].buttons["Home"].tap()
-
+        cellsQuery.otherElements.containing(.staticText, identifier:"Search Movies").element.tap()
+        sleep(1)
+        snapshot("SearchMovies")
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
+        sleep(1)
+        snapshot("MovieDetails")
+        app.navigationBars["tmdb"].buttons["Search"].tap()
+        app.navigationBars["Search Movies"].buttons["Home"].tap()
     }
 
     func testLaunchPerformance() throws {

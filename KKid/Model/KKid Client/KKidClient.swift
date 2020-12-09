@@ -20,6 +20,13 @@ class KKidClient {
     static let apiPassword = APICredentials.KKid.apiPassword
     static let baseURL = "https://api.kumpeapps.com/kkids"
     static let preprodURL = "https://preprod.kumpeapps.com/api/kkids"
+    static var imageURL: String {
+        #if DEBUG
+            return "https://preprod.kumpeapps.com/api/images"
+        #else
+            return "https://api.kumpeapps.com/images"
+        #endif
+    }
 
     static var appVersion = "KKid"
 

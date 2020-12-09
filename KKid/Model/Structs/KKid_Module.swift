@@ -13,4 +13,6 @@ struct KKid_Module {
     let title: String
     let segue: String?
     let icon: UIImage
+    let getRemoteIcon: Bool
+    let remoteIconName: String?
 }
