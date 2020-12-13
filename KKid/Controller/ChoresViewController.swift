@@ -70,7 +70,7 @@ class ChoresViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
 // MARK: becomeFirstResponder
     override func becomeFirstResponder() -> Bool {
         return true
