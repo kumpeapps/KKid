@@ -64,6 +64,14 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
 
 // MARK: searchBar-textDidChange
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchBar.text!.contains("UserDefaults: ") else {
+            let search = searchBar.text!.replacingOccurrences(of: "UserDefaults: ", with: "")
+            if search.contains(":Go:") {
+                let key = search.replacingOccurrences(of: " :Go:", with: "")
+                ShowAlert.centerView(theme: .info, title: "\(key)", message: "\(UserDefaults.standard.object(forKey: key) ?? "nil")", seconds: 60, invokeHaptics: false)
+            }
+            return
+        }
         TMDb_Client.searchMovies(query: searchBar.text!, page: 1) { (_, response) in
             self.movies = []
             self.currentPage = 0

@@ -16,6 +16,7 @@ import PrivacyKit
 import Kingfisher
 import DeviceKit
 import KumpeHelpers
+import Snowflake
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
 
@@ -48,6 +49,26 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.reloadData()
         iconCache.diskStorage.config.expiration = .days(90)
         iconCache.memoryStorage.config.expiration = .days(90)
+    }
+
+// MARK: becomeFirstResponder
+    override func becomeFirstResponder() -> Bool {
+        return true
+    }
+
+// MARK: motionEnded (detect shake)
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            startSnowflake()
+        }
+    }
+
+// MARK: startSnowFlake
+    func startSnowflake() {
+        let flake = #imageLiteral(resourceName: "icons8-winter")
+        let snowflake = Snowflake(view: view, particles: [flake: .white])
+        self.view.layer.addSublayer(snowflake)
+        snowflake.start()
     }
 
 // MARK: viewWillAppear
