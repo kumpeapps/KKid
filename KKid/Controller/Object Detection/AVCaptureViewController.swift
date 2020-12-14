@@ -37,7 +37,6 @@ class AVCaptureViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         @unknown default:
             fatalError()
         }
-
     }
 
     func requestCameraPermission() {

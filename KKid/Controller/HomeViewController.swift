@@ -17,6 +17,7 @@ import Kingfisher
 import DeviceKit
 import KumpeHelpers
 import Snowflake
+import AVFoundation
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
 
@@ -193,9 +194,46 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: pressedLogout
     func pressedLogout() {
-
         KKidClient.logout(userInitiated: true)
     }
+
+// MARK: checkCamera
+    func checkCamera(segue: String) {
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        switch cameraAuthorizationStatus {
+        case .notDetermined: requestCameraPermission(segue: segue)
+        case .authorized: performSegue(withIdentifier: segue, sender: self)
+        case .restricted, .denied: alertCameraAccessNeeded()
+        @unknown default:
+            fatalError()
+        }
+    }
+
+    func requestCameraPermission(segue: String) {
+        AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
+            guard accessGranted == true else { return }
+            dispatchOnMain {
+                self.performSegue(withIdentifier: segue, sender: self)
+            }
+        })
+    }
+
+    func alertCameraAccessNeeded() {
+        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+
+        let alert = UIAlertController(
+            title: "Need Camera Access",
+            message: "Camera access is required to use Object Detection.",
+            preferredStyle: UIAlertController.Style.alert
+        )
+
+       alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+       alert.addAction(UIAlertAction(title: "Allow Camera", style: .cancel, handler: { (_) -> Void in
+           UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+       }))
+
+       present(alert, animated: true, completion: nil)
+   }
 
 // MARK: centerItemsInCollectionView
     func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
@@ -306,7 +344,7 @@ extension HomeViewController {
                 pressedLogout()
             case "Detect Objects":
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                    performSegue(withIdentifier: module.segue!, sender: self)
+                    checkCamera(segue: module.segue!)
                 } else {
                     ShowAlert.banner(theme: .warning, title: "Oops", message: "Camera is required for this function. Your device does not have a camera or your camera is disabled.")
                 }
