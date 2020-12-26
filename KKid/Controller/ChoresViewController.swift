@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import KumpeHelpers
+import Snowflake
 
 class ChoresViewController: UIViewController {
 
@@ -68,6 +69,26 @@ class ChoresViewController: UIViewController {
 // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+// MARK: becomeFirstResponder
+    override func becomeFirstResponder() -> Bool {
+        return true
+    }
+
+// MARK: motionEnded (detect shake)
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            startSnowflake()
+        }
+    }
+
+// MARK: startSnowflake
+    func startSnowflake() {
+        let flake = #imageLiteral(resourceName: "icons8-winter")
+        let snowflake = Snowflake(view: view, particles: [flake: .white])
+        self.view.layer.addSublayer(snowflake)
+        snowflake.start()
     }
 
 // MARK: viewWillAppear

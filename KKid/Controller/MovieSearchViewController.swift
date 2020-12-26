@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 import KumpeHelpers
 import JKRefresher
-import RatingsRestrictionKit
+import ContentRestrictionsKit
 
 class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
@@ -64,6 +64,14 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
 
 // MARK: searchBar-textDidChange
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchBar.text!.contains("UserDefaults: ") else {
+            let search = searchBar.text!.replacingOccurrences(of: "UserDefaults: ", with: "")
+            if search.contains(":Go:") {
+                let key = search.replacingOccurrences(of: " :Go:", with: "")
+                ShowAlert.centerView(theme: .info, title: "\(key)", message: "\(UserDefaults.standard.object(forKey: key) ?? "nil")", seconds: 60, invokeHaptics: false)
+            }
+            return
+        }
         TMDb_Client.searchMovies(query: searchBar.text!, page: 1) { (_, response) in
             self.movies = []
             self.currentPage = 0
@@ -141,7 +149,7 @@ extension MovieSearchViewController {
             } else {
                 cell.imageView.image = UIImage(named: "placeholder_w185")
             }
-            if !RatingsRestrictionKit.movieRatingIsAllowed(rating: movie.movieRating ?? "nr") {
+            if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: movie.movieRating ?? "nr") {
                 cell.imageView.image = UIImage(named: "placeholder_w185")
             }
             return cell
@@ -149,7 +157,7 @@ extension MovieSearchViewController {
 
     // MARK: Did Select Item
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if !RatingsRestrictionKit.movieRatingIsAllowed(rating: movies[indexPath.row].movieRating ?? "nr") {
+            if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: movies[indexPath.row].movieRating ?? "nr") {
                 ShowAlert.banner(title: "Access Restricted", message: "This movie is rated \(movies[indexPath.row].movieRating ?? "nr") which is above the restriction level set on your device.")
             } else {
                 performSegue(withIdentifier: "segueMovieDetails", sender: self)

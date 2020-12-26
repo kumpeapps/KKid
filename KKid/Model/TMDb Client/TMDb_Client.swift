@@ -7,7 +7,7 @@
 
 import Foundation
 import KumpeHelpers
-import RatingsRestrictionKit
+import ContentRestrictionsKit
 
 class TMDb_Client: KumpeAPIClient {
 
@@ -38,7 +38,7 @@ class TMDb_Client: KumpeAPIClient {
                     } else {
                         movies[index].movieRating = "nr"
                     }
-                    if !RatingsRestrictionKit.movieRatingIsAllowed(rating: movies[index].movieRating!) {
+                    if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: movies[index].movieRating!) {
                         removeMovies.append(index)
                     }
                     taskGroup.leave()
