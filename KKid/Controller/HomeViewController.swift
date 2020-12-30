@@ -261,6 +261,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/candycane.jpg")!, isBackground: false)
                 UserDefaults.standard.set("Christmas", forKey: "seasonalBackgroundImage")
             }
+        case "February":
+            if currentBackground != "Valentines" {
+                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: true)
+                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: false)
+                UserDefaults.standard.set("Valentines", forKey: "seasonalBackgroundImage")
+            }
+        case "March":
+            if currentBackground != "StPatricks" {
+                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/clovers.jpg")!, isBackground: true)
+                setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .systemGreen)!), isBackground: false)
+                UserDefaults.standard.set("StPatricks", forKey: "seasonalBackgroundImage")
+            }
         default:
             if currentBackground != "default" {
                 setImage(UIImage(named: "photo2")!, isBackground: true)
