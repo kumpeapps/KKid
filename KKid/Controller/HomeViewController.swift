@@ -187,6 +187,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             modules.append(KKid_Module.init(title: "User Manual", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-user_manual-50.png"))
 
+            modules.append(KKid_Module.init(title: "Portal", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-cloud-50.png"))
+
+            modules.append(KKid_Module.init(title: "Support", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-strangertalk-50.png"))
+
         }
 
         collectionView.reloadData()
@@ -365,6 +369,10 @@ extension HomeViewController {
                 UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
             case "User Manual":
                 launchURL("https://github.com/kumpeapps/KKid/blob/master/README.md")
+            case "Portal":
+                launchURL("https://khome.kumpeapps.com")
+            case "Support":
+                launchURL("https://github.com/kumpeapps/KKid/issues")
             default:
                 performSegue(withIdentifier: module.segue!, sender: self)
             }
