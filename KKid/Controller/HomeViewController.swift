@@ -187,6 +187,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             modules.append(KKid_Module.init(title: "User Manual", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-user_manual-50.png"))
 
+            modules.append(KKid_Module.init(title: "Portal", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-cloud-50.png"))
+
+            modules.append(KKid_Module.init(title: "Support", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-strangertalk-50.png"))
+
         }
 
         collectionView.reloadData()
@@ -247,7 +251,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: seasonalBackgroundLoader
     func seasonalBackgroundLoader() {
         if UserDefaults.standard.string(forKey: "seasonalBackgroundImage") == nil {
-            UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
+            UserDefaults.standard.set("none", forKey: "seasonalBackgroundImage")
         }
         let now = Date()
         let dateFormatter = DateFormatter()
@@ -260,6 +264,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/christmas.jpg")!, isBackground: true)
                 downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/candycane.jpg")!, isBackground: false)
                 UserDefaults.standard.set("Christmas", forKey: "seasonalBackgroundImage")
+            }
+        case "February":
+            if currentBackground != "Valentines" {
+                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: true)
+                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: false)
+                UserDefaults.standard.set("Valentines", forKey: "seasonalBackgroundImage")
+            }
+        case "March":
+            if currentBackground != "StPatricks" {
+                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/clovers.jpg")!, isBackground: true)
+                setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .systemGreen)!), isBackground: false)
+                UserDefaults.standard.set("StPatricks", forKey: "seasonalBackgroundImage")
             }
         default:
             if currentBackground != "default" {
@@ -353,6 +369,10 @@ extension HomeViewController {
                 UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
             case "User Manual":
                 launchURL("https://github.com/kumpeapps/KKid/blob/master/README.md")
+            case "Portal":
+                launchURL("https://khome.kumpeapps.com")
+            case "Support":
+                launchURL("https://github.com/kumpeapps/KKid/issues")
             default:
                 performSegue(withIdentifier: module.segue!, sender: self)
             }
