@@ -251,7 +251,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: seasonalBackgroundLoader
     func seasonalBackgroundLoader() {
         if UserDefaults.standard.string(forKey: "seasonalBackgroundImage") == nil {
-            UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
+            UserDefaults.standard.set("none", forKey: "seasonalBackgroundImage")
         }
         let now = Date()
         let dateFormatter = DateFormatter()
