@@ -12,7 +12,7 @@ struct TMDb_Token: Codable {
     let success: Bool
     let expiresAt: String
     let requestToken: String
-    
+
     private enum CodingKeys : String, CodingKey {
         case success, expiresAt = "expires_at", requestToken = "request_token"
     }
