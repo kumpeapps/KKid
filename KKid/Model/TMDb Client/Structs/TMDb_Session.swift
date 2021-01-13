@@ -11,7 +11,7 @@ import Foundation
 struct TMDb_Session: Codable {
     let success: Bool
     let sessionId: String
-    
+
     private enum CodingKeys : String, CodingKey {
         case success, sessionId = "session_id"
     }
