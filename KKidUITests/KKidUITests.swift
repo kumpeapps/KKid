@@ -38,20 +38,19 @@ class KKidUITests: XCTestCase {
     }
 
     func testChores() throws {
-
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
-        app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Chores").element.tap()
+        let cellsQuery = app.collectionViews.cells
+        cellsQuery.otherElements.containing(.staticText, identifier:"Chores").element.tap()
 
         let thisWeekButton = app/*@START_MENU_TOKEN@*/.buttons["This Week"]/*[[".segmentedControls.buttons[\"This Week\"]",".buttons[\"This Week\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         thisWeekButton.tap()
 
-        let weeklyButton = app/*@START_MENU_TOKEN@*/.buttons["Weekly"]/*[[".segmentedControls.buttons[\"Weekly\"]",".buttons[\"Weekly\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        weeklyButton.tap()
+        let app2 = app
+        app2/*@START_MENU_TOKEN@*/.buttons["Weekly"]/*[[".segmentedControls.buttons[\"Weekly\"]",".buttons[\"Weekly\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         thisWeekButton.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["Today"]/*[[".segmentedControls.buttons[\"Today\"]",".buttons[\"Today\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        thisWeekButton.tap()
-        weeklyButton.tap()
-        thisWeekButton.tap()
+        app2.tables/*@START_MENU_TOKEN@*/.staticTexts["teat (Wednesday)"]/*[[".cells.staticTexts[\"teat (Wednesday)\"]",".staticTexts[\"teat (Wednesday)\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+        let checkScrollView = app/*@START_MENU_TOKEN@*/.scrollViews.containing(.button, identifier:"check").element/*[[".scrollViews.containing(.other, identifier:\"Vertical scroll bar, 2 pages\").element",".scrollViews.containing(.button, identifier:\"red x\").element",".scrollViews.containing(.button, identifier:\"x\").element",".scrollViews.containing(.button, identifier:\"blue dash\").element",".scrollViews.containing(.button, identifier:\"dash\").element",".scrollViews.containing(.button, identifier:\"green check\").element",".scrollViews.containing(.button, identifier:\"check\").element"],[[[-1,6],[-1,5],[-1,4],[-1,3],[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        checkScrollView.swipeDown()
         app.navigationBars["Chores"].buttons["Home"].tap()
 
     }
@@ -89,16 +88,17 @@ class KKidUITests: XCTestCase {
 
     func testTmdb() throws {
 
-        let scrollViewsQuery = app.scrollViews
         let collectionViewsQuery = app.collectionViews
         let cellsQuery = collectionViewsQuery.cells
-        cellsQuery.otherElements.containing(.staticText, identifier:"Search Movies").element.tap()
-        sleep(1)
+        cellsQuery.otherElements.containing(.staticText, identifier:"Movies DB").element.tap()
         collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
-        scrollViewsQuery.children(matching: .button).element.tap()
-        sleep(3)
-        app.navigationBars["tmdb"].buttons["Search"].tap()
-        app.navigationBars["Search Movies"].buttons["Home"].tap()
+        app.navigationBars["tmdb"].buttons["Back"].tap()
+
+        let app2 = app
+        app2/*@START_MENU_TOKEN@*/.buttons["Favorites"]/*[[".segmentedControls.buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app2/*@START_MENU_TOKEN@*/.buttons["Watch List"]/*[[".segmentedControls.buttons[\"Watch List\"]",".buttons[\"Watch List\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app2/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".segmentedControls.buttons[\"Search\"]",".buttons[\"Search\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["Movies DB"].buttons["Home"].tap()
 
     }
 
@@ -133,14 +133,15 @@ class KKidUITests: XCTestCase {
         sleep(5)
         snapshot("SelectUserScreen")
         app.navigationBars["Select User"].buttons["Home"].tap()
-        cellsQuery.otherElements.containing(.staticText, identifier:"Search Movies").element.tap()
+
+        cellsQuery.otherElements.containing(.staticText, identifier:"Movies DB").element.tap()
         sleep(1)
         snapshot("SearchMovies")
         collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
         sleep(1)
         snapshot("MovieDetails")
-        app.navigationBars["tmdb"].buttons["Search"].tap()
-        app.navigationBars["Search Movies"].buttons["Home"].tap()
+        app.navigationBars["tmdb"].buttons["Back"].tap()
+        app.navigationBars["Movies DB"].buttons["Home"].tap()
     }
 
     func testLaunchPerformance() throws {

@@ -270,8 +270,10 @@ extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: refreshUsers
     @objc func refreshUsers() {
         KKidClient.getUsers { (_, _) in
-            self.refreshControl.endRefreshing()
-            self.tableView.reloadData()
+            dispatchOnMain {
+                self.refreshControl.endRefreshing()
+                self.tableView.reloadData()
+            }
         }
     }
 }

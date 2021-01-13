@@ -33,8 +33,10 @@ struct TMDb_Movie: Codable {
     let voteAverage: Float?
     var movieRating: String?
     var trailerKey: String?
+    var favorite: Bool?
+    var watchList: Bool?
 
     private enum CodingKeys : String, CodingKey {
-        case posterPath = "poster_path", adult, overview, releaseDate = "release_date", id, originalTitle = "original_title", originalLanguage = "original_language", title, backdropPath = "backdrop_path", popularity, voteCount = "vote_count", voteAverage = "vote_average", movieRating = "certification", trailerKey
+        case posterPath = "poster_path", adult, overview, releaseDate = "release_date", id, originalTitle = "original_title", originalLanguage = "original_language", title, backdropPath = "backdrop_path", popularity, voteCount = "vote_count", voteAverage = "vote_average", movieRating = "certification", trailerKey, favorite, watchList
     }
 }
