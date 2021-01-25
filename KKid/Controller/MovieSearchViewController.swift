@@ -44,6 +44,16 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
 
+// MARK: viewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.currentPage = 0
+        self.totalPages = 0
+        self.movies = []
+        collectionView.reloadData()
+        performFetchMore { }
+    }
+
 // MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -55,7 +65,6 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         super.viewWillAppear(animated)
         #if targetEnvironment(simulator)
             searchBar.text = "Stargate"
-            performFetchMore { }
         #endif
     }
 

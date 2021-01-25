@@ -14,6 +14,8 @@ public struct TMDb_Constants {
     static let searchUrl = "\(baseUrl)/search"
     static let favoriteMoviesUrl = "\(baseUrl)/account/1/favorite/movies"
     static let watchlistMoviesUrl = "\(baseUrl)/account/1/watchlist/movies"
+    static let postFavorite = "\(baseUrl)/account/1/favorite"
+    static let postWatchList = "\(baseUrl)/account/1/watchlist"
     static let searchMoviesUrl = "\(searchUrl)/movie"
     static let imageBaseUrl = "https://image.tmdb.org/t/p"
     static let trailerBaseURL = "https://www.youtube.com/watch?v="

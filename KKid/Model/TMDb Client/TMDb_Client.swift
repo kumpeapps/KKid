@@ -8,6 +8,8 @@
 import Foundation
 import KumpeHelpers
 import ContentRestrictionsKit
+import Alamofire
+import Alamofire_SwiftyJSON
 
 class TMDb_Client: KumpeAPIClient {
 
@@ -240,4 +242,31 @@ class TMDb_Client: KumpeAPIClient {
             }
         }
     }
+
+    // MARK: postFavorite
+    class func postFavorite(sessionId: String, mediaType: String, mediaId: Int, favorite: Bool, completion: @escaping (Bool) -> Void) {
+        let url = "\(TMDb_Constants.postFavorite)?api_key=\(TMDb_Constants.apiKey)&session_id=\(sessionId)"
+        let parameters = [
+            "media_type":"\(mediaType)",
+            "media_id":"\(mediaId)",
+            "favorite":favorite
+        ] as [String : Any]
+        TMDb_Client.apiPost(apiUrl: url, parameters: parameters, postToBody: true) { (success, _) in
+            completion(success)
+        }
+    }
+
+    // MARK: postWatchlist
+    class func postWatchlist(sessionId: String, mediaType: String, mediaId: Int, watchlist: Bool, completion: @escaping (Bool) -> Void) {
+        let url = "\(TMDb_Constants.postWatchList)?api_key=\(TMDb_Constants.apiKey)&session_id=\(sessionId)"
+        let parameters = [
+            "media_type":"\(mediaType)",
+            "media_id":"\(mediaId)",
+            "watchlist":watchlist
+        ] as [String : Any]
+        TMDb_Client.apiPost(apiUrl: url, parameters: parameters, postToBody: true) { (success, _) in
+            completion(success)
+        }
+    }
+
 }

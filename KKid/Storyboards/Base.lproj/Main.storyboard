@@ -681,7 +681,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myx-O7-kWp" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                    <rect key="frame" x="64" y="0.0" width="24.5" height="24.5"/>
+                                                    <rect key="frame" x="65.5" y="0.0" width="23" height="21"/>
                                                     <accessibility key="accessibilityConfiguration" label="0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="BDO-Ij-O96"/>
@@ -1025,10 +1025,16 @@
                                             <constraint firstAttribute="height" constant="43" id="5pI-3R-vmA"/>
                                         </constraints>
                                         <state key="normal" image="icons8-test_passed"/>
+                                        <connections>
+                                            <action selector="pressedWatchList:" destination="zkE-tG-dD6" eventType="touchUpInside" id="fxf-Qv-HDR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5T-wY-g2B" userLabel="ButtonFavorite">
                                         <rect key="frame" x="322" y="40.5" width="38" height="43"/>
                                         <state key="normal" image="icons8-heart_outline"/>
+                                        <connections>
+                                            <action selector="pressedFavorite:" destination="zkE-tG-dD6" eventType="touchUpInside" id="L89-cK-rYj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1096,8 +1102,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonFavorite" destination="N5T-wY-g2B" id="PX0-bE-YBw"/>
                         <outlet property="buttonMovieRating" destination="pqM-zT-uJB" id="i88-tr-rxI"/>
                         <outlet property="buttonTmdb" destination="eGt-ei-RUz" id="T4T-yV-ikU"/>
+                        <outlet property="buttonWatchList" destination="WZA-3h-XFF" id="0np-0d-f1O"/>
                         <outlet property="imageBackground" destination="h7p-fZ-Tas" id="Ab1-zr-36x"/>
                         <outlet property="imageMovieRating" destination="Kgm-AV-PT5" id="Gg6-9C-RSe"/>
                         <outlet property="labelOverview" destination="TCS-S6-J2l" id="AZd-os-Yen"/>

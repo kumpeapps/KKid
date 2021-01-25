@@ -31,6 +31,8 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
     @IBOutlet weak var imageBackground: UIButton!
     @IBOutlet weak var buttonMovieRating: UIButton!
     @IBOutlet weak var buttonTmdb: UIButton!
+    @IBOutlet weak var buttonFavorite: UIButton!
+    @IBOutlet weak var buttonWatchList: UIButton!
 
 // MARK: images
     @IBOutlet weak var imageMovieRating: UIImageView!
@@ -66,6 +68,8 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getMovieRating()
+        getFavorites()
+        getWatchlist()
     }
 
 // MARK: viewWillDisappear
@@ -146,6 +150,102 @@ class MovieDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
     @IBAction func pressedBackgroundImage(_ sender: Any) {
         if player != nil {
             playVideo()
+        }
+    }
+
+    @IBAction func pressedFavorite(_ sender: Any) {
+        guard let user = LoggedInUser.selectedUser else {
+            return
+        }
+        guard let sessionId = user.tmdbKey, sessionId != "" else {
+            ShowAlert.banner(title: "TMDb Account Not Linked", message: "This feature requires a TMDb account to be linked to this user via edit profile.")
+            return
+        }
+        selectedMovie.favorite = !selectedMovie.favorite!
+        updateFavoriteButton(selectedMovie.favorite!)
+        TMDb_Client.postFavorite(sessionId: sessionId, mediaType: "movie", mediaId: selectedMovie.id!, favorite: selectedMovie.favorite!) { (success) in
+            if success {
+                Logger.log(.success, "marked as favorite \(self.selectedMovie.favorite!)")
+            } else {
+                Logger.log(.error, "mark as favorite error")
+            }
+        }
+    }
+
+    @IBAction func pressedWatchList(_ sender: Any) {
+        guard let user = LoggedInUser.selectedUser else {
+            return
+        }
+        guard let sessionId = user.tmdbKey, sessionId != "" else {
+            ShowAlert.banner(title: "TMDb Account Not Linked", message: "This feature requires a TMDb account to be linked to this user via edit profile.")
+            return
+        }
+        selectedMovie.watchList = !selectedMovie.watchList!
+        updateWatchlistButton(selectedMovie.watchList!)
+        TMDb_Client.postWatchlist(sessionId: sessionId, mediaType: "movie", mediaId: selectedMovie.id!, watchlist: selectedMovie.watchList!) { (success) in
+            if success {
+                Logger.log(.success, "marked as watchList \(self.selectedMovie.watchList!)")
+            } else {
+                Logger.log(.error, "mark as watchList error")
+            }
+        }
+    }
+
+    // MARK: updateFavoriteButton
+    func updateFavoriteButton(_ favorite: Bool) {
+        if favorite {
+            buttonFavorite.alpha = 1
+        } else {
+            buttonFavorite.alpha = 0.5
+        }
+    }
+
+    // MARK: updateWatchlistButton
+    func updateWatchlistButton(_ watchlist: Bool) {
+        if watchlist {
+            buttonWatchList.alpha = 1
+        } else {
+            buttonWatchList.alpha = 0.5
+        }
+    }
+
+    // MARK: getFavorites
+    func getFavorites() {
+        guard let sessionID = LoggedInUser.selectedUser!.tmdbKey, sessionID != "" else {
+            return
+        }
+        let movieID = selectedMovie.id
+        selectedMovie.favorite = false
+        TMDb_Client.getFavoriteMovies(sessionId: sessionID) { (success, response) in
+            if success {
+                guard let movies = response?.results else {
+                    return
+                }
+                for movie in movies where movie.id == movieID {
+                        self.selectedMovie.favorite = true
+                        self.updateFavoriteButton(true)
+                }
+            }
+        }
+    }
+
+    // MARK: getWatchlist
+    func getWatchlist() {
+        guard let sessionID = LoggedInUser.selectedUser!.tmdbKey, sessionID != "" else {
+            return
+        }
+        let movieID = selectedMovie.id
+        selectedMovie.watchList = false
+        TMDb_Client.getMovieWatchlist(sessionId: sessionID) { (success, response) in
+            if success {
+                guard let movies = response?.results else {
+                    return
+                }
+                for movie in movies where movie.id == movieID {
+                        self.selectedMovie.watchList = true
+                        self.updateWatchlistButton(true)
+                }
+            }
         }
     }
 
