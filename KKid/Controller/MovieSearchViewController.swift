@@ -19,6 +19,9 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
 // MARK: collectionViews
     @IBOutlet weak var collectionView: UICollectionView!
 
+// MARK: segmentControlls
+    @IBOutlet weak var segmentControll: UISegmentedControl!
+
 // MARK: parameters
     var movies: [TMDb_Movie] = []
     var currentPage: Int = 0
@@ -41,6 +44,16 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
 
+// MARK: viewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.currentPage = 0
+        self.totalPages = 0
+        self.movies = []
+        collectionView.reloadData()
+        performFetchMore { }
+    }
+
 // MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -52,7 +65,6 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         super.viewWillAppear(animated)
         #if targetEnvironment(simulator)
             searchBar.text = "Stargate"
-            performFetchMore { }
         #endif
     }
 
@@ -85,9 +97,8 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
 
-// MARK: performFetchMore
-    func performFetchMore(_ completionHandler: (() -> Void)?) {
-        let page = self.currentPage + 1
+// MARK: searchMovies
+    func searchMovies(_ page: Int = 1, _ completionHandler: (() -> Void)?) {
         TMDb_Client.searchMovies(query: searchBar.text!, page: page) { (_, response) in
             if let response = response {
 
@@ -111,11 +122,113 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
 
+// MARK: performFetchMore
+    func performFetchMore(_ completionHandler: (() -> Void)?) {
+        let page = self.currentPage + 1
+        switch segmentControll.selectedSegmentIndex {
+        case 0:
+            searchMovies(page, completionHandler)
+        case 1:
+            fetchFavoriteMovies(page, completionHandler)
+        case 2:
+            fetchMovieWatchlist(page, completionHandler)
+        default:
+            return
+        }
+    }
+
 // MARK: prepareForSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = segue.destination as! MovieDetailViewController
         if let indexPath = collectionView.indexPathsForSelectedItems {
             viewController.selectedMovie = movies[indexPath[0].row]
+        }
+    }
+
+// MARK: segmentControllDidChange
+    @IBAction func segmentControllDidChange(_ sender: Any) {
+        self.currentPage = 0
+        self.totalPages = 0
+        collectionView.reloadData()
+        switch segmentControll.selectedSegmentIndex {
+        case 0:
+            movies = []
+            searchBar.isHidden = false
+            searchBar.text = ""
+            collectionView.reloadData()
+        default:
+            movies = []
+            searchBar.isHidden = true
+            performFetchMore { }
+            return
+        }
+    }
+
+// MARK: fetchFavoriteMovies
+    func fetchFavoriteMovies(_ page: Int = 1, _ completionHandler: (() -> Void)?) {
+        guard let user = LoggedInUser.selectedUser else {
+            return
+        }
+        guard let sessionId = user.tmdbKey, sessionId != "" else {
+            ShowAlert.banner(title: "TMDb Account Not Linked", message: "You must have a TMDb account linked to use this feature. Your account may be linked in User Profile.")
+            return
+        }
+        TMDb_Client.getFavoriteMovies(page: page, sessionId: sessionId) { (success, response) in
+            if success {
+                if let response = response {
+
+                    // create new index paths
+                    let movieCount = self.movies.count
+                    let (start, end) = (movieCount, response.results.count + movieCount)
+                    let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
+
+                    // update data source
+                    self.movies.append(contentsOf: response.results)
+                    self.currentPage = response.page
+                    self.totalPages = response.totalPages
+
+                    // update collection view
+                    self.collectionView?.performBatchUpdates({ () -> Void in
+                        self.collectionView?.insertItems(at: indexPaths)
+                    }, completion: { (_) -> Void in
+                        completionHandler?()
+                    })
+                }
+            }
+        }
+    }
+
+// MARK: fetchMovieWatchlist
+    func fetchMovieWatchlist(_ page: Int = 1, _ completionHandler: (() -> Void)?) {
+        guard let user = LoggedInUser.selectedUser else {
+            return
+        }
+        guard let sessionId = user.tmdbKey, sessionId != "" else {
+            ShowAlert.banner(title: "TMDb Account Not Linked", message: "You must have a TMDb account linked to use this feature. Your account may be linked in User Profile.")
+            return
+        }
+        TMDb_Client.getMovieWatchlist(page: page, sessionId: sessionId) { (success, response) in
+            if success {
+                if let response = response {
+
+                    // create new index paths
+                    let movieCount = self.movies.count
+                    let (start, end) = (movieCount, response.results.count + movieCount)
+                    let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
+
+                    // update data source
+                    self.movies.append(contentsOf: response.results)
+                    self.currentPage = response.page
+                    self.totalPages = response.totalPages
+
+                    // update collection view
+                    self.collectionView?.performBatchUpdates({ () -> Void in
+                        self.collectionView?.insertItems(at: indexPaths)
+                    }, completion: { (_) -> Void in
+                        completionHandler?()
+                    })
+                }
+            }
         }
     }
 

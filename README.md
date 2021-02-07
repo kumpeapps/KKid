@@ -64,7 +64,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   You will always have Edit Profile which you can click on to edit that user's profile/permissions
 -   Additionally there will be options for each module that the selected user has access to
 -   Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
--   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), [Allowance](https://github.com/justinkumpe/KKid#allowance-module), [Movie Search](https://github.com/justinkumpe/KKid#search-movies-module), and [Object Detection](https://github.com/justinkumpe/KKid#object-detection-module)
+-   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), [Allowance](https://github.com/justinkumpe/KKid#allowance-module), [Movies DB](https://github.com/justinkumpe/KKid#movies-db-module), and [Object Detection](https://github.com/justinkumpe/KKid#object-detection-module)
 
 ### Select User Screen
 -   On the Select User screen you will see a list of users under your master (household) account.
@@ -78,6 +78,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 #### Edit Profile Module
 -   To edit a the user's profile just change the information on the screen and click update in the upper right.
 -   If you are the master or an admin user then you will have switches for each module/permission. To turn on the permission for a user just change the switch to on. To remove a permission from the user then you turn the switch to off. Do not forget to click update in the upper right to update the users permissions as well.
+-   In the link accounts section you can link/re-link third-party accounts used by KKid.
 
 #### Chores Module
 -   In this module you will see a table listing the selected user's chores for the week.
@@ -114,8 +115,10 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   Master and Admin users may add or subtract allowance
 -   Users that are not a master or admin may only subtract from their allowance account
 
-### Search Movies Module
--   This module will allow you to search movies. By clicking on the movie you can pull up the [Movie Details Screen](https://github.com/justinkumpe/KKid#movie-details-screen).
+### Movies DB Module
+-   This module will allow you to search movies and add them to a favorites or watch list. By clicking on the movie you can pull up the [Movie Details Screen](https://github.com/justinkumpe/KKid#movie-details-screen).
+-   The tabs at the top will switch you between search, favorites, and watch list
+-   TMDb account is required to utilize the favorites and watch list features and your TMDb account must be linked to your KKid account via [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module)
 
 ###### NOTE: If movie ratings limits/restrictions are configured on the device then KKid will remove any movies outside the allowed ratings from the search results. This will also remove any unrated movies from the search results
 ###### NOTE: It is recommended that you enable movie rating limits on your child's device before enabling this module
@@ -156,4 +159,4 @@ API access may be obtained by opening a support ticket
 -   [X] Machine Learning AI for Object Detection
 -   [X] Movie Search with movie ratings
 -   [ ] TV Show Search with Ratings
--   [ ] Linking TMDb account for saving movies/tv shows to favorites and watch list
+-   [X] Linking TMDb account for saving movies/tv shows to favorites and watch list

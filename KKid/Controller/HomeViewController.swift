@@ -156,11 +156,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @objc func buildModules() {
         if let selectedUser = LoggedInUser.selectedUser {
             modules = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
-            if LoggedInUser.selectedUser == LoggedInUser.user {
-                self.title = "\(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
-            } else {
-                self.title = "Selected: \(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
+
+            dispatchOnMain {
+                if LoggedInUser.selectedUser == LoggedInUser.user {
+                    self.title = "\(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
+                } else {
+                    self.title = "Selected: \(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
+                }
             }
+
             if selectedUser.enableChores {
                 modules.append(KKid_Module.init(title: "Chores", segue: "segueChores", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-to-do-80.png"))
             }
@@ -170,7 +174,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             if selectedUser.enableTmdb {
-                modules.append(KKid_Module.init(title: "Search Movies", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
+                modules.append(KKid_Module.init(title: "Movies DB", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
             }
 
             if selectedUser.enableObjectDetection {
@@ -193,7 +197,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         }
 
-        collectionView.reloadData()
+        dispatchOnMain {
+            self.collectionView.reloadData()
+        }
     }
 
 // MARK: pressedLogout

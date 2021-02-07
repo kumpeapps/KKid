@@ -47,4 +47,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            if url.scheme == "kkid-tmdb" {
+                let parameters = url.parameters ?? [:]
+                let token = parameters["request_token"] ?? ""
+                let approved = parameters["approved"] ?? ""
+                guard approved == "true" else {
+                    return
+                }
+                TMDb_Client.getSession(requestToken: token)
+            }
+        }
+    }
+
 }

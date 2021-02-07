@@ -52,6 +52,8 @@ class UserEditProfileViewController: FormViewController {
             builder += enableAdmin
             builder += enableTmdb
         }
+        builder += SectionHeaderTitleFormItem().title("Link Accounts")
+        builder += tmdbButton
     }
 
 // MARK: username Field
@@ -109,7 +111,7 @@ class UserEditProfileViewController: FormViewController {
 
 // MARK: enableAllowance Field
     lazy var enableTmdb: SwitchFormItem = {
-        let instance = SwitchFormItem().title("Enable Search Movies")
+        let instance = SwitchFormItem().title("Enable TMDb (Movie & TV DB)")
         return instance
     }()
 
@@ -119,6 +121,35 @@ class UserEditProfileViewController: FormViewController {
         return instance
     }()
 
+// MARK: tmdbButton
+    lazy var tmdbButton: ButtonFormItem = {
+        let instance = ButtonFormItem()
+        instance.title = "Link TMDb Account"
+        if selectedUser.tmdbKey != "" {
+            instance.title = "Re-Link TMDb Account"
+        }
+        instance.action = { [weak self] in
+            self?.authenticateTmdb()
+        }
+        if !selectedUser.enableTmdb {
+            instance.action = {
+                ShowAlert.banner(theme: .warning, title: "TMDb Not Enabled", message: "TMDb access is not enabled for this account. Please ask your parent/admin to enable TMDb on your account.")
+            }
+        }
+        return instance
+    }()
+
+// MARK: authenticateTmdb
+    func authenticateTmdb() {
+        TMDb_Client.getToken { (success, token) in
+            if success && token != nil {
+                launchURL("https://www.themoviedb.org/authenticate/\(token!)?redirect_to=kkid-tmdb://")
+            } else {
+                ShowAlert.banner(title: "Error", message: "There was an error attemting to link your account.")
+            }
+        }
+    }
+
 // MARK: submitForm
     func submitForm() {
         guard Smile.isSingleEmoji(emoji.value) else {
@@ -126,7 +157,7 @@ class UserEditProfileViewController: FormViewController {
             return
         }
 
-        KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value) { (success, error) in
+        KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil) { (success, error) in
             if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)
