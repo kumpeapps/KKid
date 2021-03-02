@@ -32,3 +32,19 @@ enum ChoreStatus: String {
     }
 
 }
+
+enum ChoreStatusAi: String {
+
+    case y
+    case e
+    case c
+
+    var image: UIImage {
+        switch self {
+        case .y: return UIImage(named: "robot_with_circuit_spokes")!
+        case .e: return UIImage(named: "robot_with_red_error")!
+        case .c: return UIImage(named: "robot_with_green_check")!
+        }
+    }
+
+}

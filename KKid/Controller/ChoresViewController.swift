@@ -233,7 +233,11 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.detailTextLabel?.text = aChore.choreDescription ?? ""
         }
-        cell.imageView?.image = ChoreStatus.init(rawValue: aChore.status!)?.image
+        if aChore.aiIcon != nil && aChore.aiIcon != "n" {
+            cell.imageView?.image = ChoreStatusAi.init(rawValue: aChore.aiIcon!)?.image
+        } else {
+            cell.imageView?.image = ChoreStatus.init(rawValue: aChore.status!)?.image
+        }
         let itemSize = CGSize.init(width: 35, height: 25)
         UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale)
         let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)

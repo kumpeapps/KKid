@@ -191,7 +191,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             modules.append(KKid_Module.init(title: "User Manual", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-user_manual-50.png"))
 
-            modules.append(KKid_Module.init(title: "Portal", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-cloud-50.png"))
+            modules.append(KKid_Module.init(title: "Portal", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "letter_k/k_cloud.png"))
 
             modules.append(KKid_Module.init(title: "Support", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-strangertalk-50.png"))
 
