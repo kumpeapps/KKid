@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "robot_with_green_check.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
