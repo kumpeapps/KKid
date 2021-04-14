@@ -23,4 +23,9 @@ struct APICredentials {
         static let homeScreenBannerID = KKidKeys().googleAdMob_homeScreenBannerID
     }
 
+// MARK: ShipBook Creds
+    struct ShipBook {
+        static let appId = KKidKeys().shipBook_appId
+        static let appKey = KKidKeys().shipBook_appKey
+    }
 }
