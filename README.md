@@ -40,6 +40,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [JKRefresher](https://github.com/kumpeapps/JKRefresher)
 -   [YoutubeKit](https://github.com/rinov/YoutubeKit)
 -   [ContentRestrictionsKit](https://github.com/kumpeapps/ContentRestrictionsKit)
+-   [ShipBook](https://github.com/ShipBook/ShipBookSDK-iOS)
 
 ## Other Credits
 -   [Icons from Icons8](https://icons8.com)
