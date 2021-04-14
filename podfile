@@ -32,4 +32,5 @@ target 'KKid' do
 	pod 'Kingfisher'
 	pod 'JKRefresher'
 	pod 'YoutubeKit'
+	pod 'ShipBookSDK'
 end
