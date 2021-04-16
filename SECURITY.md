@@ -10,4 +10,4 @@
 
 ## Reporting a Vulnerability
 
-Please report any vulnerabilites via email to [helpdesk@kumpeapps.com[(helpdesk@kumpeapps.com)
+Please report any vulnerabilites via email to [helpdesk@kumpeapps.com](helpdesk@kumpeapps.com)
