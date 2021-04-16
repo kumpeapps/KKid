@@ -11,6 +11,7 @@ import CoreData
 import GoogleMobileAds
 import PrivacyKit
 import KumpeHelpers
+import ShipBookSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
@@ -44,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
+        ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
 //        Setup PrivacyKit
         PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
         PrivacyKit.shared.setBlurView(isEnabled: true)

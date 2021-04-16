@@ -379,6 +379,7 @@ extension HomeViewController {
                 launchURL("https://khome.kumpeapps.com")
             case "Support":
                 launchURL("https://github.com/kumpeapps/KKid/issues")
+                Logger.log(.action, "Pressed Support")
             default:
                 performSegue(withIdentifier: module.segue!, sender: self)
             }

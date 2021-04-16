@@ -8,7 +8,9 @@ plugin 'cocoapods-keys', {
 		"kKid_username",
 		"kKid_apiPassword",
 		"googleAdMob_homeScreenBannerID",
-		"tmdb_apiKey"
+		"tmdb_apiKey",
+		"ShipBook_appId",
+		"ShipBook_appKey"
 	]
 }
 
@@ -32,4 +34,5 @@ target 'KKid' do
 	pod 'Kingfisher'
 	pod 'JKRefresher'
 	pod 'YoutubeKit'
+	pod 'ShipBookSDK'
 end

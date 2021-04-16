@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "base_logo_transparent_background_for_Black_BG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
