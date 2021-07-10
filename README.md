@@ -41,6 +41,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [YoutubeKit](https://github.com/rinov/YoutubeKit)
 -   [ContentRestrictionsKit](https://github.com/kumpeapps/ContentRestrictionsKit)
 -   [ShipBook](https://github.com/ShipBook/ShipBookSDK-iOS)
+-   [WhatsNew](https://github.com/BalestraPatrick/WhatsNew)
 
 ## Other Credits
 -   [Icons from Icons8](https://icons8.com)
@@ -79,6 +80,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 #### Edit Profile Module
 -   To edit a the user's profile just change the information on the screen and click update in the upper right.
 -   If you are the master or an admin user then you will have switches for each module/permission. To turn on the permission for a user just change the switch to on. To remove a permission from the user then you turn the switch to off. Do not forget to click update in the upper right to update the users permissions as well.
+-   In the Push Notifications section you can customize which push notifications the user receives for modules the user has access too.
 -   In the link accounts section you can link/re-link third-party accounts used by KKid.
 
 #### Chores Module
@@ -155,7 +157,7 @@ API access may be obtained by opening a support ticket
 -   [ ] Add ability for users to choose a custom background image
 -   [ ] Add ability for users to choose a custom logo image
 -   [X] Add managed app config parameters
--   [ ] What's New Page
+-   [x] What's New Page
 -   [ ] Gift wish list for the kids
 -   [X] Machine Learning AI for Object Detection
 -   [X] Movie Search with movie ratings
