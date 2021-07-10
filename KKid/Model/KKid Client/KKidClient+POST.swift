@@ -132,6 +132,25 @@ extension KKidClient {
         }
     }
 
+// MARK: unsubscribeAPNS
+    class func unsubscribeAPNS(user: User, section: String) {
+        let parameters = [
+            "apiUsername": KKidClient.username,
+            "apiPassword": KKidClient.apiPassword,
+            "apiKey":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
+            "kidUserId":"\(user.userID)",
+            "appName":"com.kumpeapps.ios.kkid",
+            "masterID":"\(user.masterID)",
+            "section":"\(section)",
+            "tool":"unsubscribe"
+            ]
+            apiPost(silent: true, module: "apns", parameters: parameters) { (success, error) in
+                DebugHelpers.dumpToLog(dump: success)
+                DebugHelpers.dumpToLog(dump: error ?? "")
+                DebugHelpers.dumpToLog(dump: parameters)
+            }
+        }
+
 // MARK: apiPost
     class func apiPost(silent: Bool = false, module: String, parameters: [String: Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void) {
         apiMethod(silent: silent, method: .post, module: module, parameters: parameters, blockInterface: blockInterface) { (success, error) in

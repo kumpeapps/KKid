@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Chore" representedClassName="Chore" syncable="YES" codeGenerationType="class">
         <attribute name="aiIcon" optional="YES" attributeType="String"/>
         <attribute name="altitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -56,6 +56,11 @@
         <attribute name="isMaster" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="masterID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pushAllowance" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pushAllowanceNew" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pushChores" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pushChoresNew" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pushChoresReminders" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="tmdbKey" optional="YES" attributeType="String"/>
         <attribute name="userID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
@@ -67,6 +72,6 @@
     </entity>
     <elements>
         <element name="Chore" positionX="-304.6484375" positionY="-4.40234375" width="128" height="434"/>
-        <element name="User" positionX="-603.27734375" positionY="2.0703125" width="128" height="374"/>
+        <element name="User" positionX="-603.27734375" positionY="2.0703125" width="128" height="449"/>
     </elements>
 </model>

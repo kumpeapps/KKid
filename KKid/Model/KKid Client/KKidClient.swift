@@ -57,6 +57,7 @@ class KKidClient {
             guard statusCode >= 200 && statusCode <= 299 else {
                     Logger.log(.error, "Your request returned a status code other than 2xx! (\(String(describing: dataResponse.response?.statusCode)))")
                     ShowAlert.dismissStatic(id: alertId)
+
                     var errorMessage = "Unknown Error Occurred"
                     switch statusCode {
                     case 412: errorMessage = "API Key Not Valid"

@@ -44,7 +44,7 @@ extension KKidClient {
             }
 
 // MARK: updateUser
-    class func updateUser(username: String, email: String, firstName: String, lastName: String, user: User, emoji: String, enableAllowance: Bool, enableChores: Bool, enableAdmin: Bool, enableTmdb: Bool, tmdbKey: String?, completion: @escaping (Bool, String?) -> Void) {
+    class func updateUser(username: String, email: String, firstName: String, lastName: String, user: User, emoji: String, enableAllowance: Bool, enableChores: Bool, enableAdmin: Bool, enableTmdb: Bool, tmdbKey: String?, pushChoresNew: Bool = true, pushChoresReminders: Bool = true, pushAllowanceNew: Bool = true, completion: @escaping (Bool, String?) -> Void) {
         var parameters = [
             "apiUsername": KKidClient.username,
             "apiPassword": KKidClient.apiPassword,
@@ -82,7 +82,41 @@ extension KKidClient {
 
         let module = "userlist"
         apiPut(module: module, parameters: parameters, blockInterface: true) { (success, error) in
+            if success {
+                updatePushNotifications(user: user, pushChoresNew: pushChoresNew, pushChoresReminders: pushChoresReminders, pushAllowanceNew: pushAllowanceNew)
+            }
             completion(success, error)
+        }
+    }
+
+    // MARK: updatePushNotifications
+    class func updatePushNotifications(user: User, pushChoresNew: Bool, pushChoresReminders: Bool, pushAllowanceNew: Bool) {
+        if user.pushChoresNew != pushChoresNew {
+            DebugHelpers.dumpToLog(dump: "pushChoresNew \(pushChoresNew)")
+            switch pushChoresNew {
+            case false:
+                unsubscribeAPNS(user: user, section: "Chores-New")
+            default:
+                subscribeAPNS(user: user, section: "Chores-New")
+            }
+        }
+
+        if user.pushChoresReminders != pushChoresReminders {
+            switch pushChoresReminders {
+            case false:
+                unsubscribeAPNS(user: user, section: "Chores-Reminders")
+            default:
+                subscribeAPNS(user: user, section: "Chores-Remidners")
+            }
+        }
+
+        if user.pushAllowanceNew != pushAllowanceNew {
+            switch pushAllowanceNew {
+            case false:
+                unsubscribeAPNS(user: user, section: "Allowance-New")
+            default:
+                subscribeAPNS(user: user, section: "Allowance-New")
+            }
         }
     }
 
