@@ -10,4 +10,4 @@
 
 ## Reporting a Vulnerability
 
-Please report any vulnerabilites by raising an issue in the repo.
+Please report any vulnerabilites via email to [helpdesk@kumpeapps.com](helpdesk@kumpeapps.com)
