@@ -18,6 +18,7 @@ import DeviceKit
 import KumpeHelpers
 import Snowflake
 import AVFoundation
+import WhatsNew
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
 
@@ -39,6 +40,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let dayOfWeek: Int = getDayOfWeek() ?? 0
     var choreCount: Int = 0
     let iconCache = ImageCache(name: "iconCache")
+
+// MARK: WhatsNew Parameters
+    let whatsNew = WhatsNewViewController(items: [
+        WhatsNewItem.text(title: "Notifications Management", subtitle: "Users now have the ability to manage push notifications subscriptions in the Edit Profile screen!"),
+        WhatsNewItem.text(title: "What's New Banner", subtitle: "Well this one is self explanatory. This banner telling you what is new when updates are released is new.")
+    ])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -109,6 +116,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
 
         self.requirePrivacy()
+        whatsNew.presentIfNeeded(on: self)
     }
 
 // MARK: viewWillDisappear

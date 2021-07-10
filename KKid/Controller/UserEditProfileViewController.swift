@@ -27,6 +27,9 @@ class UserEditProfileViewController: FormViewController {
         enableAllowance.value = selectedUser.enableAllowance
         enableAdmin.value = selectedUser.isAdmin
         enableTmdb.value = selectedUser.enableTmdb
+        pushChoresNew.value = selectedUser.pushChoresNew
+        pushChoresReminders.value = selectedUser.pushChoresReminders
+        pushAllowanceNew.value = selectedUser.pushAllowanceNew
     }
 
 // MARK: loadView
@@ -47,10 +50,19 @@ class UserEditProfileViewController: FormViewController {
         builder += lastName
         builder += emoji
         if LoggedInUser.user!.isAdmin {
+            builder += SectionHeaderTitleFormItem().title("Module Access Permissions")
             builder += enableChores
             builder += enableAllowance
             builder += enableAdmin
             builder += enableTmdb
+        }
+        builder += SectionHeaderTitleFormItem().title("Push Notifications")
+        if selectedUser.enableChores {
+            builder += pushChoresNew
+            builder += pushChoresReminders
+        }
+        if selectedUser.enableAllowance {
+            builder += pushAllowanceNew
         }
         builder += SectionHeaderTitleFormItem().title("Link Accounts")
         builder += tmdbButton
@@ -121,6 +133,24 @@ class UserEditProfileViewController: FormViewController {
         return instance
     }()
 
+// MARK: pushChoresNew Field
+    lazy var pushChoresNew: SwitchFormItem = {
+        let instance = SwitchFormItem().title("New Chore Notifications")
+        return instance
+    }()
+
+// MARK: pushChoresReminders Field
+    lazy var pushChoresReminders: SwitchFormItem = {
+        let instance = SwitchFormItem().title("Chore Reminders")
+        return instance
+    }()
+
+// MARK: pushAllowanceNew Field
+    lazy var pushAllowanceNew: SwitchFormItem = {
+        let instance = SwitchFormItem().title("New Allowance Notifications")
+        return instance
+    }()
+
 // MARK: tmdbButton
     lazy var tmdbButton: ButtonFormItem = {
         let instance = ButtonFormItem()
@@ -157,7 +187,7 @@ class UserEditProfileViewController: FormViewController {
             return
         }
 
-        KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil) { (success, error) in
+        KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil, pushChoresNew: pushChoresNew.value, pushChoresReminders: pushChoresReminders.value, pushAllowanceNew: pushAllowanceNew.value) { (success, error) in
             if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)
