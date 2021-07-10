@@ -35,4 +35,5 @@ target 'KKid' do
 	pod 'JKRefresher'
 	pod 'YoutubeKit'
 	pod 'ShipBookSDK'
+	pod 'WhatsNew'
 end

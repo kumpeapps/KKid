@@ -144,10 +144,7 @@ extension KKidClient {
             "section":"\(section)",
             "tool":"unsubscribe"
             ]
-            apiPost(silent: true, module: "apns", parameters: parameters) { (success, error) in
-                DebugHelpers.dumpToLog(dump: success)
-                DebugHelpers.dumpToLog(dump: error ?? "")
-                DebugHelpers.dumpToLog(dump: parameters)
+            apiPost(silent: true, module: "apns", parameters: parameters) { (_, _) in
             }
         }
 

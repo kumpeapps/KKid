@@ -72,6 +72,7 @@ PODS:
   - Sync (6.5.0)
   - Toast-Swift (5.0.1)
   - TransitionButton (0.5.3)
+  - WhatsNew (0.4.6)
   - YoutubeKit (0.5.0)
 
 DEPENDENCIES:
@@ -95,6 +96,7 @@ DEPENDENCIES:
   - Sync
   - Toast-Swift
   - TransitionButton
+  - WhatsNew
   - YoutubeKit
 
 SPEC REPOS:
@@ -124,6 +126,7 @@ SPEC REPOS:
     - Sync
     - Toast-Swift
     - TransitionButton
+    - WhatsNew
     - YoutubeKit
 
 EXTERNAL SOURCES:
@@ -173,8 +176,9 @@ SPEC CHECKSUMS:
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
+  WhatsNew: d66a52b294e90d5bc133877e270ea7ce0b945003
   YoutubeKit: 9f66eba839211158f2aac7ad3833593bd56fa8f9
 
-PODFILE CHECKSUM: 102218aefcf9c061ce13bee436f7fd262be76cf1
+PODFILE CHECKSUM: aad0a0da0fad5dbe9a07a061cb2f51be597d0439
 
 COCOAPODS: 1.10.0

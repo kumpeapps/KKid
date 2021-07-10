@@ -92,7 +92,6 @@ extension KKidClient {
     // MARK: updatePushNotifications
     class func updatePushNotifications(user: User, pushChoresNew: Bool, pushChoresReminders: Bool, pushAllowanceNew: Bool) {
         if user.pushChoresNew != pushChoresNew {
-            DebugHelpers.dumpToLog(dump: "pushChoresNew \(pushChoresNew)")
             switch pushChoresNew {
             case false:
                 unsubscribeAPNS(user: user, section: "Chores-New")
