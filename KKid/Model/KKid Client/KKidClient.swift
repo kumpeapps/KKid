@@ -5,7 +5,7 @@
 //  Created by Justin Kumpe on 9/8/20.
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
-
+/*
 import Foundation
 import UIKit
 import Alamofire
@@ -104,13 +104,7 @@ class KKidClient {
 
 // MARK: apiLogout
     class func apiLogout(_ apiKey: String) {
-        let method = "authentication"
-        let parameters = [
-            "apiUsername": KKidClient.username,
-            "apiPassword": KKidClient.apiPassword,
-            "apiKey": "\(apiKey)"
-        ]
-        KKidClient.apiPut(silent: true, module: method, parameters: parameters) { (_, _) in }
+        KumpeAppsClient.apiLogout(apiKey)
     }
 
 // MARK: verifyIsAuthenticated
@@ -144,3 +138,4 @@ class KKidClient {
     }
 
 }
+*/

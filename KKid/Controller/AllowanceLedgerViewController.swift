@@ -24,7 +24,7 @@ class AllowanceLedgerViewController: UITableViewController {
 
 // MARK: verifyAuthenticated
     @objc func verifyAuthenticated() {
-        KKidClient.verifyIsAuthenticated(self)
+        KumpeAppsClient.verifyIsAuthenticated(self)
     }
 
 // MARK: viewWillDisappear

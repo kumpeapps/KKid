@@ -5,7 +5,7 @@
 //  Created by Justin Kumpe on 9/18/20.
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
-
+/*
 import Foundation
 import Alamofire
 import Alamofire_SwiftyJSON
@@ -105,3 +105,4 @@ extension KKidClient {
         }
 
 }
+*/

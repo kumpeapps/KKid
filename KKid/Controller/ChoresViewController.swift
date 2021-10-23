@@ -102,11 +102,6 @@ class ChoresViewController: UIViewController {
         imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
         imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
         buttonAdd.isEnabled = LoggedInUser.user!.isAdmin
-        KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Chores")
-        if ((LoggedInUser.user?.isChild) != nil && LoggedInUser.user!.isChild) {
-            KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Chores-Reminders")
-            KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Chores-New")
-        }
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
             tableView.reloadRows(at: [indexPath], with: .fade)
@@ -136,12 +131,12 @@ class ChoresViewController: UIViewController {
 
 // MARK: verifyAuthenticated
     @objc func verifyAuthenticated() {
-        KKidClient.verifyIsAuthenticated(self)
+        KumpeAppsClient.verifyIsAuthenticated(self)
     }
 
 // MARK: getChores
     @objc func getChores() {
-        KKidClient.getChores { (success, _) in
+        KumpeAppsClient.getChores { (success, _) in
             Logger.log(.success, "getChores completed")
             self.setupFetchedResultsController()
             self.tableView.reloadData()
@@ -253,7 +248,7 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate {
 //        If user is an admin then delete else show error
         if LoggedInUser.user!.isAdmin && editingStyle == .delete {
             let chore = fetchedResultsController.object(at: indexPath)
-            KKidClient.deleteChore(chore.id) { (success, _) in
+            KumpeAppsClient.deleteChore(chore.id) { (success, _) in
                 if success {
                     DataController.shared.viewContext.delete(chore)
                     try? DataController.shared.viewContext.save()

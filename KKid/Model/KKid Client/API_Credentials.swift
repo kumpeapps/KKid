@@ -16,6 +16,7 @@ struct APICredentials {
     struct KKid {
         static let username = KKidKeys().kKid_username
         static let apiPassword = KKidKeys().kKid_apiPassword
+        static let apikey = KKidKeys().kkid_apikey
     }
 
 // MARK: Google AdMob Creds

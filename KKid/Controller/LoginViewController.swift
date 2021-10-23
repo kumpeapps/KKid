@@ -89,7 +89,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             return
         }
 
-        KKidClient.authenticate(username: fieldUsername.text!, password: fieldPassword.text!) { (response, error) in
+        KumpeAppsClient.authenticate(username: fieldUsername.text!, password: fieldPassword.text!) { (response, error) in
 
 //            GUARD: Login is Successful
             guard let loginStatus = response?.status, loginStatus == 1 else {
@@ -121,7 +121,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             UserDefaults.standard.set(true, forKey: "isAuthenticated")
             UserDefaults.standard.set(apiKey, forKey: "apiKey")
             UserDefaults.standard.set(user.userID, forKey: "loggedInUserID")
-            KKidClient.getUsers(silent: true) { (success, error) in
+            KumpeAppsClient.getUsers(silent: true) { (success, error) in
                 if success {
                     Logger.log(.authentication, "Login Successful for user \(user.username)")
                     LoggedInUser.setLoggedInUser()
@@ -150,7 +150,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             enableUI(true)
             return
         }
-        KKidClient.forgotPassword(username: username) { (success, msg) in
+        KumpeAppsClient.forgotPassword(username: username) { (success, msg) in
             if success {
                 ShowAlert.banner(theme: .success, title: "Success", message: msg)
             } else {
@@ -220,11 +220,13 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
     func managedConfig() {
         if let disableNewParent = ManagedAppConfig.shared.getConfigValue(forKey: "disableNewParent") as? Bool {
             buttonNewParentAccount.isEnabled = !disableNewParent
+            buttonNewParentAccount.isHidden = disableNewParent
             buttonNewParentAccount.alpha = 0.5
         }
 
         if let disableResetPassword = ManagedAppConfig.shared.getConfigValue(forKey: "disableResetPassword") as? Bool {
             buttonForgotPassword.isEnabled = !disableResetPassword
+            buttonForgotPassword.isHidden = disableResetPassword
             buttonForgotPassword.alpha = 0.5
         }
 

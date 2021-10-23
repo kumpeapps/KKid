@@ -1,54 +1,52 @@
 //
-//  KKidClient+PUT.swift
+//  KumpeAppsClient+PUT.swift
 //  KKid
 //
-//  Created by Justin Kumpe on 9/18/20.
-//  Copyright © 2020 Justin Kumpe. All rights reserved.
+//  Created by Justin Kumpe on 10/22/21.
+//  Copyright © 2021 Justin Kumpe. All rights reserved.
 //
-/*
+
+import Foundation
+
+
 import Foundation
 import UIKit
 import Alamofire
 import Alamofire_SwiftyJSON
 
-extension KKidClient {
+extension KumpeAppsClient {
 
     // MARK: - PUT Methods
 
         // MARK: markChore
         class func markChore(silent: Bool = false, chore: Chore, choreStatus: String, user: User, completion: @escaping (Bool) -> Void) {
 
-                var parameters: [String: Any] = [
-                    "apiUsername": KKidClient.username,
-                    "apiPassword": KKidClient.apiPassword,
-                    "apiKey": "\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
-                    "kidUsername":"\(user.username!)",
-                    "idChoreList": "\(chore.id)",
-                    "notes": "\(appVersion)",
-                    "status": choreStatus,
-                    "stolenBy": ""
-                ]
+            var parameters: [String: Any] = [
+                "kidUsername":"\(user.username!)",
+                "idChoreList": "\(chore.id)",
+                "notes": "\(appVersion)",
+                "status": choreStatus,
+                "stolenBy": ""
+            ]
 
-                if chore.optional && choreStatus == "check" {
-                    parameters.updateValue("oCheck", forKey: "status")
-                    parameters.updateValue("\(user.username!)", forKey: "stolenBy")
-                }
+            if chore.optional && choreStatus == "check" {
+                parameters.updateValue("oCheck", forKey: "status")
+                parameters.updateValue("\(user.username!)", forKey: "stolenBy")
+            }
 
-                let module = "chorelist"
-                apiPut(silent: silent, module: module, parameters: parameters) { (success, error) in
-                    completion(success)
-                    if !success {
-                        Logger.log(.error, "markChore: \(error ?? "An Unknown Error Occurred")")
-                    }
+            let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
+            let module = "kkid/chorelist"
+            apiPut(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers:["X-Auth":"\(authKey)"]) { success, error in
+                completion(success)
+                if !success {
+                    Logger.log(.error, "markChore: \(error ?? "An Unknown Error Occurred")")
                 }
             }
+        }
 
 // MARK: updateUser
     class func updateUser(username: String, email: String, firstName: String, lastName: String, user: User, emoji: String, enableAllowance: Bool, enableChores: Bool, enableAdmin: Bool, enableTmdb: Bool, tmdbKey: String?, pushChoresNew: Bool = true, pushChoresReminders: Bool = true, pushAllowanceNew: Bool = true, completion: @escaping (Bool, String?) -> Void) {
         var parameters = [
-            "apiUsername": KKidClient.username,
-            "apiPassword": KKidClient.apiPassword,
-            "apiKey": "\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")",
             "username": username,
             "email": email,
             "firstName": firstName,
@@ -80,12 +78,15 @@ extension KKidClient {
             parameters["enableTmdb"] = "\(enableTmdb)"
         }
 
-        let module = "userlist"
-        apiPut(module: module, parameters: parameters, blockInterface: true) { (success, error) in
+        let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
+        let module = "kkid/userlist"
+        apiPut(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers:["X-Auth":"\(authKey)"]) { success, error in
             if success {
                 updatePushNotifications(user: user, pushChoresNew: pushChoresNew, pushChoresReminders: pushChoresReminders, pushAllowanceNew: pushAllowanceNew)
+            } else {
+                Logger.log(.error, "markChore: \(error ?? "An Unknown Error Occurred")")
             }
-            completion(success, error)
+            completion(success,error)
         }
     }
 
@@ -118,13 +119,4 @@ extension KKidClient {
             }
         }
     }
-
-    // MARK: apiPut
-        class func apiPut(silent: Bool = false, module: String, parameters: [String: Any], blockInterface: Bool = false, completion: @escaping (Bool, String?) -> Void) {
-            apiMethod(silent: silent, method: .put, module: module, parameters: parameters, blockInterface: blockInterface) { (success, error) in
-                completion(success, error)
-            }
-        }
-
 }
-*/
