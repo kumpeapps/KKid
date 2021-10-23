@@ -7,9 +7,6 @@
 //
 
 import Foundation
-
-
-import Foundation
 import UIKit
 import Alamofire
 import Alamofire_SwiftyJSON
@@ -52,10 +49,7 @@ extension KumpeAppsClient {
             "firstName": firstName,
             "lastName": lastName,
             "emoji": emoji,
-            "userID": "\(user.userID)",
-            "enableAllowance": "noChange",
-            "enableChores": "noChange",
-            "enableAdmin": "noChange"
+            "userID": "\(user.userID)"
         ]
 
         if tmdbKey != nil {
@@ -63,15 +57,15 @@ extension KumpeAppsClient {
         }
 
         if enableChores != user.enableChores {
-            parameters.updateValue("\(enableChores)", forKey: "enableChores")
+            parameters["enableChores"] = "\(enableChores)"
         }
 
         if enableAllowance != user.enableAllowance {
-            parameters.updateValue("\(enableAllowance)", forKey: "enableAllowance")
+            parameters["enableAllowance"] = "\(enableAllowance)"
         }
 
         if enableAdmin != user.isAdmin {
-            parameters.updateValue("\(enableAdmin)", forKey: "enableAdmin")
+            parameters["enableAdmin"] = "\(enableAdmin)"
         }
 
         if enableTmdb != user.enableTmdb {
@@ -84,7 +78,7 @@ extension KumpeAppsClient {
             if success {
                 updatePushNotifications(user: user, pushChoresNew: pushChoresNew, pushChoresReminders: pushChoresReminders, pushAllowanceNew: pushAllowanceNew)
             } else {
-                Logger.log(.error, "markChore: \(error ?? "An Unknown Error Occurred")")
+                Logger.log(.error, "updateUser: \(error ?? "An Unknown Error Occurred")")
             }
             completion(success,error)
         }
