@@ -123,9 +123,9 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             UserDefaults.standard.set(user.userID, forKey: "loggedInUserID")
             KumpeAppsClient.getUsers(silent: true) { (success, error) in
                 if success {
-                    Logger.log(.authentication, "Login Successful for user \(user.username)")
+                    Logger.log(.authentication, "Login Successful for user \(user.username ?? "")")
                     LoggedInUser.setLoggedInUser()
-                    //self.navigationController?.popViewController(animated: true)
+                    // self.navigationController?.popViewController(animated: true)
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     self.buttonLogin.stopAnimation()
