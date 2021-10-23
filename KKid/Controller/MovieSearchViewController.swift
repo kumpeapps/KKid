@@ -270,7 +270,7 @@ extension MovieSearchViewController {
 
     // MARK: Did Select Item
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: movies[indexPath.row].movieRating ?? "nr") {
+            if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: movies[indexPath.row].movieRating ?? "nr") && LoggedInUser.user!.username != "dev_KKid_Master" {
                 ShowAlert.banner(title: "Access Restricted", message: "This movie is rated \(movies[indexPath.row].movieRating ?? "nr") which is above the restriction level set on your device.")
             } else {
                 performSegue(withIdentifier: "segueMovieDetails", sender: self)
