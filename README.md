@@ -2,7 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3fc8d8e6579d4620a526d5fd4d9f1a0f)](https://app.codacy.com/gh/kumpeapps/KKid?utm_source=github.com&utm_medium=referral&utm_content=kumpeapps/KKid&utm_campaign=Badge_Grade)
 
-<img src="https://img.shields.io/badge/platform-iOS%2014.0%2B-lightgrey"/> <img src="https://img.shields.io/github/v/release/kumpeapps/kkid?color=%233D9970"/> <img src="https://img.shields.io/badge/swift-5-green"/> <img src="https://img.shields.io/uptimerobot/status/m778927661-24953be87bd254731f918d97?label=server%20status"/> <img src="https://img.shields.io/uptimerobot/ratio/m778927661-24953be87bd254731f918d97?label=server%20uptime"/> <img src="https://img.shields.io/github/last-commit/kumpeapps/kkid"/> ![Codacy Security Scan](https://github.com/kumpeapps/KKid/workflows/Codacy%20Security%20Scan/badge.svg) ![SL Scan](https://github.com/kumpeapps/KKid/workflows/SL%20Scan/badge.svg)
+<img src="https://img.shields.io/badge/platform-iOS%2015.0%2B-lightgrey"/> <img src="https://img.shields.io/github/v/release/kumpeapps/kkid?color=%233D9970"/> <img src="https://img.shields.io/badge/swift-5-green"/> <img src="https://img.shields.io/uptimerobot/status/m778927661-24953be87bd254731f918d97?label=server%20status"/> <img src="https://img.shields.io/uptimerobot/ratio/m778927661-24953be87bd254731f918d97?label=server%20uptime"/> <img src="https://img.shields.io/github/last-commit/kumpeapps/kkid"/> ![Codacy Security Scan](https://github.com/kumpeapps/KKid/workflows/Codacy%20Security%20Scan/badge.svg) ![SL Scan](https://github.com/kumpeapps/KKid/workflows/SL%20Scan/badge.svg)
 
 <a href="https://apps.apple.com/us/app/kkid/id1533368166?itsct=apps_box&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-top-left-radius: 13px; border-top-right-radius: 13px; border-bottom-right-radius: 13px; border-bottom-left-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-US?size=250x83&amp;releaseDate=1602028800&h=79ad7188cd7d3f71708c7d97d39c5fa3" alt="Download on the App Store" style="border-top-left-radius: 13px; border-top-right-radius: 13px; border-bottom-right-radius: 13px; border-bottom-left-radius: 13px; width: 250px; height: 83px;"></a>
 
@@ -62,7 +62,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 	-   password: LetmeN2it
 
 ### Select Module Screen (Home Screen)
--   The "Select Module" Screen will be diffrent for each user. 
+-   The "Select Module" Screen will be diffrent for each user.
 -   You will always have Edit Profile which you can click on to edit that user's profile/permissions
 -   Additionally there will be options for each module that the selected user has access to
 -   Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
@@ -138,7 +138,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   *HINT:* Turn your device to the side (landscape) and objects will be detected better
 
 ### REST API
-REST API documentation is available at [https://api.kumpeapps.com/kkids](https://api.kumpeapps.com/kkids)
+REST API documentation is available at [https://restapi.kumpeapps.com/v5/ui/#/KKid](https://restapi.kumpeapps.com/v5/ui/#/KKid)
 API access may be obtained by opening a support ticket
 
 ### Managed App Config
