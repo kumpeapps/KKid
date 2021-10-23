@@ -47,12 +47,7 @@ class KKidUITests: XCTestCase {
         let app2 = app
         app2/*@START_MENU_TOKEN@*/.buttons["Weekly"]/*[[".segmentedControls.buttons[\"Weekly\"]",".buttons[\"Weekly\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         thisWeekButton.tap()
-        app2.tables/*@START_MENU_TOKEN@*/.staticTexts["teat (Wednesday)"]/*[[".cells.staticTexts[\"teat (Wednesday)\"]",".staticTexts[\"teat (Wednesday)\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-
-        let checkScrollView = app/*@START_MENU_TOKEN@*/.scrollViews.containing(.button, identifier:"check").element/*[[".scrollViews.containing(.other, identifier:\"Vertical scroll bar, 2 pages\").element",".scrollViews.containing(.button, identifier:\"red x\").element",".scrollViews.containing(.button, identifier:\"x\").element",".scrollViews.containing(.button, identifier:\"blue dash\").element",".scrollViews.containing(.button, identifier:\"dash\").element",".scrollViews.containing(.button, identifier:\"green check\").element",".scrollViews.containing(.button, identifier:\"check\").element"],[[[-1,6],[-1,5],[-1,4],[-1,3],[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        checkScrollView.swipeDown()
         app.navigationBars["Chores"].buttons["Home"].tap()
-
     }
 
     func testAllowance() throws {
@@ -112,7 +107,7 @@ class KKidUITests: XCTestCase {
         sleep(3)
         snapshot("LoginScreen")
 
-        //Login
+        // Login
         let elementsQuery = app.scrollViews.otherElements
         elementsQuery.textFields["Username"].tap()
         elementsQuery.buttons["Login"].tap()

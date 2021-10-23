@@ -36,10 +36,6 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
         imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
         let image = Pathifier.makeImage(for: NSAttributedString(string: "$"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!)
         imageBalance.image = image
-        KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Allowance")
-        if ((LoggedInUser.user?.isChild) != nil && LoggedInUser.user!.isChild) {
-            KKidClient.subscribeAPNS(user: LoggedInUser.user!, section: "Allowance-New")
-        }
         getAllowance()
         verifyAuthenticated()
             NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
@@ -47,7 +43,7 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
 
 // MARK: verifyAuthenticated
     @objc func verifyAuthenticated() {
-        KKidClient.verifyIsAuthenticated(self)
+        KumpeAppsClient.verifyIsAuthenticated(self)
     }
 
 // MARK: viewWillDisappear
@@ -59,7 +55,7 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
 
 // MARK: getAllowance
     func getAllowance() {
-        KKidClient.getAllowance(selectedUser: selectedUser) { (response, _) in
+        KumpeAppsClient.getAllowance(selectedUser: selectedUser) { (response, _) in
             if let response = response {
                 self.allowanceData = response
                 var balance = "\(response.balance)"

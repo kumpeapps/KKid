@@ -153,9 +153,9 @@ class TMDb_Client: KumpeAPIClient {
             guard let user = LoggedInUser.selectedUser else {
                 return
             }
-            KKidClient.updateUser(username: user.username!, email: user.email!, firstName: user.firstName!, lastName: user.lastName!, user: user, emoji: user.emoji!, enableAllowance: user.enableAllowance, enableChores: user.enableChores, enableAdmin: user.isAdmin, enableTmdb: user.enableTmdb, tmdbKey: response!.sessionId) { (success, _) in
+            KumpeAppsClient.updateUser(username: user.username!, email: user.email!, firstName: user.firstName!, lastName: user.lastName!, user: user, emoji: user.emoji!, enableAllowance: user.enableAllowance, enableChores: user.enableChores, enableAdmin: user.isAdmin, enableTmdb: user.enableTmdb, tmdbKey: response!.sessionId) { (success, _) in
                 if success {
-                    KKidClient.getUsers(silent: true) { (_, _) in
+                    KumpeAppsClient.getUsers(silent: true) { (_, _) in
                         ShowAlert.banner(theme: .success, title: "Account Linked", message: "Your TMDb account has been linked sucessfully to KKid user \(user.username!).")
                     }
                 }

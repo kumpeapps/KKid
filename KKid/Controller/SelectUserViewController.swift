@@ -106,14 +106,14 @@ class SelectUserViewController: UIViewController {
 
 // MARK: verifyAuthenticated
     @objc func verifyAuthenticated() {
-        KKidClient.verifyIsAuthenticated(self)
+        KumpeAppsClient.verifyIsAuthenticated(self)
         enableUI(true)
     }
 
 // MARK: pressedLogout
     @IBAction func pressedLogout() {
         enableUI(false)
-        KKidClient.logout(userInitiated: true)
+        KumpeAppsClient.logout(userInitiated: true)
     }
 
 // MARK: pressedAdd
@@ -249,7 +249,7 @@ extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate {
             if let sections = fetchedResultsController.sections?.count, let section0Rows = fetchedResultsController.sections?[0].numberOfObjects, (sections == 1 && section0Rows == 1) || !deleteUser.isMaster {
 
                 ShowAlert.choiceMessage(theme: .error, title: "Delete User???", message: "Tap outside of this message to cancel.") { _ in
-                    KKidClient.deleteUser(deleteUser) { (success, error) in
+                    KumpeAppsClient.deleteUser(deleteUser) { (success, error) in
                         if success {
                             DataController.shared.viewContext.delete(deleteUser)
                             try? DataController.shared.viewContext.save()
@@ -269,7 +269,7 @@ extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: refreshUsers
     @objc func refreshUsers() {
-        KKidClient.getUsers { (_, _) in
+        KumpeAppsClient.getUsers { (_, _) in
             dispatchOnMain {
                 self.refreshControl.endRefreshing()
                 self.tableView.reloadData()

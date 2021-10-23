@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '14.0'
+platform :ios, '15.0'
 use_frameworks!
 
 plugin 'cocoapods-keys', {
@@ -10,7 +10,8 @@ plugin 'cocoapods-keys', {
 		"googleAdMob_homeScreenBannerID",
 		"tmdb_apiKey",
 		"ShipBook_appId",
-		"ShipBook_appKey"
+		"ShipBook_appKey",
+		"kkid_apikey"
 	]
 }
 

@@ -187,13 +187,13 @@ class UserEditProfileViewController: FormViewController {
             return
         }
 
-        KKidClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil, pushChoresNew: pushChoresNew.value, pushChoresReminders: pushChoresReminders.value, pushAllowanceNew: pushAllowanceNew.value) { (success, error) in
+        KumpeAppsClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil, pushChoresNew: pushChoresNew.value, pushChoresReminders: pushChoresReminders.value, pushAllowanceNew: pushAllowanceNew.value) { (success, error) in
             if success {
                 dispatchOnMain {
-                    self.navigationController?.popViewController(animated: true)
-                    KKidClient.getUsers { (success, _) in
+                    KumpeAppsClient.getUsers { (success, _) in
                         ShowAlert.statusLine(theme: .success, title: "User Updated", message: "User Updated", seconds: 3, dim: false)
-                        KKidClient.getUsers(silent: true) { (_, _) in
+                        KumpeAppsClient.getUsers(silent: true) { (_, _) in
+                            self.navigationController?.popViewController(animated: true)
                         }
                     }
                 }

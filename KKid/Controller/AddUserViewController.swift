@@ -78,12 +78,12 @@ class AddUserViewController: FormViewController {
 
 // MARK: submitForm Field
     func submitForm() {
-        KKidClient.addUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, password: password.value) { (success, error) in
+        KumpeAppsClient.addUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, password: password.value) { (success, error) in
             if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)
                     ShowAlert.statusLine(theme: .success, title: "User Added", message: "User Added", seconds: 5, dim: false)
-                    KKidClient.getUsers(silent: false) { (_, _) in}
+                    KumpeAppsClient.getUsers(silent: false) { (_, _) in}
                 }
             } else {
                 ShowAlert.banner(title: "Error", message: error!)

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,13 +41,7 @@
 		0F66BE3D25085D5600014A94 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F66BE3C25085D5600014A94 /* DataController.swift */; };
 		0F66BE3F25085E9000014A94 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F66BE3E25085E9000014A94 /* GCDBlackBox.swift */; };
 		0F66BE4125085EB900014A94 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F66BE4025085EB900014A94 /* ShowAlert.swift */; };
-		0F66BE4325085F6200014A94 /* KKidClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F66BE4225085F6200014A94 /* KKidClient.swift */; };
 		0F72B1382515902C0099D2D9 /* KKid_Allowance_Respopnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B1372515902C0099D2D9 /* KKid_Allowance_Respopnse.swift */; };
-		0F72B13B251592A00099D2D9 /* KKidClient+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B13A251592A00099D2D9 /* KKidClient+GET.swift */; };
-		0F72B13D251593280099D2D9 /* KKidClient+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B13C251593280099D2D9 /* KKidClient+Sync.swift */; };
-		0F72B13F251593E90099D2D9 /* KKidClient+POST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B13E251593E90099D2D9 /* KKidClient+POST.swift */; };
-		0F72B141251594390099D2D9 /* KKidClient+PUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B140251594390099D2D9 /* KKidClient+PUT.swift */; };
-		0F72B143251594740099D2D9 /* KKidClient+DELETE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B142251594740099D2D9 /* KKidClient+DELETE.swift */; };
 		0F72B1452517B13F0099D2D9 /* AllowanceLedgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B1442517B13F0099D2D9 /* AllowanceLedgerViewController.swift */; };
 		0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B1462517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift */; };
 		0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B149251974610099D2D9 /* AddUserViewController.swift */; };
@@ -60,6 +54,13 @@
 		0F99D9A725734617007169B9 /* TMDb_Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A325734617007169B9 /* TMDb_Movie.swift */; };
 		0F99D9A825734617007169B9 /* TMDb_Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A425734617007169B9 /* TMDb_Video.swift */; };
 		0F99D9AC25734631007169B9 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9AB25734631007169B9 /* CustomCollectionViewCell.swift */; };
+		0F9CAE1A27223FB60036742C /* KumpeAppsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CAE1927223FB60036742C /* KumpeAppsClient.swift */; };
+		0F9CAE1C2722469B0036742C /* KumpeAppsClient+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CAE1B2722469B0036742C /* KumpeAppsClient+GET.swift */; };
+		0F9CAE20272249720036742C /* KumpeApps_Auth_Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CAE1F272249720036742C /* KumpeApps_Auth_Response.swift */; };
+		0F9CAE22272342990036742C /* KumpeAppsClient+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CAE21272342990036742C /* KumpeAppsClient+Sync.swift */; };
+		0F9CAE24272392150036742C /* KumpeAppsClient+POST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CAE23272392150036742C /* KumpeAppsClient+POST.swift */; };
+		0F9CAE26272396A90036742C /* KumpeAppsClient+PUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CAE25272396A90036742C /* KumpeAppsClient+PUT.swift */; };
+		0F9CAE2A27239A2B0036742C /* KumpeAppsClient+DELETE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CAE2927239A2B0036742C /* KumpeAppsClient+DELETE.swift */; };
 		0F9F38AF2553300400829133 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F9F38AE2553300400829133 /* Settings.bundle */; };
 		0F9F38B3255338DD00829133 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */; };
 		0F9F397325548BA700829133 /* getDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F397225548BA700829133 /* getDayOfWeek.swift */; };
@@ -133,13 +134,7 @@
 		0F66BE3C25085D5600014A94 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		0F66BE3E25085E9000014A94 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		0F66BE4025085EB900014A94 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
-		0F66BE4225085F6200014A94 /* KKidClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKidClient.swift; sourceTree = "<group>"; };
 		0F72B1372515902C0099D2D9 /* KKid_Allowance_Respopnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKid_Allowance_Respopnse.swift; sourceTree = "<group>"; };
-		0F72B13A251592A00099D2D9 /* KKidClient+GET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKidClient+GET.swift"; sourceTree = "<group>"; };
-		0F72B13C251593280099D2D9 /* KKidClient+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKidClient+Sync.swift"; sourceTree = "<group>"; };
-		0F72B13E251593E90099D2D9 /* KKidClient+POST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKidClient+POST.swift"; sourceTree = "<group>"; };
-		0F72B140251594390099D2D9 /* KKidClient+PUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKidClient+PUT.swift"; sourceTree = "<group>"; };
-		0F72B142251594740099D2D9 /* KKidClient+DELETE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKidClient+DELETE.swift"; sourceTree = "<group>"; };
 		0F72B1442517B13F0099D2D9 /* AllowanceLedgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowanceLedgerViewController.swift; sourceTree = "<group>"; };
 		0F72B1462517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowanceAddTransactionViewController.swift; sourceTree = "<group>"; };
 		0F72B149251974610099D2D9 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +147,13 @@
 		0F99D9A325734617007169B9 /* TMDb_Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDb_Movie.swift; sourceTree = "<group>"; };
 		0F99D9A425734617007169B9 /* TMDb_Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDb_Video.swift; sourceTree = "<group>"; };
 		0F99D9AB25734631007169B9 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		0F9CAE1927223FB60036742C /* KumpeAppsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KumpeAppsClient.swift; sourceTree = "<group>"; };
+		0F9CAE1B2722469B0036742C /* KumpeAppsClient+GET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KumpeAppsClient+GET.swift"; sourceTree = "<group>"; };
+		0F9CAE1F272249720036742C /* KumpeApps_Auth_Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KumpeApps_Auth_Response.swift; sourceTree = "<group>"; };
+		0F9CAE21272342990036742C /* KumpeAppsClient+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KumpeAppsClient+Sync.swift"; sourceTree = "<group>"; };
+		0F9CAE23272392150036742C /* KumpeAppsClient+POST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KumpeAppsClient+POST.swift"; sourceTree = "<group>"; };
+		0F9CAE25272396A90036742C /* KumpeAppsClient+PUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KumpeAppsClient+PUT.swift"; sourceTree = "<group>"; };
+		0F9CAE2927239A2B0036742C /* KumpeAppsClient+DELETE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KumpeAppsClient+DELETE.swift"; sourceTree = "<group>"; };
 		0F9F38AE2553300400829133 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0F9F38B2255338DD00829133 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		0F9F397225548BA700829133 /* getDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDayOfWeek.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				0F5EC8B924F9936F00873868 /* KKid_Auth_Response.swift */,
 				0F72B1372515902C0099D2D9 /* KKid_Allowance_Respopnse.swift */,
 				0F53431E252BFDAB00A5275D /* KKid_Module.swift */,
+				0F9CAE1F272249720036742C /* KumpeApps_Auth_Response.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -366,13 +369,13 @@
 		0F72B139251592850099D2D9 /* KKid Client */ = {
 			isa = PBXGroup;
 			children = (
-				0F66BE4225085F6200014A94 /* KKidClient.swift */,
-				0F72B13A251592A00099D2D9 /* KKidClient+GET.swift */,
-				0F72B13C251593280099D2D9 /* KKidClient+Sync.swift */,
-				0F72B13E251593E90099D2D9 /* KKidClient+POST.swift */,
-				0F72B140251594390099D2D9 /* KKidClient+PUT.swift */,
-				0F72B142251594740099D2D9 /* KKidClient+DELETE.swift */,
 				0F311184251FE3F8004BB1E4 /* API_Credentials.swift */,
+				0F9CAE1927223FB60036742C /* KumpeAppsClient.swift */,
+				0F9CAE1B2722469B0036742C /* KumpeAppsClient+GET.swift */,
+				0F9CAE21272342990036742C /* KumpeAppsClient+Sync.swift */,
+				0F9CAE23272392150036742C /* KumpeAppsClient+POST.swift */,
+				0F9CAE25272396A90036742C /* KumpeAppsClient+PUT.swift */,
+				0F9CAE2927239A2B0036742C /* KumpeAppsClient+DELETE.swift */,
 			);
 			path = "KKid Client";
 			sourceTree = "<group>";
@@ -497,7 +500,7 @@
 				};
 			};
 			buildConfigurationList = 0F5EC88F24F98D0000873868 /* Build configuration list for PBXProject "KKid" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -607,7 +610,7 @@
 			files = (
 				0F99D9A825734617007169B9 /* TMDb_Video.swift in Sources */,
 				0F37E282250DAF4C0002D0AD /* LoggedInUser.swift in Sources */,
-				0F72B13D251593280099D2D9 /* KKidClient+Sync.swift in Sources */,
+				0F9CAE2A27239A2B0036742C /* KumpeAppsClient+DELETE.swift in Sources */,
 				0F48331225118F2A00B92ADB /* DebugHelpers.swift in Sources */,
 				0F4833162512D47400B92ADB /* DayOfWeekViewController.swift in Sources */,
 				0F5EC89C24F98D0000873868 /* SelectUserViewController.swift in Sources */,
@@ -618,18 +621,18 @@
 				0F2005F0257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift in Sources */,
 				0F534318252BF35F00A5275D /* HomeViewController.swift in Sources */,
 				0F5EC8BA24F9936F00873868 /* KKid_Auth_Response.swift in Sources */,
+				0F9CAE26272396A90036742C /* KumpeAppsClient+PUT.swift in Sources */,
 				0F72B1382515902C0099D2D9 /* KKid_Allowance_Respopnse.swift in Sources */,
 				0FB98CFE25007AA500143A6A /* ChoresViewController.swift in Sources */,
 				0FB98CF724FFB52000143A6A /* UIImage+Color.swift in Sources */,
 				0FD8FD0B25749EE600DE2749 /* Array+RemoveIndexes.swift in Sources */,
-				0F72B143251594740099D2D9 /* KKidClient+DELETE.swift in Sources */,
 				0F91098F25A64E71008E658F /* TMDb_Token.swift in Sources */,
 				0F2005FC257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel in Sources */,
 				0F48330D25105ED700B92ADB /* ChoreStatus.swift in Sources */,
+				0F9CAE20272249720036742C /* KumpeApps_Auth_Response.swift in Sources */,
 				0F2005EC257D607200D9E4BE /* AVCaptureViewController.swift in Sources */,
 				0FD8FC1F257429D400DE2749 /* TMDb_TV.swift in Sources */,
 				0F2005F8257D619800D9E4BE /* ChoreObjectDetectionViewController.swift in Sources */,
-				0F66BE4325085F6200014A94 /* KKidClient.swift in Sources */,
 				0F5CE64E250AFA33002149DC /* LoginViewController.swift in Sources */,
 				0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */,
 				0F99D9AC25734631007169B9 /* CustomCollectionViewCell.swift in Sources */,
@@ -637,6 +640,7 @@
 				0FDB64BB251C2FA900427543 /* LaunchURL.swift in Sources */,
 				0F5EC89824F98D0000873868 /* AppDelegate.swift in Sources */,
 				0F5EC8B824F9907800873868 /* KKid_User.swift in Sources */,
+				0F9CAE1C2722469B0036742C /* KumpeAppsClient+GET.swift in Sources */,
 				0F37E280250DA5800002D0AD /* String+Image.swift in Sources */,
 				0F66BE382507107B00014A94 /* Logger.swift in Sources */,
 				0FB98CF524FF153200143A6A /* Pathifier.swift in Sources */,
@@ -644,27 +648,27 @@
 				0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */,
 				0FDC462C251AC19000A4E3D2 /* UserEditProfileViewController.swift in Sources */,
 				0F66BE4125085EB900014A94 /* ShowAlert.swift in Sources */,
+				0F9CAE1A27223FB60036742C /* KumpeAppsClient.swift in Sources */,
 				0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */,
 				0F99D99B25734602007169B9 /* MovieDetailViewController.swift in Sources */,
 				0F72B1452517B13F0099D2D9 /* AllowanceLedgerViewController.swift in Sources */,
+				0F9CAE22272342990036742C /* KumpeAppsClient+Sync.swift in Sources */,
 				0F49CBA72513EFC600D98E35 /* AllowanceViewController.swift in Sources */,
 				0F99D9A725734617007169B9 /* TMDb_Movie.swift in Sources */,
 				0FDB64B9251C24DA00427543 /* AddParentAccountViewController.swift in Sources */,
 				0F37E27E250D9E660002D0AD /* Notifications.swift in Sources */,
 				0F9F38B3255338DD00829133 /* SettingsBundleHelper.swift in Sources */,
 				0F66BE3B250859FA00014A94 /* KKid.xcdatamodeld in Sources */,
-				0F72B141251594390099D2D9 /* KKidClient+PUT.swift in Sources */,
 				0FD9254C251D7B2800A541A6 /* ReachabilitySetup.swift in Sources */,
 				0F48331025117C5200B92ADB /* Days.swift in Sources */,
 				0FB98D0225007AE800143A6A /* AddChoreViewController.swift in Sources */,
 				0F5EC89A24F98D0000873868 /* SceneDelegate.swift in Sources */,
+				0F9CAE24272392150036742C /* KumpeAppsClient+POST.swift in Sources */,
 				0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */,
 				0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */,
 				0F91099325A64FD2008E658F /* TMDb_Session.swift in Sources */,
 				0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */,
 				0F66BE3F25085E9000014A94 /* GCDBlackBox.swift in Sources */,
-				0F72B13B251592A00099D2D9 /* KKidClient+GET.swift in Sources */,
-				0F72B13F251593E90099D2D9 /* KKidClient+POST.swift in Sources */,
 				0FD8FC1B2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift in Sources */,
 				0F534322252BFF4C00A5275D /* ModuleCollectionViewCell.swift in Sources */,
 				0F9F397325548BA700829133 /* getDayOfWeek.swift in Sources */,
@@ -763,7 +767,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -818,7 +822,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -835,7 +839,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.2.0.1;
+				CURRENT_PROJECT_VERSION = 2.2.1.6;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -843,7 +847,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -858,7 +862,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.2.0.1;
+				CURRENT_PROJECT_VERSION = 2.2.1.6;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -866,7 +870,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

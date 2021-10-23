@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         DataController.shared.autoSaveViewContext()
 //        Get App Version and set it's value in KKid Client
         if let nsObject: AnyObject = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject? {
-            KKidClient.appVersion = "\(KKidClient.appVersion) \(nsObject as! String)"
+            KumpeAppsClient.appVersion = "\(KumpeAppsClient.appVersion) \(nsObject as! String)"
         }
 
         if UserDefaults.standard.string(forKey: "loggedInUserID") == nil {

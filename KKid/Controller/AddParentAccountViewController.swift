@@ -87,7 +87,7 @@ class AddParentAccountViewController: FormViewController {
 
 // MARK: submitForm
     func submitForm() {
-        KKidClient.addMaster(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, password: password.value) { (success, error) in
+        KumpeAppsClient.addMaster(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, password: password.value) { (success, error) in
             if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)

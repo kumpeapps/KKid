@@ -123,12 +123,12 @@ class AddChoreViewController: FormViewController {
         if anyKid.value {
             username = "any"
         }
-        KKidClient.addChore(username: username, choreName: choreName.value, choreDescription: choreDescription.value, blockDash: blockDash.value, oneTime: oneTime.value, optional: optional.value, startDate: startDate.value, day: day) { (success, error) in
+        KumpeAppsClient.addChore(username: username, choreName: choreName.value, choreDescription: choreDescription.value, blockDash: blockDash.value, oneTime: oneTime.value, optional: optional.value, startDate: startDate.value, day: day) { (success, error) in
             if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)
                 }
-                KKidClient.getChores(silent: true) { (_, _) in
+                KumpeAppsClient.getChores(silent: true) { (_, _) in
                     return
                 }
             } else {

@@ -43,8 +43,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "Notifications Management", subtitle: "Users now have the ability to manage push notifications subscriptions in the Edit Profile screen!"),
-        WhatsNewItem.text(title: "What's New Banner", subtitle: "Well this one is self explanatory. This banner telling you what is new when updates are released is new.")
+        WhatsNewItem.text(title: "API Upgrade", subtitle: "Upgraded to KumpeApps API v5 with increased security standards."),
+        WhatsNewItem.text(title: "Squashed Bugs", subtitle: "Squashed a few bugs.")
     ])
 
 // MARK: viewDidLoad
@@ -105,7 +105,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if UserDefaults.standard.value(forKey: "UserLastUpdated") == nil || !Calendar.current.isDateInToday(UserDefaults.standard.value(forKey: "UserLastUpdated") as! Date) {
-            KKidClient.getUsers { (_, _) in
+            KumpeAppsClient.getUsers { (_, _) in
                 LoggedInUser.setLoggedInUser()
                 self.buildModules()
             }
@@ -157,7 +157,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return
         }
 
-        KKidClient.registerAPNS(token)
+        KumpeAppsClient.registerAPNS(token)
     }
 
 // MARK: buildModules
@@ -212,7 +212,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: pressedLogout
     func pressedLogout() {
-        KKidClient.logout(userInitiated: true)
+        KumpeAppsClient.logout(userInitiated: true)
     }
 
 // MARK: checkCamera
@@ -275,19 +275,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         switch nameOfMonth {
         case "December":
             if currentBackground != "Christmas" {
-                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/christmas.jpg")!, isBackground: true)
-                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/candycane.jpg")!, isBackground: false)
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/christmas.jpg")!, isBackground: true)
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/candycane.jpg")!, isBackground: false)
                 UserDefaults.standard.set("Christmas", forKey: "seasonalBackgroundImage")
             }
         case "February":
             if currentBackground != "Valentines" {
-                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: true)
-                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: false)
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: true)
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: false)
                 UserDefaults.standard.set("Valentines", forKey: "seasonalBackgroundImage")
             }
         case "March":
             if currentBackground != "StPatricks" {
-                downloadImage(URL(string: "\(KKidClient.imageURL)/backgrounds/clovers.jpg")!, isBackground: true)
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/clovers.jpg")!, isBackground: true)
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .systemGreen)!), isBackground: false)
                 UserDefaults.standard.set("StPatricks", forKey: "seasonalBackgroundImage")
             }
@@ -347,7 +347,7 @@ extension HomeViewController {
 
             if module.getRemoteIcon && module.remoteIconName != nil {
                 cell.imageView.kf.setImage(
-                    with: URL(string: "\(KKidClient.imageURL)/\(module.remoteIconName!)"),
+                    with: URL(string: "\(KumpeAppsClient.imageURL)/\(module.remoteIconName!)"),
                     placeholder: module.icon,
                     options: [
                         .transition(.fade(1)),

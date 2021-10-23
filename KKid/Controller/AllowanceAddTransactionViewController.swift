@@ -78,7 +78,7 @@ class AllowanceAddTransactionViewController: FormViewController {
         if transactionType == "Subtract" {
             amount = "-\(amountField.value)"
         }
-        KKidClient.addAllowanceTransaction(userID: Int(selectedUser!.userID), amount: amount, description: reason.value, transactionType: transactionType) { (success, _) in
+        KumpeAppsClient.addAllowanceTransaction(userID: Int(selectedUser!.userID), amount: amount, description: reason.value, transactionType: transactionType) { (success, _) in
             if success {
                 dispatchOnMain {
                     self.navigationController?.popViewController(animated: true)

@@ -50,7 +50,7 @@ class MarkChoreViewController: UIViewController {
 
 // MARK: verifyAuthenticated
     @objc func verifyAuthenticated() {
-        KKidClient.verifyIsAuthenticated(self)
+        KumpeAppsClient.verifyIsAuthenticated(self)
     }
 
 // MARK: markChore
@@ -68,7 +68,7 @@ class MarkChoreViewController: UIViewController {
             status = "todo"
         }
         self.dismiss(animated: true, completion: nil)
-        KKidClient.markChore(chore: chore!, choreStatus: status, user: selectedUser) { (success) in
+        KumpeAppsClient.markChore(chore: chore!, choreStatus: status, user: selectedUser) { (success) in
             if success {
                 let choreID = self.chore.objectID
                 DataController.shared.backgroundContext.perform {

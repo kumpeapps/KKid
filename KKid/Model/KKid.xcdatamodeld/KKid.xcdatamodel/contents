@@ -42,9 +42,12 @@
         <attribute name="enableAllowance" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="enableBehaviorChart" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="enableChores" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="enableMeds" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="enableMedsTake" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="enableNoAds" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="enableObjectDetection" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="enableTmdb" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="enableWishList" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
         <attribute name="homeID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -72,6 +75,6 @@
     </entity>
     <elements>
         <element name="Chore" positionX="-304.6484375" positionY="-4.40234375" width="128" height="434"/>
-        <element name="User" positionX="-603.27734375" positionY="2.0703125" width="128" height="449"/>
+        <element name="User" positionX="-603.27734375" positionY="2.0703125" width="128" height="494"/>
     </elements>
 </model>
