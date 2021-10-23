@@ -29,7 +29,7 @@ struct KKid_User: Codable {
     var enableBehaviorChart: Bool?
     var weeklyAllowance: Int?
     var emoji: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
         case masterID = "master_id"
