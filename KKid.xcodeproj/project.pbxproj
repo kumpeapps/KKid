@@ -47,6 +47,7 @@
 		0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72B149251974610099D2D9 /* AddUserViewController.swift */; };
 		0F91098F25A64E71008E658F /* TMDb_Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91098E25A64E71008E658F /* TMDb_Token.swift */; };
 		0F91099325A64FD2008E658F /* TMDb_Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91099225A64FD2008E658F /* TMDb_Session.swift */; };
+		0F991504272632EA006E5F1C /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F991503272632EA006E5F1C /* WishListViewController.swift */; };
 		0F99D99B25734602007169B9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D99925734602007169B9 /* MovieDetailViewController.swift */; };
 		0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D99A25734602007169B9 /* MovieSearchViewController.swift */; };
 		0F99D9A525734617007169B9 /* TMDb_Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A025734617007169B9 /* TMDb_Client.swift */; };
@@ -140,6 +141,7 @@
 		0F72B149251974610099D2D9 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		0F91098E25A64E71008E658F /* TMDb_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDb_Token.swift; sourceTree = "<group>"; };
 		0F91099225A64FD2008E658F /* TMDb_Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDb_Session.swift; sourceTree = "<group>"; };
+		0F991503272632EA006E5F1C /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		0F99D99925734602007169B9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		0F99D99A25734602007169B9 /* MovieSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearchViewController.swift; sourceTree = "<group>"; };
 		0F99D9A025734617007169B9 /* TMDb_Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDb_Client.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				0FDC462B251AC19000A4E3D2 /* UserEditProfileViewController.swift */,
 				0FDB64B8251C24DA00427543 /* AddParentAccountViewController.swift */,
 				0F534317252BF35F00A5275D /* HomeViewController.swift */,
+				0F991503272632EA006E5F1C /* WishListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				0F37E282250DAF4C0002D0AD /* LoggedInUser.swift in Sources */,
 				0F9CAE2A27239A2B0036742C /* KumpeAppsClient+DELETE.swift in Sources */,
 				0F48331225118F2A00B92ADB /* DebugHelpers.swift in Sources */,
+				0F991504272632EA006E5F1C /* WishListViewController.swift in Sources */,
 				0F4833162512D47400B92ADB /* DayOfWeekViewController.swift in Sources */,
 				0F5EC89C24F98D0000873868 /* SelectUserViewController.swift in Sources */,
 				0F99D9A525734617007169B9 /* TMDb_Client.swift in Sources */,

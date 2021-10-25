@@ -43,9 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "API Upgrade", subtitle: "Upgraded to KumpeApps API v5 with increased security standards."),
-        WhatsNewItem.text(title: "Squashed Bugs", subtitle: "Squashed a few bugs.")
-    ])
+        WhatsNewItem.text(title: "Wish List", subtitle: "Added Wish List (just in time for Christmas Lists)")    ])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -183,6 +181,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             if selectedUser.enableTmdb {
                 modules.append(KKid_Module.init(title: "Movies DB", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
+            }
+
+            if selectedUser.enableChores {
+                modules.append(KKid_Module.init(title: "Wish List", segue: "segueWishList", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-wish-list-80.png"))
             }
 
             if selectedUser.enableObjectDetection {

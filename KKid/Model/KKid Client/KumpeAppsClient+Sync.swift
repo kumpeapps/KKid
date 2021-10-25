@@ -43,8 +43,18 @@ extension KumpeAppsClient {
             apiSync(silent: silent, parameters: parameters, module: module, jsonArrayName: jsonArrayName, coreDataEntityName: coreDataEntityName) { (success, error) in
                 completion(success, error)
             }
-
         }
+    
+    // MARK: getWishes
+    class func getWishes(silent: Bool = false, completion: @escaping (Bool, String?) -> Void) {
+        let module = "kkid/wishlist"
+        let jsonArrayName = "wish"
+        let coreDataEntityName = "Wish"
+
+        apiSync(silent: silent, parameters: [:], module: module, jsonArrayName: jsonArrayName, coreDataEntityName: coreDataEntityName) { (success, error) in
+            completion(success, error)
+        }
+    }
 
     // MARK: apiSync
     //    Get function to sync data from KKids API to CoreData
