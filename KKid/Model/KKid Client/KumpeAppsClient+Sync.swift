@@ -44,7 +44,7 @@ extension KumpeAppsClient {
                 completion(success, error)
             }
         }
-    
+
     // MARK: getWishes
     class func getWishes(silent: Bool = false, completion: @escaping (Bool, String?) -> Void) {
         let module = "kkid/wishlist"

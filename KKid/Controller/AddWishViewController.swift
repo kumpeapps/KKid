@@ -11,7 +11,7 @@ import SwiftyFORM
 import KumpeHelpers
 
 class AddWishViewController: FormViewController {
-    
+
 // MARK: parameters
     let user = LoggedInUser.selectedUser
 

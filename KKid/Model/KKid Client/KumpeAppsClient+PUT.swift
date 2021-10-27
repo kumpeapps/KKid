@@ -133,7 +133,7 @@ extension KumpeAppsClient {
         if priority != wish.priority {
             parameters["priority"] = priority
         }
-        
+
         if link != wish.link {
             parameters["link"] = link
         }
