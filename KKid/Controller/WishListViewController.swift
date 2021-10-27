@@ -114,8 +114,7 @@ class WishListViewController: UIViewController {
 
 // MARK: pressedAdd
     @IBAction func pressedAdd() {
-        // performSegue(withIdentifier: "segueAddWish", sender: self)
-        KumpeHelpers.DebugHelpers.notImplementedBanner()
+        performSegue(withIdentifier: "segueAddWish", sender: self)
     }
 
 // MARK: enableUI
@@ -162,8 +161,6 @@ extension WishListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.detailTextLabel?.text = "\(aWish.wishDescription ?? "")"
         let link = aWish.link ?? ""
         if link != "" {
-            KumpeHelpers.DebugHelpers.dumpToLog(dump: aWish.wishTitle)
-            KumpeHelpers.DebugHelpers.dumpToLog(dump: link)
             cell.imageView?.image = "🔗".image()
         } else {
             cell.imageView?.image = "🗒".image()

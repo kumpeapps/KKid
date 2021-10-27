@@ -770,7 +770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNK-ZH-TJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042" y="846"/>
+            <point key="canvasLocation" x="3861" y="-589"/>
         </scene>
         <!--Object Detection-->
         <scene sceneID="uQ2-wZ-b3x">
@@ -1205,11 +1205,30 @@
                         <outlet property="imageBackground" destination="WsP-x7-EeV" id="vjX-cs-bMH"/>
                         <outlet property="imageLogo" destination="vp9-5x-17E" id="E5M-uo-INi"/>
                         <outlet property="tableView" destination="a8I-G1-0bh" id="aX1-uv-VKA"/>
+                        <segue destination="Ke2-04-1ug" kind="show" identifier="segueAddWish" id="7l4-tG-OvX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ml-Om-Pbp" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2954" y="-1272"/>
+        </scene>
+        <!--New Wish-->
+        <scene sceneID="fGa-DI-R5w">
+            <objects>
+                <viewController title="New Wish" id="Ke2-04-1ug" customClass="AddWishViewController" customModule="KKid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u5R-Q3-B8m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="DrB-XR-PbV"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New User" id="PEY-P2-xjI">
+                        <barButtonItem key="backBarButtonItem" title="New User" id="3Hx-Qw-wrY"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EQU-J4-9gx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3861" y="-1272"/>
         </scene>
     </scenes>
     <designables>
