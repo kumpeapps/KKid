@@ -16,17 +16,17 @@ extension KumpeAppsClient {
 // MARK: - DELETE Methods
 
 // MARK: deleteChore
-        class func deleteChore(_ idChoreList: Int16, completion: @escaping (Bool, String?) -> Void) {
-            let parameters = [
-                "idChoreList": "\(idChoreList)"
-            ]
+    class func deleteChore(_ idChoreList: Int16, completion: @escaping (Bool, String?) -> Void) {
+        let parameters = [
+            "idChoreList": "\(idChoreList)"
+        ]
 
-            let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
-            let module = "kkid/chorelist"
-            apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
-                completion(success,error)
-            }
+        let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
+        let module = "kkid/chorelist"
+        apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+            completion(success,error)
         }
+    }
 
 // MARK: deleteUser
     class func deleteUser(_ user: User, completion: @escaping (Bool, String?) -> Void) {
@@ -35,6 +35,18 @@ extension KumpeAppsClient {
         ]
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/userlist"
+        apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+            completion(success,error)
+        }
+    }
+
+// MARK: deleteWish
+    class func deleteWish(_ wish: Wish, completion: @escaping (Bool, String?) -> Void) {
+        let parameters = [
+            "wishId": "\(wish.id)"
+        ]
+        let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
+        let module = "kkid/wishlist"
         apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
             completion(success,error)
         }

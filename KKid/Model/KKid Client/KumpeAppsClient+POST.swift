@@ -133,6 +133,23 @@ extension KumpeAppsClient {
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/apns"
         apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { _, _ in}
+    }
+
+// MARK: addWish
+    class func addWish(userID: String, title: String, description: String = "", priority: Int = 5, link: String = "", completion: @escaping (Bool, String?) -> Void) {
+        let parameters = [
+            "kidUserId": "\(userID)",
+            "title": title,
+            "description": description,
+            "priority": "\(priority)",
+            "link": link
+        ]
+
+        let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
+        let module = "kkid/wishlist"
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+            completion(success, error)
         }
+    }
 
 }

@@ -43,9 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "API Upgrade", subtitle: "Upgraded to KumpeApps API v5 with increased security standards."),
-        WhatsNewItem.text(title: "Squashed Bugs", subtitle: "Squashed a few bugs.")
-    ])
+        WhatsNewItem.text(title: "Wish List", subtitle: "Added Wish List (just in time for Christmas Lists)"), WhatsNewItem.text(title: "New Module Badge", subtitle: "Modules that you have never opened will be badged as New. Please note some modules used before this update will still have the NEW badge until you open that module after this update. This badge is device specific and only clears when the module is opened on this device."), WhatsNewItem.text(title: "Backgrounds", subtitle: "Added seasonal backgrounds for Halloween and Thanksgiving")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -185,6 +183,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 modules.append(KKid_Module.init(title: "Movies DB", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
             }
 
+            if selectedUser.enableChores {
+                modules.append(KKid_Module.init(title: "Wish List", segue: "segueWishList", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-wish-list-80.png"))
+            }
+
             if selectedUser.enableObjectDetection {
                 modules.append(KKid_Module.init(title: "Detect Objects", segue: "segueObjectDetection", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-detective-50.png"))
             }
@@ -291,6 +293,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .systemGreen)!), isBackground: false)
                 UserDefaults.standard.set("StPatricks", forKey: "seasonalBackgroundImage")
             }
+        case "October":
+            if currentBackground != "Halloween" {
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/halloween_bats.png")!, isBackground: true)
+                setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .orange)!), isBackground: false)
+                UserDefaults.standard.set("Halloween", forKey: "seasonalBackgroundImage")
+            }
+        case "November":
+            if currentBackground != "Thanksgiving" {
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/fall_leaves.png")!, isBackground: true)
+                setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .orange)!), isBackground: false)
+                UserDefaults.standard.set("Thanksgiving", forKey: "seasonalBackgroundImage")
+            }
         default:
             if currentBackground != "default" {
                 setImage(UIImage(named: "photo2")!, isBackground: true)
@@ -340,6 +354,10 @@ extension HomeViewController {
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let module = modules[(indexPath as NSIndexPath).row]
 
+            let disableNewIcon = ["Edit Profile","App Settings","Portal","Support","Chores","Allowance","Logout","Select User","User Manual","Detect Objects"]
+
+            let betaModules = ["Detect Objects"]
+
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ModuleCollectionViewCell
             cell.title.text = module.title
             cell.badge.text = "0"
@@ -363,6 +381,17 @@ extension HomeViewController {
                 cell.badge.isHidden = false
                 cell.badge.text = "\(choreCount)"
             }
+
+            if UserDefaults.standard.object(forKey: module.title) == nil && !disableNewIcon.contains(module.title) {
+                cell.badge.isHidden = false
+                cell.badge.text = "NEW"
+            }
+
+            if betaModules.contains(module.title) {
+                cell.badge.isHidden = false
+                cell.badge.text = "BETA"
+            }
+
             return cell
         }
 

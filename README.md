@@ -66,7 +66,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   You will always have Edit Profile which you can click on to edit that user's profile/permissions
 -   Additionally there will be options for each module that the selected user has access to
 -   Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
--   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), [Allowance](https://github.com/justinkumpe/KKid#allowance-module), [Movies DB](https://github.com/justinkumpe/KKid#movies-db-module), and [Object Detection](https://github.com/justinkumpe/KKid#object-detection-module)
+-   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), [Allowance](https://github.com/justinkumpe/KKid#allowance-module), [Movies DB](https://github.com/justinkumpe/KKid#movies-db-module), and [Wish List](https://github.com/justinkumpe/KKid#wish-list-module)
 
 ### Select User Screen
 -   On the Select User screen you will see a list of users under your master (household) account.
@@ -132,10 +132,10 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   To replay the trailer you can click on the backdrop image.
 -   Playing of movie trailers honors content restrictions on the device. Example: if a device is restricted to PG movies then the movies detail screen will not play movie trailers for movies rated above PG. NOTE: This restriction uses the movie rating as provided by TMDb. If a movie is not rated or there is no rating on file with TMDb then the trailer will not be restricted unless the rating restriction is set to Do Not Allow Movies.
 
-### Object Detection Module *(BETA)*
--   This screen is used to scan objects and get their tags via machine learning
--   This module is also used by the Chores Module to require scanning an object to check off chores for any chore that is marked by parent to require object detection. Example: parent may mark chore "Make Bed" to require scanning an object with the "bed" tag.
--   *HINT:* Turn your device to the side (landscape) and objects will be detected better
+### Wish List Module
+-   This screen shows a list of items on the kid's wish list.
+-   Items may be added to the wish list by clicking the add (+) button in the upper right.
+-   If a URL link is provided when adding the item to the list then that item will show a link icon in the list and when you tap on that item it will take you to the link to ensure there is no confusion as to what item the person wants.
 
 ### REST API
 REST API documentation is available at [https://restapi.kumpeapps.com/v5/ui/#/KKid](https://restapi.kumpeapps.com/v5/ui/#/KKid)
@@ -157,9 +157,8 @@ API access may be obtained by opening a support ticket
 -   [ ] Add ability for users to choose a custom background image
 -   [ ] Add ability for users to choose a custom logo image
 -   [X] Add managed app config parameters
--   [x] What's New Page
--   [ ] Gift wish list for the kids
--   [X] Machine Learning AI for Object Detection
+-   [X] What's New Page
+-   [X] Gift wish list for the kids
 -   [X] Movie Search with movie ratings
 -   [ ] TV Show Search with Ratings
 -   [X] Linking TMDb account for saving movies/tv shows to favorites and watch list

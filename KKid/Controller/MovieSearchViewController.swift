@@ -52,6 +52,7 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         self.movies = []
         collectionView.reloadData()
         performFetchMore { }
+        UserDefaults.standard.set(true, forKey: "Movies DB")
     }
 
 // MARK: viewWillDisappear
