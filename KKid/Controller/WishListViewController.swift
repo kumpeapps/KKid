@@ -12,12 +12,13 @@ import CoreData
 import KumpeHelpers
 import Haptico
 import Toast_Swift
+import EmptyDataView
 
 class WishListViewController: UIViewController {
 
 // MARK: Parameters
     let selectedUser = LoggedInUser.selectedUser
-    
+
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
@@ -140,6 +141,14 @@ extension WishListViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: tableView: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Load empty data view if table data is empty
+        if fetchedResultsController.sections?[section].numberOfObjects ?? 0 == 0 {
+            tableView.setEmptyDataView(image: UIImage(named: "empty_box")!, title: "No Items on your Wish List")
+            tableView.backgroundColor = UIColor.lightGray
+        } else {
+            tableView.removeEmptyDataView()
+            tableView.backgroundColor = UIColor.clear
+        }
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
 
@@ -153,7 +162,11 @@ extension WishListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.detailTextLabel?.text = "\(aWish.wishDescription ?? "")"
         let link = aWish.link ?? ""
         if link != "" {
+            KumpeHelpers.DebugHelpers.dumpToLog(dump: aWish.wishTitle)
+            KumpeHelpers.DebugHelpers.dumpToLog(dump: link)
             cell.imageView?.image = "🔗".image()
+        } else {
+            cell.imageView?.image = "🗒".image()
         }
         return cell
     }
@@ -163,7 +176,7 @@ extension WishListViewController: UITableViewDataSource, UITableViewDelegate {
         let selectedWish = fetchedResultsController.object(at: indexPath)
         let link = selectedWish.link ?? ""
         if link != "" {
-            KumpeHelpers.DebugHelpers.notImplementedBanner()
+            KumpeHelpers.launchURL(link)
         }
     }
 
