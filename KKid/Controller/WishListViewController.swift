@@ -96,6 +96,7 @@ class WishListViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(self.refreshWishes), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing Wishlist")
         refreshControl.endRefreshing()
+        UserDefaults.standard.set(true, forKey: "Wish List")
     }
 
 // MARK: viewWillDisappear

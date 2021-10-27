@@ -682,7 +682,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myx-O7-kWp" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                    <rect key="frame" x="64" y="0.0" width="24.5" height="24.5"/>
+                                                    <rect key="frame" x="65.5" y="0.0" width="23" height="21"/>
                                                     <accessibility key="accessibilityConfiguration" label="0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="BDO-Ij-O96"/>

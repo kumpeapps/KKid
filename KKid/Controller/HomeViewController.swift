@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "Wish List", subtitle: "Added Wish List (just in time for Christmas Lists)")    ])
+        WhatsNewItem.text(title: "Wish List", subtitle: "Added Wish List (just in time for Christmas Lists)"), WhatsNewItem.text(title: "New Module Badge", subtitle: "Modules that you have never opened will be badged as New. Please note some modules used before this update will still have the NEW badge until you open that module after this update. This badge is device specific and only clears when the module is opened on this device.")    ])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -342,6 +342,10 @@ extension HomeViewController {
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let module = modules[(indexPath as NSIndexPath).row]
 
+            let disableNewIcon = ["Edit Profile","App Settings","Portal","Support","Chores","Allowance","Logout","Select User","User Manual","Detect Objects"]
+
+            let betaModules = ["Detect Objects"]
+
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ModuleCollectionViewCell
             cell.title.text = module.title
             cell.badge.text = "0"
@@ -365,6 +369,17 @@ extension HomeViewController {
                 cell.badge.isHidden = false
                 cell.badge.text = "\(choreCount)"
             }
+
+            if UserDefaults.standard.object(forKey: module.title) == nil && !disableNewIcon.contains(module.title) {
+                cell.badge.isHidden = false
+                cell.badge.text = "NEW"
+            }
+
+            if betaModules.contains(module.title) {
+                cell.badge.isHidden = false
+                cell.badge.text = "BETA"
+            }
+
             return cell
         }
 
