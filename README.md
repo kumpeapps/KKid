@@ -160,5 +160,5 @@ API access may be obtained by opening a support ticket
 -   [X] What's New Page
 -   [X] Gift wish list for the kids
 -   [X] Movie Search with movie ratings
--   [ ] TV Show Search with Ratings
+-   [X] TV Show Search with Ratings
 -   [X] Linking TMDb account for saving movies/tv shows to favorites and watch list

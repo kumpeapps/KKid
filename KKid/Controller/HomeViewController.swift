@@ -71,8 +71,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: startSnowFlake
     func startSnowflake() {
-        let flake = #imageLiteral(resourceName: "icons8-winter")
-        let snowflake = Snowflake(view: view, particles: [flake: .white])
+        let leaf = #imageLiteral(resourceName: "leaf1")
+        let leaf2 = #imageLiteral(resourceName: "leaf2")
+        let snowflake = Snowflake(view: view, particles: [leaf: .systemOrange, leaf2: .orange])
         self.view.layer.addSublayer(snowflake)
         snowflake.start()
     }
@@ -181,6 +182,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             if selectedUser.enableTmdb {
                 modules.append(KKid_Module.init(title: "Movies DB", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
+                modules.append(KKid_Module.init(title: "TV Shows DB", segue: "segueSearchShows", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
             }
 
             if selectedUser.enableChores {

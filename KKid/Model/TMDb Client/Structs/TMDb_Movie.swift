@@ -23,6 +23,7 @@ struct TMDb_Movie: Codable {
     let adult: Bool?
     let overview: String?
     let releaseDate: String?
+    let airDate: String?
     let id: Int?
     let originalTitle: String?
     let originalLanguage: String?
@@ -35,8 +36,9 @@ struct TMDb_Movie: Codable {
     var trailerKey: String?
     var favorite: Bool?
     var watchList: Bool?
+    let name: String?
 
     private enum CodingKeys : String, CodingKey {
-        case posterPath = "poster_path", adult, overview, releaseDate = "release_date", id, originalTitle = "original_title", originalLanguage = "original_language", title, backdropPath = "backdrop_path", popularity, voteCount = "vote_count", voteAverage = "vote_average", movieRating = "certification", trailerKey, favorite, watchList
+        case posterPath = "poster_path", adult, overview, releaseDate = "release_date", airDate = "first_air_date", id, originalTitle = "original_title", originalLanguage = "original_language", title, backdropPath = "backdrop_path", popularity, voteCount = "vote_count", voteAverage = "vote_average", movieRating = "certification", trailerKey, favorite, watchList, name
     }
 }

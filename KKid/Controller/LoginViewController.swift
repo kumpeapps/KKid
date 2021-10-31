@@ -218,7 +218,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 
 // MARK: managedConfig
     func managedConfig() {
-        if let disableNewParent = ManagedAppConfig.shared.getConfigValue(forKey: "disableNewParent") as? Bool {
+        if let disableNewParent = ManagedAppConfig.shared.getConfigValue(forKey: "disableNewParentAccount") as? Bool {
             buttonNewParentAccount.isEnabled = !disableNewParent
             buttonNewParentAccount.isHidden = disableNewParent
             buttonNewParentAccount.alpha = 0.5
