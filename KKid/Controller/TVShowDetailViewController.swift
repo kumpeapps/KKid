@@ -164,7 +164,7 @@ class TVShowDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
         }
         selectedShow.favorite = !selectedShow.favorite!
         updateFavoriteButton(selectedShow.favorite!)
-        TMDb_Client.postFavorite(sessionId: sessionId, mediaType: "movie", mediaId: selectedShow.id!, favorite: selectedShow.favorite!) { (success) in
+        TMDb_Client.postFavorite(sessionId: sessionId, mediaType: "tv", mediaId: selectedShow.id!, favorite: selectedShow.favorite!) { (success) in
             if success {
                 Logger.log(.success, "marked as favorite \(self.selectedShow.favorite!)")
             } else {
@@ -183,7 +183,7 @@ class TVShowDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
         }
         selectedShow.watchList = !selectedShow.watchList!
         updateWatchlistButton(selectedShow.watchList!)
-        TMDb_Client.postWatchlist(sessionId: sessionId, mediaType: "movie", mediaId: selectedShow.id!, watchlist: selectedShow.watchList!) { (success) in
+        TMDb_Client.postWatchlist(sessionId: sessionId, mediaType: "tv", mediaId: selectedShow.id!, watchlist: selectedShow.watchList!) { (success) in
             if success {
                 Logger.log(.success, "marked as watchList \(self.selectedShow.watchList!)")
             } else {

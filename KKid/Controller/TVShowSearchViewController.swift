@@ -54,6 +54,7 @@ class TVShowSearchViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.reloadData()
         performFetchMore { }
         UserDefaults.standard.set(true, forKey: "TV Shows DB")
+        hideKeyboardOnTap()
     }
 
 // MARK: viewWillDisappear
@@ -162,6 +163,7 @@ class TVShowSearchViewController: UIViewController, UICollectionViewDelegate, UI
             shows = []
             searchBar.isHidden = true
             performFetchMore { }
+            self.view.endEditing(true)
             return
         }
     }
@@ -233,6 +235,13 @@ class TVShowSearchViewController: UIViewController, UICollectionViewDelegate, UI
             }
         }
     }
+
+    // MARK: hideKeyboardOnTap
+        func hideKeyboardOnTap() {
+            let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+            tap.cancelsTouchesInView = false
+            view.addGestureRecognizer(tap)
+        }
 
 }
 

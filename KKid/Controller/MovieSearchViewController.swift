@@ -161,6 +161,7 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
             movies = []
             searchBar.isHidden = true
             performFetchMore { }
+            self.view.endEditing(true)
             return
         }
     }

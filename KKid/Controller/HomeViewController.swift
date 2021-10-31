@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "Wish List", subtitle: "Added Wish List (just in time for Christmas Lists)"), WhatsNewItem.text(title: "New Module Badge", subtitle: "Modules that you have never opened will be badged as New. Please note some modules used before this update will still have the NEW badge until you open that module after this update. This badge is device specific and only clears when the module is opened on this device."), WhatsNewItem.text(title: "Backgrounds", subtitle: "Added seasonal backgrounds for Halloween and Thanksgiving")])
+        WhatsNewItem.text(title: "TBDb", subtitle: "Added TV Shows DB")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {

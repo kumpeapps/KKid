@@ -13,7 +13,7 @@ import Alamofire
 import Alamofire_SwiftyJSON
 
 extension TMDb_Client {
-    
+
     // MARK: searchMovies
         class func searchMovies(query: String, page: Int, completion: @escaping (Bool, TMDb_Movie_Response?) -> Void) {
             let parameters = [
