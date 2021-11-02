@@ -83,7 +83,11 @@ class TVShowDetailViewController: UIViewController, YTSwiftyPlayerDelegate {
 
 // MARK: getMovieRating
     func getMovieRating() {
-        //self.imageMovieRating.kf.setImage(with: MovieRating.init(rawValue: selectedShow.movieRating!)?.url)
+        if let rating = selectedShow.movieRating {
+            let tvShowRating = rating.lowercased()
+            let cleanedTvShowRating = tvShowRating.replacingOccurrences(of: "-", with: "")
+            self.imageMovieRating.kf.setImage(with: TVRating.init(rawValue: cleanedTvShowRating)?.url)
+        }
         getMovieTrailer()
     }
 
