@@ -295,7 +295,7 @@
 			children = (
 				0F2005FB257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel */,
 				0F99D99F25734617007169B9 /* TMDb Client */,
-				0F72B139251592850099D2D9 /* KKid Client */,
+				0F72B139251592850099D2D9 /* KumpeApps Client */,
 				0F48330E25105EF700B92ADB /* Enums */,
 				0F5EC8B224F98DB800873868 /* Structs */,
 				0F66BE39250859FA00014A94 /* KKid.xcdatamodeld */,
@@ -388,7 +388,7 @@
 			path = Structs;
 			sourceTree = "<group>";
 		};
-		0F72B139251592850099D2D9 /* KKid Client */ = {
+		0F72B139251592850099D2D9 /* KumpeApps Client */ = {
 			isa = PBXGroup;
 			children = (
 				0F311184251FE3F8004BB1E4 /* API_Credentials.swift */,
@@ -399,7 +399,7 @@
 				0F9CAE25272396A90036742C /* KumpeAppsClient+PUT.swift */,
 				0F9CAE2927239A2B0036742C /* KumpeAppsClient+DELETE.swift */,
 			);
-			path = "KKid Client";
+			path = "KumpeApps Client";
 			sourceTree = "<group>";
 		};
 		0F99D99F25734617007169B9 /* TMDb Client */ = {
@@ -879,7 +879,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.3.0.2;
+				CURRENT_PROJECT_VERSION = 2.3.0.3;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -902,7 +902,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.3.0.2;
+				CURRENT_PROJECT_VERSION = 2.3.0.3;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
