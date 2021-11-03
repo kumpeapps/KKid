@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0F0C4CAD25422373006571C8 /* CustomPrivacyKitStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */; };
+		0F1579F3272B755A00AF3E27 /* TMDb_Client+Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1579F2272B755A00AF3E27 /* TMDb_Client+Movies.swift */; };
+		0F1579F5272B766D00AF3E27 /* TMDb_Client+TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1579F4272B766D00AF3E27 /* TMDb_Client+TV.swift */; };
+		0F1579F7272CCD3F00AF3E27 /* TMDb_TV_Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1579F6272CCD3F00AF3E27 /* TMDb_TV_Rating.swift */; };
+		0F1579F9272CDFF700AF3E27 /* TVShowSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1579F8272CDFF700AF3E27 /* TVShowSearchViewController.swift */; };
+		0F1579FB272CE6DF00AF3E27 /* TVShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1579FA272CE6DF00AF3E27 /* TVShowDetailViewController.swift */; };
+		0F18B8492731BFA700123BBE /* TVRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18B8482731BFA700123BBE /* TVRating.swift */; };
 		0F2005EC257D607200D9E4BE /* AVCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005EB257D607200D9E4BE /* AVCaptureViewController.swift */; };
 		0F2005F0257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005EF257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift */; };
 		0F2005F4257D60C600D9E4BE /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005F3257D60C600D9E4BE /* AppUtility.swift */; };
@@ -102,6 +108,12 @@
 
 /* Begin PBXFileReference section */
 		0F0C4CAC25422373006571C8 /* CustomPrivacyKitStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrivacyKitStyle.swift; sourceTree = "<group>"; };
+		0F1579F2272B755A00AF3E27 /* TMDb_Client+Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TMDb_Client+Movies.swift"; sourceTree = "<group>"; };
+		0F1579F4272B766D00AF3E27 /* TMDb_Client+TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TMDb_Client+TV.swift"; sourceTree = "<group>"; };
+		0F1579F6272CCD3F00AF3E27 /* TMDb_TV_Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDb_TV_Rating.swift; sourceTree = "<group>"; };
+		0F1579F8272CDFF700AF3E27 /* TVShowSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowSearchViewController.swift; sourceTree = "<group>"; };
+		0F1579FA272CE6DF00AF3E27 /* TVShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailViewController.swift; sourceTree = "<group>"; };
+		0F18B8482731BFA700123BBE /* TVRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRating.swift; sourceTree = "<group>"; };
 		0F2005EB257D607200D9E4BE /* AVCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureViewController.swift; sourceTree = "<group>"; };
 		0F2005EF257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionObjectRecognitionViewController.swift; sourceTree = "<group>"; };
 		0F2005F3257D60C600D9E4BE /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
@@ -283,7 +295,7 @@
 			children = (
 				0F2005FB257D670B00D9E4BE /* YOLOv3Int8LUT.mlmodel */,
 				0F99D99F25734617007169B9 /* TMDb Client */,
-				0F72B139251592850099D2D9 /* KKid Client */,
+				0F72B139251592850099D2D9 /* KumpeApps Client */,
 				0F48330E25105EF700B92ADB /* Enums */,
 				0F5EC8B224F98DB800873868 /* Structs */,
 				0F66BE39250859FA00014A94 /* KKid.xcdatamodeld */,
@@ -315,6 +327,8 @@
 				0F534317252BF35F00A5275D /* HomeViewController.swift */,
 				0F991503272632EA006E5F1C /* WishListViewController.swift */,
 				0F9FDEE42728E0950036F1BD /* AddWishViewController.swift */,
+				0F1579F8272CDFF700AF3E27 /* TVShowSearchViewController.swift */,
+				0F1579FA272CE6DF00AF3E27 /* TVShowDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -374,7 +388,7 @@
 			path = Structs;
 			sourceTree = "<group>";
 		};
-		0F72B139251592850099D2D9 /* KKid Client */ = {
+		0F72B139251592850099D2D9 /* KumpeApps Client */ = {
 			isa = PBXGroup;
 			children = (
 				0F311184251FE3F8004BB1E4 /* API_Credentials.swift */,
@@ -385,7 +399,7 @@
 				0F9CAE25272396A90036742C /* KumpeAppsClient+PUT.swift */,
 				0F9CAE2927239A2B0036742C /* KumpeAppsClient+DELETE.swift */,
 			);
-			path = "KKid Client";
+			path = "KumpeApps Client";
 			sourceTree = "<group>";
 		};
 		0F99D99F25734617007169B9 /* TMDb Client */ = {
@@ -395,6 +409,8 @@
 				0F99D9A025734617007169B9 /* TMDb_Client.swift */,
 				0F99D9A125734617007169B9 /* TMDb_Constants.swift */,
 				0F99D9A225734617007169B9 /* Structs */,
+				0F1579F2272B755A00AF3E27 /* TMDb_Client+Movies.swift */,
+				0F1579F4272B766D00AF3E27 /* TMDb_Client+TV.swift */,
 			);
 			path = "TMDb Client";
 			sourceTree = "<group>";
@@ -408,6 +424,7 @@
 				0FD8FC1E257429D400DE2749 /* TMDb_TV.swift */,
 				0F91098E25A64E71008E658F /* TMDb_Token.swift */,
 				0F91099225A64FD2008E658F /* TMDb_Session.swift */,
+				0F1579F6272CCD3F00AF3E27 /* TMDb_TV_Rating.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -426,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				0FD8FC3125743ADC00DE2749 /* MovieRating.swift */,
+				0F18B8482731BFA700123BBE /* TVRating.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -626,6 +644,7 @@
 				0F9FDEE52728E0950036F1BD /* AddWishViewController.swift in Sources */,
 				0F37E282250DAF4C0002D0AD /* LoggedInUser.swift in Sources */,
 				0F9CAE2A27239A2B0036742C /* KumpeAppsClient+DELETE.swift in Sources */,
+				0F1579FB272CE6DF00AF3E27 /* TVShowDetailViewController.swift in Sources */,
 				0F48331225118F2A00B92ADB /* DebugHelpers.swift in Sources */,
 				0F991504272632EA006E5F1C /* WishListViewController.swift in Sources */,
 				0F4833162512D47400B92ADB /* DayOfWeekViewController.swift in Sources */,
@@ -636,6 +655,7 @@
 				0F2005F4257D60C600D9E4BE /* AppUtility.swift in Sources */,
 				0F2005F0257D60A400D9E4BE /* VisionObjectRecognitionViewController.swift in Sources */,
 				0F534318252BF35F00A5275D /* HomeViewController.swift in Sources */,
+				0F1579F9272CDFF700AF3E27 /* TVShowSearchViewController.swift in Sources */,
 				0F5EC8BA24F9936F00873868 /* KKid_Auth_Response.swift in Sources */,
 				0F9CAE26272396A90036742C /* KumpeAppsClient+PUT.swift in Sources */,
 				0F72B1382515902C0099D2D9 /* KKid_Allowance_Respopnse.swift in Sources */,
@@ -647,6 +667,7 @@
 				0F48330D25105ED700B92ADB /* ChoreStatus.swift in Sources */,
 				0F9CAE20272249720036742C /* KumpeApps_Auth_Response.swift in Sources */,
 				0F2005EC257D607200D9E4BE /* AVCaptureViewController.swift in Sources */,
+				0F1579F5272B766D00AF3E27 /* TMDb_Client+TV.swift in Sources */,
 				0FD8FC1F257429D400DE2749 /* TMDb_TV.swift in Sources */,
 				0F2005F8257D619800D9E4BE /* ChoreObjectDetectionViewController.swift in Sources */,
 				0F5CE64E250AFA33002149DC /* LoginViewController.swift in Sources */,
@@ -679,6 +700,8 @@
 				0F48331025117C5200B92ADB /* Days.swift in Sources */,
 				0FB98D0225007AE800143A6A /* AddChoreViewController.swift in Sources */,
 				0F5EC89A24F98D0000873868 /* SceneDelegate.swift in Sources */,
+				0F18B8492731BFA700123BBE /* TVRating.swift in Sources */,
+				0F1579F7272CCD3F00AF3E27 /* TMDb_TV_Rating.swift in Sources */,
 				0F9CAE24272392150036742C /* KumpeAppsClient+POST.swift in Sources */,
 				0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */,
 				0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */,
@@ -687,6 +710,7 @@
 				0F66BE3F25085E9000014A94 /* GCDBlackBox.swift in Sources */,
 				0FD8FC1B2574264400DE2749 /* TMDb_Movie_ReleaseDates.swift in Sources */,
 				0F534322252BFF4C00A5275D /* ModuleCollectionViewCell.swift in Sources */,
+				0F1579F3272B755A00AF3E27 /* TMDb_Client+Movies.swift in Sources */,
 				0F9F397325548BA700829133 /* getDayOfWeek.swift in Sources */,
 				0FD8FC3225743ADC00DE2749 /* MovieRating.swift in Sources */,
 				0FB98D0025007AC400143A6A /* MarkChoreViewController.swift in Sources */,
@@ -855,7 +879,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.2.2.3;
+				CURRENT_PROJECT_VERSION = 2.3.0.3;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -863,7 +887,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -878,7 +902,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.2.2.3;
+				CURRENT_PROJECT_VERSION = 2.3.0.3;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -886,7 +910,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

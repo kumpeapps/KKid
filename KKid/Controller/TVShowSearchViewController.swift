@@ -1,8 +1,9 @@
 //
-//  ViewController.swift
-//  KMovies
+//  TVShowSearchViewController.swift
+//  KKid
 //
-//  Created by Justin Kumpe on 11/25/20.
+//  Created by Justin Kumpe on 10/29/21.
+//  Copyright © 2021 Justin Kumpe. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +12,7 @@ import KumpeHelpers
 import JKRefresher
 import ContentRestrictionsKit
 
-class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class TVShowSearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
 // MARK: searchBars
     @IBOutlet weak var searchBar: UISearchBar!
@@ -23,10 +24,10 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var segmentControll: UISegmentedControl!
 
 // MARK: parameters
-    var movies: [TMDb_Movie] = []
+    var shows: [TMDb_TV] = []
     var currentPage: Int = 0
     var totalPages: Int = 0
-    let movieCache = ImageCache(name: "KMovies")
+    let showCache = ImageCache(name: "KShows")
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -49,16 +50,17 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         super.viewDidAppear(animated)
         self.currentPage = 0
         self.totalPages = 0
-        self.movies = []
+        self.shows = []
         collectionView.reloadData()
         performFetchMore { }
-        UserDefaults.standard.set(true, forKey: "Movies DB")
+        UserDefaults.standard.set(true, forKey: "TV Shows DB")
+        hideKeyboardOnTap()
     }
 
 // MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        movieCache.cleanExpiredMemoryCache()
+        showCache.cleanExpiredMemoryCache()
     }
 
 // MARK: viewWillAppear
@@ -72,7 +74,7 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
 // MARK: didRecieveMemoryWarning
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        movieCache.clearMemoryCache()
+        showCache.clearMemoryCache()
     }
 
 // MARK: searchBar-textDidChange
@@ -85,12 +87,12 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
             }
             return
         }
-        TMDb_Client.searchMovies(query: searchBar.text!, page: 1) { (_, response) in
-            self.movies = []
+        TMDb_Client.searchTV(query: searchBar.text!, page: 1) { (_, response) in
+            self.shows = []
             self.currentPage = 0
             self.totalPages = 0
             if let response = response {
-                self.movies = response.results
+                self.shows = response.results
                 self.currentPage = response.page
                 self.totalPages = response.totalPages
                 self.collectionView.reloadData()
@@ -98,18 +100,18 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
 
-// MARK: searchMovies
-    func searchMovies(_ page: Int = 1, _ completionHandler: (() -> Void)?) {
-        TMDb_Client.searchMovies(query: searchBar.text!, page: page) { (_, response) in
+// MARK: searchShows
+    func searchShows(_ page: Int = 1, _ completionHandler: (() -> Void)?) {
+        TMDb_Client.searchTV(query: searchBar.text!, page: page) { (_, response) in
             if let response = response {
 
                 // create new index paths
-                let movieCount = self.movies.count
-                let (start, end) = (movieCount, response.results.count + movieCount)
+                let showCount = self.shows.count
+                let (start, end) = (showCount, response.results.count + showCount)
                 let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
 
                 // update data source
-                self.movies.append(contentsOf: response.results)
+                self.shows.append(contentsOf: response.results)
                 self.currentPage = response.page
                 self.totalPages = response.totalPages
 
@@ -128,7 +130,7 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         let page = self.currentPage + 1
         switch segmentControll.selectedSegmentIndex {
         case 0:
-            searchMovies(page, completionHandler)
+            searchShows(page, completionHandler)
         case 1:
             fetchFavoriteMovies(page, completionHandler)
         case 2:
@@ -140,9 +142,9 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
 
 // MARK: prepareForSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = segue.destination as! MovieDetailViewController
+        let viewController = segue.destination as! TVShowDetailViewController
         if let indexPath = collectionView.indexPathsForSelectedItems {
-            viewController.selectedMovie = movies[indexPath[0].row]
+            viewController.selectedShow = shows[indexPath[0].row]
         }
     }
 
@@ -153,12 +155,12 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.reloadData()
         switch segmentControll.selectedSegmentIndex {
         case 0:
-            movies = []
+            shows = []
             searchBar.isHidden = false
             searchBar.text = ""
             collectionView.reloadData()
         default:
-            movies = []
+            shows = []
             searchBar.isHidden = true
             performFetchMore { }
             self.view.endEditing(true)
@@ -175,17 +177,17 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
             ShowAlert.banner(title: "TMDb Account Not Linked", message: "You must have a TMDb account linked to use this feature. Your account may be linked in User Profile.")
             return
         }
-        TMDb_Client.getFavoriteMovies(page: page, sessionId: sessionId) { (success, response) in
+        TMDb_Client.getFavoriteShows(page: page, sessionId: sessionId) { (success, response) in
             if success {
                 if let response = response {
 
                     // create new index paths
-                    let movieCount = self.movies.count
-                    let (start, end) = (movieCount, response.results.count + movieCount)
+                    let showCount = self.shows.count
+                    let (start, end) = (showCount, response.results.count + showCount)
                     let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
 
                     // update data source
-                    self.movies.append(contentsOf: response.results)
+                    self.shows.append(contentsOf: response.results)
                     self.currentPage = response.page
                     self.totalPages = response.totalPages
 
@@ -209,17 +211,17 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
             ShowAlert.banner(title: "TMDb Account Not Linked", message: "You must have a TMDb account linked to use this feature. Your account may be linked in User Profile.")
             return
         }
-        TMDb_Client.getMovieWatchlist(page: page, sessionId: sessionId) { (success, response) in
+        TMDb_Client.getTVWatchlist(page: page, sessionId: sessionId) { (success, response) in
             if success {
                 if let response = response {
 
                     // create new index paths
-                    let movieCount = self.movies.count
-                    let (start, end) = (movieCount, response.results.count + movieCount)
+                    let showCount = self.shows.count
+                    let (start, end) = (showCount, response.results.count + showCount)
                     let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
 
                     // update data source
-                    self.movies.append(contentsOf: response.results)
+                    self.shows.append(contentsOf: response.results)
                     self.currentPage = response.page
                     self.totalPages = response.totalPages
 
@@ -234,21 +236,28 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
 
+    // MARK: hideKeyboardOnTap
+        func hideKeyboardOnTap() {
+            let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+            tap.cancelsTouchesInView = false
+            view.addGestureRecognizer(tap)
+        }
+
 }
 
 // MARK: - Collection View Functions
-extension MovieSearchViewController {
+extension TVShowSearchViewController {
 
     // MARK: Set Number of Items
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return movies.count
+            return shows.count
         }
 
     // MARK: Build Items
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
-            let movie = movies[indexPath.row]
-            if let imageSuffix = movie.posterPath {
+            let show = shows[indexPath.row]
+            if let imageSuffix = show.posterPath {
                 let imagePath = URL(string: "\(TMDb_Constants.PosterUrl.w185.baseUrl)\(imageSuffix)")
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 cell.imageView.kf.setImage(
@@ -259,12 +268,12 @@ extension MovieSearchViewController {
                         .transition(.fade(1)),
                         .cacheOriginalImage,
                         .cacheSerializer(FormatIndicatedCacheSerializer.png),
-                        .targetCache(movieCache)
+                        .targetCache(showCache)
                     ])
             } else {
                 cell.imageView.image = UIImage(named: "placeholder_w185")
             }
-            if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: movie.movieRating ?? "nr") {
+            if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: show.movieRating ?? "nr") {
                 cell.imageView.image = UIImage(named: "placeholder_w185")
             }
             return cell
@@ -272,11 +281,10 @@ extension MovieSearchViewController {
 
     // MARK: Did Select Item
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: movies[indexPath.row].movieRating ?? "nr") && LoggedInUser.user!.username != "dev_KKid_Master" {
-                ShowAlert.banner(title: "Access Restricted", message: "This movie is rated \(movies[indexPath.row].movieRating ?? "nr") which is above the restriction level set on your device.")
+            if !ContentRestrictionsKit.Movie.ratingIsAllowed(country: .US, rating: shows[indexPath.row].movieRating ?? "nr") && LoggedInUser.user!.username != "dev_KKid_Master" {
+                ShowAlert.banner(title: "Access Restricted", message: "This movie is rated \(shows[indexPath.row].movieRating ?? "nr") which is above the restriction level set on your device.")
             } else {
-                performSegue(withIdentifier: "segueMovieDetails", sender: self)
+                performSegue(withIdentifier: "segueShowDetails", sender: self)
             }
         }
-
 }

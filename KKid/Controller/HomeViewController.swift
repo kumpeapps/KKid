@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "Wish List", subtitle: "Added Wish List (just in time for Christmas Lists)"), WhatsNewItem.text(title: "New Module Badge", subtitle: "Modules that you have never opened will be badged as New. Please note some modules used before this update will still have the NEW badge until you open that module after this update. This badge is device specific and only clears when the module is opened on this device."), WhatsNewItem.text(title: "Backgrounds", subtitle: "Added seasonal backgrounds for Halloween and Thanksgiving")])
+        WhatsNewItem.text(title: "TBDb", subtitle: "Added TV Shows DB")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -71,8 +71,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: startSnowFlake
     func startSnowflake() {
-        let flake = #imageLiteral(resourceName: "icons8-winter")
-        let snowflake = Snowflake(view: view, particles: [flake: .white])
+        let leaf = #imageLiteral(resourceName: "leaf1")
+        let leaf2 = #imageLiteral(resourceName: "leaf2")
+        let snowflake = Snowflake(view: view, particles: [leaf: .systemOrange, leaf2: .orange])
         self.view.layer.addSublayer(snowflake)
         snowflake.start()
     }
@@ -181,6 +182,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             if selectedUser.enableTmdb {
                 modules.append(KKid_Module.init(title: "Movies DB", segue: "segueSearchMovies", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
+                modules.append(KKid_Module.init(title: "TV Shows DB", segue: "segueSearchShows", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
             }
 
             if selectedUser.enableChores {

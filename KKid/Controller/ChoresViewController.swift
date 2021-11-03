@@ -270,7 +270,7 @@ extension ChoresViewController: UITableViewDataSource, UITableViewDelegate {
             ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can edit an optional or stolen chore after it has already been marked off!")
         } else if aChore.dayAsNumber != getDayOfWeek()! && aChore.dayAsNumber != 8 && !LoggedInUser.user!.isAdmin {
             ShowAlert.banner(title: "Not Authorized", message: "Only Parents/Admins can edit this chore because it is not due today! Please select a chore that is for Today or a Weekly Chore.")
-        } else if !aChore.isCalendar {
+        } else if !aChore.isCalendar && aChore.status != "Calendar" {
             performSegue(withIdentifier: "segueMarkChore", sender: self)
         }
     }

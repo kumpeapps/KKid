@@ -10,7 +10,7 @@ import Foundation
 
 struct TMDb_TV_Response: Codable {
     let page: Int
-    let results: [TMDb_TV]
+    var results: [TMDb_TV]
     let totalResults: Int
     let totalPages: Int
     
