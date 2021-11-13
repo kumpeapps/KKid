@@ -50,12 +50,12 @@ class AllowanceLedgerViewController: UITableViewController {
         var amount = "\(aTransaction.amount)"
         cell.detailTextLabel?.text = aTransaction.transactionDescription
         if aTransaction.amount < 0 {
-            //cell.backgroundColor = UIColor.systemPink
+            cell.backgroundColor = UIColor.systemPink
             amount.remove(at: amount.startIndex)
             cell.textLabel?.text = "\(aTransaction.date): -$\(amount)"
             cell.imageView?.image = UIImage(named: "minus")
         } else {
-            //cell.backgroundColor = UIColor.green
+            cell.backgroundColor = UIColor.green
             cell.textLabel?.text = "\(aTransaction.date): $\(amount)"
             cell.imageView?.image = UIImage(named: "plus")
         }
