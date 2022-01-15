@@ -8,6 +8,6 @@
 // Remove the // in front of the line to enable the option
 
 class Deliverfile: DeliverfileProtocol {
-  //var username: String { return "" }
+  // var username: String { return "" }
   var appIdentifier: String? { return "com.kumpeapps.ios.KKid" }
 }

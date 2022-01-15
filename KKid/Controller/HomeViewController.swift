@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "TBDb", subtitle: "Added TV Shows DB")])
+        WhatsNewItem.text(title: "TBDb", subtitle: "Bug Fixes")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -185,7 +185,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 modules.append(KKid_Module.init(title: "TV Shows DB", segue: "segueSearchShows", icon: UIImage(named: "tmdb")!, getRemoteIcon: false, remoteIconName: nil))
             }
 
-            if selectedUser.enableChores {
+            if selectedUser.enableWishList {
                 modules.append(KKid_Module.init(title: "Wish List", segue: "segueWishList", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-wish-list-80.png"))
             }
 
