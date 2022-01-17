@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "TBDb", subtitle: "Bug Fixes")])
+        WhatsNewItem.text(title: "WishList", subtitle: "Added ability for admins to turn on/off WishList (kids, if you want to use the WishList, ask your parents to turn it on.")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -71,9 +71,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: startSnowFlake
     func startSnowflake() {
-        let leaf = #imageLiteral(resourceName: "leaf1")
-        let leaf2 = #imageLiteral(resourceName: "leaf2")
-        let snowflake = Snowflake(view: view, particles: [leaf: .systemOrange, leaf2: .orange])
+        let snowflake1 = UIImage(named: "icons8-winter")!
+        let snowflake = Snowflake(view: view, particles: [snowflake1: .white])
         self.view.layer.addSublayer(snowflake)
         snowflake.start()
     }
