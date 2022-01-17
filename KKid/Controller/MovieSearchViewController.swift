@@ -10,6 +10,7 @@ import Kingfisher
 import KumpeHelpers
 import JKRefresher
 import ContentRestrictionsKit
+import Snowflake
 
 class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
@@ -42,6 +43,15 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
                 self.collectionView.am.infiniteScrollingView?.stopRefreshing()
             }
         }
+    }
+
+// MARK: startTrueColors
+    func startTrueColors() {
+        let wkface1 = UIImage(named: "wkface1")!
+        let wkface3 = UIImage(named: "wkface3")!
+        let truecolors = Snowflake(view: view, particles: [wkface1: .white, wkface3: .white])
+        self.view.layer.addSublayer(truecolors)
+        truecolors.start()
     }
 
 // MARK: viewDidAppear
@@ -84,6 +94,10 @@ class MovieSearchViewController: UIViewController, UICollectionViewDelegate, UIC
                 ShowAlert.centerView(theme: .info, title: "\(key)", message: "\(UserDefaults.standard.object(forKey: key) ?? "nil")", seconds: 60, invokeHaptics: false)
             }
             return
+        }
+        if searchBar.text!.contains("Waylon Lee Kumpe") || searchBar.text!.contains("True Colors") {
+            KumpeHelpers.Logger.log(.action, "Triggered Easter Egg Waylon Lee Kumpe")
+            startTrueColors()
         }
         TMDb_Client.searchMovies(query: searchBar.text!, page: 1) { (_, response) in
             self.movies = []

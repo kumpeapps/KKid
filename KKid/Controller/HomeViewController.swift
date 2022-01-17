@@ -244,7 +244,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if currentBackground != "NewYear" {
                 downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/WinterNewYear.jpg")!, isBackground: true)
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .systemCyan)!), isBackground: false)
-                UserDefaults.standard.set("test", forKey: "seasonalBackgroundImage")
+                UserDefaults.standard.set("NewYear", forKey: "seasonalBackgroundImage")
             }
         case "February":
             if currentBackground != "Valentines" {
