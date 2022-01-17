@@ -240,6 +240,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/candycane.jpg")!, isBackground: false)
                 UserDefaults.standard.set("Christmas", forKey: "seasonalBackgroundImage")
             }
+        case "January":
+            if currentBackground != "NewYear" {
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/WinterNewYear.jpg")!, isBackground: true)
+                setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .systemCyan)!), isBackground: false)
+                UserDefaults.standard.set("test", forKey: "seasonalBackgroundImage")
+            }
         case "February":
             if currentBackground != "Valentines" {
                 downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/valentines.jpg")!, isBackground: true)
