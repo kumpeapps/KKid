@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "WishList", subtitle: "Added ability for admins to turn on/off WishList (kids, if you want to use the WishList, ask your parents to turn it on.")])
+        WhatsNewItem.text(title: "WishList", subtitle: "Added ability for admins to turn on/off WishList (kids, if you want to use the WishList, ask your parents to turn it on)")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
