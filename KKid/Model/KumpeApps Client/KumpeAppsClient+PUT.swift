@@ -42,7 +42,7 @@ extension KumpeAppsClient {
     }
 
 // MARK: updateUser
-    class func updateUser(username: String, email: String, firstName: String, lastName: String, user: User, emoji: String, enableAllowance: Bool, enableChores: Bool, enableAdmin: Bool, enableTmdb: Bool, tmdbKey: String?, pushChoresNew: Bool = true, pushChoresReminders: Bool = true, pushAllowanceNew: Bool = true, completion: @escaping (Bool, String?) -> Void) {
+    class func updateUser(username: String, email: String, firstName: String, lastName: String, user: User, emoji: String, enableAllowance: Bool, enableWishList: Bool, enableChores: Bool, enableAdmin: Bool, enableTmdb: Bool, tmdbKey: String?, pushChoresNew: Bool = true, pushChoresReminders: Bool = true, pushAllowanceNew: Bool = true, completion: @escaping (Bool, String?) -> Void) {
         var parameters = [
             "username": username,
             "email": email,
@@ -54,6 +54,10 @@ extension KumpeAppsClient {
 
         if tmdbKey != nil {
             parameters["tmdbKey"] = tmdbKey
+        }
+
+        if enableWishList != user.enableWishList {
+            parameters["enableWishList"] = "\(enableWishList)"
         }
 
         if enableChores != user.enableChores {
@@ -100,7 +104,7 @@ extension KumpeAppsClient {
             case false:
                 KumpeAppsClient.unsubscribeAPNS(user: user, section: "Chores-Reminders")
             default:
-                KumpeAppsClient.subscribeAPNS(user: user, section: "Chores-Remidners")
+                KumpeAppsClient.subscribeAPNS(user: user, section: "Chores-Reminders")
             }
         }
 

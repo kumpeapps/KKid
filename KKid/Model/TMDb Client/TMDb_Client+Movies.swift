@@ -130,7 +130,12 @@ extension TMDb_Client {
                 "session_id":"\(sessionId)",
                 "page":"\(page)"
             ]
-            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.favoriteMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, _) in
+            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.favoriteMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, error) in
+
+                if let error = error {
+                    ShowAlert.banner(title: error, message: "Your TMDb account needs to be re-linked in your User Profile.")
+                }
+
                 let taskGroup = DispatchGroup()
                 guard var movieResponse = response else {
                     completion(false,nil)
@@ -172,7 +177,12 @@ extension TMDb_Client {
                 "page":"\(page)"
             ]
 
-            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.watchlistMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, _) in
+            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.watchlistMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, error) in
+
+                if let error = error {
+                    ShowAlert.banner(title: error, message: "Your TMDb account needs to be re-linked in your User Profile.")
+                }
+
                 let taskGroup = DispatchGroup()
                 var movieResponse = response
                 var removeMovies: [Int] = []

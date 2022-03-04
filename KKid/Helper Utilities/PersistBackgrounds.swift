@@ -5,7 +5,7 @@
 //  Created by Justin Kumpe on 9/7/20.
 //  Copyright © 2020 Justin Kumpe. All rights reserved.
 //
-//Saves/loads images to/from device. Will use this in future release so users can setup custom backgrounds/logos.
+// Saves/loads images to/from device. Will use this in future release so users can setup custom backgrounds/logos.
 
 import UIKit
 

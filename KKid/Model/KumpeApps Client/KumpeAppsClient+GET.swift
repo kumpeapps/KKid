@@ -38,6 +38,7 @@ extension KumpeAppsClient {
                 taskForGet(apiUrl: "\(baseURL)/kkid/user", responseType: KKid_User_Response.self, parameters: ["enableBool":"true"], headers: ["X-Auth":response.authKey ?? ""]) { userResponse, userError in
                     userAuthResponse.user = userResponse?.user
                     completion(userAuthResponse,userError)
+                    UIApplication.shared.applicationIconBadgeNumber = 0
                 }
             }
             // taskForGet(module: module, responseType: KKid_Auth_Response.self, parameters: parameters) { (response, error) in

@@ -23,6 +23,7 @@ class UserEditProfileViewController: FormViewController {
         firstName.value = selectedUser.firstName ?? ""
         lastName.value = selectedUser.lastName ?? ""
         emoji.value = selectedUser.emoji ?? "🤗"
+        enableWishList.value = selectedUser.enableWishList
         enableChores.value = selectedUser.enableChores
         enableAllowance.value = selectedUser.enableAllowance
         enableAdmin.value = selectedUser.isAdmin
@@ -51,6 +52,7 @@ class UserEditProfileViewController: FormViewController {
         builder += emoji
         if LoggedInUser.user!.isAdmin {
             builder += SectionHeaderTitleFormItem().title("Module Access Permissions")
+            builder += enableWishList
             builder += enableChores
             builder += enableAllowance
             builder += enableAdmin
@@ -106,6 +108,12 @@ class UserEditProfileViewController: FormViewController {
     lazy var emoji: TextFieldFormItem = {
         let instance = TextFieldFormItem().title("Emoji Icon:")
         instance.required("Emoji is required")
+        return instance
+    }()
+
+// MARK: enableWishList Field
+    lazy var enableWishList: SwitchFormItem = {
+        let instance = SwitchFormItem().title("Enable Wish List")
         return instance
     }()
 
@@ -187,7 +195,7 @@ class UserEditProfileViewController: FormViewController {
             return
         }
 
-        KumpeAppsClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil, pushChoresNew: pushChoresNew.value, pushChoresReminders: pushChoresReminders.value, pushAllowanceNew: pushAllowanceNew.value) { (success, error) in
+        KumpeAppsClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableWishList: enableWishList.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil, pushChoresNew: pushChoresNew.value, pushChoresReminders: pushChoresReminders.value, pushAllowanceNew: pushAllowanceNew.value) { (success, error) in
             if success {
                 dispatchOnMain {
                     KumpeAppsClient.getUsers { (success, _) in
