@@ -8,9 +8,11 @@
 
 import UIKit
 import BadgeSwift
+import AvatarView
 
 class ModuleCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var badge: BadgeSwift!

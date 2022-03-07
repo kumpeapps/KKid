@@ -67,6 +67,7 @@ class UserEditProfileViewController: FormViewController {
             builder += pushAllowanceNew
         }
         builder += SectionHeaderTitleFormItem().title("Link Accounts")
+        builder += gravatarButton
         builder += tmdbButton
     }
 
@@ -177,6 +178,16 @@ class UserEditProfileViewController: FormViewController {
         return instance
     }()
 
+    // MARK: gravatarButton
+        lazy var gravatarButton: ButtonFormItem = {
+            let instance = ButtonFormItem()
+            instance.title = "Update Avatar/Profile Picture"
+            instance.action = { [weak self] in
+                self?.updateGravatar()
+            }
+            return instance
+        }()
+
 // MARK: authenticateTmdb
     func authenticateTmdb() {
         TMDb_Client.getToken { (success, token) in
@@ -186,6 +197,11 @@ class UserEditProfileViewController: FormViewController {
                 ShowAlert.banner(title: "Error", message: "There was an error attemting to link your account.")
             }
         }
+    }
+
+// MARK: updateGravatar
+    func updateGravatar() {
+        launchURL("https://www.gravatar.com")
     }
 
 // MARK: submitForm

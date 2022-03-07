@@ -22,6 +22,11 @@ class KKidUITests: XCTestCase {
             elementsQuery.buttons["Login"].tap()
             sleep(5)
         }
+
+        if app.staticTexts["Continue"].exists {
+            app/*@START_MENU_TOKEN@*/.staticTexts["Continue"]/*[[".buttons[\"Continue\"].staticTexts[\"Continue\"]",".staticTexts[\"Continue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        }
+
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
 
@@ -72,12 +77,9 @@ class KKidUITests: XCTestCase {
 
     func testSelectUser() throws {
 
-        let cellsQuery = app.collectionViews.cells
-        let selectUserElement = cellsQuery.otherElements.containing(.staticText, identifier:"Select User").element
-        selectUserElement.tap()
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["John Doe"]/*[[".cells.staticTexts[\"John Doe\"]",".staticTexts[\"John Doe\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        selectUserElement.tap()
-        app.navigationBars["Select User"].buttons["Home"].tap()
+        let app = XCUIApplication()
+        app.buttons["avatar"].tap()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Joey Doe"]/*[[".cells.staticTexts[\"Joey Doe\"]",".staticTexts[\"Joey Doe\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 
     }
 
@@ -124,7 +126,8 @@ class KKidUITests: XCTestCase {
         sleep(5)
         snapshot("AllowanceScreen")
         app.navigationBars["Allowance"].buttons["Home"].tap()
-        cellsQuery.otherElements.containing(.staticText, identifier:"Select User").element.tap()
+        sleep(2)
+        app.buttons["avatar"].tap()
         sleep(5)
         snapshot("SelectUserScreen")
         app.navigationBars["Select User"].buttons["Home"].tap()
@@ -146,5 +149,11 @@ class KKidUITests: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+
+    func tapCoordinate(at xCoordinate: Double, and yCoordinate: Double) {
+        let normalized = app.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let coordinate = normalized.withOffset(CGVector(dx: xCoordinate, dy: yCoordinate))
+        coordinate.tap()
     }
 }

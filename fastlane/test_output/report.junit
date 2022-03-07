@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='KKidUITests.xctest' tests='8' failures='0'>
+  <testsuite name='KKidUITests.KKidUITests' tests='8' failures='0'>
+    <testcase classname='KKidUITests.KKidUITests' name='testAllowance' time='18.727'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testBuildScreenshots' time='75.218'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testChores' time='21.020'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testEditProfile' time='20.235'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testLaunchPerformance' time='112.349'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testLogin' time='17.708'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testSelectUser' time='19.555'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testTmdb' time='23.845'/>
+  </testsuite>
+</testsuites>

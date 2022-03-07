@@ -20,4 +20,27 @@ platform :ios do
   lane :screenshots do
     capture_screenshots(workspace: "KKid.xcworkspace", scheme: "KKidUITests")
   end
+  lane :beta do
+  	desc "Build and upload beta version to testflight"
+  	increment_build_number(
+  		bump_type: "patch" # Automatically increment patch build number
+	)
+  	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
+  	upload_to_testflight
+  end
+  lane :release do
+  	desc "Build and upload release version to Apple"
+  	run_tests(workspace: "KKid.xcworkspace",
+            devices: ["iPhone 12 Pro"],
+            scheme: "KKidUITests",
+            skip_testing: "testBuildScreenshots")
+  	increment_build_number
+  	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
+  	deliver(
+  		force: true,
+  		metadata_path: "./metadata",
+  		submit_for_review: false,
+    	automatic_release: true
+  	)
+  end
 end

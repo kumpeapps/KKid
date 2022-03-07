@@ -12,6 +12,7 @@ import CoreData
 import KumpeHelpers
 import Haptico
 import Toast_Swift
+import AvatarView
 
 class SelectUserViewController: UIViewController {
 
