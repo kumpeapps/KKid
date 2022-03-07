@@ -54,12 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         PrivacyKit.shared.setTitle("Terms of Service & Privacy Policy")
         PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
 
-//        Configure Google AdMob
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers =
-            [ "a29d3456cf840382ad3824c1e1115b74", "\(kGADSimulatorID)" ]
-        GADMobileAds.sharedInstance().requestConfiguration.tag(forChildDirectedTreatment: true)
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
-
 //        Load Data Controller
         DataController.shared.load()
 

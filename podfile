@@ -37,4 +37,5 @@ target 'KKid' do
 	pod 'YoutubeKit'
 	pod 'ShipBookSDK'
 	pod 'WhatsNew'
+	pod 'AvatarView', :git => 'https://github.com/kumpeapps/AvatarView.git', :branch => 'master'
 end

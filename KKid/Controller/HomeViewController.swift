@@ -11,7 +11,6 @@
 
 import UIKit
 import CollectionViewCenteredFlowLayout
-import GoogleMobileAds
 import PrivacyKit
 import Kingfisher
 import DeviceKit
@@ -19,31 +18,35 @@ import KumpeHelpers
 import Snowflake
 import AVFoundation
 import WhatsNew
+import AvatarView
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
 
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
-
-// MARK: Google Add Banner
-    @IBOutlet var bannerView: GADBannerView!
-
+    @IBOutlet weak var avatarButton: UIButton!
+    
 // MARK: Collection View
     @IBOutlet weak var collectionView: UICollectionView!
 
 // MARK: Reachability
     var reachable: ReachabilitySetup!
 
-// MARK: Parameters
+    @IBOutlet weak var avatarView: AvatarView!
+
+    // MARK: Parameters
     var modules: [KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
     let dayOfWeek: Int = getDayOfWeek() ?? 0
     var choreCount: Int = 0
     let iconCache = ImageCache(name: "iconCache")
+    let gravatarCache = ImageCache(name: "gravatarCache")
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "WishList", subtitle: "Added ability for admins to turn on/off WishList (kids, if you want to use the WishList, ask your parents to turn it on)")])
+        WhatsNewItem.text(title: "Home Page", subtitle: "Changed basic layout of homepage."),
+        WhatsNewItem.text(title: "Home Page", subtitle: "Select User Removed. To select users click on your Avatar in the upper right of the app."),
+        WhatsNewItem.text(title: "Home Page", subtitle: "Your avatar on homepage now uses your Gravatar which can be updated at Gravatar.com. Be sure your Gravatar account and KumpeApps/KKid account use the same email address.")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -55,6 +58,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.reloadData()
         iconCache.diskStorage.config.expiration = .days(90)
         iconCache.memoryStorage.config.expiration = .days(90)
+        gravatarCache.diskStorage.config.expiration = .seconds(500)
+        gravatarCache.memoryStorage.config.expiration = .seconds(500)
+        avatarView.imageView.isUserInteractionEnabled = false
     }
 
 // MARK: becomeFirstResponder
@@ -97,6 +103,34 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         modules = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
         buildModules()
         registerAPNS()
+        var gravatar = "https://www.gravatar.com/avatar/?d=mp"
+        var email = ""
+        avatarView.borderColor = UIColor.systemRed
+        if let selectedUser = LoggedInUser.selectedUser {
+            email = selectedUser.email!
+            gravatar = "https://www.gravatar.com/avatar/\(email.MD5)?d=mp"
+            if selectedUser.isMaster {
+                avatarView.borderColor = UIColor.systemPurple
+            } else if selectedUser.isAdmin {
+                avatarView.borderColor = UIColor.systemYellow
+            } else if selectedUser.isChild {
+                avatarView.borderColor = UIColor.systemTeal
+            } else if !selectedUser.isActive {
+                avatarView.borderColor = UIColor.systemRed
+            }
+        }
+        avatarView.isHidden = false
+        avatarView.bounds = CGRect(x: 0, y: 0, width: 60, height: 60)
+        avatarView.borderWidth = 4
+        avatarView.backgroundColor = UIColor(white: 1, alpha: 0)
+        avatarView.imageView.kf.setImage(
+            with: URL(string: gravatar),
+            placeholder: UIImage(named: "mp"),
+            options: [
+                .transition(.fade(1)),
+                .targetCache(gravatarCache)
+                ])
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
 // MARK: viewDidAppear
@@ -107,10 +141,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 LoggedInUser.setLoggedInUser()
                 self.buildModules()
             }
-        }
-
-        if LoggedInUser.user != nil && !LoggedInUser.user!.enableNoAds {
-            loadGoogleAdMob()
         }
 
         self.requirePrivacy()
@@ -124,6 +154,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         reachable = nil
         iconCache.cleanExpiredCache()
         iconCache.cleanExpiredDiskCache()
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
 // MARK: didRecieveMemoryWarning
@@ -163,14 +194,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let selectedUser = LoggedInUser.selectedUser {
             modules = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
 
-            dispatchOnMain {
-                if LoggedInUser.selectedUser == LoggedInUser.user {
-                    self.title = "\(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
-                } else {
-                    self.title = "Selected: \(selectedUser.emoji!) \(selectedUser.firstName ?? "") \(selectedUser.lastName ?? "")"
-                }
-            }
-
             if selectedUser.enableChores {
                 modules.append(KKid_Module.init(title: "Chores", segue: "segueChores", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-to-do-80.png"))
             }
@@ -191,7 +214,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             modules.append(KKid_Module.init(title: "Edit Profile", segue: "segueEditProfile", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-profile-80.png"))
 
             if LoggedInUser.user!.isAdmin {
-                modules.append(KKid_Module.init(title: "Select User", segue: "segueSelectUser", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-select-users-80.png"))
+//                modules.append(KKid_Module.init(title: "Select User", segue: "segueSelectUser", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-select-users-80.png"))
             }
 
             modules.append(KKid_Module.init(title: "App Settings", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-services-50.png"))
@@ -305,6 +328,24 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
     }
 
+    @objc func pressedAvatar(sender: UITapGestureRecognizer) {
+        KumpeHelpers.Logger.log(.action, "Pressed Avatar")
+        if LoggedInUser.user!.isAdmin {
+        performSegue(withIdentifier: "segueSelectUser", sender: self)
+        } else {
+            KumpeHelpers.ShowAlert.banner(title: "Change User Denied", message: "Only Parents/Admins can change users. You may update your avatar photo at Gravatar.com. (Link is in Edit Profile)")
+        }
+    }
+    
+    @IBAction func pressedAvatarButton() {
+        KumpeHelpers.Logger.log(.action, "Pressed Avatar Button")
+        if LoggedInUser.user!.isAdmin {
+        performSegue(withIdentifier: "segueSelectUser", sender: self)
+        } else {
+            KumpeHelpers.ShowAlert.banner(title: "Change User Denied", message: "Only Parents/Admins can change users. You may update your avatar photo at Gravatar.com. (Link is in Edit Profile)")
+        }
+    }
+
 }
 
 // MARK: - Collection View Functions
@@ -327,8 +368,37 @@ extension HomeViewController {
             cell.title.text = module.title
             cell.badge.text = "0"
             cell.badge.isHidden = true
+            cell.avatarView.bounds = CGRect(x: 0, y: 0, width: 63, height: 63)
+            cell.avatarView.borderWidth = 0
+            cell.avatarView.backgroundColor = UIColor(white: 1, alpha: 0)
+            cell.avatarView.isHidden = true
 
-            if module.getRemoteIcon && module.remoteIconName != nil {
+            var email = ""
+
+            if let selectedUser = LoggedInUser.selectedUser {
+                email = selectedUser.email!
+            }
+
+            if module.title == "Select User" {
+                var gravatar = "https://www.gravatar.com/avatar/?d=mp"
+                if let selectedUser = LoggedInUser.selectedUser {
+                    email = selectedUser.email!
+                    gravatar = "https://www.gravatar.com/avatar/\(email.MD5)?d=mp"
+                }
+                cell.avatarView.isHidden = false
+                    cell.avatarView.bounds = CGRect(x: 0, y: 0, width: 60, height: 60)
+                    cell.avatarView.borderColor = UIColor.systemPurple
+                    cell.avatarView.borderWidth = 4
+                    cell.imageView.image = nil
+                    cell.avatarView.backgroundColor = UIColor(white: 1, alpha: 0)
+                cell.avatarView.imageView.kf.setImage(
+                    with: URL(string: gravatar),
+                    placeholder: UIImage(named: "mp"),
+                    options: [
+                        .transition(.fade(1)),
+                        .targetCache(gravatarCache)
+                        ])
+            } else if module.getRemoteIcon && module.remoteIconName != nil {
                 cell.imageView.kf.setImage(
                     with: URL(string: "\(KumpeAppsClient.imageURL)/\(module.remoteIconName!)"),
                     placeholder: module.icon,
@@ -337,7 +407,7 @@ extension HomeViewController {
                         .cacheOriginalImage,
                         .cacheSerializer(FormatIndicatedCacheSerializer.png),
                         .targetCache(iconCache)
-                    ])
+                        ])
             } else {
                 cell.imageView.image = module.icon
             }
@@ -389,19 +459,4 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let screenWidth = 100
         return CGSize(width: screenWidth, height: screenWidth)
     }
-}
-
-// MARK: - Google AdBanner
-extension HomeViewController: GADBannerViewDelegate {
-    func loadGoogleAdMob() {
-        bannerView.adUnitID = APICredentials.GoogleAdMob.homeScreenBannerID
-
-        #if DEBUG
-            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        #endif
-
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-          }
-
 }

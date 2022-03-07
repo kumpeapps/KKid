@@ -46,6 +46,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 ## Other Credits
 -   [Icons from Icons8](https://icons8.com)
 -   [TMDb](https://themoviedb.org)
+-   [Gravatar](https://www.gravatar.com)
 
 ## Instructions
 
@@ -68,7 +69,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   Click on Edit Profile to edit the  user's profile or click on the module name to access that module for the user
 -   Current Module options are: [Edit Profile](https://github.com/justinkumpe/KKid#edit-profile-module), [Chores](https://github.com/justinkumpe/KKid#chores-module), [Allowance](https://github.com/justinkumpe/KKid#allowance-module), [Movies DB](https://github.com/justinkumpe/KKid#movies-db-module), and [Wish List](https://github.com/justinkumpe/KKid#wish-list-module)
 
-### Select User Screen
+### Select User Screen (Click on your avatar in upper right for Select User Screen)
 -   On the Select User screen you will see a list of users under your master (household) account.
 -   If you are the master user (background on name will be purple) or an admin user (background on name will be gold/yellow) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
 -   If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
@@ -82,6 +83,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   If you are the master or an admin user then you will have switches for each module/permission. To turn on the permission for a user just change the switch to on. To remove a permission from the user then you turn the switch to off. Do not forget to click update in the upper right to update the users permissions as well.
 -   In the Push Notifications section you can customize which push notifications the user receives for modules the user has access too.
 -   In the link accounts section you can link/re-link third-party accounts used by KKid.
+-   To change your Avatar Photo you will need to create an account with [Gravatar](https://www.gravatar.com) using the same email you used for KKid. KKid will then sync your new avatar within 24hrs.
 
 #### Chores Module
 -   In this module you will see a table listing the selected user's chores for the week.
@@ -154,8 +156,6 @@ API access may be obtained by opening a support ticket
 
 ## Future Feature List
 
--   [ ] Add ability for users to choose a custom background image
--   [ ] Add ability for users to choose a custom logo image
 -   [X] Add managed app config parameters
 -   [X] What's New Page
 -   [X] Gift wish list for the kids
