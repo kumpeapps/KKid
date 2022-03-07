@@ -25,8 +25,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
+
+// MARK: Buttons
     @IBOutlet weak var avatarButton: UIButton!
-    
+
 // MARK: Collection View
     @IBOutlet weak var collectionView: UICollectionView!
 

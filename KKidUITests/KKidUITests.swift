@@ -150,7 +150,7 @@ class KKidUITests: XCTestCase {
             }
         }
     }
-    
+
     func tapCoordinate(at xCoordinate: Double, and yCoordinate: Double) {
         let normalized = app.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
         let coordinate = normalized.withOffset(CGVector(dx: xCoordinate, dy: yCoordinate))
