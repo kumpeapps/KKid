@@ -338,7 +338,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             KumpeHelpers.ShowAlert.banner(title: "Change User Denied", message: "Only Parents/Admins can change users. You may update your avatar photo at Gravatar.com. (Link is in Edit Profile)")
         }
     }
-    
+
     @IBAction func pressedAvatarButton() {
         KumpeHelpers.Logger.log(.action, "Pressed Avatar Button")
         if LoggedInUser.user!.isAdmin {
