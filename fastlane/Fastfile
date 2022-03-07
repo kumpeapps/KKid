@@ -31,10 +31,16 @@ platform :ios do
   lane :release do
   	desc "Build and upload release version to Apple"
   	run_tests(workspace: "KKid.xcworkspace",
-            devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (5th generation)","iPhone 13 mini"],
-            scheme: "KKidUITests")
+            devices: ["iPhone 12 Pro"],
+            scheme: "KKidUITests",
+            skip_testing: "testBuildScreenshots")
   	increment_build_number
   	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
-  	deliver --force
+  	deliver(
+  		force: true,
+  		metadata_path: "./metadata",
+  		submit_for_review: false,
+    	automatic_release: true
+  	)
   end
 end
