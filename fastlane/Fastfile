@@ -18,22 +18,24 @@ default_platform(:ios)
 platform :ios do
   desc "Generate new localized screenshots"
   lane :screenshots do
-    capture_screenshots(workspace: "KKid.xcworkspace", scheme: "KKidUITests")
+    capture_screenshots(workspace: "KKid.xcworkspace",
+    					scheme: "KKidUITests",
+    					only_testing: "KKidUITests/KKidTakeScreenshots")
+    frameit
+    sh('find ./screenshots/en-US/ -type f \! -name "*framed*.png" -delete')
   end
+  desc "Build and upload beta version to testflight"
   lane :beta do
-  	desc "Build and upload beta version to testflight"
-  	increment_build_number(
-  		bump_type: "patch" # Automatically increment patch build number
-	)
+  	increment_build_number
   	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
   	upload_to_testflight
   end
+  desc "Build and upload release version to Apple"
   lane :release do
-  	desc "Build and upload release version to Apple"
   	run_tests(workspace: "KKid.xcworkspace",
             devices: ["iPhone 12 Pro"],
             scheme: "KKidUITests",
-            skip_testing: "testBuildScreenshots")
+            only_testing: "KKidUITests/KKidUITests")
   	increment_build_number
   	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
   	deliver(
@@ -42,5 +44,11 @@ platform :ios do
   		submit_for_review: false,
     	automatic_release: true
   	)
+  end
+  lane :test do
+  	run_tests(workspace: "KKid.xcworkspace",
+            devices: ["iPhone 12 Pro"],
+            scheme: "KKidUITests",
+            only_testing: "KKidUITests/KKidUITests")
   end
 end

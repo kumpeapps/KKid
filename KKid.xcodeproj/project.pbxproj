@@ -91,6 +91,7 @@
 		0FDB64B9251C24DA00427543 /* AddParentAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB64B8251C24DA00427543 /* AddParentAccountViewController.swift */; };
 		0FDB64BB251C2FA900427543 /* LaunchURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB64BA251C2FA900427543 /* LaunchURL.swift */; };
 		0FDC462C251AC19000A4E3D2 /* UserEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDC462B251AC19000A4E3D2 /* UserEditProfileViewController.swift */; };
+		0FF3D19127DA7797007B91FF /* KKidTakeScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF3D19027DA7797007B91FF /* KKidTakeScreenshots.swift */; };
 		A3421BF978588D5B625E0BEA /* Pods_KKid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73BE95B966B40C855EFC2DA2 /* Pods_KKid.framework */; };
 /* End PBXBuildFile section */
 
@@ -193,6 +194,7 @@
 		0FDB64B8251C24DA00427543 /* AddParentAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParentAccountViewController.swift; sourceTree = "<group>"; };
 		0FDB64BA251C2FA900427543 /* LaunchURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchURL.swift; sourceTree = "<group>"; };
 		0FDC462B251AC19000A4E3D2 /* UserEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditProfileViewController.swift; sourceTree = "<group>"; };
+		0FF3D19027DA7797007B91FF /* KKidTakeScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKidTakeScreenshots.swift; sourceTree = "<group>"; };
 		1019749FB3A556C106D9DF7C /* Pods-KKid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKid.release.xcconfig"; path = "Target Support Files/Pods-KKid/Pods-KKid.release.xcconfig"; sourceTree = "<group>"; };
 		1355DCB75F925F8970F6DE9C /* Pods-KKid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKid.debug.xcconfig"; path = "Target Support Files/Pods-KKid/Pods-KKid.debug.xcconfig"; sourceTree = "<group>"; };
 		73BE95B966B40C855EFC2DA2 /* Pods_KKid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KKid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,6 +423,7 @@
 				0FAC9F782558F0FE00A5ED29 /* SnapshotHelper.swift */,
 				0FAC9F6E2558E42000A5ED29 /* KKidUITests.swift */,
 				0FAC9F702558E42000A5ED29 /* Info.plist */,
+				0FF3D19027DA7797007B91FF /* KKidTakeScreenshots.swift */,
 			);
 			path = KKidUITests;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 			files = (
 				0FAC9F6F2558E42000A5ED29 /* KKidUITests.swift in Sources */,
 				0FAC9F792558F0FE00A5ED29 /* SnapshotHelper.swift in Sources */,
+				0FF3D19127DA7797007B91FF /* KKidTakeScreenshots.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,7 +867,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -871,7 +875,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -886,7 +890,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -894,7 +898,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -13,18 +13,19 @@ import KumpeHelpers
 import Haptico
 import Toast_Swift
 import AvatarView
+import Kingfisher
+import CollectionViewCenteredFlowLayout
 
 class SelectUserViewController: UIViewController {
 
 // MARK: Images
-    @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
 
 // MARK: Buttons
-    @IBOutlet weak var buttonAdd: UIBarButtonItem!
+    @IBOutlet weak var buttonAdd: UIButton!
 
-// MARK: Table View
-    @IBOutlet weak var tableView: UITableView!
+// MARK: Collection View
+    @IBOutlet weak var collectionView: UICollectionView!
 
 // MARK: Reachability
     var reachable: ReachabilitySetup!
@@ -45,7 +46,7 @@ class SelectUserViewController: UIViewController {
         fetchRequest.sortDescriptors = [sortByMaster, sortByAdmin, sortByFirstName]
 
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: "users")
-        fetchedResultsController.delegate = self
+//        fetchedResultsController.delegate = self
 
         do {
             try fetchedResultsController.performFetch()
@@ -59,23 +60,24 @@ class SelectUserViewController: UIViewController {
         super.viewWillAppear(animated)
         reachable = ReachabilitySetup()
         setupFetchedResultsController()
-        tableView.tableFooterView = UIView()
-        tableView.delegate = self
-        tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
 
 /*        Pull logo and background from AppDelegate.
          Setup this way so users can choose their own background and logo style in future releases
  */
-        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
         imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
 
-        if let indexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: indexPath, animated: false)
-            tableView.reloadRows(at: [indexPath], with: .fade)
-        }
         enableUI(false)
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         verifyAuthenticated()
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        let layout = CollectionViewCenteredFlowLayout()
+        collectionView.collectionViewLayout = layout
+        collectionView.reloadData()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
 // MARK: viewDidAppear
@@ -91,7 +93,13 @@ class SelectUserViewController: UIViewController {
             refreshUsers()
         }
 
-        tableView.refreshControl = refreshControl
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        let layout = CollectionViewCenteredFlowLayout()
+        collectionView.collectionViewLayout = layout
+        collectionView.reloadData()
+
+        collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshUsers), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing Users")
         refreshControl.endRefreshing()
@@ -103,6 +111,7 @@ class SelectUserViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
         fetchedResultsController = nil
         reachable = nil
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
 // MARK: verifyAuthenticated
@@ -129,112 +138,18 @@ class SelectUserViewController: UIViewController {
         } else {
             self.view.makeToastActivity(.center)
         }
-
-        if UserDefaults.standard.bool(forKey: "isAdmin") {
-            buttonAdd.isEnabled = enable
-        } else {
-            buttonAdd.isEnabled = false
-        }
     }
 
 }
 
     // MARK: - Table View
 
-extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate {
-
-// MARK: numberOfSections
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 1
-    }
-
-// MARK: tableView: numberOfRowsInSection
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
-    }
-
-// MARK: tableView: cellForRowAt
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let aUser = fetchedResultsController.object(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
-        // Configure cell
-        cell.textLabel?.text = "\(aUser.firstName ?? "") \(aUser.lastName ?? "")"
-
-        if aUser.isBanned {
-            cell.imageView?.image = AltImage.banned.image
-        } else if aUser.isLocked {
-            cell.imageView?.image = AltImage.locked.image
-        } else if !aUser.isActive {
-            cell.imageView?.image = AltImage.inactive.image
-        } else {
-            cell.imageView?.image = aUser.emoji!.image()
-        }
-
-        if aUser.isMaster {
-            cell.backgroundColor = UIColor.systemPurple
-            cell.textLabel?.textColor = UIColor.white
-        } else if aUser.isAdmin {
-            cell.backgroundColor = UIColor.systemYellow
-            cell.textLabel?.textColor = UIColor.black
-        } else if aUser.isChild {
-            cell.backgroundColor = UIColor.systemTeal
-            cell.textLabel?.textColor = UIColor.black
-        } else if !aUser.isActive {
-            cell.backgroundColor = UIColor.systemRed
-            cell.textLabel?.textColor = UIColor.black
-        }
-
-        enum AltImage {
-            case locked
-            case banned
-            case inactive
-
-            var image: UIImage {
-                switch self {
-                case .locked: return "🔒".image()!
-                case .banned: return "⛔️".image()!
-                case .inactive: return "❗️".image()!
-                }
-            }
-        }
-        return cell
-    }
-
-// MARK: tableView: didSelectRowAt
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedUser = fetchedResultsController.object(at: indexPath)
-        let loggedInUser = LoggedInUser.user!
-
-        if selectedUser.isBanned {
-            ShowAlert.banner(title: "User Banned", message: "This user has been banned. Please contact support at helpdesk@kumpeapps.com!")
-        } else if selectedUser.isLocked {
-            ShowAlert.banner(theme: .warning, title: "User Account Locked", message: "This user's account has been locked. You can still edit this account but the user can not login until their account is unlocked.")
-            userSelected(selectedUser: selectedUser)
-        } else if !selectedUser.isActive {
-            ShowAlert.banner(title: "Account Inactive", message: "This account is inactive. Please delete user or Add Permissions in Profile.")
-            userSelected(selectedUser: selectedUser)
-        } else if selectedUser.isMaster && !loggedInUser.isMaster {
-            ShowAlert.banner(title: "Action Not Allowed", message: "Only the master account can select this user!")
-        } else if selectedUser.userID != loggedInUser.userID && !loggedInUser.isAdmin {
-            ShowAlert.banner(title: "Action Not Allowed", message: "Only Admin users may select other users. Please select your name only!")
-        } else {
-            userSelected(selectedUser: selectedUser)
-        }
-    }
+extension SelectUserViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
 // MARK: userSelected
     func userSelected(selectedUser: User) {
         LoggedInUser.selectedUser = selectedUser
         self.navigationController?.popToRootViewController(animated: true)
-    }
-
-// MARK: tableView: swipe to delete
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete: deleteUser(indexPath: indexPath)
-        default: () // Unsupported
-        }
     }
 
 // MARK: deleteUser
@@ -273,50 +188,91 @@ extension SelectUserViewController: UITableViewDataSource, UITableViewDelegate {
         KumpeAppsClient.getUsers { (_, _) in
             dispatchOnMain {
                 self.refreshControl.endRefreshing()
-                self.tableView.reloadData()
+                self.collectionView.reloadData()
             }
+        }
+    }
+
+// MARK: - CollectionView
+
+// MARK: centerItemsInCollectionView
+    func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
+        let totalWidth = cellWidth * numberOfItems
+        let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
+        let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+    }
+
+// MARK: Set Number of Items
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+    }
+
+// MARK: Build Items
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let aUser = fetchedResultsController.object(at: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ModuleCollectionViewCell
+
+        // Configure cell
+        cell.title.text = "\(aUser.firstName ?? "") \(aUser.lastName?.prefix(1) ?? "")"
+
+        if aUser.isMaster {
+            cell.avatarView.borderColor = UIColor.systemPurple
+        } else if aUser.isAdmin {
+            cell.avatarView.borderColor = UIColor.systemYellow
+        } else if aUser.isChild {
+            cell.avatarView.borderColor = UIColor.systemTeal
+        } else if !aUser.isActive {
+            cell.avatarView.borderColor = UIColor.systemRed
+        }
+
+        let email = aUser.email!
+        let gravatar = "https://www.gravatar.com/avatar/\(email.MD5)?d=mp"
+        cell.avatarView.isHidden = false
+            cell.avatarView.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
+            cell.avatarView.borderWidth = 4
+            cell.imageView.image = nil
+            cell.avatarView.backgroundColor = UIColor(white: 1, alpha: 0)
+        cell.avatarView.imageView.kf.setImage(
+            with: URL(string: gravatar),
+            placeholder: UIImage(named: "mp"),
+            options: [
+                .transition(.fade(1)),
+                .targetCache(ImageCache(name: "gravatarCache"))
+                ])
+
+        return cell
+    }
+
+// MARK: Did Select Item
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedUser = fetchedResultsController.object(at: indexPath)
+        let loggedInUser = LoggedInUser.user!
+
+        if selectedUser.isBanned {
+            ShowAlert.banner(title: "User Banned", message: "This user has been banned. Please contact support at helpdesk@kumpeapps.com!")
+        } else if selectedUser.isLocked {
+            ShowAlert.banner(theme: .warning, title: "User Account Locked", message: "This user's account has been locked. You can still edit this account but the user can not login until their account is unlocked.")
+            userSelected(selectedUser: selectedUser)
+        } else if !selectedUser.isActive {
+            ShowAlert.banner(title: "Account Inactive", message: "This account is inactive. Please delete user or Add Permissions in Profile.")
+            userSelected(selectedUser: selectedUser)
+        } else if selectedUser.isMaster && !loggedInUser.isMaster {
+            ShowAlert.banner(title: "Action Not Allowed", message: "Only the master account can select this user!")
+        } else if selectedUser.userID != loggedInUser.userID && !loggedInUser.isAdmin {
+            ShowAlert.banner(title: "Action Not Allowed", message: "Only Admin users may select other users. Please select your name only!")
+        } else {
+            userSelected(selectedUser: selectedUser)
         }
     }
 }
 
-// MARK: - NSFetchedResultsControllerDelegate
-
-extension SelectUserViewController: NSFetchedResultsControllerDelegate {
-
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
+// MARK: - Collection View Flow Layout Delegate
+extension SelectUserViewController: UICollectionViewDelegateFlowLayout {
+// MARK: set cell size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenWidth = 150
+        return CGSize(width: screenWidth, height: screenWidth)
     }
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-            tableView.setNeedsLayout()
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        @unknown default:
-            break
-        }
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        let indexSet = IndexSet(integer: sectionIndex)
-        switch type {
-        case .insert: tableView.insertSections(indexSet, with: .fade)
-        case .delete: tableView.deleteSections(indexSet, with: .fade)
-        case .update, .move:
-            fatalError("Invalid change type in controller(_:didChange:atSectionIndex:for:). Only .insert or .delete should be possible.")
-        @unknown default:
-            break
-        }
-    }
-
 }

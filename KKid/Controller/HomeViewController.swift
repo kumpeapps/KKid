@@ -16,7 +16,6 @@ import Kingfisher
 import DeviceKit
 import KumpeHelpers
 import Snowflake
-import AVFoundation
 import WhatsNew
 import AvatarView
 
@@ -25,6 +24,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: Images
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
+    @IBOutlet weak var avatarView: AvatarView!
 
 // MARK: Buttons
     @IBOutlet weak var avatarButton: UIButton!
@@ -35,9 +35,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: Reachability
     var reachable: ReachabilitySetup!
 
-    @IBOutlet weak var avatarView: AvatarView!
+// MARK: Labels
+    @IBOutlet weak var labelSwitchUser: UILabel!
 
-    // MARK: Parameters
+// MARK: Parameters
     var modules: [KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
     let dayOfWeek: Int = getDayOfWeek() ?? 0
     var choreCount: Int = 0
@@ -109,6 +110,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         var email = ""
         avatarView.borderColor = UIColor.systemRed
         if let selectedUser = LoggedInUser.selectedUser {
+            labelSwitchUser.isHidden = !LoggedInUser.user!.isAdmin
             email = selectedUser.email!
             gravatar = "https://www.gravatar.com/avatar/\(email.MD5)?d=mp"
             if selectedUser.isMaster {
@@ -344,8 +346,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if LoggedInUser.user!.isAdmin {
         performSegue(withIdentifier: "segueSelectUser", sender: self)
         } else {
-            KumpeHelpers.ShowAlert.banner(title: "Change User Denied", message: "Only Parents/Admins can change users. You may update your avatar photo at Gravatar.com. (Link is in Edit Profile)")
+            KumpeHelpers.ShowAlert.banner(title: "Switch User Denied", message: "Only Parents/Admins can switch users. You may update your avatar photo at Gravatar.com. (Link is in Edit Profile)")
         }
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
     }
 
 }

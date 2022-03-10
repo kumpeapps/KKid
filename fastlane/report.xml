@@ -5,7 +5,22 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000378">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000599">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: capture_screenshots" time="422.251074">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: frameit" time="430.130589">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: find ./screenshots/en-US/ -type f \! -name &quot;*framed*.png&quot; -delete" time="0.023803">
         
       </testcase>
     

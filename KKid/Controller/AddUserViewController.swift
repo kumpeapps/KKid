@@ -18,6 +18,21 @@ class AddUserViewController: FormViewController {
         installSubmitButton()
     }
 
+    // MARK: viewWillAppear
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            switch self.traitCollection.userInterfaceStyle {
+            case .light: navigationController?.navigationBar.tintColor = UIColor.black
+            default: navigationController?.navigationBar.tintColor = UIColor.white
+            }
+        }
+
+    // MARK: viewWillDisappear
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            navigationController?.navigationBar.tintColor = UIColor.white
+        }
+
 // MARK: populate
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "Add User"

@@ -29,12 +29,20 @@ Generate new localized screenshots
 [bundle exec] fastlane ios beta
 ```
 
-
+Build and upload beta version to testflight
 
 ### ios release
 
 ```sh
 [bundle exec] fastlane ios release
+```
+
+Build and upload release version to Apple
+
+### ios test
+
+```sh
+[bundle exec] fastlane ios test
 ```
 
 

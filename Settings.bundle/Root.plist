@@ -178,6 +178,16 @@
 			<key>DefaultValue</key>
 			<string>https://github.com/evgenyneu/swift-badge</string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Gravatar</string>
+			<key>Key</key>
+			<string>gravatar</string>
+			<key>DefaultValue</key>
+			<string>https://www.gravatar.com</string>
+		</dict>
 	</array>
 </dict>
 </plist>

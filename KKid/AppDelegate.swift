@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import GoogleMobileAds
 import PrivacyKit
 import KumpeHelpers
 import ShipBookSDK

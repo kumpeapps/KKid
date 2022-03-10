@@ -32,7 +32,6 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [Smile](https://github.com/onmyway133/Smile)
 -   [CollectionViewCenteredFlowLayout](https://github.com/Coeur/CollectionViewCenteredFlowLayout)
 -   [Haptico](https://github.com/iSapozhnik/Haptico)
--   Google-Mobile-Ads-SDK
 -   [PrivacyKit](https://github.com/ithazfire/PrivacyKit)
 -   [BadgeSwift](https://github.com/evgenyneu/swift-badge)
 -   [TransitionButton](https://github.com/AladinWay/TransitionButton)
