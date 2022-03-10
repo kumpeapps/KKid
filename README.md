@@ -72,6 +72,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   On the Select User screen you will see a list of users under your master (household) account.
 -   If you are the master user (purple ring) or an admin user (yellow ring) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
 -   If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
+
 |      User Type          |      Ring Color     |
 |   :-----------------:   | :-----------------: |
 |   Master/Main Account   |        Purple       |
