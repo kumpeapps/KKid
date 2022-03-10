@@ -70,8 +70,14 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 ### Select User Screen (Click on your avatar in upper right for Select User Screen)
 -   On the Select User screen you will see a list of users under your master (household) account.
--   If you are the master user (background on name will be purple) or an admin user (background on name will be gold/yellow) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
+-   If you are the master user (purple ring) or an admin user (yellow ring) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
 -   If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)
+|      User Type          |      Ring Color     |
+|   :-----------------:   | :-----------------: |
+|   Master/Main Account   |        Purple       |
+|     Parent/Admin        |        Yellow       |
+|        Child            |         Teal        |
+|     Locked/Disabled     |          Red        |
 
 #### Add User Screen
 -   Enter the new user's username, email, password, first name, and last name. Then click submit
@@ -161,3 +167,4 @@ API access may be obtained by opening a support ticket
 -   [X] Movie Search with movie ratings
 -   [X] TV Show Search with Ratings
 -   [X] Linking TMDb account for saving movies/tv shows to favorites and watch list
+-   [ ] Share wish list with other people
