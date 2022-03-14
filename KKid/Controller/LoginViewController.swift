@@ -60,7 +60,6 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
         #if targetEnvironment(simulator)
         fieldUsername.text = "dev_kkid_master"
         fieldPassword.text = "LetmeN2it"
-        PrivacyKit.shared.acceptPrivacy()
         #endif
     }
 

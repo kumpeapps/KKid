@@ -27,7 +27,7 @@ target 'KKid' do
 	pod 'Sync'
 	pod 'Smile', :git => 'https://github.com/onmyway133/Smile.git', :branch => 'master'
 	pod 'CollectionViewCenteredFlowLayout'
-	pod 'Google-Mobile-Ads-SDK'
+#	pod 'Google-Mobile-Ads-SDK'
 	pod 'KumpeHelpers'
 	pod 'Haptico'
 	pod 'PrivacyKit'
