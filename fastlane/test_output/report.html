@@ -112,8 +112,6 @@
         <section id="counters">
           <h2 id="test-count"><span class="number">7</span> tests</h2>
           
-            <h2 id="fail-count"><span class="number">1</span> failures</h2>
-          
         </section>
         <section id="segment-bar">
           <a id="all-segment" onclick="selectSegment(this);" class="selected">All</a><a id="failing-segment" onclick="selectSegment(this);">Failing</a><a id="passing-segment" onclick="selectSegment(this);">Passing</a>
@@ -123,7 +121,7 @@
     <section id="test-suites">
       
         
-        <section class="test-suite failing" id="KKidUITests.KKidUITests">
+        <section class="test-suite passing" id="KKidUITests.KKidUITests">
           <section class="heading" onclick="toggleTests(this);">
             <h3 class="title">KKidUITests.KKidUITests</h3>
           </section>
@@ -134,7 +132,7 @@
               <tr class="test passing "  onclick="toggleDetails('testAllowance');">
                 <td>
                   
-                    <h3 class="time">61.832s</h3>
+                    <h3 class="time">59.068s</h3>
                   
                 </td>
                 <td><h3 class="title">testAllowance</h3></td>
@@ -145,7 +143,7 @@
               <tr class="test passing odd"  onclick="toggleDetails('testChores');">
                 <td>
                   
-                    <h3 class="time">22.675s</h3>
+                    <h3 class="time">22.563s</h3>
                   
                 </td>
                 <td><h3 class="title">testChores</h3></td>
@@ -156,7 +154,7 @@
               <tr class="test passing "  onclick="toggleDetails('testEditProfile');">
                 <td>
                   
-                    <h3 class="time">22.328s</h3>
+                    <h3 class="time">21.201s</h3>
                   
                 </td>
                 <td><h3 class="title">testEditProfile</h3></td>
@@ -167,7 +165,7 @@
               <tr class="test passing odd"  onclick="toggleDetails('testLaunchPerformance');">
                 <td>
                   
-                    <h3 class="time">98.553s</h3>
+                    <h3 class="time">97.470s</h3>
                   
                 </td>
                 <td><h3 class="title">testLaunchPerformance</h3></td>
@@ -178,7 +176,7 @@
               <tr class="test passing "  onclick="toggleDetails('testLogin');">
                 <td>
                   
-                    <h3 class="time">19.261s</h3>
+                    <h3 class="time">19.086s</h3>
                   
                 </td>
                 <td><h3 class="title">testLogin</h3></td>
@@ -189,7 +187,7 @@
               <tr class="test passing odd"  onclick="toggleDetails('testSelectUser');">
                 <td>
                   
-                    <h3 class="time">21.245s</h3>
+                    <h3 class="time">20.643s</h3>
                   
                 </td>
                 <td><h3 class="title">testSelectUser</h3></td>
@@ -197,29 +195,14 @@
               
             
               
-              <tr class="test failing "  onclick="toggleDetails('testTmdb');">
+              <tr class="test passing "  onclick="toggleDetails('testTmdb');">
                 <td>
+                  
+                    <h3 class="time">25.776s</h3>
                   
                 </td>
                 <td><h3 class="title">testTmdb</h3></td>
               </tr>
-              
-                <tr class="details failing testTmdb">
-                  <td></td>
-                  <td>
-                    
-                      <section class="test-detail reason">Failed to get matching snapshot: No matches found for Elements matching predicate '"Favorites" IN identifiers' from input {(</section>
-                    
-                    
-                      <section class="test-detail snippet">        <span class="k">let</span> <span class="nv">app2</span> <span class="o">=</span> <span class="n">app</span>
-        <span class="n">app2</span><span class="cm">/*@START_MENU_TOKEN@*/</span><span class="o">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">"Favorites"</span><span class="p">]</span><span class="cm">/*[[".segmentedControls.buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/</span><span class="o">.</span><span class="nf">tap</span><span class="p">()</span>
-        <span class="n">app2</span><span class="cm">/*@START_MENU_TOKEN@*/</span><span class="o">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">"Watch List"</span><span class="p">]</span><span class="cm">/*[[".segmentedControls.buttons[\"Watch List\"]",".buttons[\"Watch List\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/</span><span class="o">.</span><span class="nf">tap</span><span class="p">()</span>
-</section>
-                      <section class="test-detail">/Volumes/Developer/xcode_Apps/KKid/KKidUITests/KKidUITests.swift:160</section>
-                    
-                    
-                  </td>
-                </tr>
               
             
             </table>
