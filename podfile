@@ -16,6 +16,7 @@ plugin 'cocoapods-keys', {
 }
 
 target 'KKid' do
+project 'KKid.xcodeproj'
 	pod 'Snowflake', :git => 'https://github.com/kumpeapps/Snowflake.git', :branch => 'master'
 	pod 'ContentRestrictionsKit'
 	pod 'TransitionButton'

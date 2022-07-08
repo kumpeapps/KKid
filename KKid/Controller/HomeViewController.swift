@@ -285,6 +285,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .systemGreen)!), isBackground: false)
                 UserDefaults.standard.set("StPatricks", forKey: "seasonalBackgroundImage")
             }
+        case "May":
+            if currentBackground != "May" {
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/foster_care_month.jpg")!, isBackground: true)
+                setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .magenta)!), isBackground: false)
+                UserDefaults.standard.set("April", forKey: "seasonalBackgroundImage")
+            }
         case "October":
             if currentBackground != "Halloween" {
                 downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/halloween_bats.png")!, isBackground: true)

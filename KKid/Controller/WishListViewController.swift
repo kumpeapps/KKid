@@ -25,6 +25,7 @@ class WishListViewController: UIViewController {
 
 // MARK: Buttons
     @IBOutlet weak var buttonAdd: UIBarButtonItem!
+    @IBOutlet weak var buttonShare: UIBarButtonItem!
 
 // MARK: Table View
     @IBOutlet weak var tableView: UITableView!
@@ -126,6 +127,19 @@ class WishListViewController: UIViewController {
             self.view.makeToastActivity(.center)
         }
         buttonAdd.isEnabled = enable
+    }
+
+// MARK: pressedShare
+    @IBAction func pressedShare(_ sender: Any) {
+        KumpeAppsClient.getShareLink(selectedUser: KKid.LoggedInUser.selectedUser!) { response, error in
+            guard let authLink = response?.authLink else {
+                KumpeHelpers.ShowAlert.messageView(theme: .error, title: "Error", message: error ?? "unknown error", invokeHaptics: true)
+                return
+            }
+            let url = URL(string: authLink)!
+            let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            self.present(activity, animated: true)
+        }
     }
 
 }

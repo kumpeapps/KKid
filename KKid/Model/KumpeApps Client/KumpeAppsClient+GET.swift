@@ -64,4 +64,24 @@ extension KumpeAppsClient {
             }
 
         }
+
+    // MARK: getShareLink
+    class func getShareLink(silent: Bool = false, selectedUser: User, scope: ShareLinkScope = .wishList, completion: @escaping (KKid_Share_Response?, String?) -> Void) {
+            ShowAlert.statusLineStatic(id: "getShareLink", theme: .warning, title: "Syncing", message: "Creating Share Link....", blockInterface: true)
+
+            let parameters = [
+                "link": "\(scope.link)",
+                "linkUserId": "\(selectedUser.userID)",
+                "scope": "\(scope.name)"
+            ]
+
+            let module = "kkid/share"
+            let headers = ["X-Auth":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")"]
+
+            taskForGet(apiUrl: "\(baseURL)/\(module)", responseType: KKid_Share_Response.self, parameters: parameters, headers: headers) { response, error in
+                completion(response, error)
+                ShowAlert.dismissStatic(id: "getShareLink")
+            }
+
+        }
 }
