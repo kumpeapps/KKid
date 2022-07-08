@@ -87,6 +87,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SettingsBundleHelper.checkAndExecuteSettings()
         reachable = ReachabilitySetup()
         seasonalBackgroundLoader()
         if LoggedInUser.user == nil {

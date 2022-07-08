@@ -119,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 // MARK: saveViewContext
 func saveViewContext() {
     let context = DataController.shared.viewContext
+    SettingsBundleHelper.checkAndExecuteSettings()
     if context.hasChanges {
         do {
             try context.save()

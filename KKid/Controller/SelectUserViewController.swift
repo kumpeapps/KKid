@@ -58,6 +58,7 @@ class SelectUserViewController: UIViewController {
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SettingsBundleHelper.checkAndExecuteSettings()
         reachable = ReachabilitySetup()
         setupFetchedResultsController()
         collectionView.delegate = self
