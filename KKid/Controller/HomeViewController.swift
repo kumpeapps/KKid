@@ -47,9 +47,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "Home Page", subtitle: "Changed basic layout of homepage."),
-        WhatsNewItem.text(title: "Home Page", subtitle: "Select User Removed. To select users click on your Avatar in the upper right of the app."),
-        WhatsNewItem.text(title: "Home Page", subtitle: "Your avatar on homepage now uses your Gravatar which can be updated at Gravatar.com. Be sure your Gravatar account and KumpeApps/KKid account use the same email address.")])
+        WhatsNewItem.text(title: "Wish List", subtitle: "Added share button to Wish List so you can send a link for your Wish List to friends and family")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
