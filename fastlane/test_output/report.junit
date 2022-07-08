@@ -1,12 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='KKidUITests.xctest' tests='7' failures='0'>
-  <testsuite name='KKidUITests.KKidUITests' tests='7' failures='0'>
-    <testcase classname='KKidUITests.KKidUITests' name='testAllowance' time='58.419'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testChores' time='25.227'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testEditProfile' time='23.318'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testLaunchPerformance' time='114.398'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testLogin' time='21.867'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testSelectUser' time='23.424'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testTmdb' time='27.968'/>
+<testsuites name='KKidUITests.xctest' tests='7' failures='1'>
+  <testsuite name='KKidUITests.KKidUITests' tests='7' failures='1'>
+    <testcase classname='KKidUITests.KKidUITests' name='testAllowance' time='61.832'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testChores' time='22.675'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testEditProfile' time='22.328'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testLaunchPerformance' time='98.553'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testLogin' time='19.261'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testSelectUser' time='21.245'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testTmdb'>
+      <failure message='Failed to get matching snapshot: No matches found for Elements matching predicate &apos;&quot;Favorites&quot; IN identifiers&apos; from input {('>KKidUITests/KKidUITests.swift:160</failure>
+    </testcase>
   </testsuite>
 </testsuites>
