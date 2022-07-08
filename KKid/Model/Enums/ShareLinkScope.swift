@@ -21,7 +21,7 @@ enum ShareLinkScope: String {
         case .chores, .choresAdmin: return "https://khome.kumpeapps.com/portal/chores-today.php"
         }
     }
-        
+
     var name: String {
         switch self {
         case .wishList: return "WishList"
