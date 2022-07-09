@@ -131,12 +131,43 @@ class WishListViewController: UIViewController {
 
 // MARK: pressedShare
     @IBAction func pressedShare(_ sender: Any) {
-        KumpeAppsClient.getShareLink(selectedUser: KKid.LoggedInUser.selectedUser!) { response, error in
+        guard LoggedInUser.user!.isAdmin else {
+            shareLink()
+            return
+        }
+        let alert = UIAlertController(title: "Share Wish List", message: "Which List would you like to share?", preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: LoggedInUser.selectedUser!.firstName, style: .default , handler: { (_)in
+            KumpeHelpers.Logger.log(.action, "Selected Share User")
+            self.shareLink()
+           }))
+
+        alert.addAction(UIAlertAction(title: "Household (all users)", style: .destructive , handler: { (_)in
+            KumpeHelpers.Logger.log(.action, "Selected Share Household")
+            self.shareLink(user: LoggedInUser.user!, scope: .wishListAdmin)
+           }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel , handler: { (_)in
+            KumpeHelpers.Logger.log(.action, "Selected Cancel")
+           }))
+
+           // iPad Support
+           alert.popoverPresentationController?.sourceView = self.view
+        KumpeHelpers.Logger.log(.action, "Prompting Admin for Share Selection")
+           self.present(alert, animated: true, completion: {
+
+           })
+
+    }
+
+    func shareLink(user: User = KKid.LoggedInUser.selectedUser!, scope: ShareLinkScope = .wishList) {
+        KumpeAppsClient.getShareLink(selectedUser: user, scope: scope) { response, error in
             guard let authLink = response?.authLink else {
                 KumpeHelpers.ShowAlert.messageView(theme: .error, title: "Error", message: error ?? "unknown error", invokeHaptics: true)
                 return
             }
             KumpeHelpers.Share.url(authLink, self)
+            KumpeHelpers.Logger.log(.success, "Created Share Link")
         }
     }
 
