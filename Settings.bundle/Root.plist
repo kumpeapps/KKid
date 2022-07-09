@@ -10,7 +10,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Reset App Data</string>
+			<string>Reset App Data at next Launch</string>
 			<key>Key</key>
 			<string>RESET_APP_KEY</string>
 			<key>DefaultValue</key>

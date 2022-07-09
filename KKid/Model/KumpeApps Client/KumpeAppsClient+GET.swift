@@ -78,7 +78,7 @@ extension KumpeAppsClient {
             let module = "kkid/share"
             let headers = ["X-Auth":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")"]
 
-            taskForGet(apiUrl: "\(baseURL)/\(module)", responseType: KKid_Share_Response.self, parameters: parameters, headers: headers) { response, error in
+            taskForGet(apiUrl: "\(baseURL)/\(module)", responseType: KKid_Share_Response.self, parameters: parameters, headers: headers, successCode: 201) { response, error in
                 completion(response, error)
                 ShowAlert.dismissStatic(id: "getShareLink")
             }

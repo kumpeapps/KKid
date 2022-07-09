@@ -7,7 +7,6 @@ plugin 'cocoapods-keys', {
 	:keys => [
 		"kKid_username",
 		"kKid_apiPassword",
-		"googleAdMob_homeScreenBannerID",
 		"tmdb_apiKey",
 		"ShipBook_appId",
 		"ShipBook_appKey",
@@ -35,7 +34,7 @@ project 'KKid.xcodeproj'
 	pod 'BadgeSwift'
 	pod 'Kingfisher'
 	pod 'JKRefresher'
-	pod 'YoutubeKit'
+	pod 'YoutubeKit', '0.4.0'
 	pod 'ShipBookSDK'
 	pod 'WhatsNew'
 	pod 'AvatarView', :git => 'https://github.com/kumpeapps/AvatarView.git', :branch => 'master'

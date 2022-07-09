@@ -136,9 +136,7 @@ class WishListViewController: UIViewController {
                 KumpeHelpers.ShowAlert.messageView(theme: .error, title: "Error", message: error ?? "unknown error", invokeHaptics: true)
                 return
             }
-            let url = URL(string: authLink)!
-            let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            self.present(activity, animated: true)
+            KumpeHelpers.Share.url(authLink, self)
         }
     }
 
