@@ -23,6 +23,7 @@ class SelectUserViewController: UIViewController {
 
 // MARK: Buttons
     @IBOutlet weak var buttonAdd: UIButton!
+    @IBOutlet weak var buttonCancel: UIButton!
 
 // MARK: Collection View
     @IBOutlet weak var collectionView: UICollectionView!
@@ -46,7 +47,7 @@ class SelectUserViewController: UIViewController {
         fetchRequest.sortDescriptors = [sortByMaster, sortByAdmin, sortByFirstName]
 
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: "users")
-//        fetchedResultsController.delegate = self
+        // fetchedResultsController.delegate = self
 
         do {
             try fetchedResultsController.performFetch()
@@ -106,6 +107,21 @@ class SelectUserViewController: UIViewController {
         refreshControl.endRefreshing()
     }
 
+    // MARK: Set collection view to isEditing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        buttonAdd.isHidden = editing
+        buttonCancel.isHidden = !editing
+        collectionView.allowsMultipleSelection = editing
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        for indexPath in indexPaths {
+            let cell = collectionView.cellForItem(at: indexPath) as! ModuleCollectionViewCell
+            cell.isInEditingMode = editing
+            cell.watermark.isHidden = !editing
+            cell.avatarView.isHidden = editing
+        }
+    }
+
 // MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -132,7 +148,17 @@ class SelectUserViewController: UIViewController {
         performSegue(withIdentifier: "segueAddUser", sender: self)
     }
 
-// MARK: enableUI
+    // MARK: pressedCancel
+    @IBAction func pressedCancel(_ sender: Any) {
+        setEditing(false, animated: true)
+    }
+
+    // MARK: longPress
+    @IBAction func longPress(_ sender: Any) {
+        setEditing(true, animated: true)
+    }
+
+    // MARK: enableUI
     func enableUI(_ enable: Bool) {
         if enable {
             self.view.hideAllToasts(includeActivity: true, clearQueue: true)
@@ -170,6 +196,9 @@ extension SelectUserViewController: UICollectionViewDataSource, UICollectionView
                         if success {
                             DataController.shared.viewContext.delete(deleteUser)
                             try? DataController.shared.viewContext.save()
+                            dispatchOnMain {
+                                self.collectionView.reloadData()
+                            }
                             ShowAlert.statusLine(theme: .success, title: "User Deleted", message: "User Deleted", seconds: 5, dim: false)
                         } else {
                             ShowAlert.banner(title: "Delete Error", message: error ?? "An unknown error occurred.")
@@ -189,7 +218,6 @@ extension SelectUserViewController: UICollectionViewDataSource, UICollectionView
         KumpeAppsClient.getUsers { (_, _) in
             dispatchOnMain {
                 self.refreshControl.endRefreshing()
-                self.collectionView.reloadData()
             }
         }
     }
@@ -230,6 +258,7 @@ extension SelectUserViewController: UICollectionViewDataSource, UICollectionView
 
         let email = aUser.email!
         let gravatar = "https://www.gravatar.com/avatar/\(email.MD5)?d=mp"
+        let delete = "https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/48/000000/external-delete-user-user-tanah-basah-basic-outline-tanah-basah.png"
         cell.avatarView.isHidden = false
             cell.avatarView.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
             cell.avatarView.borderWidth = 4
@@ -242,7 +271,13 @@ extension SelectUserViewController: UICollectionViewDataSource, UICollectionView
                 .transition(.fade(1)),
                 .targetCache(ImageCache(name: "gravatarCache"))
                 ])
-
+        cell.watermark.kf.setImage(
+            with: URL(string: delete),
+            options: [
+                .transition(.fade(1)),
+                .targetCache(ImageCache(name: "iconCache"))
+                ])
+        cell.isInEditingMode = isEditing
         return cell
     }
 
@@ -250,7 +285,10 @@ extension SelectUserViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedUser = fetchedResultsController.object(at: indexPath)
         let loggedInUser = LoggedInUser.user!
-
+        guard !isEditing else {
+            deleteUser(indexPath: indexPath)
+            return
+        }
         if selectedUser.isBanned {
             ShowAlert.banner(title: "User Banned", message: "This user has been banned. Please contact support at helpdesk@kumpeapps.com!")
         } else if selectedUser.isLocked {

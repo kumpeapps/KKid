@@ -37,26 +37,29 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="McF-io-Rvo" customClass="ModuleCollectionViewCell" customModule="KKid" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="62.5"/>
+                                        <rect key="frame" x="-45.5" y="0.0" width="505" height="640"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J0f-GA-d8v">
-                                            <rect key="frame" x="0.0" y="0.0" width="88.5" height="62.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="505" height="640"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
+                                                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_head" translatesAutoresizingMaskIntoConstraints="NO" id="tWS-h4-5fu">
+                                                    <rect key="frame" x="50.5" y="0.0" width="404" height="512"/>
+                                                </imageView>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCX-Fw-0iw" customClass="AvatarView" customModule="AvatarView">
-                                                    <rect key="frame" x="9" y="0.0" width="70.5" height="50"/>
+                                                    <rect key="frame" x="50.5" y="0.0" width="404" height="512"/>
                                                 </view>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-swirl" translatesAutoresizingMaskIntoConstraints="NO" id="naH-WV-MIx">
-                                                    <rect key="frame" x="9" y="0.0" width="70.5" height="50"/>
+                                                    <rect key="frame" x="50.5" y="0.0" width="404" height="512"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select User" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="A72-9k-eKJ">
-                                                    <rect key="frame" x="0.0" y="50" width="88.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="512" width="505" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTv-mX-kmL" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                    <rect key="frame" x="64" y="0.0" width="24.5" height="24.5"/>
+                                                    <rect key="frame" x="480.5" y="0.0" width="24.5" height="24.5"/>
                                                     <accessibility key="accessibilityConfiguration" label="0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="sgE-cx-pXM"/>
@@ -70,6 +73,7 @@
                                             <constraints>
                                                 <constraint firstItem="A72-9k-eKJ" firstAttribute="width" secondItem="J0f-GA-d8v" secondAttribute="width" id="3jO-ZA-jYA"/>
                                                 <constraint firstItem="naH-WV-MIx" firstAttribute="width" secondItem="J0f-GA-d8v" secondAttribute="width" multiplier="0.8" id="7EJ-s5-zpo"/>
+                                                <constraint firstItem="tWS-h4-5fu" firstAttribute="trailing" secondItem="naH-WV-MIx" secondAttribute="trailing" id="7OX-wy-IOg"/>
                                                 <constraint firstItem="vTv-mX-kmL" firstAttribute="top" secondItem="J0f-GA-d8v" secondAttribute="top" id="Cw3-Io-hqp"/>
                                                 <constraint firstItem="A72-9k-eKJ" firstAttribute="top" secondItem="naH-WV-MIx" secondAttribute="bottom" id="EDA-yU-aGk"/>
                                                 <constraint firstItem="vCX-Fw-0iw" firstAttribute="top" secondItem="naH-WV-MIx" secondAttribute="top" id="O9B-kg-uFW"/>
@@ -81,6 +85,9 @@
                                                 <constraint firstItem="vCX-Fw-0iw" firstAttribute="trailing" secondItem="naH-WV-MIx" secondAttribute="trailing" id="m29-VK-bS5"/>
                                                 <constraint firstItem="A72-9k-eKJ" firstAttribute="centerX" secondItem="J0f-GA-d8v" secondAttribute="centerX" id="oAu-qU-Uol"/>
                                                 <constraint firstItem="naH-WV-MIx" firstAttribute="centerX" secondItem="J0f-GA-d8v" secondAttribute="centerX" id="sYp-LQ-3zj"/>
+                                                <constraint firstItem="tWS-h4-5fu" firstAttribute="bottom" secondItem="naH-WV-MIx" secondAttribute="bottom" id="sZD-2k-03f"/>
+                                                <constraint firstItem="tWS-h4-5fu" firstAttribute="leading" secondItem="naH-WV-MIx" secondAttribute="leading" id="uDl-v1-s6X"/>
+                                                <constraint firstItem="tWS-h4-5fu" firstAttribute="top" secondItem="naH-WV-MIx" secondAttribute="top" id="xBo-ov-aTD"/>
                                                 <constraint firstItem="vTv-mX-kmL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J0f-GA-d8v" secondAttribute="leading" constant="20" symbolic="YES" id="xi6-Mq-1M9"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -89,33 +96,48 @@
                                             <outlet property="badge" destination="vTv-mX-kmL" id="viI-t5-hsZ"/>
                                             <outlet property="imageView" destination="naH-WV-MIx" id="Q7e-op-0Fn"/>
                                             <outlet property="title" destination="A72-9k-eKJ" id="JiT-hB-Bqx"/>
+                                            <outlet property="watermark" destination="tWS-h4-5fu" id="9OF-n3-o5k"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVD-xP-ymD">
-                                <rect key="frame" x="310" y="29" width="101" height="34.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVD-xP-ymD">
+                                <rect key="frame" x="366" y="29" width="45" height="31"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <buttonConfiguration key="configuration" style="plain" image="icons8-add_user_male"/>
+                                <connections>
+                                    <action selector="pressedAdd" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ony-X2-Ljp"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liU-u4-Ylf">
+                                <rect key="frame" x="366" y="29" width="40.5" height="32"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <action selector="pressedAdd" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ony-X2-Ljp"/>
+                                    <action selector="pressedCancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tq0-bb-Bc5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="liU-u4-Ylf" firstAttribute="leading" secondItem="VVD-xP-ymD" secondAttribute="leading" id="0tm-jy-auw"/>
                             <constraint firstItem="4W5-kL-KxQ" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="1e2-fS-gCi"/>
                             <constraint firstItem="4W5-kL-KxQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jc0-Ji-E8Q"/>
+                            <constraint firstItem="liU-u4-Ylf" firstAttribute="top" secondItem="VVD-xP-ymD" secondAttribute="top" id="L4i-cQ-ZNv"/>
                             <constraint firstItem="d9R-EW-VRn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="SP0-9C-ikP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VVD-xP-ymD" secondAttribute="trailing" constant="3" id="a5F-vd-HvC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="VVD-xP-ymD" secondAttribute="top" constant="15" id="bi7-5q-ssY"/>
+                            <constraint firstItem="VVD-xP-ymD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-3" id="a5F-vd-HvC"/>
+                            <constraint firstItem="VVD-xP-ymD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-15" id="bi7-5q-ssY"/>
                             <constraint firstItem="4W5-kL-KxQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="g1n-Z2-LoL"/>
                             <constraint firstItem="d9R-EW-VRn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jHs-oA-zZe"/>
                             <constraint firstItem="d9R-EW-VRn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uLP-IC-Zpb"/>
                             <constraint firstItem="d9R-EW-VRn" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vEn-Zp-MBe"/>
                             <constraint firstItem="4W5-kL-KxQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="zk2-9v-bqJ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="5G2-xy-W2M" appends="YES" id="WTm-Gf-Dwl"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="mUh-Mn-uT8">
                         <barButtonItem key="backBarButtonItem" title="Home" id="F7o-p3-nJb"/>
@@ -123,12 +145,18 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="buttonAdd" destination="VVD-xP-ymD" id="rK0-0d-VSu"/>
+                        <outlet property="buttonCancel" destination="liU-u4-Ylf" id="RtZ-HC-nST"/>
                         <outlet property="collectionView" destination="d9R-EW-VRn" id="0UF-5J-zDP"/>
                         <outlet property="imageBackground" destination="4W5-kL-KxQ" id="iCN-fi-bfZ"/>
                         <segue destination="HBR-uZ-DGd" kind="show" identifier="segueAddUser" id="Q38-PJ-jks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="5G2-xy-W2M">
+                    <connections>
+                        <action selector="longPress:" destination="BYZ-38-t0r" id="8S9-DL-9bR"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2954" y="-589"/>
         </scene>
@@ -1584,8 +1612,10 @@
     </designables>
     <resources>
         <image name="KKid_Toolbar" width="471" height="180"/>
+        <image name="ai_head" width="404" height="512"/>
         <image name="blue_dash" width="151" height="45"/>
         <image name="green_check" width="104" height="95"/>
+        <image name="icons8-add_user_male" width="48" height="48"/>
         <image name="icons8-heart_outline" width="50" height="50"/>
         <image name="icons8-swirl" width="50" height="50"/>
         <image name="icons8-test_passed" width="50" height="50"/>

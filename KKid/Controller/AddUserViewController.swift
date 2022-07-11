@@ -96,9 +96,9 @@ class AddUserViewController: FormViewController {
         KumpeAppsClient.addUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, password: password.value) { (success, error) in
             if success {
                 dispatchOnMain {
+                    KumpeAppsClient.getUsers(silent: false) { (_, _) in}
                     self.navigationController?.popViewController(animated: true)
                     ShowAlert.statusLine(theme: .success, title: "User Added", message: "User Added", seconds: 5, dim: false)
-                    KumpeAppsClient.getUsers(silent: false) { (_, _) in}
                 }
             } else {
                 ShowAlert.banner(title: "Error", message: error!)
