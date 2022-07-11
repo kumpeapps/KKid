@@ -15,6 +15,7 @@ import Toast_Swift
 import AvatarView
 import Kingfisher
 import CollectionViewCenteredFlowLayout
+import FetchedResultsControllerCollectionViewUpdater
 
 class SelectUserViewController: UIViewController {
 
@@ -47,7 +48,17 @@ class SelectUserViewController: UIViewController {
         fetchRequest.sortDescriptors = [sortByMaster, sortByAdmin, sortByFirstName]
 
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: "users")
-        // fetchedResultsController.delegate = self
+        lazy var collectionUpdaterDelegate: CollectionViewUpdaterDelegate = {
+            let delegate = CollectionViewUpdaterDelegate(collectionView: collectionView)
+
+            // Optionally add section name modifier
+            delegate.sectionIndexTitleForSectionName = { sectionName in
+                sectionName.uppercased()
+            }
+
+            return delegate
+        }()
+        fetchedResultsController.delegate = collectionUpdaterDelegate
 
         do {
             try fetchedResultsController.performFetch()
@@ -155,6 +166,9 @@ class SelectUserViewController: UIViewController {
 
     // MARK: longPress
     @IBAction func longPress(_ sender: Any) {
+        guard LoggedInUser.user!.isAdmin else {
+            return
+        }
         setEditing(true, animated: true)
     }
 
