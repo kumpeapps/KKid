@@ -71,7 +71,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 ### Select User Screen (Click on your avatar in upper right for Select User Screen)
 -   On the Select User screen you will see a list of users under your master (household) account.
 -   If you are the master user (purple ring) or an admin user (yellow ring) then you may add an additional user/kid/parent/admin by clicking the plus symbol in the upper right corner of the screen
--   ~~If you are the master user or an admin user you can swipe left on a user to delete that user (NOTE: The master user can only be deleted once all other users have been deleted from the master account)~~ Delete Feature will be added back in next release. For now you can delete users at [https://www.kumpeapps.com/subusers](https://www.kumpeapps.com/subusers)
+-   If you are the master user or an admin user tap and hold until icons wiggle then tap on user to delete the user. (NOTE: The master user can only be deleted once all other users have been deleted from the master account
 
 |      User Type          |      Ring Color     |
 |   :-----------------:   | :-----------------: |
@@ -144,6 +144,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   This screen shows a list of items on the kid's wish list.
 -   Items may be added to the wish list by clicking the add (+) button in the upper right.
 -   If a URL link is provided when adding the item to the list then that item will show a link icon in the list and when you tap on that item it will take you to the link to ensure there is no confusion as to what item the person wants.
+-   The share icon in the upper right will allow you to share a link to your wish list with other people. The link is a web link so other users without KKid access may still view your list (like grandparents/friends/family).
 
 ### REST API
 REST API documentation is available at [https://restapi.kumpeapps.com/v5/ui/#/KKid](https://restapi.kumpeapps.com/v5/ui/#/KKid)
@@ -168,4 +169,4 @@ API access may be obtained by opening a support ticket
 -   [X] Movie Search with movie ratings
 -   [X] TV Show Search with Ratings
 -   [X] Linking TMDb account for saving movies/tv shows to favorites and watch list
--   [ ] Share wish list with other people
+-   [X] Share wish list with other people
