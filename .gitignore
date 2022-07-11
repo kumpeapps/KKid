@@ -2,3 +2,4 @@ Pods/
 node_modules/
 package.json
 package-lock.json
+._*
