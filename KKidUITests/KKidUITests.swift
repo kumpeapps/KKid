@@ -79,6 +79,10 @@ class KKidUITests: XCTestCase {
             addButton.tap()
         }
 
+        if app.staticTexts["Continue"].waitForExistence(timeout: 2) {
+            app.staticTexts["Continue"].tap()
+        }
+
         let tablesQuery = app.tables
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Subtract"]/*[[".cells.staticTexts[\"Subtract\"]",".staticTexts[\"Subtract\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.pickerWheels["Subtract"].adjust(toPickerWheelValue: "Subtract")
