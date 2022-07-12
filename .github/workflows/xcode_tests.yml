@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  Xcode_Tests:
     runs-on: macos-latest
     environment: development
 
