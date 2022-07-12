@@ -10,6 +10,7 @@ concurrency:
 
 jobs:
   Xcode_Tests:
+    if: github.event.commits[0].message != '#TestFlight'
     runs-on: macos-latest
     environment: development
 
@@ -47,3 +48,48 @@ jobs:
 
     - name: Run tests
       run: bundle exec fastlane test
+
+  TestFlight:
+    if: github.event.commits[0].message == '#TestFlight'
+    runs-on: macos-latest
+    environment: Apple App Store
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/cache@v2
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+                ${{ runner.os }}-pods-
+
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+
+    - name: Bundle dependencies
+      run: bundle install
+
+    - name: CocoaPods dependencies
+      env: # Or as an environment variable
+        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
+        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
+        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
+        kkid_apikey: ${{ secrets.KKID_APIKEY }}
+      run: bundle exec pod check || bundle exec pod install
+
+    - name: CocoaPods Update
+      if: github.event.commits[0].message == '#pod update'
+      run: bundle exec pod update
+
+    - name: Run tests
+      run: bundle exec fastlane test
+
+    - name: Upload To TestFlight
+      if: github.event.commits[0].message == '#TestFlight'
+      run: bundle exec fastlane beta
+
