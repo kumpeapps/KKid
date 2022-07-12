@@ -1,9 +1,8 @@
 name: iOS project Run Tests
 
 on:
-  commit:
+  push:
     branches: [ Development ]
-  environment: development
 
 concurrency:
   group: build-ios-${{ github.ref }}
@@ -12,6 +11,7 @@ concurrency:
 jobs:
   build:
     runs-on: macos-latest
+    environment: development
 
     steps:
     - uses: actions/checkout@v2
