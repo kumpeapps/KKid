@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   Xcode_Tests:
-    if: "!contains(github.event.head_commit.message, '#TestFlight') && !contains(github.event.head_commit.message, '#XcodeTests')"
+    if: "!contains(github.event.head_commit.message, '#TestFlight') || contains(github.event.head_commit.message, '#XcodeTests')"
     runs-on: macos-latest
     environment: development
 
