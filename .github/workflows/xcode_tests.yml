@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   Xcode_Tests:
-    if: github.event.commits[0].message != '#TestFlight'
+    if: "!contains(github.event.head_commit.message, '#TestFlight')"
     runs-on: macos-latest
     environment: development
 
@@ -43,14 +43,14 @@ jobs:
       run: bundle exec pod check || bundle exec pod install
 
     - name: CocoaPods Update
-      if: github.event.commits[0].message == '#pod update'
+      if: "contains(github.event.head_commit.message, '#pod update')"
       run: bundle exec pod update
 
     - name: Run tests
       run: bundle exec fastlane test
 
   TestFlight:
-    if: github.event.commits[0].message == '#TestFlight'
+    if: "contains(github.event.head_commit.message, '#TestFlight')"
     runs-on: macos-latest
     environment: Apple App Store
 
@@ -83,13 +83,13 @@ jobs:
       run: bundle exec pod check || bundle exec pod install
 
     - name: CocoaPods Update
-      if: github.event.commits[0].message == '#pod update'
+      if: "contains(github.event.head_commit.message, '#pod update')"
       run: bundle exec pod update
 
     - name: Run tests
       run: bundle exec fastlane test
 
     - name: Upload To TestFlight
-      if: github.event.commits[0].message == '#TestFlight'
+      if: "contains(github.event.head_commit.message, '#TestFlight')"
       run: bundle exec fastlane beta
 
