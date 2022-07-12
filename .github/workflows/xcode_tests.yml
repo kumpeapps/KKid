@@ -1,0 +1,26 @@
+name: iOS project Run Tests
+
+on:
+  push:
+    branches: [ Development ]
+
+concurrency:
+  group: build-ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-latest
+    environment: development
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Bundle dependencies
+      run: bundle install
+
+    - name: CocoaPods dependencies
+      run: bundle exec pod install
+
+    - name: Run tests
+      run: bundle exec fastlane test
