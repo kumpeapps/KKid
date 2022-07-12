@@ -67,7 +67,7 @@ class KKidUITests: XCTestCase {
         let kkidAllowanceviewNavigationBar = app.navigationBars["KKid.AllowanceView"]
         let bookmarksButton = kkidAllowanceviewNavigationBar.buttons["Bookmarks"]
         if bookmarksButton.waitForExistence(timeout: 10) {
-            bookmarksButton.tap()
+            bookmarksButton.forceTapElement()
         }
         let backButton = app.navigationBars["Allowance Transactions"].buttons["Back"]
         if backButton.waitForExistence(timeout: 10) {
@@ -123,7 +123,7 @@ class KKidUITests: XCTestCase {
             addTrans.tap()
         }
         if bookmarksButton.waitForExistence(timeout: 10) {
-            bookmarksButton.tap()
+            bookmarksButton.forceTapElement()
         }
         if backButton.waitForExistence(timeout: 10) {
             backButton.tap()
@@ -224,6 +224,15 @@ extension XCUIElement {
         doubleTap()
         if application.menuItems["Paste"].waitForExistence(timeout: 10) {
             application.menuItems["Paste"].tap()
+        }
+    }
+
+    func forceTapElement() {
+        if self.isHittable {
+            self.tap()
+        } else {
+            let coordinate: XCUICoordinate = self.coordinate(withNormalizedOffset: CGVector(dx:0.0, dy:0.0))
+            coordinate.tap()
         }
     }
 }

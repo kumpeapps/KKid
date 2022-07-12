@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - uses: actions/cache@v2
       with:
         path: Pods
@@ -40,6 +40,10 @@ jobs:
         ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
       run: bundle exec pod check || bundle exec pod install
+
+    - name: CocoaPods Update
+      if: github.event.commits[0].message == '#pod update'
+      run: bundle exec pod update
 
     - name: Run tests
       run: bundle exec fastlane test
