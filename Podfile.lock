@@ -1,4 +1,5 @@
 PODS:
+  - ADEmptyDataView (0.1.2)
   - Alamofire (4.9.1)
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
@@ -39,6 +40,7 @@ PODS:
   - YoutubeKit (0.4.0)
 
 DEPENDENCIES:
+  - ADEmptyDataView
   - Alamofire-SwiftyJSON
   - AvatarView (from `https://github.com/kumpeapps/AvatarView.git`, branch `master`)
   - BadgeSwift
@@ -64,6 +66,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - ADEmptyDataView
     - Alamofire
     - Alamofire-SwiftyJSON
     - BadgeSwift
@@ -112,6 +115,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/kumpeapps/Snowflake.git
 
 SPEC CHECKSUMS:
+  ADEmptyDataView: 854dba4c16f62cdab2e075c6451dd4133b2575c7
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   AvatarView: f44d32fc6d73c080a8144559d10c26f94ef50481
@@ -139,6 +143,6 @@ SPEC CHECKSUMS:
   WhatsNew: d66a52b294e90d5bc133877e270ea7ce0b945003
   YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
 
-PODFILE CHECKSUM: 2d6d930e81fbebc1c255bf9fe6869a5a5bf6c3bd
+PODFILE CHECKSUM: 221e2eab5c9476971ae13468be3f228b600a49e1
 
 COCOAPODS: 1.11.3

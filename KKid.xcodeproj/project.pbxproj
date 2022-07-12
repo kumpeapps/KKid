@@ -54,7 +54,6 @@
 		0F91099325A64FD2008E658F /* TMDb_Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91099225A64FD2008E658F /* TMDb_Session.swift */; };
 		0F9192D627D3FA910088C9AF /* AvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9192D527D3FA910088C9AF /* AvatarTableViewCell.swift */; };
 		0F991504272632EA006E5F1C /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F991503272632EA006E5F1C /* WishListViewController.swift */; };
-		0F99150727278B26006E5F1C /* EmptyDataView in Frameworks */ = {isa = PBXBuildFile; productRef = 0F99150627278B26006E5F1C /* EmptyDataView */; };
 		0F99D99B25734602007169B9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D99925734602007169B9 /* MovieDetailViewController.swift */; };
 		0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D99A25734602007169B9 /* MovieSearchViewController.swift */; };
 		0F99D9A525734617007169B9 /* TMDb_Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A025734617007169B9 /* TMDb_Client.swift */; };
@@ -210,7 +209,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3421BF978588D5B625E0BEA /* Pods_KKid.framework in Frameworks */,
-				0F99150727278B26006E5F1C /* EmptyDataView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +478,6 @@
 			);
 			name = KKid;
 			packageProductDependencies = (
-				0F99150627278B26006E5F1C /* EmptyDataView */,
 			);
 			productName = KKid;
 			productReference = 0F5EC89424F98D0000873868 /* KKid.app */;
@@ -533,7 +530,6 @@
 			);
 			mainGroup = 0F5EC88B24F98D0000873868;
 			packageReferences = (
-				0F99150527278B26006E5F1C /* XCRemoteSwiftPackageReference "EmptyDataView" */,
 			);
 			productRefGroup = 0F5EC89524F98D0000873868 /* Products */;
 			projectDirPath = "";
@@ -985,25 +981,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0F99150527278B26006E5F1C /* XCRemoteSwiftPackageReference "EmptyDataView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/anup-deshpande/EmptyDataView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0F99150627278B26006E5F1C /* EmptyDataView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0F99150527278B26006E5F1C /* XCRemoteSwiftPackageReference "EmptyDataView" */;
-			productName = EmptyDataView;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0F66BE39250859FA00014A94 /* KKid.xcdatamodeld */ = {

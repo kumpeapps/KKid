@@ -12,7 +12,7 @@ import CoreData
 import KumpeHelpers
 import Haptico
 import Toast_Swift
-import EmptyDataView
+import ADEmptyDataView
 
 class WishListViewController: UIViewController {
 
