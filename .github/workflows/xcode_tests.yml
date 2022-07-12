@@ -15,11 +15,23 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - uses: actions/cache@v2
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+                ${{ runner.os }}-pods-
 
     - name: Bundle dependencies
       run: bundle install
 
     - name: CocoaPods dependencies
+      env: # Or as an environment variable
+        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
+        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
+        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
+        kkid_apikey: ${{ secrets.KKID_APIKEY }}
       run: bundle exec pod install
 
     - name: Run tests
