@@ -148,6 +148,38 @@ class KKidUITests: XCTestCase {
 
     }
 
+    func testWishList() throws {
+
+        let wishlistButton = app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Wish List").element
+        if wishlistButton.waitForExistence(timeout: 10) {
+            wishlistButton.tap()
+        }
+
+        let wishListNavigationBar = app.navigationBars["Wish List"]
+        if wishListNavigationBar.waitForExistence(timeout: 10) {
+            wishListNavigationBar.buttons["Share"].tap()
+        }
+
+        let popoversQuery = app.popovers
+        let allusersButton = popoversQuery.sheets["Share Wish List"].scrollViews.otherElements.buttons["Household (all users)"]
+        let allusersButtonPhone = app.sheets["Share Wish List"].scrollViews.otherElements.buttons["Household (all users)"]
+        if allusersButtonPhone.waitForExistence(timeout: 5) {
+            allusersButtonPhone.tap()
+            let copyButton = app/*@START_MENU_TOKEN@*/.collectionViews/*[[".otherElements[\"ActivityListView\"].collectionViews",".collectionViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Copy"].children(matching: .other).element(boundBy: 1).children(matching: .other).element(boundBy: 2)
+            if copyButton.waitForExistence(timeout: 30) {
+                copyButton.tap()
+            }
+        } else if allusersButton.waitForExistence(timeout: 5) {
+            allusersButton.tap()
+            let copyButton = popoversQuery/*@START_MENU_TOKEN@*/.collectionViews/*[[".otherElements[\"ActivityListView\"].collectionViews",".collectionViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Copy"]
+            if copyButton.waitForExistence(timeout: 30) {
+                copyButton.children(matching: .other).element(boundBy: 1).children(matching: .other).element(boundBy: 2).tap()
+            }
+        }
+
+        wishListNavigationBar.buttons["Home"].tap()
+    }
+
     func testTmdb() throws {
 
         let collectionViewsQuery = app.collectionViews
