@@ -47,7 +47,7 @@ platform :ios do
   end
   lane :test do
   	run_tests(workspace: "KKid.xcworkspace",
-            devices: ["iPhone 12 Pro"],
+            devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (3rd generation)"],
             scheme: "KKidUITests",
             only_testing: "KKidUITests/KKidUITests")
   end
