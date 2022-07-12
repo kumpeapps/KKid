@@ -5,8 +5,6 @@ use_frameworks!
 plugin 'cocoapods-keys', {
 	:project => "KKid",
 	:keys => [
-		"kKid_username",
-		"kKid_apiPassword",
 		"tmdb_apiKey",
 		"ShipBook_appId",
 		"ShipBook_appKey",

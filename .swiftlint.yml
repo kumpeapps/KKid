@@ -10,6 +10,7 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - force_try
   - nesting
   - unused_optional_binding
+  - inclusive_language
 opt_in_rules: # some rules are turned off by default, so you need to opt-in
   - empty_count # Find all the available rules by running: `swiftlint rules`
 
@@ -23,6 +24,8 @@ included: # paths to include during linting. `--path` is ignored if present.
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
+  - fastlane
+  - vendor
   - Source/ExcludedFolder
   - Source/ExcludedFile.swift
   - Source/*/ExcludedFile.swift # Exclude files with a wildcard
@@ -75,4 +78,6 @@ identifier_name:
     - Friday
     - Saturday
     - Calendar
+    - isMaster
+    - masterID
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown, github-actions-logging)

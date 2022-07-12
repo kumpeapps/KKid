@@ -151,8 +151,12 @@ class WishListViewController: UIViewController {
             KumpeHelpers.Logger.log(.action, "Selected Cancel")
            }))
 
-           // iPad Support
-           alert.popoverPresentationController?.sourceView = self.view
+        // iPad Support
+        if let popOverController = alert.popoverPresentationController {
+            popOverController.sourceView = self.view
+            popOverController.barButtonItem = self.buttonShare
+        }
+
         KumpeHelpers.Logger.log(.action, "Prompting Admin for Share Selection")
            self.present(alert, animated: true, completion: {
 
@@ -166,7 +170,7 @@ class WishListViewController: UIViewController {
                 KumpeHelpers.ShowAlert.messageView(theme: .error, title: "Error", message: error ?? "unknown error", invokeHaptics: true)
                 return
             }
-            KumpeHelpers.Share.url(authLink, self)
+            KumpeHelpers.Share.url(authLink, self, shareButton: self.buttonShare)
             KumpeHelpers.Logger.log(.success, "Created Share Link")
         }
     }

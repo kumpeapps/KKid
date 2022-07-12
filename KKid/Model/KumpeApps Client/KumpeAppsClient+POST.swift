@@ -46,7 +46,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/userlist"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, blockInterface: true, headers: ["X-Auth":"\(authKey)"]) { success, error in
             completion(success, error)
         }
     }
