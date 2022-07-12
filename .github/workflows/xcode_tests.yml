@@ -39,7 +39,7 @@ jobs:
         ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
         ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
-      run: bundle exec pod install
+      run: bundle exec pod check || bundle exec pod install
 
     - name: Run tests
       run: bundle exec fastlane test
