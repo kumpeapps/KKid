@@ -51,4 +51,10 @@ platform :ios do
             scheme: "KKidUITests",
             only_testing: "KKidUITests/KKidUITests")
   end
+  lane :match do
+	if is_ci
+		setup_ci
+	end
+	match(type: "appstore", readonly: is_ci)
+end
 end
