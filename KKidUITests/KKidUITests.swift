@@ -79,7 +79,7 @@ class KKidUITests: XCTestCase {
             addButton.tap()
         }
 
-        if app.staticTexts["Continue"].waitForExistence(timeout: 2) {
+        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
             app.staticTexts["Continue"].tap()
         }
 
@@ -89,12 +89,25 @@ class KKidUITests: XCTestCase {
         tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         let amountField = tablesQuery.cells.containing(.staticText, identifier:"Amount  $").children(matching: .textField).element
         amountField.tap()
+
+        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+            app.staticTexts["Continue"].tap()
+        }
         amountField.setText(text: "5", application: app)
 
+        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+            app.staticTexts["Continue"].tap()
+        }
         let textField = tablesQuery.cells.containing(.staticText, identifier:"Reason").children(matching: .textField).element
         if textField.waitForExistence(timeout: 10) {
+            if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+                app.staticTexts["Continue"].tap()
+            }
             textField.tap()
-            sleep(3)
+            if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+                app.staticTexts["Continue"].tap()
+                textField.tap()
+            }
             textField.tap()
             textField.setText(text: "Game", application: app)
         }
