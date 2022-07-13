@@ -93,7 +93,7 @@ jobs:
         MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
         MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
-      run: bundle exec fastlane match appstore -q HTTPS
+      run: bundle exec fastlane match appstore --git_basic_authorization
 
     - name: Upload To TestFlight
       if: "contains(github.event.head_commit.message, '#TestFlight')"
