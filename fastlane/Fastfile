@@ -55,6 +55,6 @@ platform :ios do
 	if is_ci
 		setup_ci
 	end
-	match(type: "appstore", readonly: is_ci, git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"])
+	match(type: "appstore", readonly: is_ci, git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]))
 end
 end
