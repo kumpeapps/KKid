@@ -100,7 +100,6 @@ jobs:
       if: "contains(github.event.head_commit.message, '#TestFlight')"
       env: # Or as an environment variable
         FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
         FASTLANE_USER: "jakumpe@justinkumpe.net"
       run: bundle exec fastlane beta
 
