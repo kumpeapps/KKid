@@ -5,22 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.001315">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.00473">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: capture_screenshots" time="436.256088">
+      <testcase classname="fastlane.lanes" name="1: is_ci" time="0.000321">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: frameit" time="508.46265">
+      <testcase classname="fastlane.lanes" name="2: setup_ci" time="0.111463">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: find ./screenshots/en-US/ -type f \! -name &quot;*framed*.png&quot; -delete" time="0.026651">
+      <testcase classname="fastlane.lanes" name="3: app_store_connect_api_key" time="0.005115">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="3.20586">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: build_app" time="357.551193">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: upload_to_testflight" time="419.939924">
         
       </testcase>
     
