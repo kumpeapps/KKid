@@ -51,7 +51,7 @@ platform :ios do
             scheme: "KKidUITests",
             only_testing: "KKidUITests/KKidUITests")
   end
-  lane :match do
+  lane :matchget do
 	if is_ci
 		setup_ci
 	end
