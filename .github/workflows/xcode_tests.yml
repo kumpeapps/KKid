@@ -10,6 +10,7 @@ concurrency:
 
 jobs:
   Xcode_Tests:
+    if: "!contains(github.event.head_commit.message, '#TestFlight')"
     runs-on: macos-latest
     environment: development
 
@@ -103,3 +104,4 @@ jobs:
         APPLE_APP_STORE_API_KEY_ID: ${{ secrets.APPLE_APP_STORE_API_KEY_ID }}
       run: bundle exec fastlane beta
 
+    - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
