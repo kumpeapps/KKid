@@ -86,6 +86,14 @@ jobs:
       if: "contains(github.event.head_commit.message, '#pod update')"
       run: bundle exec pod update
 
+    - name: Fastlane Match
+      env: # Or as an environment variable
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+        MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+        kkid_apikey: ${{ secrets.KKID_APIKEY }}
+      run: bundle exec fastlane match appstore
+
     - name: Upload To TestFlight
       if: "contains(github.event.head_commit.message, '#TestFlight')"
       run: bundle exec fastlane beta
