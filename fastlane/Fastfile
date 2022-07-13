@@ -32,6 +32,11 @@ platform :ios do
   end
   desc "Build and upload release version to Apple"
   lane :release do
+  	app_store_connect_api_key(
+     "key_id": ENV['APPLE_APP_STORE_API_KEY_ID'],
+     "issuer_id": ENV['APPLE_APPSTORE_API_ISSUER_ID'],
+     "key": ENV['APPLE_APP_STORE_API_KEY']
+   )
   	run_tests(workspace: "KKid.xcworkspace",
             devices: ["iPhone 12 Pro"],
             scheme: "KKidUITests",
