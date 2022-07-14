@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         PrivacyKit.shared.config("https://tos.kumpeapps.com")
         PrivacyKit.shared.disableDeny()
         PrivacyKit.shared.setTitle("Terms of Service & Privacy Policy")
-        PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
+        PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our EULA, Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
 
 //        Load Data Controller
         DataController.shared.load()
@@ -119,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 // MARK: saveViewContext
 func saveViewContext() {
     let context = DataController.shared.viewContext
+    SettingsBundleHelper.checkAndExecuteSettings()
     if context.hasChanges {
         do {
             try context.save()

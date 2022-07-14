@@ -2,3 +2,6 @@ Pods/
 node_modules/
 package.json
 package-lock.json
+._*
+Pods/CocoaPodsKeys
+vendor/

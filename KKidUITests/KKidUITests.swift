@@ -67,7 +67,7 @@ class KKidUITests: XCTestCase {
         let kkidAllowanceviewNavigationBar = app.navigationBars["KKid.AllowanceView"]
         let bookmarksButton = kkidAllowanceviewNavigationBar.buttons["Bookmarks"]
         if bookmarksButton.waitForExistence(timeout: 10) {
-            bookmarksButton.tap()
+            bookmarksButton.forceTapElement()
         }
         let backButton = app.navigationBars["Allowance Transactions"].buttons["Back"]
         if backButton.waitForExistence(timeout: 10) {
@@ -79,20 +79,29 @@ class KKidUITests: XCTestCase {
             addButton.tap()
         }
 
+        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+            app.staticTexts["Continue"].tap()
+        }
+
         let tablesQuery = app.tables
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Subtract"]/*[[".cells.staticTexts[\"Subtract\"]",".staticTexts[\"Subtract\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.pickerWheels["Subtract"].adjust(toPickerWheelValue: "Subtract")
         tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         let amountField = tablesQuery.cells.containing(.staticText, identifier:"Amount  $").children(matching: .textField).element
-        amountField.tap()
-        amountField.setText(text: "5", application: app)
-
         let textField = tablesQuery.cells.containing(.staticText, identifier:"Reason").children(matching: .textField).element
+        amountField.tap()
+        textField.tap()
+
+        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+            app.staticTexts["Continue"].tap()
+        }
+        amountField.pasteTextFieldText(app: app, element: amountField, value: "5", clearText: false)
+
+        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+            app.staticTexts["Continue"].tap()
+        }
         if textField.waitForExistence(timeout: 10) {
-            textField.tap()
-            sleep(3)
-            textField.tap()
-            textField.setText(text: "Game", application: app)
+            textField.pasteTextFieldText(app: app, element: textField, value: "Game", clearText: false)
         }
 
         let addTransactionNavigationBar = app.navigationBars["Add Transaction"]
@@ -108,18 +117,16 @@ class KKidUITests: XCTestCase {
         app.pickerWheels["Subtract"].adjust(toPickerWheelValue: "Add")
         tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         amountField.tap()
-        amountField.setText(text: "5", application: app)
+        amountField.pasteTextFieldText(app: app, element: amountField, value: "5", clearText: false)
         if textField.waitForExistence(timeout: 10) {
             textField.tap()
-            sleep(3)
-            textField.tap()
-            textField.setText(text: "Game Refund", application: app)
+            textField.pasteTextFieldText(app: app, element: textField, value: "Game Refund", clearText: false)
         }
         if addTrans.waitForExistence(timeout: 10) {
             addTrans.tap()
         }
         if bookmarksButton.waitForExistence(timeout: 10) {
-            bookmarksButton.tap()
+            bookmarksButton.forceTapElement()
         }
         if backButton.waitForExistence(timeout: 10) {
             backButton.tap()
@@ -146,6 +153,38 @@ class KKidUITests: XCTestCase {
         app.buttons["avatar"].tap()
         app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Joey D").children(matching: .other).element.tap()
 
+    }
+
+    func testWishList() throws {
+
+        let wishlistButton = app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Wish List").element
+        if wishlistButton.waitForExistence(timeout: 10) {
+            wishlistButton.tap()
+        }
+
+        let wishListNavigationBar = app.navigationBars["Wish List"]
+        if wishListNavigationBar.waitForExistence(timeout: 10) {
+            wishListNavigationBar.buttons["Share"].tap()
+        }
+
+        let popoversQuery = app.popovers
+        let allusersButton = popoversQuery.sheets["Share Wish List"].scrollViews.otherElements.buttons["Household (all users)"]
+        let allusersButtonPhone = app.sheets["Share Wish List"].scrollViews.otherElements.buttons["Household (all users)"]
+        if allusersButtonPhone.waitForExistence(timeout: 5) {
+            allusersButtonPhone.tap()
+            let copyButton = app/*@START_MENU_TOKEN@*/.collectionViews/*[[".otherElements[\"ActivityListView\"].collectionViews",".collectionViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Copy"].children(matching: .other).element(boundBy: 1).children(matching: .other).element(boundBy: 2)
+            if copyButton.waitForExistence(timeout: 30) {
+                copyButton.tap()
+            }
+        } else if allusersButton.waitForExistence(timeout: 5) {
+            allusersButton.tap()
+            let copyButton = popoversQuery/*@START_MENU_TOKEN@*/.collectionViews/*[[".otherElements[\"ActivityListView\"].collectionViews",".collectionViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Copy"]
+            if copyButton.waitForExistence(timeout: 30) {
+                copyButton.children(matching: .other).element(boundBy: 1).children(matching: .other).element(boundBy: 2).tap()
+            }
+        }
+
+        wishListNavigationBar.buttons["Home"].tap()
     }
 
     func testTmdb() throws {
@@ -188,6 +227,39 @@ extension XCUIElement {
         doubleTap()
         if application.menuItems["Paste"].waitForExistence(timeout: 10) {
             application.menuItems["Paste"].tap()
+        }
+    }
+
+    func forceTapElement() {
+        if self.isHittable {
+            self.tap()
+        } else {
+            let coordinate: XCUICoordinate = self.coordinate(withNormalizedOffset: CGVector(dx:0.0, dy:0.0))
+            coordinate.tap()
+        }
+    }
+
+    func pasteTextFieldText(app:XCUIApplication, element:XCUIElement, value:String, clearText:Bool) {
+        // Get the password into the pasteboard buffer
+        UIPasteboard.general.string = value
+
+        // Bring up the popup menu on the password field
+        element.tap()
+
+        if clearText {
+            element.buttons["Clear text"].tap()
+        }
+
+        element.doubleTap()
+
+        // Tap the Paste button to input the password
+        if app.menuItems["Paste"].waitForExistence(timeout: 5) {
+            app.menuItems["Paste"].tap()
+        } else {
+            element.doubleTap()
+            if app.menuItems["Paste"].waitForExistence(timeout: 10) {
+                app.menuItems["Paste"].tap()
+            }
         }
     }
 }

@@ -47,9 +47,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "Home Page", subtitle: "Changed basic layout of homepage."),
-        WhatsNewItem.text(title: "Home Page", subtitle: "Select User Removed. To select users click on your Avatar in the upper right of the app."),
-        WhatsNewItem.text(title: "Home Page", subtitle: "Your avatar on homepage now uses your Gravatar which can be updated at Gravatar.com. Be sure your Gravatar account and KumpeApps/KKid account use the same email address.")])
+        WhatsNewItem.text(title: "Wish List", subtitle: "Added share button to Wish List so you can send a link for your Wish List to friends and family")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -89,6 +87,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SettingsBundleHelper.checkAndExecuteSettings()
         reachable = ReachabilitySetup()
         seasonalBackgroundLoader()
         if LoggedInUser.user == nil {
@@ -284,6 +283,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/clovers.jpg")!, isBackground: true)
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .systemGreen)!), isBackground: false)
                 UserDefaults.standard.set("StPatricks", forKey: "seasonalBackgroundImage")
+            }
+        case "May":
+            if currentBackground != "May" {
+                downloadImage(URL(string: "\(KumpeAppsClient.imageURL)/backgrounds/foster_care_month.jpg")!, isBackground: true)
+                setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(color: .magenta)!), isBackground: false)
+                UserDefaults.standard.set("April", forKey: "seasonalBackgroundImage")
             }
         case "October":
             if currentBackground != "Halloween" {

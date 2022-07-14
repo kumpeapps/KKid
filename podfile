@@ -5,9 +5,6 @@ use_frameworks!
 plugin 'cocoapods-keys', {
 	:project => "KKid",
 	:keys => [
-		"kKid_username",
-		"kKid_apiPassword",
-		"googleAdMob_homeScreenBannerID",
 		"tmdb_apiKey",
 		"ShipBook_appId",
 		"ShipBook_appKey",
@@ -16,6 +13,8 @@ plugin 'cocoapods-keys', {
 }
 
 target 'KKid' do
+project 'KKid.xcodeproj'
+	pod 'ADEmptyDataView'
 	pod 'Snowflake', :git => 'https://github.com/kumpeapps/Snowflake.git', :branch => 'master'
 	pod 'ContentRestrictionsKit'
 	pod 'TransitionButton'
@@ -34,7 +33,7 @@ target 'KKid' do
 	pod 'BadgeSwift'
 	pod 'Kingfisher'
 	pod 'JKRefresher'
-	pod 'YoutubeKit'
+	pod 'YoutubeKit', '0.4.0'
 	pod 'ShipBookSDK'
 	pod 'WhatsNew'
 	pod 'AvatarView', :git => 'https://github.com/kumpeapps/AvatarView.git', :branch => 'master'

@@ -13,6 +13,8 @@
 		0F1579F7272CCD3F00AF3E27 /* TMDb_TV_Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1579F6272CCD3F00AF3E27 /* TMDb_TV_Rating.swift */; };
 		0F1579F9272CDFF700AF3E27 /* TVShowSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1579F8272CDFF700AF3E27 /* TVShowSearchViewController.swift */; };
 		0F1579FB272CE6DF00AF3E27 /* TVShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1579FA272CE6DF00AF3E27 /* TVShowDetailViewController.swift */; };
+		0F18A12328766825004BD751 /* KKid_Share_Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18A12228766825004BD751 /* KKid_Share_Response.swift */; };
+		0F18A12528766CD0004BD751 /* ShareLinkScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18A12428766CD0004BD751 /* ShareLinkScope.swift */; };
 		0F18B8492731BFA700123BBE /* TVRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18B8482731BFA700123BBE /* TVRating.swift */; };
 		0F2005F4257D60C600D9E4BE /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005F3257D60C600D9E4BE /* AppUtility.swift */; };
 		0F311181251FDE05004BB1E4 /* ManagedAppConfigLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */; };
@@ -52,7 +54,6 @@
 		0F91099325A64FD2008E658F /* TMDb_Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91099225A64FD2008E658F /* TMDb_Session.swift */; };
 		0F9192D627D3FA910088C9AF /* AvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9192D527D3FA910088C9AF /* AvatarTableViewCell.swift */; };
 		0F991504272632EA006E5F1C /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F991503272632EA006E5F1C /* WishListViewController.swift */; };
-		0F99150727278B26006E5F1C /* EmptyDataView in Frameworks */ = {isa = PBXBuildFile; productRef = 0F99150627278B26006E5F1C /* EmptyDataView */; };
 		0F99D99B25734602007169B9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D99925734602007169B9 /* MovieDetailViewController.swift */; };
 		0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D99A25734602007169B9 /* MovieSearchViewController.swift */; };
 		0F99D9A525734617007169B9 /* TMDb_Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99D9A025734617007169B9 /* TMDb_Client.swift */; };
@@ -112,6 +113,8 @@
 		0F1579F6272CCD3F00AF3E27 /* TMDb_TV_Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDb_TV_Rating.swift; sourceTree = "<group>"; };
 		0F1579F8272CDFF700AF3E27 /* TVShowSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowSearchViewController.swift; sourceTree = "<group>"; };
 		0F1579FA272CE6DF00AF3E27 /* TVShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailViewController.swift; sourceTree = "<group>"; };
+		0F18A12228766825004BD751 /* KKid_Share_Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKid_Share_Response.swift; sourceTree = "<group>"; };
+		0F18A12428766CD0004BD751 /* ShareLinkScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkScope.swift; sourceTree = "<group>"; };
 		0F18B8482731BFA700123BBE /* TVRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRating.swift; sourceTree = "<group>"; };
 		0F2005F3257D60C600D9E4BE /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		0F311180251FDE05004BB1E4 /* ManagedAppConfigLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigLib.swift; sourceTree = "<group>"; };
@@ -206,7 +209,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3421BF978588D5B625E0BEA /* Pods_KKid.framework in Frameworks */,
-				0F99150727278B26006E5F1C /* EmptyDataView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +227,7 @@
 			children = (
 				0F48330C25105ED700B92ADB /* ChoreStatus.swift */,
 				0F48330F25117C5200B92ADB /* Days.swift */,
+				0F18A12428766CD0004BD751 /* ShareLinkScope.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				0F72B1372515902C0099D2D9 /* KKid_Allowance_Respopnse.swift */,
 				0F53431E252BFDAB00A5275D /* KKid_Module.swift */,
 				0F9CAE1F272249720036742C /* KumpeApps_Auth_Response.swift */,
+				0F18A12228766825004BD751 /* KKid_Share_Response.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -474,7 +478,6 @@
 			);
 			name = KKid;
 			packageProductDependencies = (
-				0F99150627278B26006E5F1C /* EmptyDataView */,
 			);
 			productName = KKid;
 			productReference = 0F5EC89424F98D0000873868 /* KKid.app */;
@@ -527,7 +530,6 @@
 			);
 			mainGroup = 0F5EC88B24F98D0000873868;
 			packageReferences = (
-				0F99150527278B26006E5F1C /* XCRemoteSwiftPackageReference "EmptyDataView" */,
 			);
 			productRefGroup = 0F5EC89524F98D0000873868 /* Products */;
 			projectDirPath = "";
@@ -581,7 +583,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"TagERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"| perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		3CBECCC5BC4677EA217506CE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -666,6 +668,7 @@
 				0F9CAE1C2722469B0036742C /* KumpeAppsClient+GET.swift in Sources */,
 				0F37E280250DA5800002D0AD /* String+Image.swift in Sources */,
 				0F66BE382507107B00014A94 /* Logger.swift in Sources */,
+				0F18A12328766825004BD751 /* KKid_Share_Response.swift in Sources */,
 				0FB98CF524FF153200143A6A /* Pathifier.swift in Sources */,
 				0F99D9A625734617007169B9 /* TMDb_Constants.swift in Sources */,
 				0F72B1472517BF0B0099D2D9 /* AllowanceAddTransactionViewController.swift in Sources */,
@@ -688,6 +691,7 @@
 				0FB98D0225007AE800143A6A /* AddChoreViewController.swift in Sources */,
 				0F5EC89A24F98D0000873868 /* SceneDelegate.swift in Sources */,
 				0F18B8492731BFA700123BBE /* TVRating.swift in Sources */,
+				0F18A12528766CD0004BD751 /* ShareLinkScope.swift in Sources */,
 				0F1579F7272CCD3F00AF3E27 /* TMDb_TV_Rating.swift in Sources */,
 				0F9CAE24272392150036742C /* KumpeAppsClient+POST.swift in Sources */,
 				0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */,
@@ -866,8 +870,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -875,9 +880,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.kumpeapps.ios.KKid";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -889,8 +895,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -898,9 +905,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.kumpeapps.ios.KKid";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -977,25 +985,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0F99150527278B26006E5F1C /* XCRemoteSwiftPackageReference "EmptyDataView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/anup-deshpande/EmptyDataView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0F99150627278B26006E5F1C /* EmptyDataView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0F99150527278B26006E5F1C /* XCRemoteSwiftPackageReference "EmptyDataView" */;
-			productName = EmptyDataView;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0F66BE39250859FA00014A94 /* KKid.xcdatamodeld */ = {
