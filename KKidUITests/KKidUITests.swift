@@ -88,28 +88,20 @@ class KKidUITests: XCTestCase {
         app.pickerWheels["Subtract"].adjust(toPickerWheelValue: "Subtract")
         tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         let amountField = tablesQuery.cells.containing(.staticText, identifier:"Amount  $").children(matching: .textField).element
-        amountField.tap()
-
-        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
-            app.staticTexts["Continue"].tap()
-        }
-        amountField.setText(text: "5", application: app)
-
-        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
-            app.staticTexts["Continue"].tap()
-        }
         let textField = tablesQuery.cells.containing(.staticText, identifier:"Reason").children(matching: .textField).element
+        amountField.tap()
+        textField.tap()
+
+        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+            app.staticTexts["Continue"].tap()
+        }
+        amountField.pasteTextFieldText(app: app, element: amountField, value: "5", clearText: false)
+
+        if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
+            app.staticTexts["Continue"].tap()
+        }
         if textField.waitForExistence(timeout: 10) {
-            if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
-                app.staticTexts["Continue"].tap()
-            }
-            textField.tap()
-            if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
-                app.staticTexts["Continue"].tap()
-                textField.tap()
-            }
-            textField.tap()
-            textField.setText(text: "Game", application: app)
+            textField.pasteTextFieldText(app: app, element: textField, value: "Game", clearText: false)
         }
 
         let addTransactionNavigationBar = app.navigationBars["Add Transaction"]
@@ -125,12 +117,10 @@ class KKidUITests: XCTestCase {
         app.pickerWheels["Subtract"].adjust(toPickerWheelValue: "Add")
         tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         amountField.tap()
-        amountField.setText(text: "5", application: app)
+        amountField.pasteTextFieldText(app: app, element: amountField, value: "5", clearText: false)
         if textField.waitForExistence(timeout: 10) {
             textField.tap()
-            sleep(3)
-            textField.tap()
-            textField.setText(text: "Game Refund", application: app)
+            textField.pasteTextFieldText(app: app, element: textField, value: "Game Refund", clearText: false)
         }
         if addTrans.waitForExistence(timeout: 10) {
             addTrans.tap()
@@ -246,6 +236,30 @@ extension XCUIElement {
         } else {
             let coordinate: XCUICoordinate = self.coordinate(withNormalizedOffset: CGVector(dx:0.0, dy:0.0))
             coordinate.tap()
+        }
+    }
+
+    func pasteTextFieldText(app:XCUIApplication, element:XCUIElement, value:String, clearText:Bool) {
+        // Get the password into the pasteboard buffer
+        UIPasteboard.general.string = value
+
+        // Bring up the popup menu on the password field
+        element.tap()
+
+        if clearText {
+            element.buttons["Clear text"].tap()
+        }
+
+        element.doubleTap()
+
+        // Tap the Paste button to input the password
+        if app.menuItems["Paste"].waitForExistence(timeout: 5) {
+            app.menuItems["Paste"].tap()
+        } else {
+            element.doubleTap()
+            if app.menuItems["Paste"].waitForExistence(timeout: 10) {
+                app.menuItems["Paste"].tap()
+            }
         }
     }
 }
