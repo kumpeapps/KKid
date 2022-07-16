@@ -24,6 +24,9 @@ platform :ios do
     					only_testing: "KKidUITests/KKidTakeScreenshots")
     frameit
     sh('find ./screenshots/en-US/ -type f \! -name "*framed*.png" -delete')
+  	if !is_ci
+  		notification(subtitle: "Finished Screenshots", message: "Fastlane has finished gathering screenshots for KKid", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
+  	end
   end
 
   desc "Build and upload beta version to testflight"
@@ -37,6 +40,7 @@ platform :ios do
    		)
 	end
   	increment_build_number
+  	add_badge(no_badge: true)
   	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
   	upload_to_testflight
   end
@@ -63,6 +67,9 @@ platform :ios do
   		submit_for_review: false,
     	automatic_release: true
   	)
+  	if !is_ci
+  		notification(subtitle: "Finished Uploading", message: "KKid release build upload complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
+  	end
   end
 
   lane :test do
@@ -70,6 +77,9 @@ platform :ios do
             devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (3rd generation)"],
             scheme: "KKidUITests",
             only_testing: "KKidUITests/KKidUITests")
+  	if !is_ci
+  		notification(subtitle: "KKid Tests Complete", message: "KKid testing complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
+  	end
   end
 
   lane :matchget do
@@ -77,6 +87,13 @@ platform :ios do
 		setup_ci
 	end
 	match(type: "appstore", readonly: is_ci, git_basic_authorization: ENV['MATCH_GIT_BASIC_AUTHORIZATION'], git_url: "https://github.com/kumpeapps/fastlane_certs.git")
+  end
+
+  lane :notifytest do
+
+  	if !is_ci
+  		notification(subtitle: "Finished Uploading", message: "KKid release build upload complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
+  	end
   end
 
 end
