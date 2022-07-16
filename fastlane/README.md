@@ -55,6 +55,14 @@ Build and upload release version to Apple
 
 
 
+### ios notifytest
+
+```sh
+[bundle exec] fastlane ios notifytest
+```
+
+
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
