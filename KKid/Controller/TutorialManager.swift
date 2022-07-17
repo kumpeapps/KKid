@@ -68,7 +68,7 @@ extension HomeViewController {
             .breakPoint(true)
 
         // add targets changed since build 31
-        if lastBuild < 31 {
+        if lastBuild < 35 {
             tutorialManager.addTarget(targetAvatar)
             if LoggedInUser.user!.isAdmin {
                 tutorialManager.addTarget(targetUsers)
@@ -85,8 +85,8 @@ extension ChoresViewController {
 
     func choresTutorial() {
         let tutorialManager = TutorialManager(parent: view.window!)
-        let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildHome")
-        UserDefaults.standard.set(appBuild, forKey: "lastBuildHome")
+        let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildChores")
+        UserDefaults.standard.set(appBuild, forKey: "lastBuildChores")
 
         // target add button
         let targetAdd = TutorialTarget(view: buttonAdd.view)
@@ -118,7 +118,7 @@ extension ChoresViewController {
             .breakPoint(true)
 
         // add targets changed since build 31
-        if lastBuild < 31 {
+        if lastBuild < 35 {
             if LoggedInUser.user!.isAdmin {
                 tutorialManager.addTargets([targetAdd])
             }
