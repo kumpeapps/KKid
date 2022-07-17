@@ -14,6 +14,7 @@ class KKidUITests: XCTestCase {
     let elementsQuery = XCUIApplication().scrollViews.otherElements
 
     override func setUpWithError() throws {
+        app.setSeenTutorial(true)
         // Put setup code here. This method is called before the invocation of each test method in the class.
         app.launch()
         let tos = app.buttons["Agree"]
@@ -261,5 +262,15 @@ extension XCUIElement {
                 app.menuItems["Paste"].tap()
             }
         }
+    }
+
+}
+
+extension XCUIApplication {
+    func setSeenTutorial(_ seenTutorial: Bool = true) {
+        guard seenTutorial else {
+            return
+        }
+        launchArguments += ["-lastBuildHome", "99"]
     }
 }
