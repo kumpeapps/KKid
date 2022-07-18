@@ -9,17 +9,13 @@
 import PBTutorialManager
 import KumpeHelpers
 import UIKit
-/*
-let appBuildString: String? = (Bundle.main.infoDictionary!["CFBundleVersion"] as! String)
-let appBuild = Int(appBuildString!)*/
-let appBuild = 34
 
 extension HomeViewController {
 
     func tutorial() {
         let tutorialManager = TutorialManager(parent: view.window!)
         let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildHome")
-        UserDefaults.standard.set(appBuild, forKey: "lastBuildHome")
+        UserDefaults.standard.set(KumpeAppsClient.appBuild, forKey: "lastBuildHome")
 
         // target avatar photo
         let targetAvatar = createTutorialTarget(view: avatarView, message: "Avatar Photo", position: .left)
@@ -49,7 +45,7 @@ extension ChoresViewController {
     func tutorial() {
         let tutorialManager = TutorialManager(parent: view.window!)
         let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildChores")
-        UserDefaults.standard.set(appBuild, forKey: "lastBuildChores")
+        UserDefaults.standard.set(KumpeAppsClient.appBuild, forKey: "lastBuildChores")
 
         // target add button
         let targetAdd = createTutorialTarget(view: buttonAdd.view, message: "Add New Chores", position: .left, shape: .elipse, breakPoint: false)
@@ -77,7 +73,7 @@ extension MarkChoreViewController {
     func tutorial() {
         let tutorialManager = TutorialManager(parent: view.window!)
         let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildMarkChore")
-        UserDefaults.standard.set(appBuild, forKey: "lastBuildMarkChore")
+        UserDefaults.standard.set(KumpeAppsClient.appBuild, forKey: "lastBuildMarkChore")
 
         // Create Targets
         let targetCheck = createTutorialTarget(view: buttonCheck, message: "Mark Chore as Complete", position: .bottom, breakPoint: false)
@@ -101,7 +97,7 @@ extension AllowanceViewController {
     func tutorial() {
         let tutorialManager = TutorialManager(parent: view.window!)
         let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildAllowance")
-        UserDefaults.standard.set(appBuild, forKey: "lastBuildAllowance")
+        UserDefaults.standard.set(KumpeAppsClient.appBuild, forKey: "lastBuildAllowance")
 
         // Create Targets
         let targetAdd = createTutorialTarget(view: buttonAdd.view, message: "Add/Subtract Allowance", position: .left, shape: .elipse, breakPoint: false)
@@ -123,7 +119,7 @@ extension WishListViewController {
     func tutorial() {
         let tutorialManager = TutorialManager(parent: view.window!)
         let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildWishList")
-        UserDefaults.standard.set(appBuild, forKey: "lastBuildWishList")
+        UserDefaults.standard.set(KumpeAppsClient.appBuild, forKey: "lastBuildWishList")
 
         // Create Targets
         let targetAdd = createTutorialTarget(view: buttonAdd.view, message: "Add Wish to List", position: .bottom, shape: .elipse, breakPoint: false)
