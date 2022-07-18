@@ -271,6 +271,10 @@ extension XCUIApplication {
         guard seenTutorial else {
             return
         }
-        launchArguments += ["-lastBuildHome", "99"]
+        launchArguments += ["-lastBuildHome", "999999"]
+        launchArguments += ["-lastBuildChores", "999999"]
+        launchArguments += ["-lastBuildMarkChore", "999999"]
+        launchArguments += ["-lastBuildAllowance", "999999"]
+        launchArguments += ["-lastBuildWishList", "999999"]
     }
 }

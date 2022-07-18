@@ -85,6 +85,7 @@ class WishListViewController: UIViewController {
 // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        tutorial()
 
         guard UserDefaults.standard.bool(forKey: "isAuthenticated") else {
             Logger.log(.warning, "Not Authenticated")

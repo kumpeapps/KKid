@@ -121,12 +121,21 @@ extension AllowanceViewController {
 extension WishListViewController {
     func tutorial() {
         let tutorialManager = TutorialManager(parent: view.window!)
-        let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildAllowance")
-        UserDefaults.standard.set(appBuild, forKey: "lastBuildAllowance")
+        let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildWishList")
+        UserDefaults.standard.set(appBuild, forKey: "lastBuildWishList")
 
         // Create Targets
-        let targetAdd = createTutorialTarget(view: buttonAdd.view, message: "Add Wish to List", position: .bottom)
-        let targetShare = createTutorialTarget(view: buttonShare.view, message: "Share list wth Family/Friends", position: .left)
+        let targetAdd = createTutorialTarget(view: buttonAdd.view, message: "Add Wish to List", position: .bottom, shape: .elipse, breakPoint: false)
+        let targetShare = createTutorialTarget(view: buttonShare.view, message: "Share list wth Family/Friends", position: .left, shape: .elipse, breakPoint: false)
+        let targetList = createTutorialTarget(view: tableView, message: "Wish List", position: .top)
+
+        // Add targets since build 33
+        if lastBuild < 33 {
+            tutorialManager.addTargets([targetAdd,targetShare,targetList])
+        }
+
+        // Start Tutorial
+        tutorialManager.fireTargets()
     }
 }
 
