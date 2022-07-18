@@ -9,7 +9,7 @@ PODS:
   - BadgeSwift (8.0.0)
   - CollectionViewCenteredFlowLayout (1.0.1)
   - ContentRestrictionsKit (1.2)
-  - DeviceKit (4.6.0)
+  - DeviceKit (4.6.1)
   - FetchedResultsControllerCollectionViewUpdater (0.1.0)
   - Haptico (1.1.1)
   - JKRefresher (1.4)
@@ -129,7 +129,7 @@ SPEC CHECKSUMS:
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
   CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
   ContentRestrictionsKit: db88b231efbc00ee45f3eefae04ba7b4219fe433
-  DeviceKit: 834dd8aa1be53cd85364d8f49aa5d98bfac397c4
+  DeviceKit: 316f28290430467278b8a0d1c895968efa9e16e2
   FetchedResultsControllerCollectionViewUpdater: 10e88db1403d8d6e17a5d323efe1d1fd31dd0e1c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
   JKRefresher: 43ff65dfed29cdf1780e3923164938fd07b2e9b9
