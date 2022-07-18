@@ -3,14 +3,14 @@ platform :ios, '15.0'
 use_frameworks!
 
 plugin 'cocoapods-keys', {
-	:project => "KKid",
+	:project => "KKid.xcodeproj",
 	:keys => [
 		"tmdb_apiKey",
 		"ShipBook_appId",
 		"ShipBook_appKey",
 		"kkid_apikey"
 	],
-	:target => "KKid"
+	:target => "KKid.xcodeproj"
 }
 
 target 'KKid' do
