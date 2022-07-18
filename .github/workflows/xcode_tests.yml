@@ -43,7 +43,7 @@ jobs:
       run: bundle exec pod check || bundle exec pod install
 
     - name: CocoaPods Keys
-      run: bundle exec pod keys KKid.xcodeproj
+      run: bundle exec pod keys list
 
     - name: CocoaPods Update
       if: "contains(github.event.head_commit.message, '#pod update')"
