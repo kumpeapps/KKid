@@ -75,10 +75,6 @@ jobs:
     - name: Bundle dependencies
       run: bundle install
 
-    - name: CocoaPods Clear Cache
-      if: steps.cache.outputs.podcache-hit != 'true'
-      run: bundle exec pod cache clean --all
-
     - name: CocoaPods dependencies
       env:
         tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
@@ -86,6 +82,9 @@ jobs:
         ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
       run: bundle exec pod check || bundle exec pod install
+
+    - name: CocoaPods Keys
+      run: bundle exec pod keys
 
     - name: CocoaPods Update
       if: "contains(github.event.head_commit.message, '#pod update')"
