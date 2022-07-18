@@ -41,6 +41,12 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
             NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
     }
 
+    // MARK: viewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tutorial()
+    }
+
 // MARK: verifyAuthenticated
     @objc func verifyAuthenticated() {
         KumpeAppsClient.verifyIsAuthenticated(self)
