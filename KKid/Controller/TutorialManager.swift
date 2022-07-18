@@ -9,9 +9,10 @@
 import PBTutorialManager
 import KumpeHelpers
 import UIKit
-
+/*
 let appBuildString: String? = (Bundle.main.infoDictionary!["CFBundleVersion"] as! String)
-let appBuild = Int(appBuildString!)
+let appBuild = Int(appBuildString!)*/
+let appBuild = 34
 
 extension HomeViewController {
 
