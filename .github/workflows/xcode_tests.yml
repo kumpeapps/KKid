@@ -20,14 +20,14 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: Pods
-        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        key: ${{ runner.os }}-pods-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
                 ${{ runner.os }}-pods-
 
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-gem-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
 
@@ -60,14 +60,14 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: Pods
-        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        key: ${{ runner.os }}-pods-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
                 ${{ runner.os }}-pods-
 
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-gem-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
 
