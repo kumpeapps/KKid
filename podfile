@@ -9,7 +9,8 @@ plugin 'cocoapods-keys', {
 		"ShipBook_appId",
 		"ShipBook_appKey",
 		"kkid_apikey"
-	]
+	],
+	:target => "KKid"
 }
 
 target 'KKid' do
