@@ -59,6 +59,7 @@ jobs:
 
     - uses: actions/cache@v2
       with:
+        id: podcache
         path: Pods
         key: ${{ runner.os }}-pods-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
@@ -74,8 +75,12 @@ jobs:
     - name: Bundle dependencies
       run: bundle install
 
+    - name: CocoaPods Clear Cache
+      if: steps.cache.outputs.podcache-hit != 'true'
+      run: bundle exec pod cache clean
+
     - name: CocoaPods dependencies
-      env: # Or as an environment variable
+      env:
         tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
         ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
         ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
