@@ -118,6 +118,18 @@ extension AllowanceViewController {
 
 }
 
+extension WishListViewController {
+    func tutorial() {
+        let tutorialManager = TutorialManager(parent: view.window!)
+        let lastBuild = UserDefaults.standard.integer(forKey: "lastBuildAllowance")
+        UserDefaults.standard.set(appBuild, forKey: "lastBuildAllowance")
+
+        // Create Targets
+        let targetAdd = createTutorialTarget(view: buttonAdd.view, message: "Add Wish to List", position: .bottom)
+        let targetShare = createTutorialTarget(view: buttonShare.view, message: "Share list wth Family/Friends", position: .left)
+    }
+}
+
 extension UIBarButtonItem {
 
     var view: UIView? {
