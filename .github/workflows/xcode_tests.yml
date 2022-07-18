@@ -42,6 +42,9 @@ jobs:
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
       run: bundle exec pod check || bundle exec pod install
 
+    - name: CocoaPods Keys
+      run: bundle exec pod keys
+
     - name: CocoaPods Update
       if: "contains(github.event.head_commit.message, '#pod update')"
       run: bundle exec pod update
@@ -81,7 +84,7 @@ jobs:
         ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
         ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
-      run: bundle exec pod keys
+      run: bundle exec pod check || bundle exec pod install
 
     - name: CocoaPods Update
       if: "contains(github.event.head_commit.message, '#pod update')"
