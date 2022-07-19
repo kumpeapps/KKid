@@ -15,7 +15,7 @@ plugin 'cocoapods-keys', {
 
 target 'KKid' do
 project 'KKid.xcodeproj'
-#	pod 'PBTutorialManager'
+	pod 'PBTutorialManager'
 	pod 'ADEmptyDataView'
 	pod 'Snowflake', :git => 'https://github.com/kumpeapps/Snowflake.git', :branch => 'master'
 	pod 'ContentRestrictionsKit'
