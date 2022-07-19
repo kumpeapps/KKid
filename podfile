@@ -3,19 +3,19 @@ platform :ios, '15.0'
 use_frameworks!
 
 plugin 'cocoapods-keys', {
-	:project => "KKid.xcodeproj",
+	:project => "KKid",
 	:keys => [
 		"tmdb_apiKey",
 		"ShipBook_appId",
 		"ShipBook_appKey",
 		"kkid_apikey"
 	],
-	:target => "KKid.xcodeproj"
+	:target => "KKid"
 }
 
 target 'KKid' do
 project 'KKid.xcodeproj'
-	pod 'PBTutorialManager'
+#	pod 'PBTutorialManager'
 	pod 'ADEmptyDataView'
 	pod 'Snowflake', :git => 'https://github.com/kumpeapps/Snowflake.git', :branch => 'master'
 	pod 'ContentRestrictionsKit'
