@@ -26,8 +26,8 @@ extension HomeViewController {
         let targetModules2 = createTutorialTarget(view: collectionView, message: "Modules that have not yet been launched on this device will have the NEW badge.", position: .top)
         let targetModules3 = createTutorialTarget(view: collectionView, message: "Select Edit Profile to change user permissions and turn notifications on/off.", position: .top)
 
-        // add targets changed since build 32
-        if lastBuild < 32 {
+        // add targets changed since build 41
+        if lastBuild < 41 {
             tutorialManager.addTarget(targetAvatar)
             if LoggedInUser.user!.isAdmin {
                 tutorialManager.addTarget(targetUsers)
@@ -54,8 +54,8 @@ extension ChoresViewController {
         let targetTable = createTutorialTarget(view: tableView, message: "Chores are listed in the table below in order of Priority", position: .top)
         let targetTable2 = createTutorialTarget(view: tableView, message: "Tap on a chore to change the status of the chore (like checking it off as completed)", position: .top)
 
-        // add targets changed since build 32
-        if lastBuild < 32 {
+        // add targets changed since build 41
+        if lastBuild < 41 {
             if LoggedInUser.user!.isAdmin {
                 tutorialManager.addTargets([targetAdd])
             }
@@ -80,8 +80,8 @@ extension MarkChoreViewController {
         let targetDash = createTutorialTarget(view: buttonDash, message: "Mark Chore as Not Needed", position: .bottom, breakPoint: false)
         let targetX = createTutorialTarget(view: buttonX, message: "Mark Chore as Will Not Complete", position: .bottom)
 
-        // Add targets since build 32
-        if lastBuild < 32 {
+        // Add targets since build 41
+        if lastBuild < 41 {
             tutorialManager.addTargets([targetCheck,targetDash,targetX])
         }
 
@@ -104,8 +104,8 @@ extension AllowanceViewController {
         let targetAmount = createTutorialTarget(view: imageBalance, message: "Current Balance", position: .top)
         let targetLedger = createTutorialTarget(view: buttonLedger.view, message: "View Allowance Ledger", position: .bottom, shape: .elipse)
 
-        // Add targets since build 32
-        if lastBuild < 32 {
+        // Add targets since build 41
+        if lastBuild < 41 {
             tutorialManager.addTargets([targetAdd,targetAmount,targetLedger])
         }
 
@@ -126,8 +126,8 @@ extension WishListViewController {
         let targetShare = createTutorialTarget(view: buttonShare.view, message: "Share list wth Family/Friends", position: .left, shape: .elipse, breakPoint: false)
         let targetList = createTutorialTarget(view: tableView, message: "Wish List", position: .top)
 
-        // Add targets since build 33
-        if lastBuild < 33 {
+        // Add targets since build 41
+        if lastBuild < 41 {
             tutorialManager.addTargets([targetAdd,targetShare,targetList])
         }
 
