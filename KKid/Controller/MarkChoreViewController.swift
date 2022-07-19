@@ -45,7 +45,7 @@ class MarkChoreViewController: UIViewController {
     // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tutorial()
+        // tutorial()
     }
 
 // MARK: viewDidDisappear

@@ -44,7 +44,7 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
     // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tutorial()
+        // tutorial()
     }
 
 // MARK: verifyAuthenticated
