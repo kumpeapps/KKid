@@ -145,7 +145,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.buildModules()
             }
         }
-        // tutorial()
+        tutorial()
         self.requirePrivacy()
         whatsNew.presentIfNeeded(on: self)
     }

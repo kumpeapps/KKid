@@ -114,7 +114,7 @@ class ChoresViewController: UIViewController {
 // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // tutorial()
+        tutorial()
         getChores()
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.getChores), for: .valueChanged)
