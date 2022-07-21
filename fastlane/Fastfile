@@ -44,7 +44,7 @@ platform :ios do
   		add_badge(dark: true)
   	end
   	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
-  	upload_to_testflight
+  	upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 
   desc "Build and upload release version to Apple"
