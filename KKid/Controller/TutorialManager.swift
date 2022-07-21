@@ -126,8 +126,8 @@ extension WishListViewController {
         let targetShare = createTutorialTarget(view: buttonShare.view, message: "Share list wth Family/Friends", position: .left, shape: .elipse, breakPoint: false)
         let targetList = createTutorialTarget(view: tableView, message: "Wish List", position: .top)
 
-        // Add targets since build 42
-        if lastBuild < 42 {
+        // Add targets since build 41
+        if lastBuild < 41 {
             tutorialManager.addTargets([targetAdd,targetShare,targetList])
         }
 
