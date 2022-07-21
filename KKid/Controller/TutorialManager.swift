@@ -104,7 +104,7 @@ extension AllowanceViewController {
         let targetAmount = createTutorialTarget(view: imageBalance, message: "Current Balance", position: .top)
         let targetLedger = createTutorialTarget(view: buttonLedger.view, message: "View Allowance Ledger", position: .bottom, shape: .elipse)
 
-        // Add targets that are new since build 41
+        // Add targets since build 41
         if lastBuild < 41 {
             tutorialManager.addTargets([targetAdd,targetAmount,targetLedger])
         }
