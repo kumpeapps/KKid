@@ -474,6 +474,7 @@
 				0F5EC89224F98D0000873868 /* Resources */,
 				0F5EC8AB24F98D2400873868 /* ShellScript */,
 				3CBECCC5BC4677EA217506CE /* [CP] Embed Pods Frameworks */,
+				0FFAD94A288A21D500AD718B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -587,6 +588,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		0FFAD94A288A21D500AD718B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SCRIPT=`/usr/bin/find \"${SRCROOT}\" -name newrelic_postbuild.sh | head -n 1`\n\n/bin/sh \"${SCRIPT}\" echo `bundle exec pod keys get newrelic_token`\n";
 		};
 		3CBECCC5BC4677EA217506CE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

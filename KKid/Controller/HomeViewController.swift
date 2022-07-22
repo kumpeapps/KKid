@@ -451,7 +451,7 @@ extension HomeViewController {
                 let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
                 UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
             case "User Manual":
-                launchURL("https://github.com/kumpeapps/KKid/blob/master/README.md")
+                launchURL("https://github.com/kumpeapps/KKid#kkid")
             case "Portal":
                 launchURL("https://khome.kumpeapps.com")
             case "Support":
