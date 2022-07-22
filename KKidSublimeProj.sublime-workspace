@@ -8,13 +8,416 @@
 	"buffers":
 	[
 		{
-			"file": "KKid/Controller/TutorialManager.swift",
+			"file": ".github/workflows/xcode_tests.yml",
 			"settings":
 			{
-				"buffer_size": 6383,
+				"buffer_size": 3680,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					2,
+					"left_delete",
+					null,
+					"AgAAAGEDAAAAAAAAYQMAAAAAAAAfAAAAIyBPciBhcyBhbiBlbnZpcm9ubWVudCB2YXJpYWJsZWADAAAAAAAAYAMAAAAAAAABAAAAIA",
+					"AQAAAAAAAAABAAAAgAMAAAAAAABhAwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					6,
+					1,
+					"left_delete",
+					null,
+					"AQAAAGsEAAAAAAAAawQAAAAAAABSAQAACiAgICAtIG5hbWU6IENvY29hUG9kcyBLZXlzCiAgICAgIHJ1bjogYnVuZGxlIGV4ZWMgcG9kIGtleXMgc2V0IHRtZGJfYXBpS2V5ICR7eyBzZWNyZXRzLlRNREJfQVBJS0VZIH19IEtLaWQgJiYgYnVuZGxlIGV4ZWMgcG9kIGtleXMgc2V0IFNoaXBCb29rX2FwcElEICR7eyBzZWNyZXRzLlNISVBCT09LX0FQUElEIH19IEtLaWQgJiYgYnVuZGxlIGV4ZWMgcG9kIGtleXMgc2V0IFNoaXBCb29rX2FwcEtleSAke3sgc2VjcmV0cy5TSElQQk9PS19BUFBLRVkgfX0gS0tpZCAmJiBidW5kbGUgZXhlYyBwb2Qga2V5cyBzZXQga2tpZF9hcGlrZXkgJHt7IHNlY3JldHMuS0tJRF9BUElLRVkgfX0gS0tpZAo",
+					"AQAAAAAAAAABAAAAvQUAAAAAAABrBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					9,
+					1,
+					"insert",
+					{
+						"characters": "\nn"
+					},
+					"AwAAAC4EAAAAAAAALwQAAAAAAAAAAAAALwQAAAAAAAA3BAAAAAAAAAAAAAA3BAAAAAAAADgEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAALgQAAAAAAAAuBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					10,
+					1,
+					"insert",
+					{
+						"characters": "ewrelic"
+					},
+					"BwAAADgEAAAAAAAAOQQAAAAAAAAAAAAAOQQAAAAAAAA6BAAAAAAAAAAAAAA6BAAAAAAAADsEAAAAAAAAAAAAADsEAAAAAAAAPAQAAAAAAAAAAAAAPAQAAAAAAAA9BAAAAAAAAAAAAAA9BAAAAAAAAD4EAAAAAAAAAAAAAD4EAAAAAAAAPwQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAOAQAAAAAAAA4BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					11,
+					1,
+					"insert",
+					{
+						"characters": "_"
+					},
+					"AQAAAD8EAAAAAAAAQAQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAPwQAAAAAAAA/BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					12,
+					1,
+					"insert",
+					{
+						"characters": "token:"
+					},
+					"BgAAAEAEAAAAAAAAQQQAAAAAAAAAAAAAQQQAAAAAAABCBAAAAAAAAAAAAABCBAAAAAAAAEMEAAAAAAAAAAAAAEMEAAAAAAAARAQAAAAAAAAAAAAARAQAAAAAAABFBAAAAAAAAAAAAABFBAAAAAAAAEYEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAQAQAAAAAAABABAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					13,
+					1,
+					"insert",
+					{
+						"characters": " "
+					},
+					"AQAAAEYEAAAAAAAARwQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAARgQAAAAAAABGBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					14,
+					1,
+					"insert",
+					{
+						"characters": "$"
+					},
+					"AQAAAEcEAAAAAAAASAQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAARwQAAAAAAABHBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					15,
+					2,
+					"insert_snippet",
+					{
+						"contents": "{$0}"
+					},
+					"AgAAAEgEAAAAAAAASgQAAAAAAAAAAAAASQQAAAAAAABLBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAASAQAAAAAAABIBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					16,
+					1,
+					"insert",
+					{
+						"characters": " secrets"
+					},
+					"CAAAAEoEAAAAAAAASwQAAAAAAAAAAAAASwQAAAAAAABMBAAAAAAAAAAAAABMBAAAAAAAAE0EAAAAAAAAAAAAAE0EAAAAAAAATgQAAAAAAAAAAAAATgQAAAAAAABPBAAAAAAAAAAAAABPBAAAAAAAAFAEAAAAAAAAAAAAAFAEAAAAAAAAUQQAAAAAAAAAAAAAUQQAAAAAAABSBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAASgQAAAAAAABKBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					17,
+					1,
+					"insert",
+					{
+						"characters": ".KK"
+					},
+					"AwAAAFIEAAAAAAAAUwQAAAAAAAAAAAAAUwQAAAAAAABUBAAAAAAAAAAAAABUBAAAAAAAAFUEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAUgQAAAAAAABSBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					18,
+					2,
+					"left_delete",
+					null,
+					"AgAAAFQEAAAAAAAAVAQAAAAAAAABAAAAS1MEAAAAAAAAUwQAAAAAAAABAAAASw",
+					"AQAAAAAAAAABAAAAVQQAAAAAAABVBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					19,
+					1,
+					"insert",
+					{
+						"characters": "NEWRELIC_"
+					},
+					"CQAAAFMEAAAAAAAAVAQAAAAAAAAAAAAAVAQAAAAAAABVBAAAAAAAAAAAAABVBAAAAAAAAFYEAAAAAAAAAAAAAFYEAAAAAAAAVwQAAAAAAAAAAAAAVwQAAAAAAABYBAAAAAAAAAAAAABYBAAAAAAAAFkEAAAAAAAAAAAAAFkEAAAAAAAAWgQAAAAAAAAAAAAAWgQAAAAAAABbBAAAAAAAAAAAAABbBAAAAAAAAFwEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAUwQAAAAAAABTBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					20,
+					1,
+					"insert",
+					{
+						"characters": "TOKEN"
+					},
+					"BQAAAFwEAAAAAAAAXQQAAAAAAAAAAAAAXQQAAAAAAABeBAAAAAAAAAAAAABeBAAAAAAAAF8EAAAAAAAAAAAAAF8EAAAAAAAAYAQAAAAAAAAAAAAAYAQAAAAAAABhBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAXAQAAAAAAABcBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					21,
+					1,
+					"insert",
+					{
+						"characters": " "
+					},
+					"AQAAAGEEAAAAAAAAYgQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAYQQAAAAAAABhBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					27,
+					1,
+					"paste",
+					null,
+					"AQAAACgJAAAAAAAAXgkAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAKAkAAAAAAAAoCQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					32,
+					3,
+					"left_delete",
+					null,
+					"AwAAAEkKAAAAAAAASQoAAAAAAAAeAAAAIE9yIGFzIGFuIGVudmlyb25tZW50IHZhcmlhYmxlSAoAAAAAAABICgAAAAAAAAEAAAAjRwoAAAAAAABHCgAAAAAAAAEAAAAg",
+					"AQAAAAAAAAABAAAAZwoAAAAAAABJCgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					35,
+					3,
+					"left_delete",
+					null,
+					"AwAAALoMAAAAAAAAugwAAAAAAAAeAAAAIE9yIGFzIGFuIGVudmlyb25tZW50IHZhcmlhYmxluQwAAAAAAAC5DAAAAAAAAAEAAAAjuAwAAAAAAAC4DAAAAAAAAAEAAAAg",
+					"AQAAAAAAAAABAAAA2AwAAAAAAAC6DAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "fastlane/metadata/release_notes.txt",
+			"settings":
+			{
+				"buffer_size": 44,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					5,
+					1,
+					"insert",
+					{
+						"characters": "Added"
+					},
+					"BgAAAAIAAAAAAAAAAwAAAAAAAAAAAAAAAwAAAAAAAAADAAAAAAAAACAAAABBZGRlZCBTaGFyZSBidXR0b24gdG8gV2lzaCBMaXN0CgMAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAFAAAAAAAAAAAAAAAFAAAAAAAAAAYAAAAAAAAAAAAAAAYAAAAAAAAABwAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIgAAAAAAAAACAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					6,
+					1,
+					"insert",
+					{
+						"characters": " A"
+					},
+					"AgAAAAcAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAJAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAABwAAAAAAAAAHAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					7,
+					1,
+					"insert",
+					{
+						"characters": "pp"
+					},
+					"AgAAAAkAAAAAAAAACgAAAAAAAAAAAAAACgAAAAAAAAALAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAACQAAAAAAAAAJAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					8,
+					1,
+					"insert",
+					{
+						"characters": " To"
+					},
+					"AwAAAAsAAAAAAAAADAAAAAAAAAAAAAAADAAAAAAAAAANAAAAAAAAAAAAAAANAAAAAAAAAA4AAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAACwAAAAAAAAALAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					9,
+					1,
+					"left_delete",
+					null,
+					"AQAAAA0AAAAAAAAADQAAAAAAAAABAAAAbw",
+					"AQAAAAAAAAABAAAADgAAAAAAAAAOAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					10,
+					1,
+					"insert",
+					{
+						"characters": "utorial"
+					},
+					"BwAAAA0AAAAAAAAADgAAAAAAAAAAAAAADgAAAAAAAAAPAAAAAAAAAAAAAAAPAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEQAAAAAAAAAAAAAAEQAAAAAAAAASAAAAAAAAAAAAAAASAAAAAAAAABMAAAAAAAAAAAAAABMAAAAAAAAAFAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAADQAAAAAAAAANAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					11,
+					1,
+					"insert",
+					{
+						"characters": " Flows"
+					},
+					"BgAAABQAAAAAAAAAFQAAAAAAAAAAAAAAFQAAAAAAAAAWAAAAAAAAAAAAAAAWAAAAAAAAABcAAAAAAAAAAAAAABcAAAAAAAAAGAAAAAAAAAAAAAAAGAAAAAAAAAAZAAAAAAAAAAAAAAAZAAAAAAAAABoAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAFAAAAAAAAAAUAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					12,
+					1,
+					"insert",
+					{
+						"characters": "\n-"
+					},
+					"AgAAABoAAAAAAAAAGwAAAAAAAAAAAAAAGwAAAAAAAAAcAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAGgAAAAAAAAAaAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					13,
+					1,
+					"insert",
+					{
+						"characters": " Minor"
+					},
+					"BgAAABwAAAAAAAAAHQAAAAAAAAAAAAAAHQAAAAAAAAAeAAAAAAAAAAAAAAAeAAAAAAAAAB8AAAAAAAAAAAAAAB8AAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAhAAAAAAAAAAAAAAAhAAAAAAAAACIAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAHAAAAAAAAAAcAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					14,
+					1,
+					"insert",
+					{
+						"characters": " bug"
+					},
+					"BAAAACIAAAAAAAAAIwAAAAAAAAAAAAAAIwAAAAAAAAAkAAAAAAAAAAAAAAAkAAAAAAAAACUAAAAAAAAAAAAAACUAAAAAAAAAJgAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIgAAAAAAAAAiAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					15,
+					1,
+					"insert",
+					{
+						"characters": " fixes"
+					},
+					"BgAAACYAAAAAAAAAJwAAAAAAAAAAAAAAJwAAAAAAAAAoAAAAAAAAAAAAAAAoAAAAAAAAACkAAAAAAAAAAAAAACkAAAAAAAAAKgAAAAAAAAAAAAAAKgAAAAAAAAArAAAAAAAAAAAAAAArAAAAAAAAACwAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAJgAAAAAAAAAmAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "Settings.bundle/Root.plist",
+			"settings":
+			{
+				"buffer_size": 5291,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					5,
+					1,
+					"paste",
+					null,
+					"AQAAAHkTAAAAAAAAcRQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAeRMAAAAAAAB5EwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					10,
+					1,
+					"paste",
+					null,
+					"AgAAAN8TAAAAAAAA8BMAAAAAAAAAAAAA8BMAAAAAAADwEwAAAAAAAAgAAABHcmF2YXRhcg",
+					"AQAAAAAAAAABAAAA3xMAAAAAAADnEwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					13,
+					1,
+					"paste",
+					null,
+					"AgAAAE8UAAAAAAAAfBQAAAAAAAAAAAAAfBQAAAAAAAB8FAAAAAAAABgAAABodHRwczovL3d3dy5ncmF2YXRhci5jb20",
+					"AQAAAAAAAAABAAAAZxQAAAAAAABPFAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 15495,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					1,
+					"insert",
+					{
+						"characters": "\n-"
+					},
+					"AgAAAJcRAAAAAAAAmBEAAAAAAAAAAAAAmBEAAAAAAACZEQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAlxEAAAAAAACXEQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					4,
+					1,
+					"insert",
+					{
+						"characters": "   "
+					},
+					"AwAAAJkRAAAAAAAAmhEAAAAAAAAAAAAAmhEAAAAAAACbEQAAAAAAAAAAAACbEQAAAAAAAJwRAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAmREAAAAAAACZEQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					5,
+					1,
+					"insert_snippet",
+					{
+						"contents": "[$0]"
+					},
+					"AQAAAJwRAAAAAAAAnhEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAnBEAAAAAAACcEQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					6,
+					1,
+					"paste",
+					null,
+					"AQAAAJ0RAAAAAAAArhEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAnREAAAAAAACdEQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					8,
+					1,
+					"insert_snippet",
+					{
+						"contents": "($0)"
+					},
+					"AQAAAK8RAAAAAAAAsREAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAArxEAAAAAAACvEQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					9,
+					1,
+					"paste",
+					null,
+					"AQAAALARAAAAAAAA3REAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAsBEAAAAAAACwEQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					12,
+					1,
+					"left_delete",
+					null,
+					"AQAAAHIeAAAAAAAAch4AAAAAAAABAAAALg",
+					"AQAAAAAAAAABAAAAcx4AAAAAAABzHgAAAAAAAAAAAAAAAPC/"
+				]
+			]
 		}
 	],
 	"build_system": "",
@@ -57,10 +460,18 @@
 	},
 	"expanded_folders":
 	[
-		"/Volumes/Developer/xcode_Apps/KKid"
+		"/Volumes/Developer/xcode_Apps/KKid",
+		"/Volumes/Developer/xcode_Apps/KKid/.github",
+		"/Volumes/Developer/xcode_Apps/KKid/.github/workflows",
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane",
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane/metadata",
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane/metadata/en-US",
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane/metadata/review_information",
+		"/Volumes/Developer/xcode_Apps/KKid/Settings.bundle"
 	],
 	"file_history":
 	[
+		"/Users/justinkumpe/Library/Application Support/Sublime Merge/Packages/User/Preferences.sublime-settings",
 		"/P/My Documents/KKid/KKid/Controller/HomeViewController.swift",
 		"/P/My Documents/KKid/KKid/Controller/TutorialManager.swift",
 		"/C/Users/justinkumpe/AppData/Roaming/Sublime Merge/Packages/User/Preferences.sublime-settings",
@@ -105,33 +516,124 @@
 			[
 				{
 					"buffer": 0,
-					"file": "KKid/Controller/TutorialManager.swift",
-					"selected": true,
-					"semi_transient": true,
+					"file": ".github/workflows/xcode_tests.yml",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6383,
+						"buffer_size": 3680,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3256,
+								3256
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Swift/Syntaxes/Swift.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1361.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "fastlane/metadata/release_notes.txt",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 44,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								44,
+								44
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Settings.bundle/Root.plist",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5291,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5244,
+								5244
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3147.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7794,
+								7794
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2126.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"stack_multiselect": false,
 					"type": "text"
 				}
