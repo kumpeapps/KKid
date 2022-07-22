@@ -34,15 +34,13 @@ jobs:
       run: bundle install
 
     - name: CocoaPods dependencies
-      env: # Or as an environment variable
+      env:
         tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
         ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
         ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
+        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
       run: bundle exec pod check || bundle exec pod install
-
-    - name: CocoaPods Keys
-      run: bundle exec pod keys set tmdb_apiKey ${{ secrets.TMDB_APIKEY }} KKid && bundle exec pod keys set ShipBook_appID ${{ secrets.SHIPBOOK_APPID }} KKid && bundle exec pod keys set ShipBook_appKey ${{ secrets.SHIPBOOK_APPKEY }} KKid && bundle exec pod keys set kkid_apikey ${{ secrets.KKID_APIKEY }} KKid
 
     - name: CocoaPods Update
       if: "contains(github.event.head_commit.message, '#pod update')"
