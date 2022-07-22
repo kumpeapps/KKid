@@ -81,6 +81,7 @@ jobs:
         ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
         ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
+        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
       run: bundle exec pod check || bundle exec pod install
 
     - name: CocoaPods Update
