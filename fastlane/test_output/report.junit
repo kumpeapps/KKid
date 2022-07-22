@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <testsuites name='KKidUITests.xctest' tests='8' failures='0'>
   <testsuite name='KKidUITests.KKidUITests' tests='8' failures='0'>
-    <testcase classname='KKidUITests.KKidUITests' name='testAllowance' time='76.610'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testChores' time='24.624'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testEditProfile' time='22.978'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testLaunchPerformance' time='98.727'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testLogin' time='21.038'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testSelectUser' time='22.707'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testTmdb' time='27.007'/>
-    <testcase classname='KKidUITests.KKidUITests' name='testWishList' time='28.204'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testAllowance' time='73.844'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testChores' time='22.739'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testEditProfile' time='20.817'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testLaunchPerformance' time='97.580'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testLogin' time='19.073'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testSelectUser' time='21.198'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testTmdb' time='27.148'/>
+    <testcase classname='KKidUITests.KKidUITests' name='testWishList' time='26.173'/>
   </testsuite>
 </testsuites>
