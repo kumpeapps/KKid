@@ -1,4 +1,3 @@
-The KKid app allows you to create a home account with multiple parents/admins and multiple kids to post chores for the kids to check off each day and keep up with the kid's allowance. You can also search for movies and view descriptions/trailers for any movie in the TMDb database.
+The KKid app was originally designed for parents and kids to keep up with chore lists and allowance. This app has since been expanded to include Wish lists, Movie Watch List/Favorites, and TV Show Watch List/Favorites with more modules to come in the future. Parents/Admins always have the option to turn individual modules off/on per kid/user.
 
 Some used are Icons by Icons8.
-Movie Search provided by TMDb.

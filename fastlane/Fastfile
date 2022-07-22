@@ -65,7 +65,7 @@ platform :ios do
   	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
   	deliver(
   		force: true,
-  		metadata_path: "./metadata",
+  		metadata_path: "./fastlane/metadata",
   		submit_for_review: false,
     	automatic_release: true
   	)

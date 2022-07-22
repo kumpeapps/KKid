@@ -1,2 +1,2 @@
-- Added App Tutorial Flows
-- Minor bug fixes
+- Added app tutorial on first launch
+- Bug Fixes
