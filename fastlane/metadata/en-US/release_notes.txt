@@ -1,1 +1,2 @@
-- Added Share button to Wish List
+- Added App Tutorial Flows
+- Minor bug fixes
