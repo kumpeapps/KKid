@@ -1,3 +1,0 @@
-The KKid app was originally designed for parents and kids to keep up with chore lists and allowance. This app has since been expanded to include Wish lists, Movie Watch List/Favorites, and TV Show Watch List/Favorites with more modules to come in the future. Parents/Admins always have the option to turn individual modules off/on per kid/user.
-
-Some used are Icons by Icons8.

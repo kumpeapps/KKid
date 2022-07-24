@@ -11,6 +11,8 @@ import CoreData
 import PrivacyKit
 import KumpeHelpers
 import ShipBookSDK
+import NewRelic
+import Keys
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
@@ -44,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        NewRelic.start(withApplicationToken:"\(KKidKeys().newrelic_token)")
         ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
 //        Setup PrivacyKit
         PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())

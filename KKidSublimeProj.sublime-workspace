@@ -1,0 +1,570 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "# This file contains the fastlane.tools configuration\n# You can find the documentation at https://docs.fastlane.tools\n#\n# For a list of all available actions, check out\n#\n#     https://docs.fastlane.tools/actions\n#\n# For a list of all available plugins, check out\n#\n#     https://docs.fastlane.tools/plugins/available-plugins\n#\n\n# Uncomment the line if you want fastlane to automatically update itself\n# update_fastlane\n\ndefault_platform(:ios)\n\nplatform :ios do\n\n  desc \"Generate new localized screenshots\"\n  lane :screenshots do\n    capture_screenshots(workspace: \"KKid.xcworkspace\",\n    \t\t\t\t\tscheme: \"KKidUITests\",\n    \t\t\t\t\tonly_testing: \"KKidUITests/KKidTakeScreenshots\")\n    frameit\n    sh('find ./screenshots/en-US/ -type f \\! -name \"*framed*.png\" -delete')\n  \tif !is_ci\n  \t\tnotification(subtitle: \"Finished Screenshots\", message: \"Fastlane has finished gathering screenshots for KKid\", title: \"fastlane: KKid\", content_image: \"https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png\")\n  \tend\n  end\n\n  desc \"Build and upload beta version to testflight\"\n  lane :beta do\n    if is_ci\n\t\tsetup_ci\n  \t\tapp_store_connect_api_key(\n     \t\t\"key_id\": ENV['APPLE_APP_STORE_API_KEY_ID'],\n     \t\t\"issuer_id\": ENV['APPLE_APPSTORE_API_ISSUER_ID'],\n     \t\t\"key_content\": ENV['APPLE_APP_STORE_API_KEY']\n   \t\t)\n\tend\n  \tincrement_build_number\n  \tif is_ci\n  \t\tadd_badge(dark: true)\n  \tend\n  \tbuild_app(scheme: \"KKid\", workspace: \"KKid.xcworkspace\")\n  \tupload_to_testflight(skip_waiting_for_build_processing: true)\n  end\n\n  desc \"Build and upload alpha version to testflight\"\n  lane :alpha do\n    if is_ci\n    setup_ci\n      app_store_connect_api_key(\n        \"key_id\": ENV['APPLE_APP_STORE_API_KEY_ID'],\n        \"issuer_id\": ENV['APPLE_APPSTORE_API_ISSUER_ID'],\n        \"key_content\": ENV['APPLE_APP_STORE_API_KEY']\n      )\n  end\n    increment_build_number\n    if is_ci\n      add_badge(dark: true, alpha: true)\n    end\n    build_app(scheme: \"KKid\", workspace: \"KKid.xcworkspace\")\n    upload_to_testflight(skip_waiting_for_build_processing: true)\n  end\n\n  desc \"Build and upload release version to Apple\"\n  lane :release do\n    if is_ci\n\t\tsetup_ci\n  \t\tapp_store_connect_api_key(\n     \t\t\"key_id\": ENV['APPLE_APP_STORE_API_KEY_ID'],\n     \t\t\"issuer_id\": ENV['APPLE_APPSTORE_API_ISSUER_ID'],\n     \t\t\"key_content\": ENV['APPLE_APP_STORE_API_KEY']\n   \t\t)\n\tend\n  \trun_tests(workspace: \"KKid.xcworkspace\",\n            devices: [\"iPhone 12 Pro\"],\n            scheme: \"KKidUITests\",\n            only_testing: \"KKidUITests/KKidUITests\")\n  \tincrement_build_number\n  \tbuild_app(scheme: \"KKid\", workspace: \"KKid.xcworkspace\")\n  \tdeliver(\n  \t\tforce: true,\n  \t\tmetadata_path: \"./fastlane/metadata\",\n  \t\tsubmit_for_review: false,\n    \tautomatic_release: true,\n      overwrite_screenshots: true\n  \t)\n  \tif !is_ci\n  \t\tnotification(subtitle: \"Finished Uploading\", message: \"KKid release build upload complete\", title: \"fastlane: KKid\", content_image: \"https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png\")\n  \tend\n  end\n\n  lane :test do\n  \trun_tests(workspace: \"KKid.xcworkspace\",\n            devices: [\"iPhone 12 Pro\",\"iPad Pro (12.9-inch) (3rd generation)\"],\n            scheme: \"KKidUITests\",\n            only_testing: \"KKidUITests/KKidUITests\")\n  \tif !is_ci\n  \t\tnotification(subtitle: \"KKid Tests Complete\", message: \"KKid testing complete\", title: \"fastlane: KKid\", content_image: \"https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png\")\n  \tend\n  end\n\n  lane :matchget do\n\tif is_ci\n\t\tsetup_ci\n\tend\n\tmatch(type: \"appstore\", readonly: is_ci, git_basic_authorization: ENV['MATCH_GIT_BASIC_AUTHORIZATION'], git_url: \"https://github.com/kumpeapps/fastlane_certs.git\")\n  end\n\n  lane :notifytest do\n\n  \tif !is_ci\n  \t\tnotification(subtitle: \"Finished Uploading\", message: \"KKid release build upload complete\", title: \"fastlane: KKid\", content_image: \"https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png\")\n  \tend\n  end\n\nend\n",
+			"file": "fastlane/Fastfile",
+			"file_size": 3963,
+			"file_write_time": 133029952165500000,
+			"settings":
+			{
+				"buffer_size": 3964,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					1,
+					"insert",
+					{
+						"characters": "fastlane/"
+					},
+					"CQAAAFQIAAAAAAAAVQgAAAAAAAAAAAAAVQgAAAAAAABWCAAAAAAAAAAAAABWCAAAAAAAAFcIAAAAAAAAAAAAAFcIAAAAAAAAWAgAAAAAAAAAAAAAWAgAAAAAAABZCAAAAAAAAAAAAABZCAAAAAAAAFoIAAAAAAAAAAAAAFoIAAAAAAAAWwgAAAAAAAAAAAAAWwgAAAAAAABcCAAAAAAAAAAAAABcCAAAAAAAAF0IAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAVAgAAAAAAABUCAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					13,
+					1,
+					"insert",
+					{
+						"characters": ","
+					},
+					"AQAAAKIIAAAAAAAAowgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAoggAAAAAAACiCAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					14,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AgAAAKMIAAAAAAAApAgAAAAAAAAAAAAApAgAAAAAAACqCAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAowgAAAAAAACjCAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					15,
+					1,
+					"paste",
+					null,
+					"AQAAAKoIAAAAAAAAvwgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAqggAAAAAAACqCAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					16,
+					1,
+					"insert",
+					{
+						"characters": ":"
+					},
+					"AQAAAL8IAAAAAAAAwAgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAvwgAAAAAAAC/CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					17,
+					1,
+					"insert",
+					{
+						"characters": " true"
+					},
+					"BQAAAMAIAAAAAAAAwQgAAAAAAAAAAAAAwQgAAAAAAADCCAAAAAAAAAAAAADCCAAAAAAAAMMIAAAAAAAAAAAAAMMIAAAAAAAAxAgAAAAAAAAAAAAAxAgAAAAAAADFCAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAwAgAAAAAAADACAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					30,
+					1,
+					"paste",
+					null,
+					"AQAAAPIFAAAAAAAA9wcAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA8gUAAAAAAADyBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					39,
+					1,
+					"insert",
+					{
+						"characters": "alpha"
+					},
+					"BgAAAA0GAAAAAAAADgYAAAAAAAAAAAAADgYAAAAAAAAOBgAAAAAAAAQAAABiZXRhDgYAAAAAAAAPBgAAAAAAAAAAAAAPBgAAAAAAABAGAAAAAAAAAAAAABAGAAAAAAAAEQYAAAAAAAAAAAAAEQYAAAAAAAASBgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAADQYAAAAAAAARBgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					42,
+					1,
+					"insert",
+					{
+						"characters": ","
+					},
+					"AQAAAGoHAAAAAAAAawcAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAagcAAAAAAABqBwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					43,
+					1,
+					"insert",
+					{
+						"characters": " ap"
+					},
+					"AwAAAGsHAAAAAAAAbAcAAAAAAAAAAAAAbAcAAAAAAABtBwAAAAAAAAAAAABtBwAAAAAAAG4HAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAawcAAAAAAABrBwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					44,
+					1,
+					"left_delete",
+					null,
+					"AQAAAG0HAAAAAAAAbQcAAAAAAAABAAAAcA",
+					"AQAAAAAAAAABAAAAbgcAAAAAAABuBwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					45,
+					1,
+					"insert",
+					{
+						"characters": "lpha:"
+					},
+					"BQAAAG0HAAAAAAAAbgcAAAAAAAAAAAAAbgcAAAAAAABvBwAAAAAAAAAAAABvBwAAAAAAAHAHAAAAAAAAAAAAAHAHAAAAAAAAcQcAAAAAAAAAAAAAcQcAAAAAAAByBwAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAbQcAAAAAAABtBwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					46,
+					1,
+					"insert",
+					{
+						"characters": " true"
+					},
+					"BQAAAHIHAAAAAAAAcwcAAAAAAAAAAAAAcwcAAAAAAAB0BwAAAAAAAAAAAAB0BwAAAAAAAHUHAAAAAAAAAAAAAHUHAAAAAAAAdgcAAAAAAAAAAAAAdgcAAAAAAAB3BwAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAcgcAAAAAAAByBwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					55,
+					1,
+					"insert",
+					{
+						"characters": "be"
+					},
+					"AwAAADIGAAAAAAAAMwYAAAAAAAAAAAAAMwYAAAAAAAAzBgAAAAAAAAQAAABiZXRhMwYAAAAAAAA0BgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAMgYAAAAAAAA2BgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					56,
+					2,
+					"left_delete",
+					null,
+					"AgAAADMGAAAAAAAAMwYAAAAAAAABAAAAZTIGAAAAAAAAMgYAAAAAAAABAAAAYg",
+					"AQAAAAAAAAABAAAANAYAAAAAAAA0BgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					57,
+					1,
+					"insert",
+					{
+						"characters": "alpha"
+					},
+					"BQAAADIGAAAAAAAAMwYAAAAAAAAAAAAAMwYAAAAAAAA0BgAAAAAAAAAAAAA0BgAAAAAAADUGAAAAAAAAAAAAADUGAAAAAAAANgYAAAAAAAAAAAAANgYAAAAAAAA3BgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAMgYAAAAAAAAyBgAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "fastlane/metadata/en-US/subtitle.txt",
+			"settings":
+			{
+				"buffer_size": 63,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".github/workflows/xcode_tests.yml",
+			"settings":
+			{
+				"buffer_size": 4065,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					15,
+					1,
+					"insert",
+					{
+						"characters": " Alpha"
+					},
+					"BgAAAGcMAAAAAAAAaAwAAAAAAAAAAAAAaAwAAAAAAABpDAAAAAAAAAAAAABpDAAAAAAAAGoMAAAAAAAAAAAAAGoMAAAAAAAAawwAAAAAAAAAAAAAawwAAAAAAABsDAAAAAAAAAAAAABsDAAAAAAAAG0MAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAZwwAAAAAAABnDAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					20,
+					1,
+					"insert",
+					{
+						"characters": "ap"
+					},
+					"AwAAAKYMAAAAAAAApwwAAAAAAAAAAAAApwwAAAAAAACnDAAAAAAAAAoAAABUZXN0RmxpZ2h0pwwAAAAAAACoDAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAApgwAAAAAAACwDAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					21,
+					1,
+					"left_delete",
+					null,
+					"AQAAAKcMAAAAAAAApwwAAAAAAAABAAAAcA",
+					"AQAAAAAAAAABAAAAqAwAAAAAAACoDAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					22,
+					1,
+					"insert",
+					{
+						"characters": "lpha"
+					},
+					"BAAAAKcMAAAAAAAAqAwAAAAAAAAAAAAAqAwAAAAAAACpDAAAAAAAAAAAAACpDAAAAAAAAKoMAAAAAAAAAAAAAKoMAAAAAAAAqwwAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAApwwAAAAAAACnDAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					27,
+					1,
+					"paste",
+					null,
+					"AQAAAMYNAAAAAAAARw8AAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAxg0AAAAAAADGDQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					32,
+					1,
+					"insert",
+					{
+						"characters": "Beta"
+					},
+					"BQAAAOkNAAAAAAAA6g0AAAAAAAAAAAAA6g0AAAAAAADqDQAAAAAAAAUAAABBbHBoYeoNAAAAAAAA6w0AAAAAAAAAAAAA6w0AAAAAAADsDQAAAAAAAAAAAADsDQAAAAAAAO0NAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA6Q0AAAAAAADuDQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					37,
+					1,
+					"insert",
+					{
+						"characters": "beta"
+					},
+					"BQAAACYOAAAAAAAAJw4AAAAAAAAAAAAAJw4AAAAAAAAnDgAAAAAAAAUAAABhbHBoYScOAAAAAAAAKA4AAAAAAAAAAAAAKA4AAAAAAAApDgAAAAAAAAAAAAApDgAAAAAAACoOAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAJg4AAAAAAAArDgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					42,
+					1,
+					"insert",
+					{
+						"characters": "alpha"
+					},
+					"BgAAAMINAAAAAAAAww0AAAAAAAAAAAAAww0AAAAAAADDDQAAAAAAAAQAAABiZXRhww0AAAAAAADEDQAAAAAAAAAAAADEDQAAAAAAAMUNAAAAAAAAAAAAAMUNAAAAAAAAxg0AAAAAAAAAAAAAxg0AAAAAAADHDQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAwg0AAAAAAADGDQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					47,
+					1,
+					"insert",
+					{
+						"characters": "!"
+					},
+					"AQAAAHkMAAAAAAAAegwAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAeQwAAAAAAAB5DAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					52,
+					1,
+					"insert",
+					{
+						"characters": "beta"
+					},
+					"BQAAAKcMAAAAAAAAqAwAAAAAAAAAAAAAqAwAAAAAAACoDAAAAAAAAAUAAABhbHBoYagMAAAAAAAAqQwAAAAAAAAAAAAAqQwAAAAAAACqDAAAAAAAAAAAAACqDAAAAAAAAKsMAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAApwwAAAAAAACsDAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Volumes/Developer/xcode_Apps/KKid",
+		"/Volumes/Developer/xcode_Apps/KKid/.github",
+		"/Volumes/Developer/xcode_Apps/KKid/.github/workflows",
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane",
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane/metadata",
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane/metadata/en-US",
+		"/Volumes/Developer/xcode_Apps/KKid/Settings.bundle"
+	],
+	"file_history":
+	[
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane/metadata/en-US/subtitle.txt",
+		"/Volumes/Developer/xcode_Apps/KKid/metadata/en-US/subtitle.txt",
+		"/Volumes/Developer/xcode_Apps/KKid/README.md",
+		"/Volumes/Developer/xcode_Apps/KKid/Settings.bundle/Root.plist",
+		"/Volumes/Developer/xcode_Apps/KKid/fastlane/metadata/release_notes.txt",
+		"/Volumes/Developer/xcode_Apps/KKid/.github/workflows/xcode_tests.yml",
+		"/Users/justinkumpe/Library/Application Support/Sublime Merge/Packages/User/Preferences.sublime-settings",
+		"/P/My Documents/KKid/KKid/Controller/HomeViewController.swift",
+		"/P/My Documents/KKid/KKid/Controller/TutorialManager.swift",
+		"/C/Users/justinkumpe/AppData/Roaming/Sublime Merge/Packages/User/Preferences.sublime-settings",
+		"/.gitattributes"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "fastlane/Fastfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3964,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1591,
+								1591
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1058.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "fastlane/metadata/en-US/subtitle.txt",
+					"selected": true,
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 63,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": ".github/workflows/xcode_tests.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3246,
+								3246
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1513.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "KKidSublimeProj.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 230.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -41,6 +41,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [ContentRestrictionsKit](https://github.com/kumpeapps/ContentRestrictionsKit)
 -   [ShipBook](https://github.com/ShipBook/ShipBookSDK-iOS)
 -   [WhatsNew](https://github.com/BalestraPatrick/WhatsNew)
+-   [PBTutorialManager](https://github.com/paul1893/PBTutorialManager)
 
 ## Other Credits
 -   [Icons from Icons8](https://icons8.com)
@@ -82,7 +83,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 
 #### Add User Screen
 -   Enter the new user's username, email, password, first name, and last name. Then click submit
--   NOTE: each user must have their own email address. We understand that some kids do not have their own email account. In this case you can use an email alias that is automatically build into all email accounts. To do this you just add + then the alias directly before the @ symbol of your email address. Example: if your email address is jane@doe.com and you need an email alias for jack then you can use jane+jack@doe.com. Any email sent to jane+jack@doe.com will be automatically forwarded to jane@doe.com.
+-   NOTE: each user must have their own email address. We understand that some kids do not have their own email account. In this case you can use an email alias that is automatically build into all email accounts. To do this you just add + then the alias directly before the @ symbol of your email address. Example: if your email address is jane@doe.com and you need an email alias for jack then you can use jane+jack@doe.com. Any email sent to jane+jack@doe.com will be automatically forwarded to jane@doe.com
 
 #### Edit Profile Module
 -   To edit a the user's profile just change the information on the screen and click update in the upper right.

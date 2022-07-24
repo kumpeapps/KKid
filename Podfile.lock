@@ -1,5 +1,6 @@
 PODS:
   - ADEmptyDataView (0.1.2)
+  - AFCurvedArrowView (1.0.1)
   - Alamofire (4.9.1)
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
@@ -8,7 +9,7 @@ PODS:
   - BadgeSwift (8.0.0)
   - CollectionViewCenteredFlowLayout (1.0.1)
   - ContentRestrictionsKit (1.2)
-  - DeviceKit (4.6.0)
+  - DeviceKit (4.6.1)
   - FetchedResultsControllerCollectionViewUpdater (0.1.0)
   - Haptico (1.1.1)
   - JKRefresher (1.4)
@@ -23,6 +24,9 @@ PODS:
     - ReachabilitySwift
     - SwiftMessages
     - Sync
+  - NewRelicAgent (7.3.7)
+  - PBTutorialManager (1.1.0):
+    - AFCurvedArrowView
   - PrivacyKit (1.0.1)
   - ReachabilitySwift (5.0.0)
   - ShipBookSDK (1.1.19)
@@ -51,6 +55,8 @@ DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
   - KumpeHelpers
+  - NewRelicAgent
+  - PBTutorialManager
   - PrivacyKit
   - ReachabilitySwift
   - ShipBookSDK
@@ -67,6 +73,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - ADEmptyDataView
+    - AFCurvedArrowView
     - Alamofire
     - Alamofire-SwiftyJSON
     - BadgeSwift
@@ -78,6 +85,8 @@ SPEC REPOS:
     - JKRefresher
     - Kingfisher
     - KumpeHelpers
+    - NewRelicAgent
+    - PBTutorialManager
     - PrivacyKit
     - ReachabilitySwift
     - ShipBookSDK
@@ -116,19 +125,22 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ADEmptyDataView: 854dba4c16f62cdab2e075c6451dd4133b2575c7
+  AFCurvedArrowView: 5fa8fcc1f77f5428ab34d7a1c6696b88c3c20f40
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   AvatarView: f44d32fc6d73c080a8144559d10c26f94ef50481
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
   CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
   ContentRestrictionsKit: db88b231efbc00ee45f3eefae04ba7b4219fe433
-  DeviceKit: 834dd8aa1be53cd85364d8f49aa5d98bfac397c4
+  DeviceKit: 316f28290430467278b8a0d1c895968efa9e16e2
   FetchedResultsControllerCollectionViewUpdater: 10e88db1403d8d6e17a5d323efe1d1fd31dd0e1c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
   JKRefresher: 43ff65dfed29cdf1780e3923164938fd07b2e9b9
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Kingfisher: cdb1189a9223b1bc028816bd47c8b8101a58831c
   KumpeHelpers: de420b7ce1b7a944326ee6f51dface640088471e
+  NewRelicAgent: 13afbb9545e287293cf7514d344be4ebc9413c6e
+  PBTutorialManager: 7c2383247c0b0da71cf14438c0a2a737bca51a42
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   ShipBookSDK: 2086b80c9beef01f44a28390012223ee863410eb
@@ -143,6 +155,6 @@ SPEC CHECKSUMS:
   WhatsNew: d66a52b294e90d5bc133877e270ea7ce0b945003
   YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
 
-PODFILE CHECKSUM: 221e2eab5c9476971ae13468be3f228b600a49e1
+PODFILE CHECKSUM: ab4fc97dcaf38da7cb962ef938b871b74440bad1
 
 COCOAPODS: 1.11.3

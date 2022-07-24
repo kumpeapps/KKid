@@ -188,6 +188,16 @@
 			<key>DefaultValue</key>
 			<string>https://www.gravatar.com</string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>PBTutorialManager</string>
+			<key>Key</key>
+			<string>gravatar</string>
+			<key>DefaultValue</key>
+			<string>https://github.com/paul1893/PBTutorialManager</string>
+		</dict>
 	</array>
 </dict>
 </plist>

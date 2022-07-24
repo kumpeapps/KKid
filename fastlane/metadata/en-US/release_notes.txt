@@ -1,1 +1,2 @@
-- Added Share button to Wish List
+- Added app tutorial on first launch
+- Bug Fixes
