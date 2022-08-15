@@ -10,11 +10,20 @@ import UIKit
 import SwiftyFORM
 import Smile
 import KumpeHelpers
+import UnsplashPhotoPicker
+import Keys
+import Kingfisher
 
 class UserEditProfileViewController: FormViewController {
 
 // MARK: Parameters
     var selectedUser = LoggedInUser.selectedUser!
+
+    // MARK: Unsplash Params
+    let unsplashConfig = UnsplashPhotoPickerConfiguration(accessKey: KKidKeys().unsplash_accesskey,
+                                                          secretKey: KKidKeys().unsplash_secretkey,
+                                                          allowsMultipleSelection: false,
+                                                          contentFilterLevel: .high)
 
 // MARK: populateCurrentUserInfo
     func populateCurrentUserInfo() {
@@ -81,9 +90,12 @@ class UserEditProfileViewController: FormViewController {
         if selectedUser.enableAllowance {
             builder += pushAllowanceNew
         }
-        builder += SectionHeaderTitleFormItem().title("Link Accounts")
+        builder += SectionHeaderTitleFormItem().title("Link Accounts/Customization")
         builder += gravatarButton
         builder += tmdbButton
+        if selectedUser == LoggedInUser.user {
+            builder += updateBackgroundButton
+        }
     }
 
 // MARK: username Field
@@ -203,6 +215,16 @@ class UserEditProfileViewController: FormViewController {
             return instance
         }()
 
+    // MARK: updateBackgroundButton
+        lazy var updateBackgroundButton: ButtonFormItem = {
+            let instance = ButtonFormItem()
+            instance.title = "Set Custom Background"
+            instance.action = { [weak self] in
+                self?.setCustomBackground()
+            }
+            return instance
+        }()
+
 // MARK: authenticateTmdb
     func authenticateTmdb() {
         TMDb_Client.getToken { (success, token) in
@@ -217,6 +239,13 @@ class UserEditProfileViewController: FormViewController {
 // MARK: updateGravatar
     func updateGravatar() {
         launchURL("https://www.gravatar.com")
+    }
+
+    // MARK: setCustomBackground
+    func setCustomBackground() {
+        let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: unsplashConfig)
+        unsplashPhotoPicker.photoPickerDelegate = self
+        present(unsplashPhotoPicker, animated: true, completion: nil)
     }
 
 // MARK: submitForm
@@ -267,6 +296,31 @@ extension UserEditProfileViewController {
             let title = item.elementIdentifier ?? "Invalid"
             form_simpleAlert(title, message)
         }
+    }
+
+}
+
+// MARK: - UnsplashPhotoPickerDelegate
+extension UserEditProfileViewController: UnsplashPhotoPickerDelegate {
+    func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
+        print("Unsplash photo picker did select \(photos.count) photo(s)")
+
+        let photoUrl = photos[0].urls[.regular]
+
+        let downloader = ImageDownloader.default
+        downloader.downloadImage(with: photoUrl!, completionHandler: { result in
+            switch result {
+            case .success(let value):
+                let image = value.image
+                KumpeHelpers.PersistBackgrounds.saveImage(image, isBackground: true, isCustom: true, iCloud: true, iCloudContainer: "KKid")
+            case .failure(let error):
+                Logger.log(.error, error)
+            }
+        })
+    }
+
+    func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
+        print("Unsplash photo picker did cancel")
     }
 
 }

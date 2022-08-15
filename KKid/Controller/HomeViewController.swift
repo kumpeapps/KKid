@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "Wish List", subtitle: "Added share button to Wish List so you can send a link for your Wish List to friends and family")])
+        WhatsNewItem.text(title: "Custom Backgrounds", subtitle: "You can now set your background to be any (filtered) photo from Unsplash.")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -303,14 +303,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 UserDefaults.standard.set("Thanksgiving", forKey: "seasonalBackgroundImage")
             }
         default:
-            if currentBackground != "default" {
                 setImage(UIImage(named: "photo2")!, isBackground: true)
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!), isBackground: false)
                 UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
-            }
         }
-        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
-        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
+        imageBackground.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: true, iCloud: true, iCloudContainer: "KKid")
+        imageLogo.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: false, iCloud: true, iCloudContainer: "KKid")
     }
 
 // MARK: downloadImage
@@ -332,9 +330,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: setImage
     func setImage(_ image: UIImage, isBackground: Bool) {
-        PersistBackgrounds.saveImage(image, isBackground: isBackground)
-        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
-        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
+        KumpeHelpers.PersistBackgrounds.saveImage(image, isBackground: isBackground, iCloud: true, iCloudContainer: "KKid")
+        imageBackground.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: true, iCloud: true, iCloudContainer: "KKid")
+        imageLogo.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: false, iCloud: true, iCloudContainer: "KKid")
     }
 
     @objc func pressedAvatar(sender: UITapGestureRecognizer) {
@@ -441,7 +439,7 @@ extension HomeViewController {
             return cell
         }
 
-    // MARK: Did Select Item
+        // MARK: Did Select Item
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let module = modules[indexPath.row]
             switch module.title {
@@ -465,7 +463,7 @@ extension HomeViewController {
 
 // MARK: - Collection View Flow Layout Delegate
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-// MARK: set cell size
+    // MARK: set cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = 100
         return CGSize(width: screenWidth, height: screenWidth)
