@@ -6,7 +6,6 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>webcredentials:kumpeapps.com</string>
 		<string>webcredentials:www.kumpeapps.com</string>
 		<string>webcredentials:khome.kumpeapps.com</string>
 		<string>webcredentials:https://www.kumpeapps.com</string>
