@@ -51,7 +51,7 @@ jobs:
     - name: Run tests
       run: bundle exec fastlane test
 
-TestFlight-Alpha:
+  TestFlight-Alpha:
     if: "contains(github.event.head_commit.message, '#TestFlight') && !contains(github.event.head_commit.message, '#beta')"
     runs-on: macos-latest
     environment: Apple TestFlight- Alpha
