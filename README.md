@@ -93,6 +93,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   In the Push Notifications section you can customize which push notifications the user receives for modules the user has access too.
 -   In the link accounts section you can link/re-link third-party accounts used by KKid.
 -   To change your Avatar Photo you will need to create an account with [Gravatar](https://www.gravatar.com) using the same email you used for KKid. KKid will then sync your new avatar within 24hrs.
+-   Click on "Set Custom Background" to set your background to an image from Unsplash
 
 #### Chores Module
 -   In this module you will see a table listing the selected user's chores for the week.

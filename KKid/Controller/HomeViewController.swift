@@ -331,8 +331,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: setImage
     func setImage(_ image: UIImage, isBackground: Bool) {
         KumpeHelpers.PersistBackgrounds.saveImage(image, isBackground: isBackground, iCloud: true, iCloudContainer: "KKid")
-        imageBackground.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: true, iCloud: true, iCloudContainer: "KKid")
-        imageLogo.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: false, iCloud: true, iCloudContainer: "KKid")
+        imageBackground.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: true, iCloud: true, iCloudContainer: nil)
+        imageLogo.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: false, iCloud: true, iCloudContainer: nil)
     }
 
     @objc func pressedAvatar(sender: UITapGestureRecognizer) {

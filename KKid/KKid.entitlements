@@ -23,5 +23,7 @@
 	<array>
 		<string>iCloud.com.kumpeapps.ios.kkid</string>
 	</array>
+	<key>com.apple.developer.ubiquity-kvstore-identifier</key>
+	<string>$(TeamIdentifierPrefix)$(CFBundleIdentifier)</string>
 </dict>
 </plist>
