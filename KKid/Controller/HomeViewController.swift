@@ -307,8 +307,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!), isBackground: false)
                 UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
         }
-        imageBackground.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: true, iCloud: true, iCloudContainer: "KKid")
-        imageLogo.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: false, iCloud: true, iCloudContainer: "KKid")
+        imageBackground.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: true, useCloud: true, iCloudContainer: "KKid")
+        imageLogo.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: false, useCloud: true, iCloudContainer: "KKid")
     }
 
 // MARK: downloadImage
@@ -330,9 +330,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: setImage
     func setImage(_ image: UIImage, isBackground: Bool) {
-        KumpeHelpers.PersistBackgrounds.saveImage(image, isBackground: isBackground, iCloud: true, iCloudContainer: "KKid")
-        imageBackground.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: true, iCloud: true, iCloudContainer: nil)
-        imageLogo.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: false, iCloud: true, iCloudContainer: nil)
+        KumpeHelpers.PersistBackgrounds.saveImage(image, isBackground: isBackground, useCloud: true, iCloudContainer: "KKid")
+        imageBackground.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: true, useCloud: true, iCloudContainer: nil)
+        imageLogo.image = KumpeHelpers.PersistBackgrounds.loadImage(isBackground: false, useCloud: true, iCloudContainer: nil)
     }
 
     @objc func pressedAvatar(sender: UITapGestureRecognizer) {
