@@ -31,6 +31,14 @@ Generate new localized screenshots
 
 Build and upload beta version to testflight
 
+### ios alpha
+
+```sh
+[bundle exec] fastlane ios alpha
+```
+
+Build and upload alpha version to testflight
+
 ### ios release
 
 ```sh
