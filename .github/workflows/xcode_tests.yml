@@ -109,62 +109,62 @@ jobs:
     - name: Commit and Push
       run: git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Updated Build Versiion Number" && git push
 
-TestFlight-Beta:
-  if: "contains(github.event.head_commit.message, '#TestFlight') && contains(github.event.head_commit.message, '#beta')"
-  runs-on: macos-latest
-  environment: 
-    name: Apple TestFlight- Beta
-    url: https://kkid-beta.kumpe.app
+  TestFlight-Beta:
+    if: "contains(github.event.head_commit.message, '#TestFlight') && contains(github.event.head_commit.message, '#beta')"
+    runs-on: macos-latest
+    environment: 
+      name: Apple TestFlight- Beta
+      url: https://kkid-beta.kumpe.app
 
-  steps:
-  - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
 
-  - uses: actions/cache@v2
-    id: podcache
-    with:
-      path: Pods
-      key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-      restore-keys: |
-              ${{ runner.os }}-pods-
+    - uses: actions/cache@v2
+      id: podcache
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+                ${{ runner.os }}-pods-
 
-  - uses: actions/cache@v2
-    with:
-      path: vendor/bundle
-      key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-      restore-keys: |
-        ${{ runner.os }}-gem-
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
 
-  - name: Bundle dependencies
-    run: bundle install
+    - name: Bundle dependencies
+      run: bundle install
 
-  - name: CocoaPods dependencies
-    env:
-      tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
-      ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
-      ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
-      kkid_apikey: ${{ secrets.KKID_APIKEY }}
-      newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
-      unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
-      unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
-    run: bundle exec pod check || bundle exec pod install
+    - name: CocoaPods dependencies
+      env:
+        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
+        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
+        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
+        kkid_apikey: ${{ secrets.KKID_APIKEY }}
+        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
+        unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
+        unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
+      run: bundle exec pod check || bundle exec pod install
 
-  - name: Fastlane Match
-    env:
-      FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-      FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-      FASTLANE_USER: "jakumpe@justinkumpe.net"
-      MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
-      MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
-      MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
-    run: bundle exec fastlane matchget
+    - name: Fastlane Match
+      env:
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        FASTLANE_USER: "jakumpe@justinkumpe.net"
+        MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+        MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+      run: bundle exec fastlane matchget
 
-  - name: Upload To TestFlight Beta
-    if: "contains(github.event.head_commit.message, '#beta')"
-    env:
-      APPLE_APPSTORE_API_ISSUER_ID: ${{ secrets.APPLE_APPSTORE_API_ISSUER_ID }}
-      APPLE_APP_STORE_API_KEY: ${{ secrets.APPLE_APP_STORE_API_KEY }}
-      APPLE_APP_STORE_API_KEY_ID: ${{ secrets.APPLE_APP_STORE_API_KEY_ID }}
-    run: bundle exec fastlane beta
+    - name: Upload To TestFlight Beta
+      if: "contains(github.event.head_commit.message, '#beta')"
+      env:
+        APPLE_APPSTORE_API_ISSUER_ID: ${{ secrets.APPLE_APPSTORE_API_ISSUER_ID }}
+        APPLE_APP_STORE_API_KEY: ${{ secrets.APPLE_APP_STORE_API_KEY }}
+        APPLE_APP_STORE_API_KEY_ID: ${{ secrets.APPLE_APP_STORE_API_KEY_ID }}
+      run: bundle exec fastlane beta
 
-  - name: Commit and Push
-    run: git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Updated Build Versiion Number" && git push
+    - name: Commit and Push
+      run: git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Updated Build Versiion Number" && git push
