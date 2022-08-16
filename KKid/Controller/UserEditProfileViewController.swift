@@ -312,7 +312,7 @@ extension UserEditProfileViewController: UnsplashPhotoPickerDelegate {
             switch result {
             case .success(let value):
                 let image = value.image
-                KumpeHelpers.PersistBackgrounds.saveImage(image, isBackground: true, isCustom: true, useCloud: true, iCloudContainer: "KKid")
+                KumpeHelpers.PersistBackgrounds.imageToiCloud(image: image, imageName: "custom_background", imageView: HomeViewController().imageBackground)
             case .failure(let error):
                 Logger.log(.error, error)
             }

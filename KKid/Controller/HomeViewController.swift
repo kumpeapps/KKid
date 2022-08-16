@@ -88,6 +88,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        imageLogo.imageFromiCloud(imageName: "logo", waitForUpdate: false)
+        imageBackground.imageFromiCloud(imageName: "background", waitForUpdate: false)
         SettingsBundleHelper.checkAndExecuteSettings()
         reachable = ReachabilitySetup()
         seasonalBackgroundLoader()
@@ -304,12 +306,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 UserDefaults.standard.set("Thanksgiving", forKey: "seasonalBackgroundImage")
             }
         default:
+            if currentBackground != "default" {
                 setImage(UIImage(named: "photo2")!, isBackground: true)
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!), isBackground: false)
                 UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
+            }
         }
-        loadImages(isBackground: true, imageView: imageBackground)
-        loadImages(isBackground: false, imageView: imageLogo)
+        imageLogo.imageFromiCloud(imageName: "logo")
+        imageBackground.imageFromiCloud(imageName: "background")
     }
 
 // MARK: downloadImage
@@ -331,75 +335,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: setImage
     func setImage(_ image: UIImage, isBackground: Bool) {
-        let cloudIsAvailable: Bool = iCloud.shared.cloudAvailable
-        let cloudContainerIsAvailable: Bool = iCloud.shared.ubiquityContainerAvailable
-        var imageName = "background.png"
-        if !isBackground {
-            imageName = "logo.png"
+        switch isBackground {
+        case false:
+            KumpeHelpers.PersistBackgrounds.imageToiCloud(image: image, imageName: "logo", imageView: imageLogo)
+        case true:
+            KumpeHelpers.PersistBackgrounds.imageToiCloud(image: image, imageName: "background", imageView: imageBackground)
         }
-        guard cloudIsAvailable, cloudContainerIsAvailable else {
-            if isBackground {
-                imageBackground.image = image
-            } else {
-                imageLogo.image = image
-            }
-            return
-        }
-        let _ = iCloud.shared
-        iCloud.shared.saveAndCloseDocument(imageName, with: image.pngData()!, completion: { [self]
-            _, data, error in
-            if error == nil {
-                switch isBackground {
-                case true:
-                    loadImages(isBackground: true, imageView: imageBackground)
-                default:
-                    loadImages(isBackground: false, imageView: imageLogo)
-                }
-            }
-        })
-    }
-
-    func loadImages(isBackground: Bool, imageView: UIImageView) {
-        let cloudIsAvailable: Bool = iCloud.shared.cloudAvailable
-        let cloudContainerIsAvailable: Bool = iCloud.shared.ubiquityContainerAvailable
-        guard cloudIsAvailable, cloudContainerIsAvailable else {
-            Logger.log(.error, "Cloud Not Available")
-            switch isBackground {
-            case true:
-                imageView.image = UIImage(named: "photo2")!
-            default:
-                imageView.image = Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!)
-            }
-            return
-        }
-        iCloud.shared.updateFiles()
-        var imageName = "background.png"
-        if !isBackground {
-            imageName = "logo.png"
-        }
-        let customImageExists: Bool = iCloud.shared.fileExistInCloud("custom_\(imageName)")
-        if customImageExists {
-            imageName = "custom_\(imageName)"
-            Logger.log(.success, "custom_\(imageName) exists")
-        }
-        let imageExists: Bool = iCloud.shared.fileExistInCloud(imageName)
-        guard imageExists else {
-            Logger.log(.error, "\(imageName) does not exist")
-            switch isBackground {
-            case true:
-                imageView.image = UIImage(named: "photo2")!
-            default:
-                imageView.image = Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!)
-            }
-            return
-        }
-        iCloud.shared.updateFiles()
-        iCloud.shared.retrieveCloudDocument(imageName, completion: { _, data, error in
-            if error == nil, let filedata: Data = data {
-                imageView.image = UIImage(data: filedata)
-            }
-        }
-        )
     }
 
     @objc func pressedAvatar(sender: UITapGestureRecognizer) {
