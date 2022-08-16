@@ -44,7 +44,7 @@ platform :ios do
   		add_badge(dark: true)
   	end
   	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
-  	upload_to_testflight(skip_waiting_for_build_processing: true)
+  	upload_to_testflight(distribute_external: true, groups: "Public Testers", submit_beta_review: true, changelog: "Bug Fixes and New Features")
   end
 
   desc "Build and upload alpha version to testflight"

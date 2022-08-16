@@ -1,2 +1,2 @@
-- Added app tutorial on first launch
+- You can now set a custom background using images from Unsplash.com
 - Bug Fixes

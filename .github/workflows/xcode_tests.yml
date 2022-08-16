@@ -9,48 +9,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Xcode_Tests:
-    if: "!contains(github.event.head_commit.message, '#TestFlight')"
-    runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - uses: actions/cache@v2
-      with:
-        path: Pods
-        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
-                ${{ runner.os }}-pods-
-
-    - uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gem-
-
-    - name: Bundle dependencies
-      run: bundle install
-
-    - name: CocoaPods dependencies
-      env:
-        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
-        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
-        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
-        kkid_apikey: ${{ secrets.KKID_APIKEY }}
-        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
-        unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
-        unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
-      run: bundle exec pod check || bundle exec pod install
-
-    - name: CocoaPods Update
-      if: "contains(github.event.head_commit.message, '#pod update')"
-      run: bundle exec pod update
-
-    - name: Run tests
-      run: bundle exec fastlane test
-
   TestFlight-Alpha:
     if: "contains(github.event.head_commit.message, '#TestFlight') && !contains(github.event.head_commit.message, '#beta')"
     runs-on: macos-latest
@@ -178,3 +136,44 @@ jobs:
         git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight and bumped Build Version Number"
         git push
+
+  Xcode_Tests:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/cache@v2
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+                ${{ runner.os }}-pods-
+
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+
+    - name: Bundle dependencies
+      run: bundle install
+
+    - name: CocoaPods dependencies
+      env:
+        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
+        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
+        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
+        kkid_apikey: ${{ secrets.KKID_APIKEY }}
+        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
+        unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
+        unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
+      run: bundle exec pod check || bundle exec pod install
+
+    - name: CocoaPods Update
+      if: "contains(github.event.head_commit.message, '#pod update')"
+      run: bundle exec pod update
+
+    - name: Run tests
+      run: bundle exec fastlane test
