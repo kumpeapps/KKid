@@ -88,7 +88,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        imageLogo.imageFromiCloud(imageName: "logo", waitForUpdate: false)
+        imageLogo.imageFromiCloud(imageName: "logo", waitForUpdate: true)
         imageBackground.imageFromiCloud(imageName: "background", waitForUpdate: false)
         SettingsBundleHelper.checkAndExecuteSettings()
         reachable = ReachabilitySetup()
