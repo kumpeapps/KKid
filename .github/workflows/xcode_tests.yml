@@ -72,9 +72,6 @@ jobs:
         git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight and bumped Build Version Number"
         git push
 
-    - name: Run tests
-      run: bundle exec fastlane test
-
   TestFlight-Beta:
     if: "contains(github.event.head_commit.message, '#TestFlight') && contains(github.event.head_commit.message, '#beta')"
     runs-on: macos-latest
