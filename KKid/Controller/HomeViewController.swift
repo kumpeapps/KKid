@@ -306,11 +306,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 UserDefaults.standard.set("Thanksgiving", forKey: "seasonalBackgroundImage")
             }
         default:
-            if currentBackground != "default" {
                 setImage(UIImage(named: "photo2")!, isBackground: true)
                 setImage(Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!), isBackground: false)
                 UserDefaults.standard.set("default", forKey: "seasonalBackgroundImage")
-            }
         }
         imageLogo.imageFromiCloud(imageName: "logo")
         imageBackground.imageFromiCloud(imageName: "background")
