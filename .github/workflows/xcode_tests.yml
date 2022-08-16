@@ -10,7 +10,6 @@ concurrency:
 
 jobs:
   TestFlight-Alpha:
-    concurrency: xcode
     if: "contains(github.event.head_commit.message, '#TestFlight') && !contains(github.event.head_commit.message, '#beta')"
     runs-on: macos-latest
     environment: Apple TestFlight- Alpha
@@ -73,8 +72,10 @@ jobs:
         git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight and bumped Build Version Number"
         git push
 
+    - name: Run tests
+      run: bundle exec fastlane test
+
   TestFlight-Beta:
-    concurrency: xcode
     if: "contains(github.event.head_commit.message, '#TestFlight') && contains(github.event.head_commit.message, '#beta')"
     runs-on: macos-latest
     environment: 
@@ -139,8 +140,11 @@ jobs:
         git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight for Public Betaand bumped Build Version Number"
         git push
 
+    - name: Run tests
+      run: bundle exec fastlane test
+
   Xcode_Tests:
-    concurrency: xcode
+    if: "!contains(github.event.head_commit.message, '#TestFlight')"
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
