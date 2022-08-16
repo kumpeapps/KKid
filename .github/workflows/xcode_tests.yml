@@ -139,7 +139,7 @@ jobs:
 
   Xcode_Tests:
     runs-on: macos-latest
-
+    needs: [TestFlight-Alpha,TestFlight-Beta]
     steps:
     - uses: actions/checkout@v2
 
