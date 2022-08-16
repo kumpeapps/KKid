@@ -107,7 +107,12 @@ jobs:
       run: bundle exec fastlane alpha
 
     - name: Commit and Push
-      run: git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Updated Build Versiion Number" && git push
+      run: |
+        git config --global user.name 'Justin Kumpe (via GitHub Actions)'
+        git config --global user.email 'justinkumpe@users.noreply.github.com'
+        git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight and bumped Build Version Number"
+        git push
 
   TestFlight-Beta:
     if: "contains(github.event.head_commit.message, '#TestFlight') && contains(github.event.head_commit.message, '#beta')"
@@ -167,4 +172,9 @@ jobs:
       run: bundle exec fastlane beta
 
     - name: Commit and Push
-      run: git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Updated Build Versiion Number" && git push
+      run: |
+        git config --global user.name 'Justin Kumpe (via GitHub Actions)'
+        git config --global user.email 'justinkumpe@users.noreply.github.com'
+        git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight and bumped Build Version Number"
+        git push
