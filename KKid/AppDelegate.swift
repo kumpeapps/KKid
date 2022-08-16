@@ -13,9 +13,10 @@ import KumpeHelpers
 import ShipBookSDK
 import NewRelic
 import Keys
+import iCloudSync
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
+class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS, iCloudDelegate {
 
     /// set orientations you want to be allowed in this property by default
     var orientationLock = UIInterfaceOrientationMask.all
@@ -46,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        iCloud.shared.setupiCloud(nil)
+        iCloud.shared.delegate = self
         NewRelic.start(withApplicationToken:"\(KKidKeys().newrelic_token)")
         ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
 //        Setup PrivacyKit
