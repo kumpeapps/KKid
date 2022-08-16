@@ -12,6 +12,7 @@ jobs:
   TestFlight-Alpha:
     if: "contains(github.event.head_commit.message, '#TestFlight') && !contains(github.event.head_commit.message, '#beta')"
     runs-on: macos-latest
+    concurrency: xcode
     environment: Apple TestFlight- Alpha
 
     steps:
@@ -75,6 +76,7 @@ jobs:
   TestFlight-Beta:
     if: "contains(github.event.head_commit.message, '#TestFlight') && contains(github.event.head_commit.message, '#beta')"
     runs-on: macos-latest
+    concurrency: xcode
     environment: 
       name: Apple TestFlight- Beta
       url: https://kkid-beta.kumpe.app
@@ -139,7 +141,7 @@ jobs:
 
   Xcode_Tests:
     runs-on: macos-latest
-    needs: [TestFlight-Alpha,TestFlight-Beta]
+    concurrency: xcode
     steps:
     - uses: actions/checkout@v2
 
