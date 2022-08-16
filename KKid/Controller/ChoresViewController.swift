@@ -99,8 +99,8 @@ class ChoresViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
-        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
+        imageLogo.imageFromiCloud(imageName: "logo", waitForUpdate: false)
+        imageBackground.imageFromiCloud(imageName: "background", waitForUpdate: false)
         buttonAdd.isEnabled = LoggedInUser.user!.isAdmin
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
