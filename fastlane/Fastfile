@@ -86,7 +86,8 @@ platform :ios do
   		metadata_path: "./fastlane/metadata",
   		submit_for_review: false,
     	automatic_release: true,
-      overwrite_screenshots: true
+      overwrite_screenshots: true,
+      expire_previous_builds: true
   	)
   	if !is_ci
   		notification(subtitle: "Finished Uploading", message: "KKid release build upload complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
