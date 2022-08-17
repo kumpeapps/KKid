@@ -304,10 +304,18 @@ extension UserEditProfileViewController {
 extension UserEditProfileViewController: UnsplashPhotoPickerDelegate {
     func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
         print("Unsplash photo picker did select \(photos.count) photo(s)")
-
-        let photoUrl = photos[0].urls[.regular]
+        let photo = photos[0]
+        let photoUrl = photo.urls[.regular]
+        let artist = photo.user
+        let utmLink = "https://unsplash.com/@\(artist.username)?utm_source=kkid&utm_medium=referral"
+        Logger.log(.codeWarning, artist)
 
         let downloader = ImageDownloader.default
+        ShowAlert.displayMessage(layout: .centeredView, showButton: true, buttonTitle: "View \(artist.name ?? "Artist")'s Profile", theme: .success, alertMessage: ShowAlert.AlertMessage.init(title: "Custom Background Set", message: "Your selected image by \(artist.name ?? "Unknown Artist") on Unsplash has been set as your background image. Consider viewing the Artist's profile on Unsplash."), presentationStyle: .center, duration: .seconds(seconds: 15), interfaceMode: .blur, invokeHaptics: true) { viewArtist in
+            if viewArtist {
+                KumpeHelpers.launchURL(utmLink)
+            }
+        }
         downloader.downloadImage(with: photoUrl!, completionHandler: { result in
             switch result {
             case .success(let value):
