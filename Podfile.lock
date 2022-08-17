@@ -127,7 +127,7 @@ CHECKOUT OPTIONS:
     :commit: 8897b9e9396452164ef8cfcfe6c2ca27b1056451
     :git: https://github.com/kumpeapps/AvatarView.git
   KumpeHelpers:
-    :commit: 51ee4d739e4728902367a7aeccbe8c2fa5cab3d7
+    :commit: 3d122b749bfcf6cd19f0443e2ccbaceb3038b1c8
     :git: https://github.com/kumpeapps/kumpehelpers.git
   Smile:
     :commit: 2afe344d17f30dee646ef4c54a6926b6dd021e7d
