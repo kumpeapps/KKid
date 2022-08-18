@@ -122,12 +122,20 @@ jobs:
       run: bundle exec fastlane matchget
 
     - name: Upload To TestFlight Beta
-      if: "contains(github.event.head_commit.message, '#beta')"
+      if: "!contains(github.event.head_commit.message, '#beta-rc')"
       env:
         APPLE_APPSTORE_API_ISSUER_ID: ${{ secrets.APPLE_APPSTORE_API_ISSUER_ID }}
         APPLE_APP_STORE_API_KEY: ${{ secrets.APPLE_APP_STORE_API_KEY }}
         APPLE_APP_STORE_API_KEY_ID: ${{ secrets.APPLE_APP_STORE_API_KEY_ID }}
       run: bundle exec fastlane beta
+
+    - name: Upload To TestFlight Release Candidate
+      if: "contains(github.event.head_commit.message, '#beta-rc')"
+      env:
+        APPLE_APPSTORE_API_ISSUER_ID: ${{ secrets.APPLE_APPSTORE_API_ISSUER_ID }}
+        APPLE_APP_STORE_API_KEY: ${{ secrets.APPLE_APP_STORE_API_KEY }}
+        APPLE_APP_STORE_API_KEY_ID: ${{ secrets.APPLE_APP_STORE_API_KEY_ID }}
+      run: bundle exec fastlane beta-rc
 
     - name: Commit and Push
       run: |
