@@ -179,5 +179,10 @@ jobs:
     - name: Install Missing Simulator
       run: xcrun simctl create "iPad Pro (12.9-inch) (3rd generation)" "com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---3rd-generation-"
 
+    - name: Install xcbeautify
+      uses: Cyberbeni/install-swift-tool@master
+      with:
+        url: https://github.com/tuist/xcbeautify.git
+
     - name: Run tests
       run: bundle exec fastlane test
