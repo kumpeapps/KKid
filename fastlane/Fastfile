@@ -100,8 +100,9 @@ platform :ios do
             scheme: "KKidUITests",
             only_testing: "KKidUITests/KKidUITests",
             reinstall_app: true,
-            clean: true
-            )
+            clean: true,
+            xcodebuild_formatter: 'xcbeautify'
+            ) --verbose
   	if !is_ci
   		notification(subtitle: "KKid Tests Complete", message: "KKid testing complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
   	end

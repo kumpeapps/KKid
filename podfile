@@ -18,6 +18,7 @@ plugin 'cocoapods-keys', {
 
 target 'KKid' do
 project 'KKid.xcodeproj'
+	pod 'xcbeautify'
 	pod 'UnsplashPhotoPicker'
 	pod 'NewRelicAgent'
 	pod 'PBTutorialManager'

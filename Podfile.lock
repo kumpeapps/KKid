@@ -46,6 +46,7 @@ PODS:
   - TransitionButton (0.5.3)
   - UnsplashPhotoPicker (1.3.0)
   - WhatsNew (0.4.6)
+  - xcbeautify (0.13.0)
   - YoutubeKit (0.4.0)
 
 DEPENDENCIES:
@@ -74,6 +75,7 @@ DEPENDENCIES:
   - TransitionButton
   - UnsplashPhotoPicker
   - WhatsNew
+  - xcbeautify
   - YoutubeKit (= 0.4.0)
 
 SPEC REPOS:
@@ -104,6 +106,7 @@ SPEC REPOS:
     - TransitionButton
     - UnsplashPhotoPicker
     - WhatsNew
+    - xcbeautify
     - YoutubeKit
 
 EXTERNAL SOURCES:
@@ -168,8 +171,9 @@ SPEC CHECKSUMS:
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   UnsplashPhotoPicker: 327eef7ccbb4c322ed13360fdda6e975d1bea61d
   WhatsNew: d66a52b294e90d5bc133877e270ea7ce0b945003
+  xcbeautify: 663b4c0c6e1ba22b5dfaf9382202473d3bd52046
   YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
 
-PODFILE CHECKSUM: de6371e56d2833d73cfa45676d198cb42902f2db
+PODFILE CHECKSUM: e3986cec045fa1370cf5efbd4f2799549d04b265
 
 COCOAPODS: 1.11.3
