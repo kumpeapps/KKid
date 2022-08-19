@@ -95,10 +95,14 @@ platform :ios do
   end
 
   lane :test do
-  	run_tests(workspace: "KKid.xcworkspace",
+  	multi_scan(workspace: "KKid.xcworkspace",
             devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (3rd generation)"],
             scheme: "KKidUITests",
-            only_testing: "KKidUITests/KKidUITests")
+            only_testing: "KKidUITests/KKidUITests",
+            try_count: 3, # retry _failing_ tests up to three times^1.
+            parallel_testrun_count: 4, # run subsets of your tests on parallel simulators^2
+            reinstall_app: true
+            )
   	if !is_ci
   		notification(subtitle: "KKid Tests Complete", message: "KKid testing complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
   	end
