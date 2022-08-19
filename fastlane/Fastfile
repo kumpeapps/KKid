@@ -99,7 +99,8 @@ platform :ios do
             devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (3rd generation)"],
             scheme: "KKidUITests",
             only_testing: "KKidUITests/KKidUITests",
-            reinstall_app: true
+            reinstall_app: true,
+            clean: true
             )
   	if !is_ci
   		notification(subtitle: "KKid Tests Complete", message: "KKid testing complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
