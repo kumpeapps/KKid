@@ -134,7 +134,7 @@ jobs:
         git config --global user.name 'Justin Kumpe (via GitHub Actions)'
         git config --global user.email 'justinkumpe@users.noreply.github.com'
         git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight for Public Betaand bumped Build Version Number"
+        git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight for Public Beta and bumped Build Version Number"
         git push
 
   Xcode_Tests:
