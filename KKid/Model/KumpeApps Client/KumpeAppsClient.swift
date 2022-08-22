@@ -34,9 +34,6 @@ class KumpeAppsClient: KumpeAPIClient {
 
     static var appVersion = "KKid"
 
-    static let appBuildString: String? = (Bundle.main.infoDictionary!["CFBundleVersion"] as! String)
-    static let appBuild = Int((Bundle.main.infoDictionary!["CFBundleVersion"] as! String))
-
     // MARK: - Authentication
 
     // MARK: logout

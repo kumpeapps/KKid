@@ -31,7 +31,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>44</string>
+	<string>65</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-8070283866991781~9198166779</string>
 	<key>GADIsAdManagerApp</key>
@@ -53,6 +53,18 @@
 	<string>Camera is requried for Object Detection</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access to photo library required to upload screenshots for submitting error/support requests.</string>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.com.kumpeapps.ios.kkid</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerName</key>
+			<string>KKid</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>Any</string>
+		</dict>
+	</dict>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

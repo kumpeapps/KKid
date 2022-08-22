@@ -12,15 +12,19 @@ PODS:
   - DeviceKit (4.6.1)
   - FetchedResultsControllerCollectionViewUpdater (0.1.0)
   - Haptico (1.1.1)
+  - iCloudSync (8.0.21)
   - JKRefresher (1.4)
   - Keys (1.0.1)
-  - Kingfisher (7.3.0)
-  - KumpeHelpers (3.6):
+  - Kingfisher (7.3.2)
+  - KumpeHelpers (4.5):
     - Alamofire-SwiftyJSON
+    - BadgeSwift
     - CollectionViewCenteredFlowLayout
     - DeviceKit
     - FetchedResultsControllerCollectionViewUpdater
     - Haptico
+    - iCloudSync
+    - Kingfisher
     - ReachabilitySwift
     - SwiftMessages
     - Sync
@@ -40,7 +44,9 @@ PODS:
   - Sync (6.5.0)
   - Toast-Swift (5.0.1)
   - TransitionButton (0.5.3)
+  - UnsplashPhotoPicker (1.3.0)
   - WhatsNew (0.4.6)
+  - xcbeautify (0.13.0)
   - YoutubeKit (0.4.0)
 
 DEPENDENCIES:
@@ -54,7 +60,7 @@ DEPENDENCIES:
   - JKRefresher
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
-  - KumpeHelpers
+  - KumpeHelpers (from `https://github.com/kumpeapps/kumpehelpers.git`, branch `Development`)
   - NewRelicAgent
   - PBTutorialManager
   - PrivacyKit
@@ -67,7 +73,9 @@ DEPENDENCIES:
   - Sync
   - Toast-Swift
   - TransitionButton
+  - UnsplashPhotoPicker
   - WhatsNew
+  - xcbeautify
   - YoutubeKit (= 0.4.0)
 
 SPEC REPOS:
@@ -82,9 +90,9 @@ SPEC REPOS:
     - DeviceKit
     - FetchedResultsControllerCollectionViewUpdater
     - Haptico
+    - iCloudSync
     - JKRefresher
     - Kingfisher
-    - KumpeHelpers
     - NewRelicAgent
     - PBTutorialManager
     - PrivacyKit
@@ -96,7 +104,9 @@ SPEC REPOS:
     - Sync
     - Toast-Swift
     - TransitionButton
+    - UnsplashPhotoPicker
     - WhatsNew
+    - xcbeautify
     - YoutubeKit
 
 EXTERNAL SOURCES:
@@ -105,6 +115,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/kumpeapps/AvatarView.git
   Keys:
     :path: Pods/CocoaPodsKeys
+  KumpeHelpers:
+    :branch: Development
+    :git: https://github.com/kumpeapps/kumpehelpers.git
   Smile:
     :branch: master
     :git: https://github.com/onmyway133/Smile.git
@@ -116,6 +129,9 @@ CHECKOUT OPTIONS:
   AvatarView:
     :commit: 8897b9e9396452164ef8cfcfe6c2ca27b1056451
     :git: https://github.com/kumpeapps/AvatarView.git
+  KumpeHelpers:
+    :commit: 9c71d9957f650b8ddf9e4315a73823535f8a5424
+    :git: https://github.com/kumpeapps/kumpehelpers.git
   Smile:
     :commit: 2afe344d17f30dee646ef4c54a6926b6dd021e7d
     :git: https://github.com/onmyway133/Smile.git
@@ -135,10 +151,11 @@ SPEC CHECKSUMS:
   DeviceKit: 316f28290430467278b8a0d1c895968efa9e16e2
   FetchedResultsControllerCollectionViewUpdater: 10e88db1403d8d6e17a5d323efe1d1fd31dd0e1c
   Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
+  iCloudSync: 9db5fec951673172886bd75203971c003b02e988
   JKRefresher: 43ff65dfed29cdf1780e3923164938fd07b2e9b9
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  Kingfisher: cdb1189a9223b1bc028816bd47c8b8101a58831c
-  KumpeHelpers: de420b7ce1b7a944326ee6f51dface640088471e
+  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  KumpeHelpers: 5ceff660e05f39e2a91e623df4edd6274f14aa03
   NewRelicAgent: 13afbb9545e287293cf7514d344be4ebc9413c6e
   PBTutorialManager: 7c2383247c0b0da71cf14438c0a2a737bca51a42
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
@@ -152,9 +169,11 @@ SPEC CHECKSUMS:
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
+  UnsplashPhotoPicker: 327eef7ccbb4c322ed13360fdda6e975d1bea61d
   WhatsNew: d66a52b294e90d5bc133877e270ea7ce0b945003
+  xcbeautify: 663b4c0c6e1ba22b5dfaf9382202473d3bd52046
   YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
 
-PODFILE CHECKSUM: ab4fc97dcaf38da7cb962ef938b871b74440bad1
+PODFILE CHECKSUM: e3986cec045fa1370cf5efbd4f2799549d04b265
 
 COCOAPODS: 1.11.3

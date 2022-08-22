@@ -66,13 +66,8 @@ class WishListViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-
-/*        Pull logo and background from AppDelegate.
-         Setup this way so users can choose their own background and logo style in future releases
- */
-        imageLogo.image = PersistBackgrounds.loadImage(isBackground: false)
-        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
-
+        imageLogo.imageFromiCloud(imageName: "logo", waitForUpdate: false)
+        imageBackground.imageFromiCloud(imageName: "background", waitForUpdate: false)
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
             tableView.reloadRows(at: [indexPath], with: .fade)

@@ -701,7 +701,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo2" translatesAutoresizingMaskIntoConstraints="NO" id="LyU-3K-yU3" userLabel="background">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo2" translatesAutoresizingMaskIntoConstraints="NO" id="LyU-3K-yU3" userLabel="background">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KKid_Toolbar" translatesAutoresizingMaskIntoConstraints="NO" id="klb-er-6Mq">
@@ -722,11 +722,11 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Yhn-8s-igj" customClass="ModuleCollectionViewCell" customModule="KKid" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="62.5"/>
+                                    <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Yhn-8s-igj" customClass="ModuleCollectionViewCell" customModule="KKid" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="62.5" height="62.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oX2-kB-LHW">
-                                            <rect key="frame" x="0.0" y="0.0" width="88.5" height="62.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="62.5" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qez-As-3ka" customClass="AvatarView" customModule="AvatarView">
@@ -734,22 +734,25 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-swirl" translatesAutoresizingMaskIntoConstraints="NO" id="KQk-G5-Zeb">
-                                                    <rect key="frame" x="9" y="0.0" width="70.5" height="50"/>
+                                                    <rect key="frame" x="6.5" y="0.0" width="50" height="50"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select User" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sFl-X6-M4f">
-                                                    <rect key="frame" x="0.0" y="50" width="88.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFl-X6-M4f">
+                                                    <rect key="frame" x="0.0" y="50" width="62.5" height="16.5"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <size key="shadowOffset" width="-2" height="-2"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myx-O7-kWp" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                    <rect key="frame" x="64" y="0.0" width="24.5" height="24.5"/>
+                                                    <rect key="frame" x="39.5" y="0.0" width="23" height="21"/>
                                                     <accessibility key="accessibilityConfiguration" label="0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="BDO-Ij-O96"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="a0x-vi-MnY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -760,13 +763,14 @@
                                                 <constraint firstItem="sFl-X6-M4f" firstAttribute="width" secondItem="oX2-kB-LHW" secondAttribute="width" id="UiA-xh-Sjg"/>
                                                 <constraint firstItem="sFl-X6-M4f" firstAttribute="top" secondItem="KQk-G5-Zeb" secondAttribute="bottom" id="VNe-8T-t6x"/>
                                                 <constraint firstItem="myx-O7-kWp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oX2-kB-LHW" secondAttribute="leading" constant="20" symbolic="YES" id="YTO-aj-sbC"/>
-                                                <constraint firstAttribute="trailing" secondItem="myx-O7-kWp" secondAttribute="trailing" id="jaB-5e-F0D"/>
+                                                <constraint firstItem="myx-O7-kWp" firstAttribute="trailing" secondItem="oX2-kB-LHW" secondAttribute="trailing" id="jaB-5e-F0D"/>
                                                 <constraint firstItem="myx-O7-kWp" firstAttribute="top" secondItem="oX2-kB-LHW" secondAttribute="top" id="n6h-0J-cxt"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="centerX" secondItem="oX2-kB-LHW" secondAttribute="centerX" id="s7W-Oj-HtP"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="width" secondItem="oX2-kB-LHW" secondAttribute="width" multiplier="0.8" id="u6F-N1-Ja0"/>
                                                 <constraint firstItem="KQk-G5-Zeb" firstAttribute="height" secondItem="oX2-kB-LHW" secondAttribute="height" multiplier="0.8" id="uR5-lV-ZOF"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="avatarView" destination="Qez-As-3ka" id="pJ1-Rq-OX0"/>
                                             <outlet property="badge" destination="myx-O7-kWp" id="bLU-T2-NoT"/>
@@ -800,9 +804,11 @@
                                     <constraint firstAttribute="height" constant="18" id="7UT-Gf-Ow0"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82.5" id="Z6u-cL-8H0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="0.0"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="-2" height="-1"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="npD-yU-Ymk"/>
@@ -1604,7 +1610,7 @@
             <size key="intrinsicContentSize" width="180" height="35"/>
         </designable>
         <designable name="myx-O7-kWp">
-            <size key="intrinsicContentSize" width="24.5" height="24.5"/>
+            <size key="intrinsicContentSize" width="20" height="20"/>
         </designable>
         <designable name="vTv-mX-kmL">
             <size key="intrinsicContentSize" width="24.5" height="24.5"/>

@@ -44,7 +44,7 @@ platform :ios do
   		add_badge(dark: true)
   	end
   	build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
-  	upload_to_testflight(skip_waiting_for_build_processing: true)
+  	upload_to_testflight(distribute_external: true, groups: "Public Testers", submit_beta_review: true, changelog: "Bug Fixes and New Features")
   end
 
   desc "Build and upload alpha version to testflight"
@@ -62,7 +62,7 @@ platform :ios do
       add_badge(dark: true, alpha: true)
     end
     build_app(scheme: "KKid", workspace: "KKid.xcworkspace")
-    upload_to_testflight(skip_waiting_for_build_processing: true)
+    upload_to_testflight(skip_waiting_for_build_processing: true, changelog: "Bug Fixes and New Features (Alpha Version)")
   end
 
   desc "Build and upload release version to Apple"
@@ -86,7 +86,8 @@ platform :ios do
   		metadata_path: "./fastlane/metadata",
   		submit_for_review: false,
     	automatic_release: true,
-      overwrite_screenshots: true
+      overwrite_screenshots: true,
+      expire_previous_builds: true
   	)
   	if !is_ci
   		notification(subtitle: "Finished Uploading", message: "KKid release build upload complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
@@ -97,7 +98,11 @@ platform :ios do
   	run_tests(workspace: "KKid.xcworkspace",
             devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (3rd generation)"],
             scheme: "KKidUITests",
-            only_testing: "KKidUITests/KKidUITests")
+            only_testing: "KKidUITests/KKidUITests",
+            reinstall_app: true,
+            clean: true,
+            xcodebuild_formatter: 'xcbeautify'
+            ) --verbose
   	if !is_ci
   		notification(subtitle: "KKid Tests Complete", message: "KKid testing complete", title: "fastlane: KKid", content_image: "https://api.kumpeapps.com/images/kumpeapps/base_logo_white_background.png")
   	end

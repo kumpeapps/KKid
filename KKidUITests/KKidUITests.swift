@@ -38,8 +38,8 @@ class KKidUITests: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Logout").element.tap()
-        app.buttons["dismiss"].tap()
+        let logout = app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Logout").element
+        logout.waitTap(application: app, wait: 5, canFail: true)
     }
 
     func testLogin() throws {
@@ -85,13 +85,16 @@ class KKidUITests: XCTestCase {
         }
 
         let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Subtract"]/*[[".cells.staticTexts[\"Subtract\"]",".staticTexts[\"Subtract\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let subtract = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Subtract"]/*[[".cells.staticTexts[\"Subtract\"]",".staticTexts[\"Subtract\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        if subtract.waitForExistence(timeout: 10) {
+            subtract.forceTapElement()
+        }
         app.pickerWheels["Subtract"].adjust(toPickerWheelValue: "Subtract")
-        tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.waitTap(application: app, wait: 10, canFail: true)
         let amountField = tablesQuery.cells.containing(.staticText, identifier:"Amount  $").children(matching: .textField).element
         let textField = tablesQuery.cells.containing(.staticText, identifier:"Reason").children(matching: .textField).element
-        amountField.tap()
-        textField.tap()
+        amountField.waitTap(application: app, wait: 10, canFail: true)
+        textField.waitTap(application: app, wait: 10, canFail: true)
 
         if app.staticTexts["Continue"].waitForExistence(timeout: 4) {
             app.staticTexts["Continue"].tap()
@@ -114,10 +117,10 @@ class KKidUITests: XCTestCase {
             addButton.tap()
         }
 
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Subtract"]/*[[".cells.staticTexts[\"Subtract\"]",".staticTexts[\"Subtract\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Subtract"]/*[[".cells.staticTexts[\"Subtract\"]",".staticTexts[\"Subtract\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.waitTap(application: app, wait: 10, canFail: true)
         app.pickerWheels["Subtract"].adjust(toPickerWheelValue: "Add")
-        tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        amountField.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Transaction Type").element/*[[".cells.containing(.staticText, identifier:\"Add\").element",".cells.containing(.staticText, identifier:\"Transaction Type\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.waitTap(application: app, wait: 10, canFail: true)
+        amountField.waitTap(application: app, wait: 10, canFail: true)
         amountField.pasteTextFieldText(app: app, element: amountField, value: "5", clearText: false)
         if textField.waitForExistence(timeout: 10) {
             textField.tap()
@@ -135,24 +138,24 @@ class KKidUITests: XCTestCase {
         if addButton.waitForExistence(timeout: 10) {
             addButton.tap()
         }
-        addTransactionNavigationBar.buttons["Back"].tap()
-        kkidAllowanceviewNavigationBar.buttons["Home"].tap()
+        addTransactionNavigationBar.buttons["Back"].waitTap(application: app, wait: 10, canFail: true)
+        kkidAllowanceviewNavigationBar.buttons["Home"].waitTap(application: app, wait: 10, canFail: true)
 
     }
 
     func testEditProfile() throws {
 
         let cellsQuery = app.collectionViews.cells
-        cellsQuery.otherElements.containing(.staticText, identifier:"Edit Profile").element.tap()
-        app.navigationBars["Edit Profile"].buttons["Home"].tap()
+        cellsQuery.otherElements.containing(.staticText, identifier:"Edit Profile").element.waitTap(application: app, wait: 10, canFail: true)
+        app.navigationBars["Edit Profile"].buttons["Home"].waitTap(application: app, wait: 10, canFail: true)
 
     }
 
     func testSelectUser() throws {
 
         let app = XCUIApplication()
-        app.buttons["avatar"].tap()
-        app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Joey D").children(matching: .other).element.tap()
+        app.buttons["avatar"].waitTap(application: app, wait: 10, canFail: true)
+        app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Joey D").children(matching: .other).element.waitTap(application: app, wait: 10, canFail: true)
 
     }
 
@@ -192,14 +195,13 @@ class KKidUITests: XCTestCase {
 
         let collectionViewsQuery = app.collectionViews
         let cellsQuery = collectionViewsQuery.cells
-        cellsQuery.otherElements.containing(.staticText, identifier:"Movies DB").element.tap()
-        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
-        app.navigationBars["tmdb"].buttons["Back"].tap()
+        cellsQuery.otherElements.containing(.staticText, identifier:"Movies DB").element.waitTap(application: app, wait: 10, canFail: true)
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.waitTap(application: app, wait: 10, canFail: true)
+        app.navigationBars["tmdb"].buttons["Back"].waitTap(application: app, wait: 10, canFail: true)
 
-        let app2 = app
-        app2/*@START_MENU_TOKEN@*/.buttons["Favorites"]/*[[".segmentedControls.buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app2/*@START_MENU_TOKEN@*/.buttons["Watch List"]/*[[".segmentedControls.buttons[\"Watch List\"]",".buttons[\"Watch List\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app2/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".segmentedControls.buttons[\"Search\"]",".buttons[\"Search\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Favorites"]/*[[".segmentedControls.buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Watch List"]/*[[".segmentedControls.buttons[\"Watch List\"]",".buttons[\"Watch List\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".segmentedControls.buttons[\"Search\"]",".buttons[\"Search\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.navigationBars["Movies DB"].buttons["Home"].tap()
 
     }
@@ -261,6 +263,14 @@ extension XCUIElement {
             if app.menuItems["Paste"].waitForExistence(timeout: 10) {
                 app.menuItems["Paste"].tap()
             }
+        }
+    }
+
+    func waitTap(application: XCUIApplication, wait: TimeInterval, canFail: Bool) {
+        if self.waitForExistence(timeout: wait) {
+            self.forceTapElement()
+        } else if canFail {
+            XCTFail("button \(self.label) does not exist so can not be tapped")
         }
     }
 

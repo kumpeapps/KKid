@@ -9,50 +9,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Xcode_Tests:
-    if: "!contains(github.event.head_commit.message, '#TestFlight')"
+  TestFlight-Alpha:
+    if: "contains(github.event.head_commit.message, '#TestFlight') && !contains(github.event.head_commit.message, '#beta')"
     runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - uses: actions/cache@v2
-      with:
-        path: Pods
-        key: ${{ runner.os }}-pods-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
-                ${{ runner.os }}-pods-
-
-    - uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gem-
-
-    - name: Bundle dependencies
-      run: bundle install
-
-    - name: CocoaPods dependencies
-      env:
-        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
-        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
-        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
-        kkid_apikey: ${{ secrets.KKID_APIKEY }}
-        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
-      run: bundle exec pod check || bundle exec pod install
-
-    - name: CocoaPods Update
-      if: "contains(github.event.head_commit.message, '#pod update')"
-      run: bundle exec pod update
-
-    - name: Run tests
-      run: bundle exec fastlane test
-
-  TestFlight:
-    if: "contains(github.event.head_commit.message, '#TestFlight')"
-    runs-on: macos-latest
-    environment: Apple App Store
+    environment: Apple TestFlight- Alpha
 
     steps:
     - uses: actions/checkout@v2
@@ -61,14 +21,14 @@ jobs:
       id: podcache
       with:
         path: Pods
-        key: ${{ runner.os }}-pods-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Podfile.lock') }}
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
                 ${{ runner.os }}-pods-
 
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
 
@@ -82,11 +42,9 @@ jobs:
         ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
         kkid_apikey: ${{ secrets.KKID_APIKEY }}
         newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
+        unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
+        unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
       run: bundle exec pod check || bundle exec pod install
-
-    - name: CocoaPods Update
-      if: "contains(github.event.head_commit.message, '#pod update')"
-      run: bundle exec pod update
 
     - name: Fastlane Match
       env:
@@ -106,6 +64,63 @@ jobs:
         APPLE_APP_STORE_API_KEY_ID: ${{ secrets.APPLE_APP_STORE_API_KEY_ID }}
       run: bundle exec fastlane alpha
 
+    - name: Commit and Push
+      run: |
+        git config --global user.name 'Justin Kumpe (via GitHub Actions)'
+        git config --global user.email 'justinkumpe@users.noreply.github.com'
+        git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight and bumped Build Version Number"
+        git push
+
+  TestFlight-Beta:
+    if: "contains(github.event.head_commit.message, '#TestFlight') && contains(github.event.head_commit.message, '#beta')"
+    runs-on: macos-latest
+    environment: 
+      name: Apple TestFlight- Beta
+      url: https://kkid-beta.kumpe.app
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/cache@v2
+      id: podcache
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+                ${{ runner.os }}-pods-
+
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+
+    - name: Bundle dependencies
+      run: bundle install
+
+    - name: CocoaPods dependencies
+      env:
+        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
+        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
+        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
+        kkid_apikey: ${{ secrets.KKID_APIKEY }}
+        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
+        unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
+        unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
+      run: bundle exec pod check || bundle exec pod install
+
+    - name: Fastlane Match
+      env:
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        FASTLANE_USER: "jakumpe@justinkumpe.net"
+        MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+        MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+      run: bundle exec fastlane matchget
+
     - name: Upload To TestFlight Beta
       if: "contains(github.event.head_commit.message, '#beta')"
       env:
@@ -115,4 +130,59 @@ jobs:
       run: bundle exec fastlane beta
 
     - name: Commit and Push
-      run: git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Updated Fastfile" && git push
+      run: |
+        git config --global user.name 'Justin Kumpe (via GitHub Actions)'
+        git config --global user.email 'justinkumpe@users.noreply.github.com'
+        git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to TestFlight for Public Beta and bumped Build Version Number"
+        git push
+
+  Xcode_Tests:
+    if: ${{ always() }}
+    needs: [TestFlight-Beta,TestFlight-Alpha]
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/cache@v2
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+                ${{ runner.os }}-pods-
+
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+
+    - name: Bundle dependencies
+      run: bundle install
+
+    - name: CocoaPods dependencies
+      env:
+        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
+        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
+        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
+        kkid_apikey: ${{ secrets.KKID_APIKEY }}
+        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
+        unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
+        unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
+      run: bundle exec pod check || bundle exec pod install
+
+    - name: CocoaPods Update
+      if: "contains(github.event.head_commit.message, '#pod update')"
+      run: bundle exec pod update
+
+    - name: Install Missing Simulator
+      run: xcrun simctl create "iPad Pro (12.9-inch) (3rd generation)" "com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---3rd-generation-"
+
+    - name: Install xcbeautify
+      uses: Cyberbeni/install-swift-tool@master
+      with:
+        url: https://github.com/tuist/xcbeautify.git
+
+    - name: Run tests
+      run: bundle exec fastlane test

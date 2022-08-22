@@ -198,6 +198,16 @@
 			<key>DefaultValue</key>
 			<string>https://github.com/paul1893/PBTutorialManager</string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>background images by Unsplash</string>
+			<key>Key</key>
+			<string>unsplash</string>
+			<key>DefaultValue</key>
+			<string>https://www.unsplash.com</string>
+		</dict>
 	</array>
 </dict>
 </plist>

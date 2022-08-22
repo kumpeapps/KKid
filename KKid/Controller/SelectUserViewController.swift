@@ -71,10 +71,7 @@ class SelectUserViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-/*        Pull logo and background from AppDelegate.
-         Setup this way so users can choose their own background and logo style in future releases
- */
-        imageBackground.image = PersistBackgrounds.loadImage(isBackground: true)
+        imageBackground.imageFromiCloud(imageName: "background", waitForUpdate: false)
 
         enableUI(false)
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)

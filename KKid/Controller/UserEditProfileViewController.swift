@@ -10,11 +10,20 @@ import UIKit
 import SwiftyFORM
 import Smile
 import KumpeHelpers
+import UnsplashPhotoPicker
+import Keys
+import Kingfisher
 
 class UserEditProfileViewController: FormViewController {
 
 // MARK: Parameters
     var selectedUser = LoggedInUser.selectedUser!
+
+    // MARK: Unsplash Params
+    let unsplashConfig = UnsplashPhotoPickerConfiguration(accessKey: KKidKeys().unsplash_accesskey,
+                                                          secretKey: KKidKeys().unsplash_secretkey,
+                                                          allowsMultipleSelection: false,
+                                                          contentFilterLevel: .high)
 
 // MARK: populateCurrentUserInfo
     func populateCurrentUserInfo() {
@@ -22,7 +31,6 @@ class UserEditProfileViewController: FormViewController {
         email.value = selectedUser.email!
         firstName.value = selectedUser.firstName ?? ""
         lastName.value = selectedUser.lastName ?? ""
-        emoji.value = selectedUser.emoji ?? "🤗"
         enableWishList.value = selectedUser.enableWishList
         enableChores.value = selectedUser.enableChores
         enableAllowance.value = selectedUser.enableAllowance
@@ -64,7 +72,6 @@ class UserEditProfileViewController: FormViewController {
         builder += email
         builder += firstName
         builder += lastName
-        builder += emoji
         if LoggedInUser.user!.isAdmin {
             builder += SectionHeaderTitleFormItem().title("Module Access Permissions")
             builder += enableWishList
@@ -81,9 +88,12 @@ class UserEditProfileViewController: FormViewController {
         if selectedUser.enableAllowance {
             builder += pushAllowanceNew
         }
-        builder += SectionHeaderTitleFormItem().title("Link Accounts")
+        builder += SectionHeaderTitleFormItem().title("Link Accounts/Customization")
         builder += gravatarButton
         builder += tmdbButton
+        if selectedUser == LoggedInUser.user {
+            builder += updateBackgroundButton
+        }
     }
 
 // MARK: username Field
@@ -117,13 +127,6 @@ class UserEditProfileViewController: FormViewController {
         let instance = TextFieldFormItem().title("Last Name:")
         instance.keyboardType(.asciiCapable)
         instance.required("Last Name is Required")
-        return instance
-    }()
-
-// MARK: emoji Field
-    lazy var emoji: TextFieldFormItem = {
-        let instance = TextFieldFormItem().title("Emoji Icon:")
-        instance.required("Emoji is required")
         return instance
     }()
 
@@ -203,6 +206,16 @@ class UserEditProfileViewController: FormViewController {
             return instance
         }()
 
+    // MARK: updateBackgroundButton
+        lazy var updateBackgroundButton: ButtonFormItem = {
+            let instance = ButtonFormItem()
+            instance.title = "Set Custom Background"
+            instance.action = { [weak self] in
+                self?.setCustomBackground()
+            }
+            return instance
+        }()
+
 // MARK: authenticateTmdb
     func authenticateTmdb() {
         TMDb_Client.getToken { (success, token) in
@@ -219,14 +232,17 @@ class UserEditProfileViewController: FormViewController {
         launchURL("https://www.gravatar.com")
     }
 
+    // MARK: setCustomBackground
+    func setCustomBackground() {
+        let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: unsplashConfig)
+        unsplashPhotoPicker.photoPickerDelegate = self
+        present(unsplashPhotoPicker, animated: true, completion: nil)
+    }
+
 // MARK: submitForm
     func submitForm() {
-        guard Smile.isSingleEmoji(emoji.value) else {
-            ShowAlert.banner(title: "Validation Error", message: "Emoji field must be a single emoji")
-            return
-        }
 
-        KumpeAppsClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: emoji.value, enableAllowance: enableAllowance.value, enableWishList: enableWishList.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil, pushChoresNew: pushChoresNew.value, pushChoresReminders: pushChoresReminders.value, pushAllowanceNew: pushAllowanceNew.value) { (success, error) in
+        KumpeAppsClient.updateUser(username: username.value, email: email.value, firstName: firstName.value, lastName: lastName.value, user: selectedUser, emoji: selectedUser.email ?? "🤗", enableAllowance: enableAllowance.value, enableWishList: enableWishList.value, enableChores: enableChores.value, enableAdmin: enableAdmin.value, enableTmdb: enableTmdb.value, tmdbKey: nil, pushChoresNew: pushChoresNew.value, pushChoresReminders: pushChoresReminders.value, pushAllowanceNew: pushAllowanceNew.value) { (success, error) in
             if success {
                 dispatchOnMain {
                     KumpeAppsClient.getUsers { (success, _) in
@@ -267,6 +283,39 @@ extension UserEditProfileViewController {
             let title = item.elementIdentifier ?? "Invalid"
             form_simpleAlert(title, message)
         }
+    }
+
+}
+
+// MARK: - UnsplashPhotoPickerDelegate
+extension UserEditProfileViewController: UnsplashPhotoPickerDelegate {
+    func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
+        print("Unsplash photo picker did select \(photos.count) photo(s)")
+        let photo = photos[0]
+        let photoUrl = photo.urls[.regular]
+        let artist = photo.user
+        let utmLink = "https://unsplash.com/@\(artist.username)?utm_source=kkid&utm_medium=referral"
+        Logger.log(.codeWarning, artist)
+
+        let downloader = ImageDownloader.default
+        ShowAlert.displayMessage(layout: .centeredView, showButton: true, buttonTitle: "View \(artist.name ?? "Artist")'s Profile", theme: .success, alertMessage: ShowAlert.AlertMessage.init(title: "Custom Background Set", message: "Your selected image by \(artist.name ?? "Unknown Artist") on Unsplash has been set as your background image. Consider viewing the Artist's profile on Unsplash."), presentationStyle: .center, duration: .seconds(seconds: 15), interfaceMode: .blur, invokeHaptics: true) { viewArtist in
+            if viewArtist {
+                KumpeHelpers.launchURL(utmLink)
+            }
+        }
+        downloader.downloadImage(with: photoUrl!, completionHandler: { result in
+            switch result {
+            case .success(let value):
+                let image = value.image
+                KumpeHelpers.PersistBackgrounds.imageToiCloud(image: image, imageName: "custom_background", imageView: HomeViewController().imageBackground)
+            case .failure(let error):
+                Logger.log(.error, error)
+            }
+        })
+    }
+
+    func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
+        print("Unsplash photo picker did cancel")
     }
 
 }

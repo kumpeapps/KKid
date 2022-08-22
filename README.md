@@ -42,11 +42,13 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [ShipBook](https://github.com/ShipBook/ShipBookSDK-iOS)
 -   [WhatsNew](https://github.com/BalestraPatrick/WhatsNew)
 -   [PBTutorialManager](https://github.com/paul1893/PBTutorialManager)
+-   [Unsplash](https://github.com/unsplash/unsplash-photopicker-ios#unsplash-photo-picker-for-ios)
 
 ## Other Credits
 -   [Icons from Icons8](https://icons8.com)
 -   [TMDb](https://themoviedb.org)
 -   [Gravatar](https://www.gravatar.com)
+-   [custom backgrounds provided by Unsplash](https://www.unsplash.com)
 
 ## Instructions
 
@@ -91,6 +93,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   In the Push Notifications section you can customize which push notifications the user receives for modules the user has access too.
 -   In the link accounts section you can link/re-link third-party accounts used by KKid.
 -   To change your Avatar Photo you will need to create an account with [Gravatar](https://www.gravatar.com) using the same email you used for KKid. KKid will then sync your new avatar within 24hrs.
+-   Click on "Set Custom Background" to set your background to an image from Unsplash.com. The "high filter" parameter is automatically passed to Unsplash in attempt to filter out adult materials. The custom background will be saved to your iCloud so if you have iCloud disabled, the custom background will not be saved and will not display. This custom background will sync via iCloud to any device with the same iCloud account and will not be specific to your KKid user account.
 
 #### Chores Module
 -   In this module you will see a table listing the selected user's chores for the week.
