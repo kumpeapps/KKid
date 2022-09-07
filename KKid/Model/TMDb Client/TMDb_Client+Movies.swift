@@ -28,7 +28,7 @@ extension TMDb_Client {
                 return
             }
 
-            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.searchMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, _) in
+            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.searchMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, _, _) in
                 let taskGroup = DispatchGroup()
                 var movieResponse = response
                 var removeMovies: [Int] = []
@@ -62,7 +62,7 @@ extension TMDb_Client {
                 "language":"en-US"
             ]
 
-            TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Video_Response.self, parameters: parameters) { (response, error) in
+            TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Video_Response.self, parameters: parameters) { (response, error, _) in
 
                 // GUARD: Success
                 guard error == nil else {
@@ -94,7 +94,7 @@ extension TMDb_Client {
                 "api_key":"\(TMDb_Constants.apiKey)",
                 "language":"en-US"
             ]
-            TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Movie_ReleaseDates_Response.self, parameters: parameters) { (response, error) in
+            TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Movie_ReleaseDates_Response.self, parameters: parameters) { (response, error, _) in
                 // GUARD: Success
                 guard error == nil else {
                     completion(false,error)
@@ -130,7 +130,7 @@ extension TMDb_Client {
                 "session_id":"\(sessionId)",
                 "page":"\(page)"
             ]
-            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.favoriteMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, error) in
+            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.favoriteMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, error, _) in
 
                 if let error = error {
                     ShowAlert.banner(title: error, message: "Your TMDb account needs to be re-linked in your User Profile.")
@@ -177,7 +177,7 @@ extension TMDb_Client {
                 "page":"\(page)"
             ]
 
-            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.watchlistMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, error) in
+            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.watchlistMoviesUrl, responseType: TMDb_Movie_Response.self, parameters: parameters) { (response, error, _) in
 
                 if let error = error {
                     ShowAlert.banner(title: error, message: "Your TMDb account needs to be re-linked in your User Profile.")
@@ -217,7 +217,7 @@ extension TMDb_Client {
                 "media_id":"\(mediaId)",
                 "favorite":favorite
             ] as [String : Any]
-            TMDb_Client.apiPost(apiUrl: url, parameters: parameters, postToBody: true) { (success, _) in
+            TMDb_Client.apiPost(apiUrl: url, parameters: parameters, postToBody: true) { (success, _, _) in
                 completion(success)
             }
         }
@@ -230,7 +230,7 @@ extension TMDb_Client {
                 "media_id":"\(mediaId)",
                 "watchlist":watchlist
             ] as [String : Any]
-            TMDb_Client.apiPost(apiUrl: url, parameters: parameters, postToBody: true) { (success, _) in
+            TMDb_Client.apiPost(apiUrl: url, parameters: parameters, postToBody: true) { (success, _, _) in
                 completion(success)
             }
         }

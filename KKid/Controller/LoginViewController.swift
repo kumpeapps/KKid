@@ -10,6 +10,7 @@ import UIKit
 import KumpeHelpers
 import PrivacyKit
 import TransitionButton
+import YubiKit
 
 class LoginViewController: UIViewController, PrivacyKitDelegate {
 
@@ -19,6 +20,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 // MARK: Fields
     @IBOutlet weak var fieldUsername: UITextField!
     @IBOutlet weak var fieldPassword: UITextField!
+    var otp: String?
 
 // MARK: Buttons
     @IBOutlet weak var buttonLogin: TransitionButton!
@@ -88,11 +90,24 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             return
         }
 
-        KumpeAppsClient.authenticate(username: fieldUsername.text!, password: fieldPassword.text!) { (response, error) in
+        KumpeAppsClient.authenticate(username: fieldUsername.text!, password: fieldPassword.text!, otp: self.otp) { (response, error, statusCodeResponse) in
+
+            guard statusCodeResponse.statusCode != 449 else {
+                Logger.log(.authentication, statusCodeResponse.statusDescription)
+                self.verifyOtp()
+                return
+            }
 
 //            GUARD: Login is Successful
-            guard let loginStatus = response?.status, loginStatus == 1 else {
+            guard let loginStatus = response?.status, loginStatus == 1, statusCodeResponse.statusCategory == .Success else {
+                self.otp = nil
                 if let errorMessage = response?.error {
+                    Logger.log(.error, errorMessage)
+                    self.buttonLogin.stopAnimation()
+                    self.enableUI(true)
+                    ShowAlert.banner(title: "Login Error", message: errorMessage)
+                } else if statusCodeResponse.statusCode == 403 {
+                    let errorMessage = statusCodeResponse.statusDescription
                     Logger.log(.error, errorMessage)
                     self.buttonLogin.stopAnimation()
                     self.enableUI(true)
@@ -134,6 +149,43 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             }
 
         }
+    }
+
+    // MARK: verifyOtp
+    func verifyOtp() {
+        // create the actual alert controller view that will be the pop-up
+        let alertController = UIAlertController(title: "YubiKey Required", message: "Enter your YubiKey OTP", preferredStyle: .alert)
+
+        alertController.addTextField { (textField) in
+            // configure the properties of the text field
+            textField.placeholder = "OTP"
+        }
+
+        if YubiKitDeviceCapabilities.supportsISO7816NFCTags {
+            // add the buttons/actions to the view controller
+            let cancelAction = UIAlertAction(title: "NFC", style: .cancel) { _ in
+                self.otp = ""
+                YubiKitManager.shared.otpSession.requestOTPToken { token, error in
+                    guard let token = token else {
+                        self.pressedLogin()
+                        return
+                    }
+                    self.otp = token.value
+                    self.pressedLogin()
+                    }
+            }
+            alertController.addAction(cancelAction)
+        }
+        let saveAction = UIAlertAction(title: "Login", style: .default) { _ in
+            let inputName = alertController.textFields![0].text
+            self.otp = inputName
+            self.pressedLogin()
+        }
+
+        alertController.addAction(saveAction)
+
+        present(alertController, animated: true, completion: nil)
+        self.buttonLogin.stopAnimation()
     }
 
 // MARK: submitUsername

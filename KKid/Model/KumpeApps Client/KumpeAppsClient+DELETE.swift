@@ -23,7 +23,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/chorelist"
-        apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+        apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success,error)
         }
     }
@@ -35,7 +35,7 @@ extension KumpeAppsClient {
         ]
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/userlist"
-        apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+        apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success,error)
         }
     }
@@ -47,7 +47,7 @@ extension KumpeAppsClient {
         ]
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/wishlist"
-        apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+        apiDelete(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success,error)
         }
     }
