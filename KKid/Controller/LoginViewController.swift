@@ -162,7 +162,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             textField.placeholder = "OTP"
         }
 
-        if NFCNDEFReaderSession.readingAvailable {
+        if YubiKitDeviceCapabilities.supportsNFCScanning {
             // add the buttons/actions to the view controller
             let cancelAction = UIAlertAction(title: "NFC", style: .cancel) { _ in
                 self.otp = ""
