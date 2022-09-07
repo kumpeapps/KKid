@@ -11,6 +11,7 @@ import KumpeHelpers
 import PrivacyKit
 import TransitionButton
 import YubiKit
+import DeviceKit
 
 class LoginViewController: UIViewController, PrivacyKitDelegate {
 
@@ -161,11 +162,11 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
             textField.placeholder = "OTP"
         }
 
-        if YubiKitDeviceCapabilities.supportsISO7816NFCTags {
+        if NFCNDEFReaderSession.readingAvailable {
             // add the buttons/actions to the view controller
             let cancelAction = UIAlertAction(title: "NFC", style: .cancel) { _ in
                 self.otp = ""
-                YubiKitManager.shared.otpSession.requestOTPToken { token, error in
+                YubiKitManager.shared.otpSession.requestOTPToken { token, _ in
                     guard let token = token else {
                         self.pressedLogin()
                         return
