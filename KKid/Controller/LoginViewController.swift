@@ -133,27 +133,33 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
                 return
             }
 
-            UserDefaults.standard.set(true, forKey: "isAuthenticated")
-            UserDefaults.standard.set(apiKey, forKey: "apiKey")
-            UserDefaults.standard.set(user.userID, forKey: "loggedInUserID")
-            KumpeAppsClient.getUsers(silent: true) { (success, error) in
-                if success {
-                    Logger.log(.authentication, "Login Successful for user \(user.username ?? "")")
-                    LoggedInUser.setLoggedInUser()
-                    // self.navigationController?.popViewController(animated: true)
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    self.buttonLogin.stopAnimation()
-                    self.enableUI(true)
-                    ShowAlert.banner(title: "Sync Error", message: error ?? "An Unknown Error Occurred")
-                }
-            }
+            self.setLoggedInUser(apiKey: apiKey, user: user)
 
+        }
+    }
+
+    // MARK: setLoggedInUser
+    func setLoggedInUser(apiKey: String, user: KKid_User) {
+        UserDefaults.standard.set(true, forKey: "isAuthenticated")
+        UserDefaults.standard.set(apiKey, forKey: "apiKey")
+        UserDefaults.standard.set(user.userID, forKey: "loggedInUserID")
+        KumpeAppsClient.getUsers(silent: true) { (success, error) in
+            if success {
+                Logger.log(.authentication, "Login Successful for user \(user.username ?? "")")
+                LoggedInUser.setLoggedInUser()
+                // self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.buttonLogin.stopAnimation()
+                self.enableUI(true)
+                ShowAlert.banner(title: "Sync Error", message: error ?? "An Unknown Error Occurred")
+            }
         }
     }
 
     // MARK: verifyOtp
     func verifyOtp() {
+        buttonLogin.startAnimation()
         // create the actual alert controller view that will be the pop-up
         let alertController = UIAlertController(title: "YubiKey Required", message: "Enter your YubiKey OTP", preferredStyle: .alert)
 
@@ -238,7 +244,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
     //    Gets called when keyboard is coming onto the screen
     @objc func keyboardWillShow(_ notification: Notification) {
         // Move Screen Up only if editing bottom text field
-        if (fieldUsername.isEditing || fieldPassword.isEditing) && UIDevice.current.orientation.isLandscape && !Device.current.isPad{
+        if (fieldUsername.isEditing || fieldPassword.isEditing) && UIDevice.current.orientation.isLandscape && !Device.current.isPad {
             view.frame.origin.y = 0
             view.frame.origin.y -= getKeyboardHeight(notification)
         }
