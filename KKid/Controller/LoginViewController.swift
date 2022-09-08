@@ -223,43 +223,39 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 
     // MARK: Subscribe to Keyboard Notifications
     //    Nofifies when keyboard appears/disappears
-        func subscribeToKeyboardNotifications() {
-
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        }
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 
     // MARK: Unsubscribe from Keyboard Notifications
-        func unsubscribeFromKeyboardNotifications() {
-
-            NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-            NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        }
+    func unsubscribeFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 
     // MARK: Keyboard Will Show
     //    Gets called when keyboard is coming onto the screen
-        @objc func keyboardWillShow(_ notification: Notification) {
-    //        Move Screen Up only if editing bottom text field
-            if (fieldUsername.isEditing || fieldPassword.isEditing) && UIDevice.current.orientation.isLandscape {
-                view.frame.origin.y = 0
-                view.frame.origin.y -= getKeyboardHeight(notification)
-            }
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // Move Screen Up only if editing bottom text field
+        if (fieldUsername.isEditing || fieldPassword.isEditing) && UIDevice.current.orientation.isLandscape && !Device.current.isPad{
+            view.frame.origin.y = 0
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
+    }
 
     // MARK: Keyboard Will Hide
     //    Gets called when keyboard is disappearing from the screen
-        @objc func keyboardWillHide(_ notification: Notification) {
-
-            view.frame.origin.y = 0
-        }
+    @objc func keyboardWillHide(_ notification: Notification) {
+        view.frame.origin.y = 0
+    }
 
     // MARK: Get Keyboard Height
-        func getKeyboardHeight(_ notification: Notification) -> CGFloat {
-
-            let userInfo = notification.userInfo
-            let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-            return keyboardSize.cgRectValue.height
-        }
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
 
 // MARK: hideKeyboardOnTap
     func hideKeyboardOnTap() {
