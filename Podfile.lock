@@ -16,7 +16,7 @@ PODS:
   - JKRefresher (1.4)
   - Keys (1.0.1)
   - Kingfisher (7.3.2)
-  - KumpeHelpers (4.5):
+  - KumpeHelpers (4.5.2):
     - Alamofire-SwiftyJSON
     - BadgeSwift
     - CollectionViewCenteredFlowLayout
@@ -61,7 +61,7 @@ DEPENDENCIES:
   - JKRefresher
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
-  - KumpeHelpers (from `https://github.com/kumpeapps/KumpeHelpers.git`, branch `Development`)
+  - KumpeHelpers
   - NewRelicAgent
   - PBTutorialManager
   - PrivacyKit
@@ -95,6 +95,7 @@ SPEC REPOS:
     - iCloudSync
     - JKRefresher
     - Kingfisher
+    - KumpeHelpers
     - NewRelicAgent
     - PBTutorialManager
     - PrivacyKit
@@ -118,9 +119,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/kumpeapps/AvatarView.git
   Keys:
     :path: Pods/CocoaPodsKeys
-  KumpeHelpers:
-    :branch: Development
-    :git: https://github.com/kumpeapps/KumpeHelpers.git
   Smile:
     :branch: master
     :git: https://github.com/onmyway133/Smile.git
@@ -132,9 +130,6 @@ CHECKOUT OPTIONS:
   AvatarView:
     :commit: 8897b9e9396452164ef8cfcfe6c2ca27b1056451
     :git: https://github.com/kumpeapps/AvatarView.git
-  KumpeHelpers:
-    :commit: dd7fdc8c13583b91744ddeee3369e0dce73a326a
-    :git: https://github.com/kumpeapps/KumpeHelpers.git
   Smile:
     :commit: 2afe344d17f30dee646ef4c54a6926b6dd021e7d
     :git: https://github.com/onmyway133/Smile.git
@@ -158,7 +153,7 @@ SPEC CHECKSUMS:
   JKRefresher: 43ff65dfed29cdf1780e3923164938fd07b2e9b9
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
-  KumpeHelpers: 5ceff660e05f39e2a91e623df4edd6274f14aa03
+  KumpeHelpers: 7784067268cc665c6c1a093678af76a98a05ef01
   NewRelicAgent: 89724f6460b8be82e41ce04724444aed9b15d486
   PBTutorialManager: 7c2383247c0b0da71cf14438c0a2a737bca51a42
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
@@ -178,6 +173,6 @@ SPEC CHECKSUMS:
   YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
   YubiKit: bde189dbaddc29e41dbda9e2c55ec5a79d38c654
 
-PODFILE CHECKSUM: 1fd6354a293646e1c1705e00c455e607090fae5c
+PODFILE CHECKSUM: 6fdbe7a32c9d07f38348c14e7fcabf95aaa58194
 
 COCOAPODS: 1.11.3
