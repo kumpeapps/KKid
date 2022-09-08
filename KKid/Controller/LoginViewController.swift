@@ -99,16 +99,19 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
                 return
             }
 
+            guard statusCodeResponse.statusCategory == .Success else {
+                let errorMessage = statusCodeResponse.statusDescription
+                Logger.log(.error, errorMessage)
+                self.buttonLogin.stopAnimation()
+                self.enableUI(true)
+                ShowAlert.banner(title: "Login Error", message: errorMessage)
+                return
+            }
+
 //            GUARD: Login is Successful
-            guard let loginStatus = response?.status, loginStatus == 1, statusCodeResponse.statusCategory == .Success else {
+            guard let loginStatus = response?.status, loginStatus == 1 else {
                 self.otp = nil
                 if let errorMessage = response?.error {
-                    Logger.log(.error, errorMessage)
-                    self.buttonLogin.stopAnimation()
-                    self.enableUI(true)
-                    ShowAlert.banner(title: "Login Error", message: errorMessage)
-                } else if statusCodeResponse.statusCode == 403 {
-                    let errorMessage = statusCodeResponse.statusDescription
                     Logger.log(.error, errorMessage)
                     self.buttonLogin.stopAnimation()
                     self.enableUI(true)

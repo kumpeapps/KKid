@@ -27,7 +27,7 @@ extension KumpeAppsClient {
             let headers: HTTPHeaders = ["X-Auth":appkey]
             var userAuthResponse: KKid_Auth_Response = KKid_Auth_Response.init(user: nil, apiKey: nil, status: 0, error: nil)
 
-            taskForGet(apiUrl: "\(baseURL)/authkey", responseType: KumpeApps_Auth_Response.self, parameters: parameters, headers: headers) { response, error, statusResponse in
+            taskForGet(apiUrl: "\(baseURL)/authentication/authkey", responseType: KumpeApps_Auth_Response.self, parameters: parameters, headers: headers) { response, error, statusResponse in
                 guard let response = response else {
                     completion(nil,error, statusResponse)
                     return
