@@ -33,7 +33,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/chorelist"
-        apiPut(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers:["X-Auth":"\(authKey)"]) { success, error in
+        apiPut(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers:["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success)
             if !success {
                 Logger.log(.error, "markChore: \(error ?? "An Unknown Error Occurred")")
@@ -78,7 +78,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/userlist"
-        apiPut(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers:["X-Auth":"\(authKey)"]) { success, error in
+        apiPut(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers:["X-Auth":"\(authKey)"]) { success, error, _ in
             if success {
                 updatePushNotifications(user: user, pushChoresNew: pushChoresNew, pushChoresReminders: pushChoresReminders, pushAllowanceNew: pushAllowanceNew)
             } else {
@@ -144,7 +144,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/wishlist"
-        apiPut(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers:["X-Auth":"\(authKey)"]) { success, error in
+        apiPut(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers:["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success)
             if !success {
                 Logger.log(.error, "markChore: \(error ?? "An Unknown Error Occurred")")

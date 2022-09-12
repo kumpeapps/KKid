@@ -43,6 +43,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   [WhatsNew](https://github.com/BalestraPatrick/WhatsNew)
 -   [PBTutorialManager](https://github.com/paul1893/PBTutorialManager)
 -   [Unsplash](https://github.com/unsplash/unsplash-photopicker-ios#unsplash-photo-picker-for-ios)
+-   [yubikit](https://github.com/Yubico/yubikit-ios)
 
 ## Other Credits
 -   [Icons from Icons8](https://icons8.com)

@@ -15,35 +15,36 @@ extension KumpeAppsClient {
     // MARK: - Get Methods (non-sync get methods)
 
     // MARK: authenticate
-        class func authenticate(username: String, password: String, completion: @escaping (KKid_Auth_Response?, String?) -> Void) {
-            let parameters = [
+    class func authenticate(username: String, password: String, otp: String? = nil, completion: @escaping (_ response: KKid_Auth_Response?, _ error: String?, _ statusResponse: HTTP_Status_Response) -> Void) {
+            var parameters = [
                 "username": username,
-                "password": password
+                "password": password,
+                "verifyOtp": "true"
             ]
+        if otp != nil {
+            parameters["otp"] = otp!
+        }
             let headers: HTTPHeaders = ["X-Auth":appkey]
             var userAuthResponse: KKid_Auth_Response = KKid_Auth_Response.init(user: nil, apiKey: nil, status: 0, error: nil)
 
-            taskForGet(apiUrl: "\(baseURL)/authkey", responseType: KumpeApps_Auth_Response.self, parameters: parameters, headers: headers) { response, error in
+            taskForGet(apiUrl: "\(baseURL)/authentication/authkey", responseType: KumpeApps_Auth_Response.self, parameters: parameters, headers: headers) { response, error, statusResponse in
                 guard let response = response else {
-                    completion(nil,error)
+                    completion(nil,error, statusResponse)
                     return
                 }
                 guard response.success ?? false else {
                     let user: KKid_Auth_Response = KKid_Auth_Response.init(user: nil, apiKey: nil, status: 0, error: "Authentication Failed")
-                    completion(user,nil)
+                    completion(user,nil, statusResponse)
                     return
                 }
                 userAuthResponse.apiKey = response.authKey
                 userAuthResponse.status = 1
-                taskForGet(apiUrl: "\(baseURL)/kkid/user", responseType: KKid_User_Response.self, parameters: ["enableBool":"true"], headers: ["X-Auth":response.authKey ?? ""]) { userResponse, userError in
+                taskForGet(apiUrl: "\(baseURL)/kkid/user", responseType: KKid_User_Response.self, parameters: ["enableBool":"true"], headers: ["X-Auth":response.authKey ?? ""]) { userResponse, userError, _ in
                     userAuthResponse.user = userResponse?.user
-                    completion(userAuthResponse,userError)
+                    completion(userAuthResponse,userError, statusResponse)
                     UIApplication.shared.applicationIconBadgeNumber = 0
                 }
             }
-            // taskForGet(module: module, responseType: KKid_Auth_Response.self, parameters: parameters) { (response, error) in
-            //    completion(response, error)
-           // }
         }
 
     // MARK: getAllowance
@@ -58,7 +59,7 @@ extension KumpeAppsClient {
             let module = "kkid/allowance"
             let headers = ["X-Auth":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")"]
 
-            taskForGet(apiUrl: "\(baseURL)/\(module)", responseType: KKid_AllowanceResponse.self, parameters: parameters, headers: headers) { response, error in
+            taskForGet(apiUrl: "\(baseURL)/\(module)", responseType: KKid_AllowanceResponse.self, parameters: parameters, headers: headers) { response, error, _ in
                 completion(response, error)
                 ShowAlert.dismissStatic(id: "getAllowance")
             }
@@ -78,7 +79,7 @@ extension KumpeAppsClient {
             let module = "kkid/share"
             let headers = ["X-Auth":"\(UserDefaults.standard.value(forKey: "apiKey") ?? "null")"]
 
-            taskForGet(apiUrl: "\(baseURL)/\(module)", responseType: KKid_Share_Response.self, parameters: parameters, headers: headers, successCode: 201) { response, error in
+            taskForGet(apiUrl: "\(baseURL)/\(module)", responseType: KKid_Share_Response.self, parameters: parameters, headers: headers, successCode: 201) { response, error, _ in
                 completion(response, error)
                 ShowAlert.dismissStatic(id: "getShareLink")
             }

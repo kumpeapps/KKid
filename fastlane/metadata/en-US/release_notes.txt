@@ -1,2 +1,2 @@
-- You can now set a custom background using images from Unsplash.com
+- KKid is now compatible with YubiKey for two-factor authentication when configured in KumpeApps system.
 - Bug Fixes

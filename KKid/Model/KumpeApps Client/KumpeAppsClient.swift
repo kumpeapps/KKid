@@ -19,17 +19,13 @@ class KumpeAppsClient: KumpeAPIClient {
     static let appkey = APICredentials.KKid.apikey
     static var baseURL: String {
         #if DEBUG
-            return "https://restapi.kumpeapps.com/v5"
+            return "https://restapi.preprod.kumpeapps.com/v5"
         #else
             return "https://restapi.kumpeapps.com/v5"
         #endif
     }
     static var imageURL: String {
-        #if DEBUG
-            return "https://api.kumpeapps.com/images"
-        #else
-            return "https://api.kumpeapps.com/images"
-        #endif
+        return "https://filedn.com/l4NBevKntNz45sv2UTxRFDL/images"
     }
 
     static var appVersion = "KKid"
@@ -60,7 +56,7 @@ class KumpeAppsClient: KumpeAPIClient {
                 "auth_key": "\(apiKey)"
             ]
             let headers: HTTPHeaders = ["X-Auth":appkey]
-            apiPut(silent: true, apiUrl: "\(baseURL)/authkey", parameters: parameters, headers: headers) { _, _ in }
+            apiPut(silent: true, apiUrl: "\(baseURL)/authentication/authkey", parameters: parameters, headers: headers) { _, _, _ in }
         }
 
     // MARK: verifyIsAuthenticated

@@ -29,7 +29,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/chorelist"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success, error)
         }
     }
@@ -46,7 +46,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/userlist"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, blockInterface: true, headers: ["X-Auth":"\(authKey)"]) { success, error in
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, blockInterface: true, headers: ["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success, error)
         }
     }
@@ -62,7 +62,7 @@ extension KumpeAppsClient {
         ]
 
         let module = "kkid/masteruser"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(appkey)"]) { success, error in
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(appkey)"]) { success, error, _ in
             completion(success, error)
         }
     }
@@ -78,7 +78,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/allowance"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success, error)
         }
     }
@@ -102,7 +102,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/apns"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { _, _ in}
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { _, _, _ in}
     }
 
 // MARK: subscribeAPNS
@@ -117,7 +117,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/apns"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { _, _ in}
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { _, _, _ in}
     }
 
 // MARK: unsubscribeAPNS
@@ -132,7 +132,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/apns"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { _, _ in}
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { _, _, _ in}
     }
 
 // MARK: addWish
@@ -147,7 +147,7 @@ extension KumpeAppsClient {
 
         let authKey = UserDefaults.standard.value(forKey: "apiKey") ?? "null"
         let module = "kkid/wishlist"
-        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error in
+        apiPost(apiUrl: "\(baseURL)/\(module)", parameters: parameters, headers: ["X-Auth":"\(authKey)"]) { success, error, _ in
             completion(success, error)
         }
     }

@@ -28,7 +28,7 @@ extension TMDb_Client {
                 return
             }
 
-            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.searchTVUrl, responseType: TMDb_TV_Response.self, parameters: parameters) { (response, _) in
+            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.searchTVUrl, responseType: TMDb_TV_Response.self, parameters: parameters) { (response, _, _) in
                 let taskGroup = DispatchGroup()
                 var tvResponse = response
                 var removeShows: [Int] = []
@@ -62,7 +62,7 @@ extension TMDb_Client {
                 "language":"en-US"
             ]
 
-            TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Video_Response.self, parameters: parameters) { (response, error) in
+            TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Video_Response.self, parameters: parameters) { (response, error, _) in
 
                 // GUARD: Success
                 guard error == nil else {
@@ -94,7 +94,7 @@ extension TMDb_Client {
                 "api_key":"\(TMDb_Constants.apiKey)",
                 "language":"en-US"
             ]
-            TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_TV_Rating_Response.self, parameters: parameters) { (response, error) in
+            TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_TV_Rating_Response.self, parameters: parameters) { (response, error, _) in
                 // GUARD: Success
                 guard error == nil else {
                     completion(false,error)
@@ -128,7 +128,7 @@ extension TMDb_Client {
                 "session_id":"\(sessionId)",
                 "page":"\(page)"
             ]
-            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.favoriteShowsUrl, responseType: TMDb_TV_Response.self, parameters: parameters) { (response, error) in
+            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.favoriteShowsUrl, responseType: TMDb_TV_Response.self, parameters: parameters) { (response, error, _) in
 
                 if let error = error {
                     ShowAlert.banner(title: error, message: "Your TMDb account needs to be re-linked in your User Profile.")
@@ -175,7 +175,7 @@ extension TMDb_Client {
                 "page":"\(page)"
             ]
 
-            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.watchlistShowsUrl, responseType: TMDb_TV_Response.self, parameters: parameters) { (response, error) in
+            TMDb_Client.taskForGet(apiUrl: TMDb_Constants.watchlistShowsUrl, responseType: TMDb_TV_Response.self, parameters: parameters) { (response, error, _) in
 
                 if let error = error {
                     ShowAlert.banner(title: error, message: "Your TMDb account needs to be re-linked in your User Profile.")
