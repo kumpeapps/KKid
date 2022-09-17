@@ -94,6 +94,9 @@ class ChoresViewController: UIViewController {
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if #available(iOS 16.0, *) {
+            buttonAdd.isHidden = UserDefaults.standard.bool(forKey: "enableKiosk")
+        }
         reachable = ReachabilitySetup()
         setupFetchedResultsController()
         tableView.tableFooterView = UIView()

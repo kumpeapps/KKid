@@ -36,6 +36,9 @@ class SelectUserViewController: UIViewController {
 //    Adds functionality to swipe down to refresh table
     private let refreshControl = UIRefreshControl()
 
+    // MARK: Parameters
+    let isKiosk = UserDefaults.standard.bool(forKey: "enableKiosk")
+
 // MARK: fetchedResultsController
     var fetchedResultsController: NSFetchedResultsController<User>!
 
@@ -65,6 +68,7 @@ class SelectUserViewController: UIViewController {
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        buttonAdd.isHidden = isKiosk
         SettingsBundleHelper.checkAndExecuteSettings()
         reachable = ReachabilitySetup()
         setupFetchedResultsController()
@@ -128,6 +132,7 @@ class SelectUserViewController: UIViewController {
 // MARK: viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UserDefaults.standard.set(true, forKey: "userSelected")
         NotificationCenter.default.removeObserver(self)
         fetchedResultsController = nil
         reachable = nil
@@ -182,6 +187,7 @@ extension SelectUserViewController: UICollectionViewDataSource, UICollectionView
 // MARK: userSelected
     func userSelected(selectedUser: User) {
         LoggedInUser.selectedUser = selectedUser
+        HomeViewController().userSelected = true
         self.navigationController?.popToRootViewController(animated: true)
     }
 
@@ -318,7 +324,7 @@ extension SelectUserViewController: UICollectionViewDataSource, UICollectionView
             userSelected(selectedUser: selectedUser)
         } else if selectedUser.isMaster && !loggedInUser.isMaster {
             ShowAlert.banner(title: "Action Not Allowed", message: "Only the master account can select this user!")
-        } else if selectedUser.userID != loggedInUser.userID && !loggedInUser.isAdmin {
+        } else if selectedUser.userID != loggedInUser.userID && !loggedInUser.isAdmin && !isKiosk {
             ShowAlert.banner(title: "Action Not Allowed", message: "Only Admin users may select other users. Please select your name only!")
         } else {
             userSelected(selectedUser: selectedUser)

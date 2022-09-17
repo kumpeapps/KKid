@@ -16,18 +16,17 @@ extension KumpeAppsClient {
 
     // MARK: authenticate
     class func authenticate(username: String, password: String, otp: String? = nil, completion: @escaping (_ response: KKid_Auth_Response?, _ error: String?, _ statusResponse: HTTP_Status_Response) -> Void) {
-            var parameters = [
-                "username": username,
-                "password": password,
-                "verifyOtp": "true"
-            ]
+        var parameters = [
+            "username": username.replacingOccurrences(of: "kiosk:", with: ""),
+            "password": password
+        ]
         if otp != nil {
             parameters["otp"] = otp!
         }
             let headers: HTTPHeaders = ["X-Auth":appkey]
             var userAuthResponse: KKid_Auth_Response = KKid_Auth_Response.init(user: nil, apiKey: nil, status: 0, error: nil)
 
-            taskForGet(apiUrl: "\(baseURL)/authentication/authkey", responseType: KumpeApps_Auth_Response.self, parameters: parameters, headers: headers) { response, error, statusResponse in
+            taskForGet(apiUrl: "\(baseURL)/authkey", responseType: KumpeApps_Auth_Response.self, parameters: parameters, headers: headers) { response, error, statusResponse in
                 guard let response = response else {
                     completion(nil,error, statusResponse)
                     return

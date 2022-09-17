@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '15.0'
+platform :ios, '16.0'
 use_frameworks!
 
 plugin 'cocoapods-keys', {
@@ -18,6 +18,7 @@ plugin 'cocoapods-keys', {
 
 target 'KKid' do
 project 'KKid.xcodeproj'
+	pod 'BulletinBoard'
 	pod 'YubiKit'
 	pod 'xcbeautify'
 	pod 'UnsplashPhotoPicker'
@@ -34,7 +35,7 @@ project 'KKid.xcodeproj'
 	pod 'SwiftMessages'
 	pod 'Sync'
 	pod 'Smile', :git => 'https://github.com/onmyway133/Smile.git', :branch => 'master'
-	pod 'CollectionViewCenteredFlowLayout'
+	pod 'CollectionViewCenteredFlowLayout', :git => 'https://github.com/Coeur/CollectionViewCenteredFlowLayout.git', :branch => 'master'
 	pod 'KumpeHelpers'
 	pod 'Haptico'
 	pod 'PrivacyKit'

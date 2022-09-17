@@ -56,7 +56,7 @@ class KumpeAppsClient: KumpeAPIClient {
                 "auth_key": "\(apiKey)"
             ]
             let headers: HTTPHeaders = ["X-Auth":appkey]
-            apiPut(silent: true, apiUrl: "\(baseURL)/authentication/authkey", parameters: parameters, headers: headers) { _, _, _ in }
+            apiPut(silent: true, apiUrl: "\(baseURL)/authkey", parameters: parameters, headers: headers) { _, _, _ in }
         }
 
     // MARK: verifyIsAuthenticated
@@ -88,4 +88,5 @@ class KumpeAppsClient: KumpeAPIClient {
                 completion(true, data["msg"].stringValue)
             }
         }
+
 }

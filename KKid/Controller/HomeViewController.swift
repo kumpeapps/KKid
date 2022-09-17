@@ -39,12 +39,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: Labels
     @IBOutlet weak var labelSwitchUser: UILabel!
 
+    // MARK: Timer
+    var timer: Timer?
+
 // MARK: Parameters
     var modules: [KKid_Module] = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
     let dayOfWeek: Int = getDayOfWeek() ?? 0
     var choreCount: Int = 0
     let iconCache = ImageCache(name: "iconCache")
     let gravatarCache = ImageCache(name: "gravatarCache")
+    var isKiosk: Bool = false
+    var userSelected: Bool = false
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
@@ -88,6 +93,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.isKiosk = UserDefaults.standard.bool(forKey: "enableKiosk")
+        self.userSelected = UserDefaults.standard.bool(forKey: "userSelected")
         imageLogo.imageFromiCloud(imageName: "logo", waitForUpdate: false)
         imageBackground.imageFromiCloud(imageName: "background", waitForUpdate: false)
         SettingsBundleHelper.checkAndExecuteSettings()
@@ -101,6 +108,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             LoggedInUser.setSelectedToLoggedIn()
         }
 
+        if isKiosk {
+            LoggedInUser.user?.isAdmin = false
+            LoggedInUser.user?.isMaster = false
+        }
+
         choreCount = UIApplication.shared.applicationIconBadgeNumber
         NotificationCenter.default.addObserver(self, selector: #selector(verifyAuthenticated), name: .isAuthenticated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(buildModules), name: .updateUser, object: nil)
@@ -108,6 +120,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         modules = [KKid_Module.init(title: "Logout", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-shutdown-80.png")]
         buildModules()
         registerAPNS()
+        buildAvatar()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        if isKiosk && !userSelected {
+            performSegue(withIdentifier: "segueSelectUser", sender: self)
+        }
+    }
+
+    // MARK: resetTimer
+    func resetTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(segueSelectUser), userInfo: nil, repeats: false)
+    }
+
+    // MARK: buildAvatar
+    func buildAvatar() {
         var gravatar = "https://www.gravatar.com/avatar/?d=mp"
         var email = ""
         avatarView.borderColor = UIColor.systemRed
@@ -136,7 +163,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 .transition(.fade(1)),
                 .targetCache(gravatarCache)
                 ])
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
 // MARK: viewDidAppear
@@ -148,9 +174,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.buildModules()
             }
         }
-        tutorial()
+        if !isKiosk {
+            tutorial()
+        }
         self.requirePrivacy()
         whatsNew.presentIfNeeded(on: self)
+        if isKiosk {
+            resetTimer()
+        }
     }
 
 // MARK: viewWillDisappear
@@ -161,6 +192,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         iconCache.cleanExpiredCache()
         iconCache.cleanExpiredDiskCache()
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        timer?.invalidate()
     }
 
 // MARK: didRecieveMemoryWarning
@@ -184,13 +216,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: registerAPNS
     func registerAPNS() {
 
-        guard let token = UserDefaults.standard.string(forKey: "apnsToken") else {
-            return
-        }
+        guard !isKiosk else { return }
 
-        guard token != "" else {
-            return
-        }
+        guard let token = UserDefaults.standard.string(forKey: "apnsToken") else { return }
+
+        guard token != "" else { return }
 
         KumpeAppsClient.registerAPNS(token)
     }
@@ -216,20 +246,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if selectedUser.enableWishList {
                 modules.append(KKid_Module.init(title: "Wish List", segue: "segueWishList", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-wish-list-80.png"))
             }
+            if !isKiosk {
+                modules.append(KKid_Module.init(title: "Edit Profile", segue: "segueEditProfile", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-profile-80.png"))
 
-            modules.append(KKid_Module.init(title: "Edit Profile", segue: "segueEditProfile", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-profile-80.png"))
+                modules.append(KKid_Module.init(title: "App Settings", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-services-50.png"))
 
-            if LoggedInUser.user!.isAdmin {
-//                modules.append(KKid_Module.init(title: "Select User", segue: "segueSelectUser", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-select-users-80.png"))
+                modules.append(KKid_Module.init(title: "User Manual", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-user_manual-50.png"))
+
+                modules.append(KKid_Module.init(title: "Portal", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "letter_k/k_cloud.png"))
+
+                modules.append(KKid_Module.init(title: "Support", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-strangertalk-50.png"))
             }
-
-            modules.append(KKid_Module.init(title: "App Settings", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-services-50.png"))
-
-            modules.append(KKid_Module.init(title: "User Manual", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-user_manual-50.png"))
-
-            modules.append(KKid_Module.init(title: "Portal", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "letter_k/k_cloud.png"))
-
-            modules.append(KKid_Module.init(title: "Support", segue: nil, icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-strangertalk-50.png"))
 
         }
 
@@ -238,9 +265,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
 
-// MARK: pressedLogout
+    // MARK: pressedLogout
     func pressedLogout() {
         KumpeAppsClient.logout(userInitiated: true)
+    }
+
+    // MARK: segueSelectUser
+    @objc func segueSelectUser() {
+        performSegue(withIdentifier: "segueSelectUser", sender: self)
     }
 
 // MARK: centerItemsInCollectionView
@@ -450,7 +482,11 @@ extension HomeViewController {
             let module = modules[indexPath.row]
             switch module.title {
             case "Logout":
-                pressedLogout()
+                if !isKiosk {
+                    pressedLogout()
+                } else {
+                    performSegue(withIdentifier: "segueSelectUser", sender: self)
+                }
             case "App Settings":
                 let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
                 UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)

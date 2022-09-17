@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UserDefaults.standard.set(false, forKey: "userSelected")
         KumpeHelpers.KumpeAPIClient.isKumpeAppsApi = true
         NewRelic.start(withApplicationToken:"\(KKidKeys().newrelic_token)")
         ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
