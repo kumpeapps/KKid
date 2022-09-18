@@ -11,7 +11,7 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+update_fastlane
 
 default_platform(:ios)
 
@@ -29,10 +29,14 @@ platform :ios do
   	end
   end
 
+  desc "Install XCode 14"
+  lane :install_xcode do
+    xcode_install(version: "14")
+  end
+
   desc "Build and upload beta version to testflight"
   lane :beta do
     if is_ci
-      xcode_install(version: "14")
 		  setup_ci
   		app_store_connect_api_key(
      		"key_id": ENV['APPLE_APP_STORE_API_KEY_ID'],
@@ -56,7 +60,6 @@ platform :ios do
   desc "Build and upload alpha version to testflight"
   lane :alpha do
     if is_ci
-      xcode_install(version: "14")
       setup_ci
       app_store_connect_api_key(
         "key_id": ENV['APPLE_APP_STORE_API_KEY_ID'],
@@ -75,7 +78,6 @@ platform :ios do
   desc "Build and upload release version to Apple"
   lane :release do
     if is_ci
-      xcode_install(version: "14")
 		  setup_ci
   		app_store_connect_api_key(
      		"key_id": ENV['APPLE_APP_STORE_API_KEY_ID'],
@@ -102,9 +104,6 @@ platform :ios do
   end
 
   lane :test do
-    if is_ci
-      xcode_install(version: "14")
-    end
   	run_tests(workspace: "KKid.xcworkspace",
             devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (3rd generation)"],
             scheme: "KKidUITests",
