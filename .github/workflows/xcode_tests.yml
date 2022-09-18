@@ -15,12 +15,17 @@ jobs:
     environment: Apple TestFlight- Alpha
 
     steps:
+<<<<<<< HEAD
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '^14.0'
 
     - uses: actions/checkout@v3
 
+=======
+    - uses: actions/checkout@v3
+
+>>>>>>> master
     - uses: actions/cache@v3
       id: podcache
       with:
@@ -84,12 +89,17 @@ jobs:
       url: https://kkid-beta.kumpe.app
 
     steps:
+<<<<<<< HEAD
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '^14.0'
 
     - uses: actions/checkout@v3
 
+=======
+    - uses: actions/checkout@v3
+
+>>>>>>> master
     - uses: actions/cache@v3
       id: podcache
       with:
@@ -150,12 +160,17 @@ jobs:
     needs: [TestFlight-Beta,TestFlight-Alpha]
     runs-on: macos-12
     steps:
+<<<<<<< HEAD
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '^14.0'
 
     - uses: actions/checkout@v3
 
+=======
+    - uses: actions/checkout@v3
+
+>>>>>>> master
     - uses: actions/cache@v3
       with:
         path: Pods
