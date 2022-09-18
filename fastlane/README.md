@@ -23,14 +23,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Generate new localized screenshots
 
-### ios install_xcode
-
-```sh
-[bundle exec] fastlane ios install_xcode
-```
-
-Install XCode 14
-
 ### ios beta
 
 ```sh

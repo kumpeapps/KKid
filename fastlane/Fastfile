@@ -29,11 +29,6 @@ platform :ios do
   	end
   end
 
-  desc "Install XCode 14"
-  lane :install_xcode do
-    xcode_install(version: "14", username: "jakumpe@justinkumpe.net")
-  end
-
   desc "Build and upload beta version to testflight"
   lane :beta do
     if is_ci
@@ -105,7 +100,7 @@ platform :ios do
 
   lane :test do
   	run_tests(workspace: "KKid.xcworkspace",
-            devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (3rd generation)"],
+            devices: ["iPhone 14 Pro","iPad (9th generation)"],
             scheme: "KKidUITests",
             only_testing: "KKidUITests/KKidUITests",
             reinstall_app: true,
