@@ -38,7 +38,7 @@ jobs:
     - name: Install Xcode
       env:
         FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-      run: bundle exec fastlane install_xcode
+      run: bundle exec fastlane install_xcode(version: "14", username: "jakumpe@justinkumpe.net")
 
     - name: CocoaPods dependencies
       env:
