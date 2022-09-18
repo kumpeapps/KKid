@@ -31,7 +31,7 @@ platform :ios do
 
   desc "Install XCode 14"
   lane :install_xcode do
-    xcode_install(version: "14")
+    xcode_install(version: "14", username: "jakumpe@justinkumpe.net")
   end
 
   desc "Build and upload beta version to testflight"
