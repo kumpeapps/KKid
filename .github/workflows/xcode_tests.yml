@@ -15,7 +15,7 @@ jobs:
     environment: Apple TestFlight- Alpha
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: actions/cache@v2
       id: podcache
@@ -80,7 +80,7 @@ jobs:
       url: https://kkid-beta.kumpe.app
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: actions/cache@v2
       id: podcache
@@ -142,7 +142,7 @@ jobs:
     needs: [TestFlight-Beta,TestFlight-Alpha]
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: actions/cache@v2
       with:
