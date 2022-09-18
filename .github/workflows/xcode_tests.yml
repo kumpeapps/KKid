@@ -35,11 +35,6 @@ jobs:
     - name: Bundle dependencies
       run: bundle install
 
-    - name: Install Xcode
-      env:
-        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-      run: bundle exec fastlane install_xcode
-
     - name: CocoaPods dependencies
       env:
         tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
@@ -105,11 +100,6 @@ jobs:
     - name: Bundle dependencies
       run: bundle install
 
-    - name: Install Xcode
-      env:
-        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-      run: bundle exec fastlane install_xcode
-
     - name: CocoaPods dependencies
       env:
         tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
@@ -170,11 +160,6 @@ jobs:
 
     - name: Bundle dependencies
       run: bundle install
-
-    - name: Install Xcode
-      env:
-        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-      run: bundle exec fastlane install_xcode
 
     - name: CocoaPods dependencies
       env:
