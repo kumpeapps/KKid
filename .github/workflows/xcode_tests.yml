@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       id: podcache
       with:
         path: Pods
@@ -25,7 +25,7 @@ jobs:
         restore-keys: |
                 ${{ runner.os }}-pods-
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
@@ -82,7 +82,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       id: podcache
       with:
         path: Pods
@@ -90,7 +90,7 @@ jobs:
         restore-keys: |
                 ${{ runner.os }}-pods-
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
@@ -144,14 +144,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: Pods
         key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
                 ${{ runner.os }}-pods-
 
-    - uses: actions/cache@v1
+    - uses: actions/cache@v3
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
