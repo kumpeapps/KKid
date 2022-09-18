@@ -36,6 +36,8 @@ jobs:
       run: bundle install
 
     - name: Install Xcode
+      env:
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
       run: bundle exec fastlane install_xcode
 
     - name: CocoaPods dependencies
@@ -104,6 +106,8 @@ jobs:
       run: bundle install
 
     - name: Install Xcode
+      env:
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
       run: bundle exec fastlane install_xcode
 
     - name: CocoaPods dependencies
@@ -168,6 +172,8 @@ jobs:
       run: bundle install
 
     - name: Install Xcode
+      env:
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
       run: bundle exec fastlane install_xcode
 
     - name: CocoaPods dependencies
