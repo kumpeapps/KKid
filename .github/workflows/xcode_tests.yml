@@ -15,6 +15,10 @@ jobs:
     environment: Apple TestFlight- Alpha
 
     steps:
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '^14.0'
+
     - uses: actions/checkout@v2
 
     - uses: actions/cache@v2
@@ -80,6 +84,10 @@ jobs:
       url: https://kkid-beta.kumpe.app
 
     steps:
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '^14.0'
+
     - uses: actions/checkout@v2
 
     - uses: actions/cache@v2
@@ -142,6 +150,10 @@ jobs:
     needs: [TestFlight-Beta,TestFlight-Alpha]
     runs-on: macos-latest
     steps:
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '^14.0'
+
     - uses: actions/checkout@v2
 
     - uses: actions/cache@v2
