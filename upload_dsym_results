@@ -1,0 +1,29 @@
+uploading map to new relic
+executing upload_map_file_to_new_relic
+New Relic: map file upload attempt #1 (of 3)
+Using URL: https://mobile-symbol-upload.newrelic.com
+Traceback (most recent call last):
+  File "/Volumes/Developer/xcode_Apps/KKid/Pods/NewRelicAgent/NewRelic.xcframework/Resources/generateMap.py", line 252, in <module>
+    processDsymFile(dsym, worTraceback (most recent call last):
+  File "/Volumes/Developer/xcode_Apps/KKid/Pods/NewRelicAgent/NewRelic.xcframework/Resources/generateMap.py", line 252, in <module>
+    processDsymFile(dsym, workDir)
+  File "/Volumes/Developer/xcode_Apps/KKid/Pods/NewRelicAgent/NewRelic.xcframework/Resources/generateMap.py", line 201, in processDsymFile
+    nrZipFile.write(file.name)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 1727, in write
+    zinfo = ZipInfo.from_file(filename, arcUsing URL: https://mobile-symbol-upload.newrelic.com
+Traceback (most recent call last):
+  File "/Volumes/Developer/xcode_Apps/KKid/Pods/NewRelicAgent/NewRelic.xcframework/Resources/generateMap.py", line 252, in <module>
+    processDsymFile(dsym, workDir)
+  File "/Volumes/Developer/xcode_Apps/KKid/Pods/NewRelicAgent/NewRelic.xcframework/Resources/generateMap.py", linNew Relic: map file upload attempt #3 (of 3)
+Using URL: https://mobile-symbol-upload.newrelic.com
+Traceback (most recent call last):
+  File "/Volumes/Developernew relic: error "401" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/JKRefresher.framework.dSYM-1663461402.zip" to "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/JKRefresher.framework.dSYM-1663461402.zip"
+new relic: error "401" while uploading "/Users/justinkumpe/Library/Developer/executing upload_dsym_to_new_relic
+new relic: error "401" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/SwiftMessages.framework.dSYM-1663461402.zip" to "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/SwiftMessages.framework.dSYM-1663461402.zip"
+new relic: error "401" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/SwiftMessages.framework.dSYM-1663461402.zip" to "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/SwiftMessages.framework.dSYM-1663461402.zip"
+new relic: error "401" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/SwiftMessages.framework.dSYM-1663461402.zip" to "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/SwiftMessages.framework.dSYM-1663461402.zip"
+ntermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/ADEmptyDataView.framework.dSYM-1663461405.zip"
+hlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/Smile.framework.dSYM-1663461405.zip"
+ers/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.new relic: error "401" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/Knew relic: error "401" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Renew relic: error "401" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/Keys.framework.dSYM-1663461404.zip" to "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/ArchiveIntermediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/Keys.framework.dSYM-1663461404.zip"
+honeos/KKid.build/BadgeSwift.framework.dSYM-1663461403.zip"
+rmediates/KKid/IntermediateBuildFilesPath/KKid.build/Release-iphoneos/KKid.build/FetchedResultsControllerCollectionViewUpdater.framework.dSYM-1663461405.zip"
