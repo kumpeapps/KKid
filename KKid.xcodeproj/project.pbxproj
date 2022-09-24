@@ -94,6 +94,8 @@
 		0FDB64BB251C2FA900427543 /* LaunchURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB64BA251C2FA900427543 /* LaunchURL.swift */; };
 		0FDC462C251AC19000A4E3D2 /* UserEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDC462B251AC19000A4E3D2 /* UserEditProfileViewController.swift */; };
 		0FF3D19127DA7797007B91FF /* KKidTakeScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF3D19027DA7797007B91FF /* KKidTakeScreenshots.swift */; };
+		0FF68B4C28DE843900B46BA2 /* DynamicIslandProgressIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF68B4A28DE843900B46BA2 /* DynamicIslandProgressIndicatorViewController.swift */; };
+		0FF68B4D28DE843900B46BA2 /* DynamicIsland.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF68B4B28DE843900B46BA2 /* DynamicIsland.swift */; };
 		A3421BF978588D5B625E0BEA /* Pods_KKid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73BE95B966B40C855EFC2DA2 /* Pods_KKid.framework */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +202,8 @@
 		0FDB64BA251C2FA900427543 /* LaunchURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchURL.swift; sourceTree = "<group>"; };
 		0FDC462B251AC19000A4E3D2 /* UserEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditProfileViewController.swift; sourceTree = "<group>"; };
 		0FF3D19027DA7797007B91FF /* KKidTakeScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKidTakeScreenshots.swift; sourceTree = "<group>"; };
+		0FF68B4A28DE843900B46BA2 /* DynamicIslandProgressIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIslandProgressIndicatorViewController.swift; sourceTree = "<group>"; };
+		0FF68B4B28DE843900B46BA2 /* DynamicIsland.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIsland.swift; sourceTree = "<group>"; };
 		1019749FB3A556C106D9DF7C /* Pods-KKid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKid.release.xcconfig"; path = "Target Support Files/Pods-KKid/Pods-KKid.release.xcconfig"; sourceTree = "<group>"; };
 		1355DCB75F925F8970F6DE9C /* Pods-KKid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKid.debug.xcconfig"; path = "Target Support Files/Pods-KKid/Pods-KKid.debug.xcconfig"; sourceTree = "<group>"; };
 		73BE95B966B40C855EFC2DA2 /* Pods_KKid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KKid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,6 +333,7 @@
 		0F5EC8AF24F98D7700873868 /* Helper Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0FF68B4928DE843900B46BA2 /* DynamicIslandUtilities */,
 				0FB98CF424FF153200143A6A /* Pathifier.swift */,
 				0F66BE3525070D8700014A94 /* PersistBackgrounds.swift */,
 				0F66BE372507107B00014A94 /* Logger.swift */,
@@ -442,6 +447,15 @@
 				0F18B8482731BFA700123BBE /* TVRating.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		0FF68B4928DE843900B46BA2 /* DynamicIslandUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				0FF68B4A28DE843900B46BA2 /* DynamicIslandProgressIndicatorViewController.swift */,
+				0FF68B4B28DE843900B46BA2 /* DynamicIsland.swift */,
+			);
+			path = DynamicIslandUtilities;
 			sourceTree = "<group>";
 		};
 		181EC3F58AD05BAB37041387 /* Frameworks */ = {
@@ -658,6 +672,7 @@
 				0F9CAE2A27239A2B0036742C /* KumpeAppsClient+DELETE.swift in Sources */,
 				0F1579FB272CE6DF00AF3E27 /* TVShowDetailViewController.swift in Sources */,
 				0F48331225118F2A00B92ADB /* DebugHelpers.swift in Sources */,
+				0FF68B4D28DE843900B46BA2 /* DynamicIsland.swift in Sources */,
 				0F991504272632EA006E5F1C /* WishListViewController.swift in Sources */,
 				0F4833162512D47400B92ADB /* DayOfWeekViewController.swift in Sources */,
 				0F5EC89C24F98D0000873868 /* SelectUserViewController.swift in Sources */,
@@ -718,6 +733,7 @@
 				0F9CAE24272392150036742C /* KumpeAppsClient+POST.swift in Sources */,
 				0F99D99C25734602007169B9 /* MovieSearchViewController.swift in Sources */,
 				0F72B14A251974610099D2D9 /* AddUserViewController.swift in Sources */,
+				0FF68B4C28DE843900B46BA2 /* DynamicIslandProgressIndicatorViewController.swift in Sources */,
 				0F91099325A64FD2008E658F /* TMDb_Session.swift in Sources */,
 				0F311185251FE3F8004BB1E4 /* API_Credentials.swift in Sources */,
 				0F66BE3F25085E9000014A94 /* GCDBlackBox.swift in Sources */,
