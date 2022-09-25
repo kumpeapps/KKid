@@ -53,7 +53,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 // MARK: WhatsNew Parameters
     let whatsNew = WhatsNewViewController(items: [
-        WhatsNewItem.text(title: "Custom Backgrounds", subtitle: "You can now set your background to be any (filtered) photo from Unsplash.")])
+        WhatsNewItem.text(title: "Kiosk Mode", subtitle: "Added Kiosk Mode")])
 
 // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -169,16 +169,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if UserDefaults.standard.value(forKey: "UserLastUpdated") == nil || !Calendar.current.isDateInToday(UserDefaults.standard.value(forKey: "UserLastUpdated") as! Date) {
-            KumpeAppsClient.getUsers { (_, _) in
-                LoggedInUser.setLoggedInUser()
-                self.buildModules()
+            KumpeHelpers.dispatchOnBackground {
+                KumpeAppsClient.getUsers(silent: true) { (_, _) in
+                    LoggedInUser.setLoggedInUser()
+                    KumpeHelpers.dispatchOnMain {
+                        self.buildModules()
+                    }
+                }
             }
         }
         if !isKiosk {
             tutorial()
         }
-        self.requirePrivacy()
-        whatsNew.presentIfNeeded(on: self)
+        if !Device.current.isSimulator {
+            self.requirePrivacy()
+            whatsNew.presentIfNeeded(on: self)
+        }
         if isKiosk {
             resetTimer()
         }

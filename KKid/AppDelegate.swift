@@ -92,29 +92,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
     }
 
     func registerBackgroundTasks() {
-        // get the current date and time
-        let currentDateTime = Date()
-
-        // initialize the date formatter and set the style
-        let formatter = DateFormatter()
-        formatter.timeStyle = .medium
-        formatter.dateStyle = .long
-
-        // get the date time String from the date object
-        let date = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
         Logger.log(.action, "Run Register Background Tasks")
         // Use the identifier which represents your needs
         BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.kumpeapps.ios.KKid.background.refresh", using: nil) { (task) in
+            // get the current date and time
+            let currentDateTime = Date()
+
+            // initialize the date formatter and set the style
+            let formatter = DateFormatter()
+            formatter.timeStyle = .medium
+            formatter.dateStyle = .long
+
+            // get the date time String from the date object
+            let date = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
             Logger.log(.action, "BackgroundAppRefreshTaskScheduler is executed NOW!")
             Logger.log(.action, "Background time remaining: \(UIApplication.shared.backgroundTimeRemaining)s")
             task.expirationHandler = {
                 task.setTaskCompleted(success: false)
             }
+            //        Load Data Controller
+            DataController.shared.load()
+
+            //        Initiate DataController Autosave
+            DataController.shared.autoSaveViewContext()
             KumpeAppsClient.getUsers(silent: true) { success, _ in
                 LoggedInUser.setLoggedInUser()
                 task.setTaskCompleted(success: success)
-                UserDefaults.standard.set("\(date)", forKey: "bgtask")
+                UserDefaults.standard.set("Date: \(date)", forKey: "bgtask")
             }
+            self.submitBackgroundTasks()
         }
     }
 
