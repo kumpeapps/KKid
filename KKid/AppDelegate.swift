@@ -110,15 +110,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
             task.expirationHandler = {
                 task.setTaskCompleted(success: false)
             }
-            //        Load Data Controller
-            DataController.shared.load()
+            KumpeHelpers.dispatchOnBackground {
+                //        Load Data Controller
+                DataController.shared.load()
 
-            //        Initiate DataController Autosave
-            DataController.shared.autoSaveViewContext()
-            KumpeAppsClient.getUsers(silent: true) { success, _ in
-                LoggedInUser.setLoggedInUser()
-                task.setTaskCompleted(success: success)
-                UserDefaults.standard.set("Date: \(date)", forKey: "bgtask")
+                //        Initiate DataController Autosave
+                DataController.shared.autoSaveViewContext()
+                KumpeAppsClient.getUsers(silent: true) { success, _ in
+                    LoggedInUser.setLoggedInUser()
+                    task.setTaskCompleted(success: success)
+                    UserDefaults.standard.set("Date: \(date)", forKey: "bgtask")
+                }
             }
             self.submitBackgroundTasks()
         }
