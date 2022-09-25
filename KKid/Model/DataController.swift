@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class DataController {
 
@@ -52,6 +53,8 @@ extension DataController {
 
 // MARK: Auto Save View Context
     func autoSaveViewContext(interval: TimeInterval = 30) {
+        let state = UIApplication.shared.applicationState
+        guard state == .active else { return }
         Logger.log(.action, "autosaving")
         guard interval > 0 else {
             Logger.log(.error, "cannot set negative autosave inteval")
