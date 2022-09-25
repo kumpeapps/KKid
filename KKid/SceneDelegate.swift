@@ -52,14 +52,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func submitBackgroundTasks() {
-        // Declared at the "Permitted background task scheduler identifiers" in info.plist
-        let backgroundAppRefreshTaskSchedulerIdentifier = "com.kumpeapps.ios.KKid.background.refresh"
-        let timeDelay = 1.0
         Logger.log(.action, "submitBackgroundTasks")
 
         do {
-            let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: backgroundAppRefreshTaskSchedulerIdentifier)
-            backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow: timeDelay)
+            let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: "com.kumpeapps.ios.KKid.background.refresh")
+            backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow:  5 * 60)
             try BGTaskScheduler.shared.submit(backgroundAppRefreshTaskRequest)
             Logger.log(.action, "Submitted task request")
         } catch {

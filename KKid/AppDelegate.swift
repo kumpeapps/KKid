@@ -54,10 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //        Load Data Controller
         DataController.shared.load()
-        
+
         //        Initiate DataController Autosave
         DataController.shared.autoSaveViewContext()
-        
+
         // Override point for customization after application launch.
         UserDefaults.standard.set(false, forKey: "userSelected")
         KumpeHelpers.KumpeAPIClient.isKumpeAppsApi = true
@@ -70,20 +70,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         PrivacyKit.shared.disableDeny()
         PrivacyKit.shared.setTitle("Terms of Service & Privacy Policy")
         PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our EULA, Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
-        
+
         //        Get App Version and set it's value in KKid Client
         if let nsObject: AnyObject = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject? {
             KumpeAppsClient.appVersion = "\(KumpeAppsClient.appVersion) \(nsObject as! String)"
         }
-        
+
         if UserDefaults.standard.string(forKey: "loggedInUserID") == nil {
             UserDefaults.standard.removeObject(forKey: "isAuthenticated")
         }
-        
+
 #if !targetEnvironment(simulator)
         registerForPushNotifications()
 #endif
-        
+
         SettingsBundleHelper.checkAndExecuteSettings()
         SettingsBundleHelper.setVersionAndBuildNumber()
         // Register Background task here
@@ -92,14 +92,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
     }
 
     func registerBackgroundTasks() {
-        // Declared at the "Permitted background task scheduler identifiers" in info.plist
-        let backgroundAppRefreshTaskSchedulerIdentifier = "com.kumpeapps.ios.KKid.background.refresh"
-        let backgroundProcessingTaskSchedulerIdentifier = "com.kumpeapps.ios.KKid.background.processing"
+        // get the current date and time
+        let currentDateTime = Date()
+
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .long
+
+        // get the date time String from the date object
+        let date = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
         Logger.log(.action, "Run Register Background Tasks")
-        UserDefaults.standard.set("yes", forKey: "test2")
         // Use the identifier which represents your needs
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: backgroundAppRefreshTaskSchedulerIdentifier, using: nil) { (task) in
-            UserDefaults.standard.set("yes", forKey: "test")
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.kumpeapps.ios.KKid.background.refresh", using: nil) { (task) in
             Logger.log(.action, "BackgroundAppRefreshTaskScheduler is executed NOW!")
             Logger.log(.action, "Background time remaining: \(UIApplication.shared.backgroundTimeRemaining)s")
             task.expirationHandler = {
@@ -108,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
             KumpeAppsClient.getUsers(silent: true) { success, _ in
                 LoggedInUser.setLoggedInUser()
                 task.setTaskCompleted(success: success)
-                UserDefaults.standard.set("yes", forKey: "bgtask")
+                UserDefaults.standard.set("\(date)", forKey: "bgtask")
             }
         }
     }
@@ -123,14 +128,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
       }
 
     func submitBackgroundTasks() {
-        // Declared at the "Permitted background task scheduler identifiers" in info.plist
-        let backgroundAppRefreshTaskSchedulerIdentifier = "com.kumpeapps.ios.KKid.background.refresh"
-        let timeDelay = 10.0
         Logger.log(.action, "submitBackgroundTasks")
 
         do {
-            let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: backgroundAppRefreshTaskSchedulerIdentifier)
-            backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow: timeDelay)
+            let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: "com.kumpeapps.ios.KKid.background.refresh")
+            backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow: 5 * 60)
             try BGTaskScheduler.shared.submit(backgroundAppRefreshTaskRequest)
             Logger.log(.action, "Submitted task request")
         } catch {
