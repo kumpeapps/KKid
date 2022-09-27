@@ -52,11 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
     var kkidBackground = UIImage(named: "photo2")!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //        Load Data Controller
-        DataController.shared.load()
-
-        //        Initiate DataController Autosave
-        DataController.shared.autoSaveViewContext()
 
         // Override point for customization after application launch.
         UserDefaults.standard.set(false, forKey: "userSelected")
@@ -113,10 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
             task.expirationHandler = {
                 task.setTaskCompleted(success: false)
             }
-            KumpeHelpers.dispatchOnBackground {
-                //        Load Data Controller
-                DataController.shared.load()
-            }
+            DataController.shared.load()
             KumpeAppsClient.getUsers(silent: true) { success, _ in
                 LoggedInUser.setLoggedInUser()
                 task.setTaskCompleted(success: success)

@@ -58,6 +58,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        //        Load Data Controller
+        DataController.shared.load()
+        //        Initiate DataController Autosave
+        DataController.shared.autoSaveViewContext()
         collectionView.delegate = self
         collectionView.dataSource = self
         let layout = CollectionViewCenteredFlowLayout()
