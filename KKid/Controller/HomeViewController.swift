@@ -17,7 +17,7 @@ import DeviceKit
 import KumpeHelpers
 import Snowflake
 import WhatsNew
-import AvatarView
+import AvatarView_fork
 import iCloudSync
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {

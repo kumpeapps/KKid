@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AvatarView
+import AvatarView_fork
 
 class AvatarTableViewCell: UITableViewCell {
 

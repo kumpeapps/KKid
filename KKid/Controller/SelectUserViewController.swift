@@ -12,7 +12,7 @@ import CoreData
 import KumpeHelpers
 import Haptico
 import Toast_Swift
-import AvatarView
+import AvatarView_fork
 import Kingfisher
 import CollectionViewCenteredFlowLayout
 import FetchedResultsControllerCollectionViewUpdater

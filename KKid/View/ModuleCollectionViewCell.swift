@@ -8,7 +8,7 @@
 
 import UIKit
 import BadgeSwift
-import AvatarView
+import AvatarView_fork
 import KumpeHelpers
 
 class ModuleCollectionViewCell: UICollectionViewCell {
