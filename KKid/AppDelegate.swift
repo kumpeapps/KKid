@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         SettingsBundleHelper.checkAndExecuteSettings()
         SettingsBundleHelper.setVersionAndBuildNumber()
         // Register Background task here
-        registerBackgroundTasks()
+        // registerBackgroundTasks()
         return true
     }
 
@@ -95,12 +95,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.kumpeapps.ios.KKid.background.refresh", using: nil) { (task) in
             // get the current date and time
             let currentDateTime = Date()
-            
+
             // initialize the date formatter and set the style
             let formatter = DateFormatter()
             formatter.timeStyle = .medium
             formatter.dateStyle = .long
-            
+
             // get the date time String from the date object
             let date = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
             Logger.log(.action, "BackgroundAppRefreshTaskScheduler is executed NOW!")
@@ -124,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         saveViewContext()
         Logger.log(.action, "applicationDidEnterBackground")
-        submitBackgroundTasks()
+        // submitBackgroundTasks()
       }
 
     func submitBackgroundTasks() {

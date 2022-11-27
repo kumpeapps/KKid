@@ -55,5 +55,5 @@ project 'KKid.xcodeproj'
 	pod 'YoutubeKit', '0.4.0'
 	pod 'ShipBookSDK'
 	pod 'WhatsNew'
-	pod 'AvatarView', :git => 'https://github.com/kumpeapps/AvatarView.git', :branch => 'master'
+	pod 'AvatarView-fork'
 end
