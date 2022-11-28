@@ -5,6 +5,8 @@ storage_mode("git")
 type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
 
 app_identifier(["com.kumpeapps.ios.KKid"])
+include_mac_in_profiles(true)
+force_for_new_devices(true)
 username("jakumpe@justinkumpe.net") # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`

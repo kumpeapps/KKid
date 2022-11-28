@@ -12,7 +12,6 @@ import PrivacyKit
 import KumpeHelpers
 import ShipBookSDK
 import NewRelic
-import Keys
 import BackgroundTasks
 
 @UIApplicationMain
@@ -52,13 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
     var kkidBackground = UIImage(named: "photo2")!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
         // Override point for customization after application launch.
         UserDefaults.standard.set(false, forKey: "userSelected")
         KumpeHelpers.KumpeAPIClient.isKumpeAppsApi = true
         let appState = application.applicationState
         if appState != .background {
-            NewRelic.start(withApplicationToken:"\(KKidKeys().newrelic_token)")
+            NewRelic.start(withApplicationToken:"\(APICredentials.NewRelic.apikey)")
             ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
             // Setup PrivacyKit
             PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
@@ -85,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         SettingsBundleHelper.checkAndExecuteSettings()
         SettingsBundleHelper.setVersionAndBuildNumber()
         // Register Background task here
-        // registerBackgroundTasks()
+        registerBackgroundTasks()
         return true
     }
 

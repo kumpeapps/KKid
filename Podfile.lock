@@ -5,14 +5,14 @@ PODS:
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
     - SwiftyJSON (~> 4.0.0)
-  - AvatarView-fork (2.0.3)
+  - AvatarView (2.0)
   - BadgeSwift (8.0.0)
   - BulletinBoard (5.0.0)
   - CollectionViewCenteredFlowLayout (1.0.3)
   - ContentRestrictionsKit (1.2)
-  - DeviceKit (4.8.0)
+  - DeviceKit (5.0.0)
   - FetchedResultsControllerCollectionViewUpdater (0.1.0)
-  - Haptico (1.1.1)
+  - Haptico (1.2.0)
   - iCloudSync (8.0.21)
   - JKRefresher (1.4)
   - Keys (1.0.1)
@@ -54,7 +54,7 @@ PODS:
 DEPENDENCIES:
   - ADEmptyDataView
   - Alamofire-SwiftyJSON
-  - AvatarView-fork
+  - AvatarView (from `https://github.com/justinkumpe/AvatarView.git`, branch `master`)
   - BadgeSwift
   - BulletinBoard
   - CollectionViewCenteredFlowLayout (from `https://github.com/Coeur/CollectionViewCenteredFlowLayout.git`, branch `master`)
@@ -88,7 +88,6 @@ SPEC REPOS:
     - AFCurvedArrowView
     - Alamofire
     - Alamofire-SwiftyJSON
-    - AvatarView-fork
     - BadgeSwift
     - BulletinBoard
     - ContentRestrictionsKit
@@ -117,6 +116,9 @@ SPEC REPOS:
     - YubiKit
 
 EXTERNAL SOURCES:
+  AvatarView:
+    :branch: master
+    :git: https://github.com/justinkumpe/AvatarView.git
   CollectionViewCenteredFlowLayout:
     :branch: master
     :git: https://github.com/Coeur/CollectionViewCenteredFlowLayout.git
@@ -130,6 +132,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/kumpeapps/Snowflake.git
 
 CHECKOUT OPTIONS:
+  AvatarView:
+    :commit: 7cc61fba7eb7064e983b98ab0870061c6bd1e99c
+    :git: https://github.com/justinkumpe/AvatarView.git
   CollectionViewCenteredFlowLayout:
     :commit: a96a497377e6b7a555bf3c76e0aa05a096faa2f2
     :git: https://github.com/Coeur/CollectionViewCenteredFlowLayout.git
@@ -145,14 +150,14 @@ SPEC CHECKSUMS:
   AFCurvedArrowView: 5fa8fcc1f77f5428ab34d7a1c6696b88c3c20f40
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
-  AvatarView-fork: a16c319d722c4be8b8e1c04459630e76d0377f42
+  AvatarView: 9e12408599027ef3156871396e3adb259812c971
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
   BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
   CollectionViewCenteredFlowLayout: 08ee587b794886c8aed41f79a528c6c4efa56d60
   ContentRestrictionsKit: db88b231efbc00ee45f3eefae04ba7b4219fe433
-  DeviceKit: e787680f500d6ce642b24204aa7a5f9bc9ea1209
+  DeviceKit: 0fd016a2cb67aca17c33dc23171cac270131eb88
   FetchedResultsControllerCollectionViewUpdater: 10e88db1403d8d6e17a5d323efe1d1fd31dd0e1c
-  Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
+  Haptico: 0d6f0c5e25a2752ba9a819e28f58f918ffba5b65
   iCloudSync: 9db5fec951673172886bd75203971c003b02e988
   JKRefresher: 43ff65dfed29cdf1780e3923164938fd07b2e9b9
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
@@ -177,6 +182,6 @@ SPEC CHECKSUMS:
   YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
   YubiKit: bde189dbaddc29e41dbda9e2c55ec5a79d38c654
 
-PODFILE CHECKSUM: 311963fe86063983749e6bde5ce0a86b339f0447
+PODFILE CHECKSUM: 0e3a1ea06eb5e3ef10e98721d0076a14c44f0082
 
 COCOAPODS: 1.11.3

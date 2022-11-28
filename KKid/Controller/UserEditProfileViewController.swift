@@ -11,7 +11,6 @@ import SwiftyFORM
 import Smile
 import KumpeHelpers
 import UnsplashPhotoPicker
-import Keys
 import Kingfisher
 
 class UserEditProfileViewController: FormViewController {
@@ -20,8 +19,8 @@ class UserEditProfileViewController: FormViewController {
     var selectedUser = LoggedInUser.selectedUser!
 
     // MARK: Unsplash Params
-    let unsplashConfig = UnsplashPhotoPickerConfiguration(accessKey: KKidKeys().unsplash_accesskey,
-                                                          secretKey: KKidKeys().unsplash_secretkey,
+    let unsplashConfig = UnsplashPhotoPickerConfiguration(accessKey: APICredentials.Unsplash.access,
+                                                          secretKey: APICredentials.Unsplash.secret,
                                                           allowsMultipleSelection: false,
                                                           contentFilterLevel: .high)
 

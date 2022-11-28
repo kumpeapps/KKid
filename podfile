@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '16.0'
+platform :ios, '15.6'
 use_frameworks!
 
 post_install do |installer|
@@ -28,6 +28,7 @@ plugin 'cocoapods-keys', {
 
 target 'KKid' do
 project 'KKid.xcodeproj'
+#	pod 'CloudKitQueues'
 	pod 'BulletinBoard'
 	pod 'YubiKit'
 	pod 'xcbeautify'
@@ -55,5 +56,5 @@ project 'KKid.xcodeproj'
 	pod 'YoutubeKit', '0.4.0'
 	pod 'ShipBookSDK'
 	pod 'WhatsNew'
-	pod 'AvatarView-fork'
+	pod 'AvatarView', :git => 'https://github.com/justinkumpe/AvatarView.git', :branch => 'master'
 end

@@ -48,7 +48,6 @@ class KumpeAppsClient: KumpeAPIClient {
                 UserDefaults.standard.set(false, forKey: "isAuthenticated")
                 UserDefaults.standard.removeObject(forKey: "apiKey")
                 UserDefaults.standard.removeObject(forKey: "userID")
-                PrivacyKit.shared.resetState()
                 NotificationCenter.default.post(name: .isAuthenticated, object: nil)
             }
         }

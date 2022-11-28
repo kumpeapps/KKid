@@ -2,9 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSMinimumSystemVersion</key>
+	<string>13</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.kumpeapps.ios.KKid.background.processing</string>
 		<string>com.kumpeapps.ios.KKid.background.refresh</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
@@ -36,7 +37,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>105</string>
+	<string>114</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-8070283866991781~9198166779</string>
 	<key>GADIsAdManagerApp</key>
@@ -236,8 +237,6 @@
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
-		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

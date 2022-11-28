@@ -3,13 +3,10 @@ executing upload_map_file_to_new_relic
 New Relic: map file upload attempt #1 (of 3)
 Using URL: https://mobile-symbol-upload.newrelic.com
 New Relic: map file upload attempt #2 (of 3)
-olumes/Developer/xcode_Apps/KKid/Pods/NewRelicAgent/NewRelic.xcframework/Resources/generateMap.py", line 252, in <module>
-    processDsymFile(dsym, workDir)
-  File "/Volumes/Developer/xcode_Apps/KKid/Pods/NewRelicAgent/NewRelic.xcframework/Resources/generateMap.py", line 201, in processDsymFile
-    nrZipFile.write(file.name)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 1727, in write
-    zinfo = ZipInfo.from_file(filename, arcname,
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 501, in from_file
-    st = os.stat(filename)
-FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/KKid.build/Debug-iphoneos/KKid.build/tmp/35f2e10e5ad43b129aea02238ba3d6a7.map'
-New Relic: map file upload attempt #2 (of 3)
+Using URL: https://mobile-symbol-upload.newrelic.com
+New Relic: map file upload attempt #3 (of 3)
+Using URL: https://mobile-symbol-upload.newrelic.com
+executing upload_dsym_to_new_relic
+new relic: error "100" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/KKid.build/Debug-iphoneos/KKid.build/NewRelic.framework.dSYM-1669665582.zip" to "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/KKid.build/Debug-iphoneos/KKid.build/NewRelic.framework.dSYM-1669665582.zip"
+new relic: error "100" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/KKid.build/Debug-iphoneos/KKid.build/NewRelic.framework.dSYM-1669665582.zip" to "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/KKid.build/Debug-iphoneos/KKid.build/NewRelic.framework.dSYM-1669665582.zip"
+new relic: error "100" while uploading "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/KKid.build/Debug-iphoneos/KKid.build/NewRelic.framework.dSYM-1669665582.zip" to "/Users/justinkumpe/Library/Developer/Xcode/DerivedData/KKid-ezimguypaoaiipctbjvrrhxxshlm/Build/Intermediates.noindex/KKid.build/Debug-iphoneos/KKid.build/NewRelic.framework.dSYM-1669665582.zip"

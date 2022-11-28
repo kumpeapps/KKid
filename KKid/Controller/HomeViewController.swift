@@ -17,7 +17,7 @@ import DeviceKit
 import KumpeHelpers
 import Snowflake
 import WhatsNew
-import AvatarView_fork
+import AvatarView
 import iCloudSync
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PrivacyKitDelegate {
@@ -245,7 +245,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             if selectedUser.enableAllowance {
-                modules.append(KKid_Module.init(title: "Allowance", segue: "segueAllowance", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-receive-cash-80.png"))
+                modules.append(KKid_Module.init(title: "Allowance", segue: "segueAllowance", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-allowance-64.png"))
             }
 
             if selectedUser.enableTmdb {
@@ -254,7 +254,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
             if selectedUser.enableWishList {
-                modules.append(KKid_Module.init(title: "Wish List", segue: "segueWishList", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-wish-list-80.png"))
+                modules.append(KKid_Module.init(title: "Wish List", segue: "segueWishList", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-christmas-gift-96.png"))
             }
             if !isKiosk {
                 modules.append(KKid_Module.init(title: "Edit Profile", segue: "segueEditProfile", icon: UIImage(named: "icons8-swirl")!, getRemoteIcon: true, remoteIconName: "icons8-profile-80.png"))
