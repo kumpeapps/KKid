@@ -12,10 +12,18 @@ import PrivacyKit
 import KumpeHelpers
 import ShipBookSDK
 import NewRelic
-import Keys
+import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
+    static var dateFormatter: DateFormatter = {
+      let formatter = DateFormatter()
+      formatter.dateStyle = .short
+      formatter.timeStyle = .long
+      return formatter
+    }()
+
+    var window: UIWindow?
 
     /// set orientations you want to be allowed in this property by default
     var orientationLock = UIInterfaceOrientationMask.all
@@ -39,30 +47,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
     }
 
-    var window: UIWindow?
-
     var kkidLogo = Pathifier.makeImage(for: NSAttributedString(string: "KKID"), withFont: UIFont(name: "QDBetterComicSansBold", size: 109)!, withPatternImage: UIImage(named: "money")!)
     var kkidBackground = UIImage(named: "photo2")!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UserDefaults.standard.set(false, forKey: "userSelected")
         KumpeHelpers.KumpeAPIClient.isKumpeAppsApi = true
-        NewRelic.start(withApplicationToken:"\(KKidKeys().newrelic_token)")
-        ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
-//        Setup PrivacyKit
-        PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
-        PrivacyKit.shared.setBlurView(isEnabled: true)
-        PrivacyKit.shared.config("https://tos.kumpeapps.com")
-        PrivacyKit.shared.disableDeny()
-        PrivacyKit.shared.setTitle("Terms of Service & Privacy Policy")
-        PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our EULA, Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
+        let appState = application.applicationState
+        if appState != .background {
+            NewRelic.start(withApplicationToken:"\(APICredentials.NewRelic.apikey)")
+            ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
+            // Setup PrivacyKit
+            PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
+            PrivacyKit.shared.setBlurView(isEnabled: true)
+            PrivacyKit.shared.config("https://tos.kumpeapps.com")
+            PrivacyKit.shared.disableDeny()
+            PrivacyKit.shared.setTitle("Terms of Service & Privacy Policy")
+            PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our EULA, Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
+        }
 
-//        Load Data Controller
-        DataController.shared.load()
-
-//        Initiate DataController Autosave
-        DataController.shared.autoSaveViewContext()
-//        Get App Version and set it's value in KKid Client
+        //        Get App Version and set it's value in KKid Client
         if let nsObject: AnyObject = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject? {
             KumpeAppsClient.appVersion = "\(KumpeAppsClient.appVersion) \(nsObject as! String)"
         }
@@ -71,14 +76,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
             UserDefaults.standard.removeObject(forKey: "isAuthenticated")
         }
 
-        #if !targetEnvironment(simulator)
-            registerForPushNotifications()
-        #endif
+#if !targetEnvironment(simulator)
+        registerForPushNotifications()
+#endif
 
         SettingsBundleHelper.checkAndExecuteSettings()
         SettingsBundleHelper.setVersionAndBuildNumber()
-
+        // Register Background task here
+        registerBackgroundTasks()
         return true
+    }
+
+    func registerBackgroundTasks() {
+        Logger.log(.action, "Run Register Background Tasks")
+        // Use the identifier which represents your needs
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.kumpeapps.ios.KKid.background.refresh", using: nil) { (task) in
+            // get the current date and time
+            let currentDateTime = Date()
+
+            // initialize the date formatter and set the style
+            let formatter = DateFormatter()
+            formatter.timeStyle = .medium
+            formatter.dateStyle = .long
+
+            // get the date time String from the date object
+            let date = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
+            Logger.log(.action, "BackgroundAppRefreshTaskScheduler is executed NOW!")
+            Logger.log(.action, "Background time remaining: \(UIApplication.shared.backgroundTimeRemaining)s")
+            task.expirationHandler = {
+                task.setTaskCompleted(success: false)
+            }
+            DataController.shared.load()
+            KumpeAppsClient.getUsers(silent: true) { success, _ in
+                LoggedInUser.setLoggedInUser()
+                task.setTaskCompleted(success: success)
+                UserDefaults.standard.set("Date: \(date)", forKey: "bgtask")
+            }
+            self.submitBackgroundTasks()
+        }
     }
 
 // MARK: applicationDidEnterBackground
@@ -87,6 +122,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         saveViewContext()
         Logger.log(.action, "applicationDidEnterBackground")
+        // submitBackgroundTasks()
+      }
+
+    func submitBackgroundTasks() {
+        Logger.log(.action, "submitBackgroundTasks")
+
+        do {
+            let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: "com.kumpeapps.ios.KKid.background.refresh")
+            backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow: 5 * 60)
+            try BGTaskScheduler.shared.submit(backgroundAppRefreshTaskRequest)
+            Logger.log(.action, "Submitted task request")
+        } catch {
+            Logger.log(.error, "Failed to submit BGTask")
+        }
     }
 
 // MARK: applicationWillTerminate

@@ -10,17 +10,19 @@ import Foundation
 import Alamofire
 import Alamofire_SwiftyJSON
 import KumpeHelpers
+import DeviceCheck
 
 extension KumpeAppsClient {
     // MARK: - Get Methods (non-sync get methods)
 
     // MARK: authenticate
     class func authenticate(username: String, password: String, otp: String? = nil, completion: @escaping (_ response: KKid_Auth_Response?, _ error: String?, _ statusResponse: HTTP_Status_Response) -> Void) {
-            var parameters = [
-                "username": username,
-                "password": password,
-                "verifyOtp": "true"
-            ]
+        var parameters = [
+            "username": username.replacingOccurrences(of: "kiosk:", with: ""),
+            "password": password,
+            "deviceName": UIDevice.current.name,
+            "identifierForVendor": UIDevice.current.identifierForVendor!.uuidString
+        ]
         if otp != nil {
             parameters["otp"] = otp!
         }
@@ -85,4 +87,5 @@ extension KumpeAppsClient {
             }
 
         }
+
 }

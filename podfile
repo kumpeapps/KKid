@@ -1,6 +1,16 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '15.0'
+platform :ios, '15.6'
 use_frameworks!
+
+post_install do |installer|
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['CODE_SIGN_IDENTITY'] = ''
+         end
+    end
+  end
+end
 
 plugin 'cocoapods-keys', {
 	:project => "KKid",
@@ -18,6 +28,8 @@ plugin 'cocoapods-keys', {
 
 target 'KKid' do
 project 'KKid.xcodeproj'
+#	pod 'CloudKitQueues'
+	pod 'BulletinBoard'
 	pod 'YubiKit'
 	pod 'xcbeautify'
 	pod 'UnsplashPhotoPicker'
@@ -34,7 +46,7 @@ project 'KKid.xcodeproj'
 	pod 'SwiftMessages'
 	pod 'Sync'
 	pod 'Smile', :git => 'https://github.com/onmyway133/Smile.git', :branch => 'master'
-	pod 'CollectionViewCenteredFlowLayout'
+	pod 'CollectionViewCenteredFlowLayout', :git => 'https://github.com/Coeur/CollectionViewCenteredFlowLayout.git', :branch => 'master'
 	pod 'KumpeHelpers'
 	pod 'Haptico'
 	pod 'PrivacyKit'
@@ -44,5 +56,5 @@ project 'KKid.xcodeproj'
 	pod 'YoutubeKit', '0.4.0'
 	pod 'ShipBookSDK'
 	pod 'WhatsNew'
-	pod 'AvatarView', :git => 'https://github.com/kumpeapps/AvatarView.git', :branch => 'master'
+	pod 'AvatarView', :git => 'https://github.com/justinkumpe/AvatarView.git', :branch => 'master'
 end

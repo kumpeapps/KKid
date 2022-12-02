@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import Keys
 
 public struct TMDb_Constants {
-    static let apiKey = KKidKeys().tmdb_apiKey
+    static let apiKey = APICredentials.TMDB.apikey
     static let baseUrl = "https://api.themoviedb.org/3"
     static let searchUrl = "\(baseUrl)/search"
     static let favoriteMoviesUrl = "\(baseUrl)/account/1/favorite/movies"

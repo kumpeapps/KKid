@@ -11,7 +11,7 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+update_fastlane
 
 default_platform(:ios)
 
@@ -32,13 +32,13 @@ platform :ios do
   desc "Build and upload beta version to testflight"
   lane :beta do
     if is_ci
-		setup_ci
+		  setup_ci
   		app_store_connect_api_key(
      		"key_id": ENV['APPLE_APP_STORE_API_KEY_ID'],
      		"issuer_id": ENV['APPLE_APPSTORE_API_ISSUER_ID'],
      		"key_content": ENV['APPLE_APP_STORE_API_KEY']
    		)
-	end
+    end
   	increment_build_number
   	if is_ci
   		add_badge(dark: true)
@@ -55,13 +55,13 @@ platform :ios do
   desc "Build and upload alpha version to testflight"
   lane :alpha do
     if is_ci
-    setup_ci
+      setup_ci
       app_store_connect_api_key(
         "key_id": ENV['APPLE_APP_STORE_API_KEY_ID'],
         "issuer_id": ENV['APPLE_APPSTORE_API_ISSUER_ID'],
         "key_content": ENV['APPLE_APP_STORE_API_KEY']
       )
-  end
+    end
     increment_build_number
     if is_ci
       add_badge(dark: true, alpha: true)
@@ -73,13 +73,13 @@ platform :ios do
   desc "Build and upload release version to Apple"
   lane :release do
     if is_ci
-		setup_ci
+		  setup_ci
   		app_store_connect_api_key(
      		"key_id": ENV['APPLE_APP_STORE_API_KEY_ID'],
      		"issuer_id": ENV['APPLE_APPSTORE_API_ISSUER_ID'],
      		"key_content": ENV['APPLE_APP_STORE_API_KEY']
    		)
-	end
+    end
   	run_tests(workspace: "KKid.xcworkspace",
             devices: ["iPhone 12 Pro"],
             scheme: "KKidUITests",
@@ -100,7 +100,7 @@ platform :ios do
 
   lane :test do
   	run_tests(workspace: "KKid.xcworkspace",
-            devices: ["iPhone 12 Pro","iPad Pro (12.9-inch) (3rd generation)"],
+            devices: ["iPhone 14 Pro","iPad (9th generation)"],
             scheme: "KKidUITests",
             only_testing: "KKidUITests/KKidUITests",
             reinstall_app: true,

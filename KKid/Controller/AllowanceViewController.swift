@@ -31,6 +31,11 @@ class AllowanceViewController: UIViewController, NSFetchedResultsControllerDeleg
 // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if #available(iOS 16.0, *) {
+            buttonAdd.isHidden = UserDefaults.standard.bool(forKey: "enableKiosk")
+        } else {
+            buttonAdd.isEnabled = UserDefaults.standard.bool(forKey: "enableKiosk")
+        }
         reachable = ReachabilitySetup()
         imageLogo.imageFromiCloud(imageName: "logo", waitForUpdate: false)
         imageBackground.imageFromiCloud(imageName: "background", waitForUpdate: false)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BackgroundTasks
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -45,6 +46,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        saveViewContext()
+        Logger.log(.action, "applicationDidEnterBackground")
+        submitBackgroundTasks()
+    }
+
+    func submitBackgroundTasks() {
+        Logger.log(.action, "submitBackgroundTasks")
+
+        do {
+            let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: "com.kumpeapps.ios.KKid.background.refresh")
+            backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow:  5 * 60)
+            try BGTaskScheduler.shared.submit(backgroundAppRefreshTaskRequest)
+            Logger.log(.action, "Submitted task request")
+        } catch {
+            Logger.log(.error, "Failed to submit BGTask")
+        }
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

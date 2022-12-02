@@ -12,6 +12,7 @@ import PrivacyKit
 import TransitionButton
 import YubiKit
 import DeviceKit
+import BLTNBoard
 
 class LoginViewController: UIViewController, PrivacyKitDelegate {
 
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
+    var bulletinManager: BLTNItemManager?
 
 // MARK: Reachability
     var reachable: ReachabilitySetup!
@@ -136,8 +138,49 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
                 return
             }
 
-            self.setLoggedInUser(apiKey: apiKey, user: user)
+            self.checkKiosk(apiKey: apiKey, user: user)
 
+        }
+    }
+
+    // MARK: checkKiosk
+    func checkKiosk(apiKey: String, user: KKid_User) {
+        if self.fieldUsername.text!.contains("kiosk:") {
+            guard user.isAdmin! else {
+                ShowAlert.centerView(theme: .error, title: "Not Admin", message: "You must be a Parent/Admin to enable kiosk mode!")
+                self.buttonLogin.stopAnimation()
+                self.enableUI(true)
+                KumpeAppsClient.apiLogout(apiKey)
+                return
+            }
+            let bulletinManager: BLTNItemManager = {
+                let page = BLTNPageItem(title: "Kiosk Mode")
+                page.image = UIImage(named: "kiosk")
+
+                page.descriptionText = "It appears you wish to enable Kiosk Mode for this device. All admin functions will be disabled and Logout will take you to the select user screen instead of logging out. Do you wish to proceed?"
+                page.actionButtonTitle = "Enable Kiosk Mode"
+                page.alternativeButtonTitle = "Not now"
+                page.actionHandler = { _ in
+                    Logger.log(.action, "Set Kiosk Mode")
+                    UserDefaults.standard.set(true, forKey: "enableKiosk")
+                    Logger.log(.action, "Enable Kiosk: \(UserDefaults.standard.bool(forKey: "enableKiosk"))")
+                    self.setLoggedInUser(apiKey: apiKey, user: user)
+                    self.dismiss(animated: false)
+                }
+                page.isDismissable = false
+                page.alternativeHandler = { (_) in
+                    Logger.log(.action, "Skipped Set Kiosk Mode")
+                    UserDefaults.standard.set(false, forKey: "enableKiosk")
+                    self.setLoggedInUser(apiKey: apiKey, user: user)
+                    self.dismiss(animated: false)
+                }
+                    return BLTNItemManager(rootItem: page)
+                }()
+            self.bulletinManager = bulletinManager
+            self.bulletinManager!.showBulletin(above: self, animated: true)
+        } else {
+            UserDefaults.standard.set(false, forKey: "enableKiosk")
+            self.setLoggedInUser(apiKey: apiKey, user: user)
         }
     }
 
@@ -196,6 +239,7 @@ class LoginViewController: UIViewController, PrivacyKitDelegate {
 
         present(alertController, animated: true, completion: nil)
         self.buttonLogin.stopAnimation()
+        self.enableUI(true)
     }
 
 // MARK: submitUsername

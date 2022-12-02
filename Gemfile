@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 require 'resolv-replace'
+gem "ethon", ">=0.13.0"
+gem "ffi"
 gem "fastlane"
 gem "cocoapods"
 gem "cocoapods-keys"

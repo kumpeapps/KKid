@@ -5,17 +5,18 @@ PODS:
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
     - SwiftyJSON (~> 4.0.0)
-  - AvatarView (2.0.3)
+  - AvatarView (2.0)
   - BadgeSwift (8.0.0)
-  - CollectionViewCenteredFlowLayout (1.0.1)
+  - BulletinBoard (5.0.0)
+  - CollectionViewCenteredFlowLayout (1.0.3)
   - ContentRestrictionsKit (1.2)
-  - DeviceKit (4.6.1)
+  - DeviceKit (5.0.0)
   - FetchedResultsControllerCollectionViewUpdater (0.1.0)
-  - Haptico (1.1.1)
+  - Haptico (1.2.0)
   - iCloudSync (8.0.21)
   - JKRefresher (1.4)
   - Keys (1.0.1)
-  - Kingfisher (7.3.2)
+  - Kingfisher (7.4.1)
   - KumpeHelpers (4.5.2):
     - Alamofire-SwiftyJSON
     - BadgeSwift
@@ -28,7 +29,7 @@ PODS:
     - ReachabilitySwift
     - SwiftMessages
     - Sync
-  - NewRelicAgent (7.3.8)
+  - NewRelicAgent (7.4.0)
   - PBTutorialManager (1.1.0):
     - AFCurvedArrowView
   - PrivacyKit (1.0.1)
@@ -46,16 +47,17 @@ PODS:
   - TransitionButton (0.5.3)
   - UnsplashPhotoPicker (1.3.0)
   - WhatsNew (0.4.6)
-  - xcbeautify (0.13.0)
+  - xcbeautify (0.15.0)
   - YoutubeKit (0.4.0)
   - YubiKit (4.2.0)
 
 DEPENDENCIES:
   - ADEmptyDataView
   - Alamofire-SwiftyJSON
-  - AvatarView (from `https://github.com/kumpeapps/AvatarView.git`, branch `master`)
+  - AvatarView (from `https://github.com/justinkumpe/AvatarView.git`, branch `master`)
   - BadgeSwift
-  - CollectionViewCenteredFlowLayout
+  - BulletinBoard
+  - CollectionViewCenteredFlowLayout (from `https://github.com/Coeur/CollectionViewCenteredFlowLayout.git`, branch `master`)
   - ContentRestrictionsKit
   - Haptico
   - JKRefresher
@@ -87,7 +89,7 @@ SPEC REPOS:
     - Alamofire
     - Alamofire-SwiftyJSON
     - BadgeSwift
-    - CollectionViewCenteredFlowLayout
+    - BulletinBoard
     - ContentRestrictionsKit
     - DeviceKit
     - FetchedResultsControllerCollectionViewUpdater
@@ -116,7 +118,10 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   AvatarView:
     :branch: master
-    :git: https://github.com/kumpeapps/AvatarView.git
+    :git: https://github.com/justinkumpe/AvatarView.git
+  CollectionViewCenteredFlowLayout:
+    :branch: master
+    :git: https://github.com/Coeur/CollectionViewCenteredFlowLayout.git
   Keys:
     :path: Pods/CocoaPodsKeys
   Smile:
@@ -128,8 +133,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AvatarView:
-    :commit: 8897b9e9396452164ef8cfcfe6c2ca27b1056451
-    :git: https://github.com/kumpeapps/AvatarView.git
+    :commit: 7cc61fba7eb7064e983b98ab0870061c6bd1e99c
+    :git: https://github.com/justinkumpe/AvatarView.git
+  CollectionViewCenteredFlowLayout:
+    :commit: a96a497377e6b7a555bf3c76e0aa05a096faa2f2
+    :git: https://github.com/Coeur/CollectionViewCenteredFlowLayout.git
   Smile:
     :commit: 2afe344d17f30dee646ef4c54a6926b6dd021e7d
     :git: https://github.com/onmyway133/Smile.git
@@ -142,19 +150,20 @@ SPEC CHECKSUMS:
   AFCurvedArrowView: 5fa8fcc1f77f5428ab34d7a1c6696b88c3c20f40
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
-  AvatarView: f44d32fc6d73c080a8144559d10c26f94ef50481
+  AvatarView: 9e12408599027ef3156871396e3adb259812c971
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
-  CollectionViewCenteredFlowLayout: 339b935be4d8578c59e448c8906117a07c657d85
+  BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
+  CollectionViewCenteredFlowLayout: 08ee587b794886c8aed41f79a528c6c4efa56d60
   ContentRestrictionsKit: db88b231efbc00ee45f3eefae04ba7b4219fe433
-  DeviceKit: 316f28290430467278b8a0d1c895968efa9e16e2
+  DeviceKit: 0fd016a2cb67aca17c33dc23171cac270131eb88
   FetchedResultsControllerCollectionViewUpdater: 10e88db1403d8d6e17a5d323efe1d1fd31dd0e1c
-  Haptico: 3ab938425737e2b90939d41e1b23538cdbe1cf44
+  Haptico: 0d6f0c5e25a2752ba9a819e28f58f918ffba5b65
   iCloudSync: 9db5fec951673172886bd75203971c003b02e988
   JKRefresher: 43ff65dfed29cdf1780e3923164938fd07b2e9b9
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
   KumpeHelpers: 7784067268cc665c6c1a093678af76a98a05ef01
-  NewRelicAgent: 89724f6460b8be82e41ce04724444aed9b15d486
+  NewRelicAgent: 9e134fe0b7b868bb54f68890dcfd8112b28d18b4
   PBTutorialManager: 7c2383247c0b0da71cf14438c0a2a737bca51a42
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -169,10 +178,10 @@ SPEC CHECKSUMS:
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   UnsplashPhotoPicker: 327eef7ccbb4c322ed13360fdda6e975d1bea61d
   WhatsNew: d66a52b294e90d5bc133877e270ea7ce0b945003
-  xcbeautify: 663b4c0c6e1ba22b5dfaf9382202473d3bd52046
+  xcbeautify: df17aa32d769add7af523a8be9b0ef8fb9eb75a8
   YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
   YubiKit: bde189dbaddc29e41dbda9e2c55ec5a79d38c654
 
-PODFILE CHECKSUM: 6fdbe7a32c9d07f38348c14e7fcabf95aaa58194
+PODFILE CHECKSUM: 0e3a1ea06eb5e3ef10e98721d0076a14c44f0082
 
 COCOAPODS: 1.11.3

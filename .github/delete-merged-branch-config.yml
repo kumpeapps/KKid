@@ -1,0 +1,6 @@
+exclude: 
+  - development
+  - Development
+  - Beta
+  - Alpha
+delete_closed_pr: true

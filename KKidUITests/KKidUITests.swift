@@ -58,7 +58,7 @@ class KKidUITests: XCTestCase {
         app.navigationBars["KKid.ChoresView"].buttons["Home"].tap()
     }
 
-    func testAllowance() throws {
+/*    func testAllowance() throws {
 
         let cellsQuery = app.collectionViews.cells
         let allowanceMod = cellsQuery.otherElements.containing(.staticText, identifier:"Allowance").element
@@ -141,7 +141,7 @@ class KKidUITests: XCTestCase {
         addTransactionNavigationBar.buttons["Back"].waitTap(application: app, wait: 10, canFail: true)
         kkidAllowanceviewNavigationBar.buttons["Home"].waitTap(application: app, wait: 10, canFail: true)
 
-    }
+    }*/
 
     func testEditProfile() throws {
 
@@ -159,7 +159,7 @@ class KKidUITests: XCTestCase {
 
     }
 
-    func testWishList() throws {
+/*    func testWishList() throws {
 
         let wishlistButton = app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Wish List").element
         if wishlistButton.waitForExistence(timeout: 10) {
@@ -189,7 +189,7 @@ class KKidUITests: XCTestCase {
         }
 
         wishListNavigationBar.buttons["Home"].tap()
-    }
+    }*/
 
     func testTmdb() throws {
 
@@ -207,12 +207,12 @@ class KKidUITests: XCTestCase {
     }
 
     func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+        /*if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
             measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
-        }
+        }*/
     }
 
     func tapCoordinate(at xCoordinate: Double, and yCoordinate: Double) {
@@ -231,6 +231,11 @@ extension XCUIElement {
         if application.menuItems["Paste"].waitForExistence(timeout: 10) {
             application.menuItems["Paste"].tap()
         }
+    }
+
+    func labelContains(text: String) -> Bool {
+        let predicate = NSPredicate(format: "label CONTAINS %@", text)
+        return staticTexts.matching(predicate).firstMatch.exists
     }
 
     func forceTapElement() {
