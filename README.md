@@ -58,6 +58,7 @@ KKid is an app for parents and their children to keep up with chores and allowan
 -   If you need to create a new Master Parent (household) account you may click on "New Parent Account"
 -   If you have forgotten your password you may enter your username in the username field and click "Forgot Password" and a reset link will be emailed to you.
 -   After login you will be taken to the [Home](https://github.com/kumpeapps/KKid#select-module-screen-home-screen) Screen
+-   Kiosk Mode is now available. Kiosk mode allows the iDevice to be used as a kiosk for all users under the account of the admin/master user logged in. Basically same as logging in as admin supplying access to all users under master account but without admin functions. To enable kiosk mode login as an admin user but with kiosk: in front of username. So username jane would be kiosk:jane.
 
 ###### NOTE: Child accounts and additional parent accounts for an existing household must be created after logging in as the master user or an admin user
 
