@@ -1,26 +1,19 @@
 # This is a basic workflow to help you get started with the GitHub Auto-Release on Commit Action.
 
-name: AutoRelease
-
+name: Draft Release
 on:
-  push:
-    branches: [ master ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  milestone:
+    types: [closed]
 jobs:
-  # This workflow contains a single job called "build"
   release:
-    # The type of runner that the job will run on
+    name: Release
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v3
-      - uses: CupOfTea696/gh-action-auto-release@v1.0.2
+      - name: Create a release draft for a milestone
+        id: create-release-milestone
+        uses: ecampidoglio/auto-release-milestone@v1
         with:
-          title: "$version"
-          tag: "$semver"
-          draft: false
-          regex: "/^Release {semver}$/i"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print the URL of the release draft
+        if: steps.create-release-milestone.outputs.release-url != ''
+        run: echo ${{ steps.create-release-draft.outputs.release-url }}
