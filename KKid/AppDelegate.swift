@@ -55,17 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         UserDefaults.standard.set(false, forKey: "userSelected")
         KumpeHelpers.KumpeAPIClient.isKumpeAppsApi = true
         let appState = application.applicationState
-        if appState != .background {
-            NewRelic.start(withApplicationToken:"\(APICredentials.NewRelic.apikey)")
-            ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
-            // Setup PrivacyKit
-            PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
-            PrivacyKit.shared.setBlurView(isEnabled: true)
-            PrivacyKit.shared.config("https://tos.kumpeapps.com")
-            PrivacyKit.shared.disableDeny()
-            PrivacyKit.shared.setTitle("Terms of Service & Privacy Policy")
-            PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our EULA, Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
-        }
+        NewRelic.start(withApplicationToken:"\(APICredentials.NewRelic.apikey)")
+        ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
+        // Setup PrivacyKit
+        PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())
+        PrivacyKit.shared.setBlurView(isEnabled: true)
+        PrivacyKit.shared.config("https://tos.kumpeapps.com")
+        PrivacyKit.shared.disableDeny()
+        PrivacyKit.shared.setTitle("Terms of Service & Privacy Policy")
+        PrivacyKit.shared.setMessage("By utilizing this app you agree and consent to our EULA, Privacy Policy and Terms of Service as listed at https://tos.kumpeapps.com.", privacyPolicyLinkText: "https://tos.kumpeapps.com", termsLinkText: "Terms of Service")
 
         //        Get App Version and set it's value in KKid Client
         if let nsObject: AnyObject = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject? {

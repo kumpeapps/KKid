@@ -1,0 +1,78 @@
+name: iOS Push to App Store
+
+on:
+  push:
+    tags:
+      - '*'
+
+concurrency:
+  group: build-ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  AppStore:
+    runs-on: macos-12
+    environment: 
+      name: Apple App Store
+      url: https://apps.apple.com/us/app/kkid/id1533368166?itsct=apps_box&itscg=30200
+
+    steps:
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '^14.0'
+
+    - uses: actions/checkout@v3
+
+    - uses: actions/cache@v3
+      id: podcache
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+                ${{ runner.os }}-pods-
+
+    - uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+
+    - name: Bundle dependencies
+      run: bundle install
+
+    - name: CocoaPods dependencies
+      env:
+        tmdb_apiKey: ${{ secrets.TMDB_APIKEY }}
+        ShipBook_appId: ${{ secrets.SHIPBOOK_APPID }}
+        ShipBook_appKey: ${{ secrets.SHIPBOOK_APPKEY }}
+        kkid_apikey: ${{ secrets.KKID_APIKEY }}
+        newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
+        unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
+        unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
+      run: bundle exec pod check || bundle exec pod install
+
+    - name: Fastlane Match
+      env:
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        FASTLANE_USER: "jakumpe@justinkumpe.net"
+        MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+        MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+      run: bundle exec fastlane matchget
+
+    - name: Upload To Apple App Store
+      env:
+        APPLE_APPSTORE_API_ISSUER_ID: ${{ secrets.APPLE_APPSTORE_API_ISSUER_ID }}
+        APPLE_APP_STORE_API_KEY: ${{ secrets.APPLE_APP_STORE_API_KEY }}
+        APPLE_APP_STORE_API_KEY_ID: ${{ secrets.APPLE_APP_STORE_API_KEY_ID }}
+      run: bundle exec fastlane release
+
+    - name: Commit and Push
+      run: |
+        git config --global user.name 'Justin Kumpe (via GitHub Actions)'
+        git config --global user.email 'justinkumpe@users.noreply.github.com'
+        git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git commit ./KKid.xcodeproj ./KKid/Info.plist KKidUITests/Info.plist ./fastlane/ -m "Pushed to App Store for release and bumped Build Version Number"
+        git push
