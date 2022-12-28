@@ -896,7 +896,7 @@
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 120;
+				CURRENT_PROJECT_VERSION = 125;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
@@ -907,7 +907,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.5;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.kumpeapps.ios.KKid";
@@ -928,7 +928,7 @@
 				CODE_SIGN_ENTITLEMENTS = KKid/KKid.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 120;
+				CURRENT_PROJECT_VERSION = 125;
 				DEVELOPMENT_TEAM = 2T42Z3DM34;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2T42Z3DM34;
 				INFOPLIST_FILE = KKid/Info.plist;
@@ -939,7 +939,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.5;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kumpeapps.ios.KKid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.kumpeapps.ios.KKid";
