@@ -48,10 +48,16 @@ jobs:
         newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
         unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
         unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
+        GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
       run: bundle exec pod check || bundle exec pod install
     
     - name: Fix Git
       run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+    
+    - name: Add SSH Key
+      run: |
+        eval "$(ssh-agent -s)"
+        ssh-add - <<< "${MATCH_DEPLOY_KEY}"
 
     - name: Fastlane Match
       env:
@@ -61,6 +67,7 @@ jobs:
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
         MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
         MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+        GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
       run: bundle exec fastlane matchget
 
     - name: Upload To TestFlight Alpha
@@ -124,6 +131,16 @@ jobs:
     
     - name: Fix Git
       run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+    
+    - name: Add SSH Key
+      run: |
+        eval "$(ssh-agent -s)"
+        ssh-add - <<< "${MATCH_DEPLOY_KEY}"
+    
+    - name: Add SSH Key
+      run: |
+        eval "$(ssh-agent -s)"
+        ssh-add - <<< "${MATCH_DEPLOY_KEY}"
 
     - name: Fastlane Match
       env:
@@ -133,6 +150,7 @@ jobs:
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
         MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
         MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+        GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
       run: bundle exec fastlane matchget
 
     - name: Upload To TestFlight Beta
