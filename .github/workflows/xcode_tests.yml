@@ -58,7 +58,7 @@ jobs:
     - name: Add SSH Key
       run: |
         eval "$(ssh-agent -s)"
-        ssh-add - <<< "${MATCH_DEPLOY_KEY}"
+        ssh-add - <<< "${{secrets.MATCH_DEPLOY_KEY}}"
 
     - name: Fastlane Match
       env:
