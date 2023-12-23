@@ -63,7 +63,12 @@ jobs:
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
         MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
         MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
-      run: bundle exec fastlane matchget
+      run:  |
+        eval "$(ssh-agent -s)"
+        ssh-add - <<< "${{secrets.MATCH_DEPLOY_KEY}}"
+        git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+        git clone git@github.com:kumpeapps/fastlane_certs.git
+        bundle exec fastlane matchget
 
     - name: Upload To Apple App Store
       env:
