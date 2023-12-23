@@ -55,6 +55,14 @@ Build and upload alpha version to testflight
 
 Build and upload release version to Apple
 
+### ios releaseforce
+
+```sh
+[bundle exec] fastlane ios releaseforce
+```
+
+Build and upload release version to Apple- Forced
+
 ### ios test
 
 ```sh
