@@ -38,6 +38,9 @@ jobs:
 
     - name: Bundle dependencies
       run: bundle install
+    
+    - name: Fix Git
+      run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
     - name: CocoaPods dependencies
       env:
@@ -107,6 +110,9 @@ jobs:
 
     - name: Bundle dependencies
       run: bundle install
+    
+    - name: Fix Git
+      run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
     - name: CocoaPods dependencies
       env:
