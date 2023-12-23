@@ -21,7 +21,7 @@ class KumpeAppsClient: KumpeAPIClient {
     static let appkey = APICredentials.KKid.apikey
     static var baseURL: String {
         #if DEBUG
-            return "https://restapi.preprod.kumpeapps.com/v5"
+            return "https://restapi.kumpeapps.com/v5"
         #else
             return "https://restapi.kumpeapps.com/v5"
         #endif

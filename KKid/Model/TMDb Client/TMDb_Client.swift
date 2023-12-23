@@ -19,7 +19,7 @@ class TMDb_Client: KumpeAPIClient {
         let parameters = [
             "api_key":"\(TMDb_Constants.apiKey)"
         ]
-        TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Token.self, parameters: parameters) { (response, error, _) in
+        TMDb_Client.taskForGet(apiUrl: url, responseType: TMDb_Token.self, parameters: parameters, debug: true) { (response, error, _) in
             // GUARD: Success
             guard error == nil else {
                 completion(false,nil)
