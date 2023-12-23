@@ -35,6 +35,11 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
+    
+    - name: Add SSH Key
+      run: |
+        eval "$(ssh-agent -s)"
+        ssh-add - <<< "${{secrets.MATCH_DEPLOY_KEY}}"
 
     - name: Bundle dependencies
       run: bundle install
@@ -54,11 +59,6 @@ jobs:
     
     - name: Fix Git
       run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
-    
-    - name: Add SSH Key
-      run: |
-        eval "$(ssh-agent -s)"
-        ssh-add - <<< "${{secrets.MATCH_DEPLOY_KEY}}"
 
     - name: Fastlane Match
       env:
@@ -137,7 +137,7 @@ jobs:
     - name: Add SSH Key
       run: |
         eval "$(ssh-agent -s)"
-        ssh-add - <<< "${MATCH_DEPLOY_KEY}"
+        ssh-add - <<< "${{secrets.MATCH_DEPLOY_KEY}}"
 
     - name: Fastlane Match
       env:
