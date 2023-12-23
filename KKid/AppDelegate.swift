@@ -11,7 +11,6 @@ import CoreData
 import PrivacyKit
 import KumpeHelpers
 import ShipBookSDK
-import NewRelic
 import BackgroundTasks
 
 @UIApplicationMain
@@ -55,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, KumpeAPNS {
         UserDefaults.standard.set(false, forKey: "userSelected")
         KumpeHelpers.KumpeAPIClient.isKumpeAppsApi = true
         let appState = application.applicationState
-        NewRelic.start(withApplicationToken:"\(APICredentials.NewRelic.apikey)")
         ShipBook.start(appId:APICredentials.ShipBook.appId, appKey:APICredentials.ShipBook.appKey)
         // Setup PrivacyKit
         PrivacyKit.shared.setStyle(CustomPrivacyKitStyle())

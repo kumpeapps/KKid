@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 import KumpeHelpers
 import Haptico
-import Toast_Swift
+import Toast_Swift_fork
 import AvatarView
 import Kingfisher
 import CollectionViewCenteredFlowLayout

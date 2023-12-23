@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '15.6'
+platform :ios, '16.5'
 use_frameworks!
 
 post_install do |installer|
@@ -7,6 +7,7 @@ post_install do |installer|
     project.targets.each do |target|
         target.build_configurations.each do |config|
             config.build_settings['CODE_SIGN_IDENTITY'] = ''
+	    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
          end
     end
   end
@@ -33,14 +34,14 @@ project 'KKid.xcodeproj'
 	pod 'YubiKit'
 	pod 'xcbeautify'
 	pod 'UnsplashPhotoPicker'
-	pod 'NewRelicAgent'
+#	pod 'NewRelicAgent'
 	pod 'PBTutorialManager'
 	pod 'ADEmptyDataView'
 	pod 'Snowflake', :git => 'https://github.com/kumpeapps/Snowflake.git', :branch => 'master'
 	pod 'ContentRestrictionsKit'
 	pod 'TransitionButton'
 	pod 'Alamofire-SwiftyJSON'
-	pod 'Toast-Swift'
+	pod 'Toast-Swift-fork', :git => 'https://github.com/kumpeapps/Toast-Swift-fork', :branch => 'master'
 	pod 'SwiftyFORM'
 	pod 'ReachabilitySwift'
 	pod 'SwiftMessages'

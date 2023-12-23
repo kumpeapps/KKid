@@ -48,6 +48,8 @@ jobs:
         newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
         unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
         unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
+        MATCH_DEPLOY_KEY: $
+        GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
       run: bundle exec pod check || bundle exec pod install
 
     - name: Fastlane Match
@@ -58,7 +60,13 @@ jobs:
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
         MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
         MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
-      run: bundle exec fastlane matchget
+        GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+      run:  |
+        eval "$(ssh-agent -s)"
+        ssh-add - <<< "${{secrets.MATCH_DEPLOY_KEY}}"
+        git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+        git clone git@github.com:kumpeapps/fastlane_certs.git
+        bundle exec fastlane matchget
 
     - name: Upload To TestFlight Alpha
       if: "!contains(github.event.head_commit.message, '#beta')"
@@ -117,6 +125,7 @@ jobs:
         newrelic_token: ${{ secrets.NEWRELIC_TOKEN }}
         unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
         unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
+        MATCH_DEPLOY_KEY: $
       run: bundle exec pod check || bundle exec pod install
 
     - name: Fastlane Match
@@ -127,7 +136,13 @@ jobs:
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
         MATCH_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
         MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
-      run: bundle exec fastlane matchget
+        GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+      run:  |
+        eval "$(ssh-agent -s)"
+        ssh-add - <<< "${{secrets.MATCH_DEPLOY_KEY}}"
+        git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+        git clone git@github.com:kumpeapps/fastlane_certs.git
+        bundle exec fastlane matchget
 
     - name: Upload To TestFlight Beta
       if: "contains(github.event.head_commit.message, '#beta')"

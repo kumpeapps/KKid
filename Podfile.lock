@@ -10,13 +10,13 @@ PODS:
   - BulletinBoard (5.0.0)
   - CollectionViewCenteredFlowLayout (1.0.3)
   - ContentRestrictionsKit (1.2)
-  - DeviceKit (5.0.0)
+  - DeviceKit (5.1.0)
   - FetchedResultsControllerCollectionViewUpdater (0.1.0)
   - Haptico (1.2.0)
   - iCloudSync (8.0.21)
   - JKRefresher (1.4)
   - Keys (1.0.1)
-  - Kingfisher (7.4.1)
+  - Kingfisher (7.10.1)
   - KumpeHelpers (4.5.2):
     - Alamofire-SwiftyJSON
     - BadgeSwift
@@ -29,7 +29,6 @@ PODS:
     - ReachabilitySwift
     - SwiftMessages
     - Sync
-  - NewRelicAgent (7.4.0)
   - PBTutorialManager (1.1.0):
     - AFCurvedArrowView
   - PrivacyKit (1.0.1)
@@ -37,19 +36,19 @@ PODS:
   - ShipBookSDK (1.1.19)
   - Smile (2.1.1)
   - Snowflake (0.5.0)
-  - SwiftMessages (9.0.6):
-    - SwiftMessages/App (= 9.0.6)
-  - SwiftMessages/App (9.0.6)
+  - SwiftMessages (9.0.9):
+    - SwiftMessages/App (= 9.0.9)
+  - SwiftMessages/App (9.0.9)
   - SwiftyFORM (1.8.6)
   - SwiftyJSON (4.0.0)
   - Sync (6.5.0)
-  - Toast-Swift (5.0.1)
+  - Toast-Swift-fork (5.1.0)
   - TransitionButton (0.5.3)
   - UnsplashPhotoPicker (1.3.0)
   - WhatsNew (0.4.6)
-  - xcbeautify (0.15.0)
+  - xcbeautify (0.17.0)
   - YoutubeKit (0.4.0)
-  - YubiKit (4.2.0)
+  - YubiKit (4.4.0)
 
 DEPENDENCIES:
   - ADEmptyDataView
@@ -64,7 +63,6 @@ DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
   - KumpeHelpers
-  - NewRelicAgent
   - PBTutorialManager
   - PrivacyKit
   - ReachabilitySwift
@@ -74,7 +72,7 @@ DEPENDENCIES:
   - SwiftMessages
   - SwiftyFORM
   - Sync
-  - Toast-Swift
+  - Toast-Swift-fork (from `https://github.com/kumpeapps/Toast-Swift-fork`, branch `master`)
   - TransitionButton
   - UnsplashPhotoPicker
   - WhatsNew
@@ -98,7 +96,6 @@ SPEC REPOS:
     - JKRefresher
     - Kingfisher
     - KumpeHelpers
-    - NewRelicAgent
     - PBTutorialManager
     - PrivacyKit
     - ReachabilitySwift
@@ -107,7 +104,6 @@ SPEC REPOS:
     - SwiftyFORM
     - SwiftyJSON
     - Sync
-    - Toast-Swift
     - TransitionButton
     - UnsplashPhotoPicker
     - WhatsNew
@@ -130,6 +126,9 @@ EXTERNAL SOURCES:
   Snowflake:
     :branch: master
     :git: https://github.com/kumpeapps/Snowflake.git
+  Toast-Swift-fork:
+    :branch: master
+    :git: https://github.com/kumpeapps/Toast-Swift-fork
 
 CHECKOUT OPTIONS:
   AvatarView:
@@ -144,6 +143,9 @@ CHECKOUT OPTIONS:
   Snowflake:
     :commit: 4285ed46fa5219bfbc124e0e3d4cd7f8c0b65ab8
     :git: https://github.com/kumpeapps/Snowflake.git
+  Toast-Swift-fork:
+    :commit: 3b784a0e04da4f82a0670bf585c626beb128cf48
+    :git: https://github.com/kumpeapps/Toast-Swift-fork
 
 SPEC CHECKSUMS:
   ADEmptyDataView: 854dba4c16f62cdab2e075c6451dd4133b2575c7
@@ -155,33 +157,32 @@ SPEC CHECKSUMS:
   BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
   CollectionViewCenteredFlowLayout: 08ee587b794886c8aed41f79a528c6c4efa56d60
   ContentRestrictionsKit: db88b231efbc00ee45f3eefae04ba7b4219fe433
-  DeviceKit: 0fd016a2cb67aca17c33dc23171cac270131eb88
+  DeviceKit: bcce5c26d9502e77e3a9fa5d1282877db388d922
   FetchedResultsControllerCollectionViewUpdater: 10e88db1403d8d6e17a5d323efe1d1fd31dd0e1c
   Haptico: 0d6f0c5e25a2752ba9a819e28f58f918ffba5b65
   iCloudSync: 9db5fec951673172886bd75203971c003b02e988
   JKRefresher: 43ff65dfed29cdf1780e3923164938fd07b2e9b9
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  Kingfisher: bc5abe80a8e0144537ef1dd5a0b2621b04f7f439
   KumpeHelpers: 7784067268cc665c6c1a093678af76a98a05ef01
-  NewRelicAgent: 9e134fe0b7b868bb54f68890dcfd8112b28d18b4
   PBTutorialManager: 7c2383247c0b0da71cf14438c0a2a737bca51a42
   PrivacyKit: 2e77ab49c5bfe0e6cedfd423a5ad4c7744942d54
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   ShipBookSDK: 2086b80c9beef01f44a28390012223ee863410eb
   Smile: 50023dc068fb11984df713916970b89e6b705d68
   Snowflake: fbaa96fd607f00c06ccdbd4484bc9b2d67646beb
-  SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
+  SwiftMessages: 1a23aef303fa7bb26ad802880746cf8358e378fe
   SwiftyFORM: 9e8693193e626cf70940641433c810ba1ef3f53b
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Sync: 86bb8aa0ea2f955ea5ac97b7b73129f86591c39e
-  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  Toast-Swift-fork: 78f8ce75fdd5222c7816e54cf3c0ad12f1387078
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   UnsplashPhotoPicker: 327eef7ccbb4c322ed13360fdda6e975d1bea61d
   WhatsNew: d66a52b294e90d5bc133877e270ea7ce0b945003
-  xcbeautify: df17aa32d769add7af523a8be9b0ef8fb9eb75a8
+  xcbeautify: 6e2f57af5c3a86d490376d5758030a8dcc201c1b
   YoutubeKit: 10c74151790b570001b19403d2c60b2fb540a1fe
-  YubiKit: bde189dbaddc29e41dbda9e2c55ec5a79d38c654
+  YubiKit: 390e7733942f9518f9b3f5890c60914f7b8d74c8
 
-PODFILE CHECKSUM: 0e3a1ea06eb5e3ef10e98721d0076a14c44f0082
+PODFILE CHECKSUM: 591a2b18b0143651842cd1571a1d695c573a7955
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.14.3
