@@ -38,9 +38,6 @@ jobs:
 
     - name: Bundle dependencies
       run: bundle install
-    
-    - name: Fix Git
-      run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
     - name: CocoaPods dependencies
       env:
@@ -52,6 +49,9 @@ jobs:
         unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
         unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
       run: bundle exec pod check || bundle exec pod install
+    
+    - name: Fix Git
+      run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
     - name: Fastlane Match
       env:
@@ -110,9 +110,6 @@ jobs:
 
     - name: Bundle dependencies
       run: bundle install
-    
-    - name: Fix Git
-      run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
     - name: CocoaPods dependencies
       env:
@@ -124,6 +121,9 @@ jobs:
         unsplash_accesskey: ${{ secrets.UNSPLASH_ACCESSKEY }}
         unsplash_secretkey: ${{ secrets.UNSPLASH_SECRETKEY }}
       run: bundle exec pod check || bundle exec pod install
+    
+    - name: Fix Git
+      run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
     - name: Fastlane Match
       env:
